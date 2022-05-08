@@ -5,7 +5,7 @@ main{
     .advertisments-main{
         .main-advertisment{
             img{
-                height: 100px;
+                height: 200px;
                 width: 100%;
             }
         }
@@ -105,6 +105,23 @@ main{
             }
         }
     }
+
+    // Product Quality
+    .product-qualities{
+        .product-quality{
+            text-align: center;
+            a{
+                text-decoration: none;
+                color:#333;
+                .product-quality-img{
+                    img{
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+            }
+        }
+    }
 }
 
     // Media Query
@@ -123,7 +140,7 @@ main{
     @media only screen and (min-width: 768px) and (max-width: 1200px){
         .search-brend{
             .search-brend-img{
-                border: 20px solid rgb(180, 180, 180);
+                border: 2px solid rgb(180, 180, 180);
                 text-align: center;
                 width: 100px; 
                 img{
@@ -208,6 +225,18 @@ main{
                     }
                 }
     
+            }
+
+            .search-brend{
+                .search-brend-img{
+                    border: 2px solid rgb(180, 180, 180);
+                    text-align: center;
+                    width: 150px; 
+                    img{
+                        width: 100% !important;
+                        height: 80px;
+                    }
+                }
             }
         }
     }

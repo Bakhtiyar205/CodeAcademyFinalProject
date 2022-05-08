@@ -48,6 +48,61 @@
 
 .last-looked{
     background-color: #fff;
+    .owl-dot {
+        display: none !important;
+      }
+      .owl-carusel-store {
+        position: relative;
+        .owl-nav {
+          position: absolute;
+          top: 40%;
+          width: 100%;
+        }
+        .owl-left {
+          float: left;
+        }
+    }
+    .owl-nav {
+        position: absolute;
+        top: 40%;
+        width: 100%;
+      }
+      .owl-prev {
+        float: left;
+        margin-left: -20px !important;
+        background-color: rgb(209, 209, 209) !important;
+        width: 40px !important;
+        border-radius: 50% !important;
+        &:hover {
+          opacity: 0.8;
+          background-color: $primary-color !important;
+        }
+        span {
+          display: inline-block;
+          margin-top: -10px;
+          // padding: 20px !important;
+      
+          font-size: 35px;
+        }
+      }
+      .owl-next {
+        float: right;
+        margin-right: -20px !important;
+        background-color: rgb(209, 209, 209) !important;
+        width: 40px !important;
+        border-radius: 50% !important;
+        &:hover {
+          opacity: 0.8;
+          background-color: $primary-color !important;
+        }
+        span {
+          display: inline-block;
+          margin-top: -10px;
+          // padding: 20px !important;
+      
+          font-size: 35px;
+        }
+      }
     .product-owl-field{
         background-color: #fff;
         border: 1px solid rgb(209, 209, 209);

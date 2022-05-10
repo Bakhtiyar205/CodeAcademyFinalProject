@@ -1,0 +1,240 @@
+@import "../variables/variables";
+
+.product-field{
+    background-color: #fff;
+    width: 98%;
+    a{
+        color: #333;
+        &:hover{
+            color: $primary-color;
+            text-decoration: underline;
+        }
+        img{
+            width: 100%;
+            height: 150px !important;
+        }
+    }
+    .wish-list{
+        height: 20px;
+            svg{
+                width: 20px;
+                height: 20px;
+            }
+            &:hover svg {
+                width: 22px;
+                height: 22px;
+            }
+    }
+    
+    
+    .discounted-price{
+        span{
+            font-weight: bold;
+        }
+    }
+    .real-price{
+        margin-top: -15px;
+        text-decoration: line-through;
+    }
+    .discount-percentage{
+        font-size: 13px;
+        padding: 2px 0 2px 13px;
+        background-color: $discount-price;
+        font-weight: bold;
+        color: #fff;
+        width: 40%;
+    }
+}
+
+.last-looked{
+    background-color: #fff;
+    .owl-dot {
+        display: none !important;
+      }
+      .owl-carusel-store {
+        position: relative;
+        .owl-nav {
+          position: absolute;
+          top: 40%;
+          width: 100%;
+        }
+        .owl-left {
+          float: left;
+        }
+    }
+    .owl-nav {
+        position: absolute;
+        top: 40%;
+        width: 100%;
+      }
+      .owl-prev {
+        float: left;
+        margin-left: -20px !important;
+        background-color: rgb(209, 209, 209) !important;
+        width: 40px !important;
+        border-radius: 50% !important;
+        &:hover {
+          opacity: 0.8;
+          background-color: $primary-color !important;
+        }
+        span {
+          display: inline-block;
+          margin-top: -10px;
+          // padding: 20px !important;
+      
+          font-size: 35px;
+        }
+      }
+      .owl-next {
+        float: right;
+        margin-right: -20px !important;
+        background-color: rgb(209, 209, 209) !important;
+        width: 40px !important;
+        border-radius: 50% !important;
+        &:hover {
+          opacity: 0.8;
+          background-color: $primary-color !important;
+        }
+        span {
+          display: inline-block;
+          margin-top: -10px;
+          // padding: 20px !important;
+      
+          font-size: 35px;
+        }
+      }
+    .product-owl-field{
+        background-color: #fff;
+        border: 1px solid rgb(209, 209, 209);
+        border-radius: 5px;
+        width: 100%;
+        a{
+            color: #333;
+            &:hover{
+                color: $primary-color;
+                text-decoration: underline;
+            }
+            img{
+                width: 100%;
+                height: 150px !important;
+            }
+        }
+        .wish-list{
+            height: 20px;
+                svg{
+                    width: 20px;
+                    height: 20px;
+                }
+                &:hover svg {
+                    width: 22px;
+                    height: 22px;
+                }
+        }
+        
+        
+        .discounted-price{
+            span{
+                font-weight: bold;
+            }
+        }
+        .real-price{
+            margin-top: -15px;
+            text-decoration: line-through;
+        }
+        .discount-percentage{
+            font-size: 13px;
+            padding: 2px 0 2px 13px;
+            background-color: $discount-price;
+            font-weight: bold;
+            color: #fff;
+            width: 40%;
+        }
+    }
+}
+
+
+
+
+
+// Media Query
+@media only screen and (min-width: 768px){
+        
+}
+
+@media only screen and (min-width: 1700px){
+    .without-container{
+        margin: 0;
+        padding: 0;
+        
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1200px){
+    main{
+
+    }
+}
+
+@media only screen and (max-width: 1200px){
+    main{
+
+    }
+}
+
+@media only screen and (max-width: 992px){
+    main{
+        .product-field{
+            background-color: #fff;
+            width: 100% !important;
+            a{
+                color: #333;
+                &:hover{
+                    color: $primary-color;
+                    text-decoration: underline;
+                }
+                img{
+                    width: 100%;
+                    height: 150px !important;
+                }
+            }
+            svg{
+                width: 20px;
+                height: 20px;
+            }
+            .discounted-price{
+                span{
+                    font-weight: bold;
+                }
+            }
+            .real-price{
+                margin-top: -15px;
+                text-decoration: line-through;
+            }
+            .discount-percentage{
+                padding: 2px 0 2px 13px;
+                background-color: $discount-price;
+                font-weight: bold;
+                color: #fff;
+                width: 40%;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 767.8px){
+    main{
+        
+    }
+}
+
+@media only screen and (max-width: 576px){
+    main{
+        
+    }
+}
+
+@media only screen and (max-width:435px){
+    main{
+        
+    }
+}

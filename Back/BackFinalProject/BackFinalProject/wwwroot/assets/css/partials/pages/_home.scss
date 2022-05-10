@@ -1,0 +1,258 @@
+@import "../variables/variables";
+
+main{
+    // Advertisment
+    .advertisments-main{
+        .main-advertisment{
+            img{
+                height: 200px;
+                width: 100%;
+            }
+        }
+        .secondary-advertisments{
+            img{
+                height: 300px;
+                width: 100%;
+            }
+            .distance-img-advertisment{
+                width: 110%;
+            }
+        }
+    }
+
+    // Secondary Navigation
+    .secondary-navigation{
+        width: 100%;
+        background-color: #fff;
+        .secondary-navigation-elements{
+            a{
+                color: #333;
+                text-decoration: none;
+            }
+        }
+        .secondary-navigation-img{
+            text-align: center;
+            img{
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+    // Categories
+    .categories{
+        .category{
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            margin: 0 auto;
+            a{
+                text-decoration: none;
+                color:#333;
+                img{
+                    width: 100%;
+                    height: 100%;
+                    transition: 0.5s all ease-in-out;
+                    &:hover{
+                        transform: scale(1.1);
+                    }
+                }
+            }
+            .category-header{
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                color: #333;
+                font-weight: bold;
+            }
+        }
+    }
+
+
+    // Search Brend
+    .search-brend{
+        h3{text-align: center;}
+        background-color: #fff;
+        .search-brend-elements{
+            border: 1px solid #333;
+            a{
+                color: #333;
+                text-decoration: none;
+            }
+        }
+        .search-brend-img{
+            border: 1px solid rgb(180, 180, 180);
+            text-align: center;
+            img{
+                width: 200px;
+                height: 80px;
+            }
+        }
+    }
+
+    // Blogs
+    .blogs{
+        background-color: #fff;
+        .blog-img{
+            width: 100%;
+            img{
+                width: 100%;
+            }
+        }
+        .blog-button{
+            button{
+
+            }
+        }
+    }
+
+    // Product Quality
+    .product-qualities{
+        .product-quality{
+            text-align: center;
+            a{
+                text-decoration: none;
+                color:#333;
+                .product-quality-img{
+                    img{
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+    // Media Query
+    @media only screen and (min-width: 768px){
+        
+    }
+    
+    @media only screen and (min-width: 1700px){
+        .without-container{
+            margin: 0;
+            padding: 0;
+            
+        }
+    }
+    
+    @media only screen and (min-width: 768px) and (max-width: 1200px){
+        .search-brend{
+            .search-brend-img{
+                border: 2px solid rgb(180, 180, 180);
+                text-align: center;
+                width: 100px; 
+                img{
+                    width: 100% !important;
+                    height: 80px;
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 1200px){
+        .secondary-navigation{
+            width: 97.2vw !important;
+            background-color: #fff;
+            .secondary-navigation-elements{
+                a{
+                    color: #333;
+                    text-decoration: none;
+                }
+            }
+            .secondary-navigation-img{
+                text-align: center;
+                img{
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 992px){
+        .secondary-navigation{
+            width: 96.9vw !important;
+            background-color: #fff;
+            .secondary-navigation-elements{
+                a{
+                    color: #333;
+                    text-decoration: none;
+                }
+            }
+            .secondary-navigation-img{
+                text-align: center;
+                img{
+                    width: 40px;
+                    height: 40px;
+                }
+            }
+        }
+    }
+    
+    @media only screen and (max-width: 767.8px){
+        main{
+            .advertisments-main{
+                
+                .secondary-advertisments{
+                    
+                    .distance-img-advertisment{
+                        width: 100%;
+                    }
+                }
+    
+            }
+
+            .blogs{
+                .blog-img{
+                    width: 100% !important;
+                }
+            }
+    
+            
+        }
+    }
+    
+    @media only screen and (max-width: 576px){
+        main{
+            .advertisments-main{
+                
+                .secondary-advertisments{
+                    
+                    .distance-img-advertisment{
+                        width: 100%;
+                    }
+                }
+    
+            }
+
+            .search-brend{
+                .search-brend-img{
+                    border: 2px solid rgb(180, 180, 180);
+                    text-align: center;
+                    width: 150px; 
+                    img{
+                        width: 100% !important;
+                        height: 80px;
+                    }
+                }
+            }
+        }
+    }
+    
+    @media only screen and (max-width:435px){
+        main{
+            .advertisments-main{
+                
+                .secondary-advertisments{
+                    
+                    .distance-img-advertisment{
+                        width: 100%;
+                    }
+                }
+    
+            }
+        }
+    }
+    

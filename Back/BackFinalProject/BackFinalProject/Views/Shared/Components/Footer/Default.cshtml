@@ -1,4 +1,4 @@
-﻿
+﻿@model FooterVM
 
 <footer>
     <!-- Subscription -->
@@ -53,56 +53,14 @@
                     </h4>
                     <hr class="my-2">
                     <ul>
-                        <li>
-                            <a href="#">
-                                Ish Imkanlari
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Ish Imkanlari
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Ish Imkanlari
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Ish Imkanlari
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Ish Imkanlari
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Ish Imkanlari
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Ish Imkanlari
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Ish Imkanlari
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Ish Imkanlari
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Ish Imkanlari
-                            </a>
-                        </li>
+                        @foreach (var category in Model.Categories)
+                        {
+                            <li>
+                                <a href="#">
+                                    @category.Name
+                                </a>
+                            </li>
+                        }
                     </ul>
                 </div>
                 <div class="col-md-3 col-12 my-2">
@@ -187,17 +145,18 @@
                     </h4>
                     <hr class="my-2">
                     <p>
-                        Ə.Naxçıvani 13C
+                        @Model.Settings["Headquarter"]
+
                     </p>
                     <p>
                         Əlaqə məlumatları:
                         <br>
                         <a href="#">
-                            +994-55-509-5505
+                            @Model.Settings["CallCenter"]
                         </a>
                         <br>
                         <a href="#">
-                            marketing@gmail.com
+                            @Model.Settings["Mail"]
                         </a>
                     </p>
                 </div>

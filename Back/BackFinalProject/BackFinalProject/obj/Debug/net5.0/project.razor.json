@@ -13566,23 +13566,6 @@
         }
       },
       {
-        "HashCode": -1767285354,
-        "Kind": "MVC.ViewComponent",
-        "Name": "__Generated__HeaderViewComponentTagHelper",
-        "AssemblyName": "BackFinalProject",
-        "CaseSensitive": false,
-        "TagMatchingRules": [
-          {
-            "TagName": "vc:header"
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "ITagHelper",
-          "Common.TypeName": "__Generated__HeaderViewComponentTagHelper",
-          "MVC.ViewComponent.Name": "Header"
-        }
-      },
-      {
         "HashCode": -1963001759,
         "Kind": "MVC.ViewComponent",
         "Name": "__Generated__FooterViewComponentTagHelper",
@@ -13597,6 +13580,23 @@
           "Runtime.Name": "ITagHelper",
           "Common.TypeName": "__Generated__FooterViewComponentTagHelper",
           "MVC.ViewComponent.Name": "Footer"
+        }
+      },
+      {
+        "HashCode": -1767285354,
+        "Kind": "MVC.ViewComponent",
+        "Name": "__Generated__HeaderViewComponentTagHelper",
+        "AssemblyName": "BackFinalProject",
+        "CaseSensitive": false,
+        "TagMatchingRules": [
+          {
+            "TagName": "vc:header"
+          }
+        ],
+        "Metadata": {
+          "Runtime.Name": "ITagHelper",
+          "Common.TypeName": "__Generated__HeaderViewComponentTagHelper",
+          "MVC.ViewComponent.Name": "Header"
         }
       },
       {

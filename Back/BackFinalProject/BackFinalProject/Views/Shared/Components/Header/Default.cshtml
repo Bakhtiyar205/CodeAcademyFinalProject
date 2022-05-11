@@ -1,4 +1,4 @@
-﻿
+﻿@model HeaderVM
 @{
     ViewData["Title"] = "Default";
 }
@@ -13,17 +13,17 @@
                         <div class="col-lg-2 col-md-3 flag">
                             <ul class="d-flex flag-container">
                                 <a href="#">
-                                <li> <img src="~/assets/img/flags/az.svg" class="active" alt="Azerbaijan"></li>
+                                <li> <img src="~/assets/img/flags/@Model.Settings["AzFlag"]" class="active" alt="Azerbaijan"></li>
                                 </a>
                                 <a href="">
-                                <li> <img src="~/assets/img/flags/az.svg" alt="Azerbaijan"></li>
+                                <li> <img src="~/assets/img/flags/@Model.Settings["AzFlag"]" alt="Azerbaijan"></li>
                                 </a>
 
                             </ul>
                         </div>
 
                         <div class="col-lg-10 col-md-9 number">
-                            <a href="#">+99412 3775555</a>
+                            <a href="#">@Model.Settings["Phone"]</a>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                                     <rect y="30" width="32" height="2"></rect>
                                 </svg>
                                 <br>
-                                Sual&nbsp;Cavab
+                                @Model.Settings["Questions"]
                             </a>
                         </li>
                         <li class="pe-sm-5 px-md-3 first-header-icon">
@@ -60,7 +60,7 @@
                                     </path>
                                 </svg>
                                 <br>
-                                Kataloq
+                                @Model.Settings["Catalog"]
                             </a>
                         </li>
 
@@ -71,7 +71,7 @@
                                     </path>
                                 </svg>
                                 <br>
-                                Magazalar
+                                @Model.Settings["Shops"]
                             </a>
                         </li>
                         <li class="pe-sm-5 px-md-3 first-header-icon">
@@ -81,7 +81,7 @@
                                     </path>
                                 </svg>
                                 <br>
-                                Girish
+                                @Model.Settings["Login"]
                             </a>
                         </li>
                     </ul>
@@ -183,647 +183,44 @@
                 <div class="container-fluid ">
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav main-navbar">
-                            <!-- Bedroom -->
-                            <a class="nav-link navigation-link" href="#">Yataq Otagi</a>
-                            <div class="sub-categories-menu">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                            </ul>
+
+                            <ul class="d-flex ">
+                                @foreach (var category in Model.Categories)
+                                {
+                                    <li class="">
+                                        <a href="#" class="px-1 pe-1">@category.Name</a>
+                                        <div class="subMenu">
+                                            <div class="container">
+                                                <div class="row">
+                                                    @if (category.SubCategory != null)
+                                                    {
+                                                        for (int i = 0; i < (Math.Ceiling((decimal)category.SubCategory.Count() / 7)); i++)
+                                                        {
+                                                    <div class="col-md-3">
+                                                        <ul>
+                                                            @foreach (var subCategory in category.SubCategory.Skip(i * 7).Take(7))
+
+                                                            {
+                                                                if (category.Id == subCategory.CategoryID)
+                                                                {
+
+                                                                    <li><a href="#">@subCategory.Name</a></li>
+                                                                }
+                                                            }
+                                                        </ul>
+                                                    </div>
+                                                        }
+                                                    }
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-md-4">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Bathroom -->
-                            <a class="nav-link navigation-link" href="#">Hamam</a>
-                            <div class="sub-categories-menu">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Ofice -->
-                            <a class="nav-link navigation-link" href="#">Ofis</a>
-                            <div class="sub-categories-menu">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Living Room -->
-                            <a class="nav-link navigation-link" href="#">Qonaq Otagi</a>
-                            <div class="sub-categories-menu">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Kitchen and Living Room -->
-                            <a class="nav-link navigation-link" href="#">Metbex ve Qonaq Otagi</a>
-                            <div class="sub-categories-menu">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Curtains -->
-                            <a class="nav-link navigation-link" href="#">Perdeler</a>
-                            <div class="sub-categories-menu">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charpayilar
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Garden -->
-                            <a class="nav-link navigation-link" href="#">Bag Mallari</a>
-                            <div class="sub-categories-menu">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        Charayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charayilar
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        Charayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charayilar
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        Charayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charayilar
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Product of Home -->
-                            <a class="nav-link navigation-link" href="#">Ev Eshyalari</a>
-                            <div class="sub-categories-menu">
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        Charayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charayilar
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        Charayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charayilar
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <ul>
-                                                <li>
-                                                    <a href="#">
-                                                        Charayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charayilar
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#">
-                                                        Charayilar
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a class="nav-link navigation-link" href="#">Outlet</a>
+                                    </li>
+                                }
+
+                            </ul>
+
+
+
                         </div>
 
                     </div>

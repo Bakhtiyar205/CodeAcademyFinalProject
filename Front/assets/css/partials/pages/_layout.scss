@@ -93,19 +93,63 @@ header{
     .main-navbar{
         height: 40px;
         font-size: 20px;
+        ul{
+            margin: 0 !important;
+            padding: 0 !important;
+            margin-left: -10px !important;
+            position: relative;
+            li{
+
+                margin: 0 !important;
+                padding: 0 !important;
+                
+                list-style: none;
+                a{
+                    color: #333;
+                    &:hover{
+                        box-shadow: inset 0 -3px 0 #004398;
+                    }
+                   
+                    
+                }
+               
+                .subMenu{
+                    position: absolute;
+                    top: 45px;
+                    left: -120px;
+                    padding-left: 26px;
+                    visibility: hidden;
+                    background-color: $background-color;
+                    z-index: -100;
+                    opacity: 0;
+                    font-size: 13px;
+                    
+                    width: 99.3vw;
+                    max-height: 550px;
+                    transform: translateY(-20px);
+                    transition: all 0.1s;
+                }
+                &:hover .subMenu{
+                    visibility: visible;
+                    opacity: 1;
+                    z-index: 100;
+                    transform: translateY(0);
+                }
+            }
+        }
     }
 }
     .sub-categories-menu {
         position: absolute;
         visibility: hidden;
         opacity: 0;
-        top:60px;
+        font-size: 13px;
+        top:20px;
         left:-9%;
         width: 117.6%;
         background-color: $background-color;
         transform: translateY(-20px);
         z-index: -100;
-        height: 130px;
         transition: all 0.1s;
         ul{
             li{
@@ -118,9 +162,11 @@ header{
         }
     }
     .navigation-link:hover{
-            border-bottom: 2px solid $primary-color;
+
+         box-shadow: inset 0 -3px 0 #004398;
         }
     .navigation-link:hover + .sub-categories-menu{
+            max-height: 550px;
             visibility: visible;
             opacity: 1;
             z-index: 100;
@@ -275,13 +321,15 @@ header{
             }
         }
         .navigation-link{
+            padding: 15px 5px ;
             font-size: 13px;
         }
         .sub-categories-menu {
             position: absolute;
             visibility: hidden;
             opacity: 0;
-            top:70px;
+            font-size: 10px !important;
+            top: 10px;
             left:-19%;
             width: 100vw;
             background-color: rgb(233, 233, 233);
@@ -316,6 +364,62 @@ header{
         }
     }
 }
+
+@media only screen and (min-width: 1200px) and (max-width: 1500px){
+    body{
+        overflow-x: hidden !important;
+    }
+    .navbar-secondary{
+     margin-top: 0 !important;
+     margin-left: -50px;
+    }
+    .main-navbar{
+        ul{
+            li{
+                
+                .subMenu{
+                    left: -100px !important;
+                    padding-left: 26px; 
+                    width: 99vw !important;
+                }
+            }
+        }
+    }
+ }
+@media only screen and (min-width: 992px) and (max-width: 1199.8px){
+    body{
+        overflow-x: hidden !important;
+    }
+    .main-navbar{
+        ul{
+            li{
+                
+                .subMenu{
+                    left: -75px !important;
+                    padding-left: 26px; 
+                    width: 99vw !important;
+                }
+            }
+        }
+    }
+ }
+@media only screen and (min-width: 768px) and (max-width: 991.8px){
+    body{
+        overflow-x: hidden !important;
+    }
+    .main-navbar{
+        ul{
+            li{
+                
+                .subMenu{
+                    left: -80px !important;
+                    padding-left: 26px; 
+                    width: 99vw !important;
+                }
+            }
+        }
+    }
+ }
 
 @media only screen and (max-width: 767.8px){
    body{

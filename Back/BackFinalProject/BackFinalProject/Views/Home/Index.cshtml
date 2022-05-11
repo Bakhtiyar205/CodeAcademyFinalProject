@@ -1,4 +1,4 @@
-﻿
+﻿@model HomeVM
 @{
     ViewData["Title"] = "Index";
 }
@@ -80,109 +80,21 @@
     <div class="categories">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-12 mt-4">
-                    <div class="category">
-                        <a href="#">
-                            <img src="~/assets/img/categoriesMainPictures/3791970-VONGE00.png" alt="category-image">
-                        </a>
-                        <div class="category-header">
-                            Yataq otagi
+                @foreach (var category in Model.Categories)
+                {
+                    <div class="col-md-4 col-12 mt-4">
+                        <div class="category">
+                            <a asp-controller="Category" asp-action="" asp-route-id="@category.Id">
+                                <img src="~/assets/img/categoriesMainPictures/@category.Image" alt="category-image">
+                            </a>
+                            <div class="category-header">
+                                @category.Name
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4 col-12 mt-4">
-                    <div class="category">
-                        <a href="#">
-                            <img src="~/assets/img/categoriesMainPictures/Baie.png" alt="category-image">
-                        </a>
-                        <div class="category-header">
-                            Yataq otagi
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-12 mt-4">
-                    <div class="category">
-                        <a href="#">
-                            <img src="~/assets/img/categoriesMainPictures/Bedroom-Front-page.png"
-                                 alt="category-image">
-                        </a>
-                        <div class="category-header">
-                            Yataq otagi
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-12 mt-4">
-                    <div class="category">
-                        <a href="#">
-                            <img src="~/assets/img/categoriesMainPictures/Dining-room-Front-page.png"
-                                 alt="category-image">
-                        </a>
-                        <div class="category-header">
-                            Yataq otagi
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-12 mt-4">
-                    <div class="category">
-                        <a href="#">
-                            <img src="~/assets/img/categoriesMainPictures/Gift_Card_3D.jpeg" alt="category-image">
-                        </a>
-                        <div class="category-header">
-                            Yataq otagi
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-12 mt-4">
-                    <div class="category">
-                        <a href="#">
-                            <img src="~/assets/img/categoriesMainPictures/JYSK-front-page-03-2022.png"
-                                 alt="category-image">
-                        </a>
-                        <div class="category-header">
-                            Yataq otagi
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-12 mt-4">
-                    <div class="category">
-                        <a href="#">
-                            <img src="~/assets/img/categoriesMainPictures/JYSK-front-page-curtains.png"
-                                 alt="category-image">
-                        </a>
-                        <div class="category-header">
-                            Yataq otagi
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-12 mt-4">
-                    <div class="category">
-                        <a href="#">
-                            <img src="~/assets/img/categoriesMainPictures/Living-room-Front-page.png"
-                                 alt="category-image">
-                        </a>
-                        <div class="category-header">
-                            Yataq otagi
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-12 mt-4">
-                    <div class="category">
-                        <a href="#">
-                            <img src="~/assets/img/categoriesMainPictures/Office-front-page0.png"
-                                 alt="category-image">
-                        </a>
-                        <div class="category-header">
-                            Yataq otagi
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-12 mt-4">
-                    <div class="category">
-                        <a href="#">
-                            <img src="~/assets/img/categoriesMainPictures/Outlet.png" alt="category-image">
-                        </a>
-                    </div>
-                </div>
+                }
+
+
                 <div class="col-md-4 col-12 mt-4">
                     <div class="category">
                         <a href="#">

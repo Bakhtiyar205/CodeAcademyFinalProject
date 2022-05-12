@@ -24,5 +24,12 @@ namespace BackFinalProject.Services
             
             return subCategories;
         }
+
+        public async Task<SubCategory> GetSubCategoriesWithIdAsync(int subCategoryID)
+        {
+            return await context.SubCategories.Where(m => m.Id == subCategoryID)
+                                              .Include(m=>m.Category)
+                                              .FirstOrDefaultAsync();
+        }
     }
 }

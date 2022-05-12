@@ -341,7 +341,7 @@ header .navbar-secondary li {
 
 .header-mid .main-navbar ul li .subMenu {
   position: absolute;
-  top: 45px;
+  top: 40px;
   left: -120px;
   padding-left: 26px;
   visibility: hidden;
@@ -1333,5 +1333,15 @@ footer .cards-footer {
   main .shop-product .discount-percentage {
     width: 50%;
   }
+}
+
+main .brend-img {
+  width: 100%;
+  height: 200px;
+}
+
+main .brend-img img {
+  width: 100%;
+  height: 100%;
 }
 /*# sourceMappingURL=style.css.map */

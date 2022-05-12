@@ -15698,6 +15698,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Brend\\Index.cshtml",
+      "TargetPath": "Views\\Brend\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "FileKind": "mvc"

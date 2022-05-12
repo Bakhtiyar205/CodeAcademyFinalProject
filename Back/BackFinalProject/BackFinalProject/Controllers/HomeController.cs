@@ -12,18 +12,24 @@ namespace BackFinalProject.Controllers
     public class HomeController : Controller
     {
         private readonly ICategoryService categoryService;
+        private readonly ISettingService settingService;
+        private readonly IBrendService brendService;
 
-        public HomeController(ICategoryService categoryService)
+        public HomeController(ICategoryService categoryService,
+                                ISettingService settingService,
+                                IBrendService brendService)
         {
             this.categoryService = categoryService;
+            this.settingService = settingService;
+            this.brendService = brendService;
         }
         public async Task<IActionResult> Index()
         {
-            List<Category> categories = await categoryService.GetCategoriesAsync();
-
             HomeVM homeVM = new()
             {
-                Categories = categories
+                Categories = await categoryService.GetCategoriesAsync(),
+                Setting = settingService.GetSetting(),
+                Brends = await brendService.GetBrendsAsync()
             };
             return View(homeVM);
         }

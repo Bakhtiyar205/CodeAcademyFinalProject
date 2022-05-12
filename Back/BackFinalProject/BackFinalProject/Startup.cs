@@ -36,6 +36,7 @@ namespace BackFinalProject
             services.AddScoped<ICategoryService, CategoryService>();
             services.AddScoped<ISubCategoryService, SubCategoryService>();
             services.AddScoped<ISettingService, SettingService>();
+            services.AddScoped<IBrendService, BrendService>();
 
 
         }

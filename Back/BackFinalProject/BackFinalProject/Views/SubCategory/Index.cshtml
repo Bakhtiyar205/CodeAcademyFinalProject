@@ -1,4 +1,4 @@
-﻿
+﻿@model SubCategoryVM
 @{
     ViewData["Title"] = "Index";
 }
@@ -7,7 +7,7 @@
     <!-- home-naviagtion -->
     <div class="home-navigation my-3">
         <div class="container">
-            <a href="index.html">Ana səhifə</a>/ <a href="#">Yatag otağı</a> /<a>Yatag otağı</a>
+            <a href="index.html">Ana səhifə</a>/ <a asp-controller="Category" asp-action="index" asp-route-categoryId="@Model.SubCategory.CategoryID">@Model.SubCategory.Category.Name</a> /<a>@Model.SubCategory.Name</a>
         </div>
     </div>
     <!-- Category Wallpaper -->
@@ -17,17 +17,17 @@
                 <div class="row">
                     <div class="col-4">
                         <a href="#">
-                            <img src="~/assets/img/bedroom/bedroom.jpg" alt="">
+                            <img src="~/assets/img/subCategory/bedroom.jpg" alt="">
                         </a>
                     </div>
                     <div class="col-4">
                         <a href="#">
-                            <img src="~/assets/img/bedroom/bedroom-1.jpg" alt="">
+                            <img src="~/assets/img/subCategory/bedroom-1.jpg" alt="">
                         </a>
                     </div>
                     <div class="col-4">
                         <a href="#">
-                            <img src="~/assets/img/bedroom/bedroom-3.jpg" alt="">
+                            <img src="~/assets/img/subCategory/bedroom-3.jpg" alt="">
                         </a>
                     </div>
                 </div>
@@ -43,8 +43,8 @@
                 <div class="d-none d-md-block col-md-3 mt-4">
                     <ul class="ul-main-category">
                         <li>
-                            <a href="#">
-                                Salam
+                            <a style="font-weight:bold;">
+                                @Model.SubCategory.Name
                             </a>
                         </li>
                         <hr>
@@ -74,7 +74,7 @@
                         <div class="col-12 col-md-4 my-3">
                             <div class="product-field p-3">
                                 <a href="#">
-                                    <img src="~/assets/img/bedroom/1035158-KRONBORG.jpg" alt="">
+                                    <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
                                     <br>
                                     Carpayi Salling 140*220 natural
                                 </a>
@@ -100,7 +100,7 @@
                         <div class="col-12 col-md-4 my-3">
                             <div class="product-field p-3">
                                 <a href="#">
-                                    <img src="~/assets/img/bedroom/1035158-KRONBORG.jpg" alt="">
+                                    <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
                                     <br>
                                     Carpayi Salling 140*220 natural
                                 </a>
@@ -126,7 +126,7 @@
                         <div class="col-12 col-md-4 my-3">
                             <div class="product-field p-3">
                                 <a href="#">
-                                    <img src="~/assets/img/bedroom/1035158-KRONBORG.jpg" alt="">
+                                    <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
                                     <br>
                                     Carpayi Salling 140*220 natural
                                 </a>
@@ -152,7 +152,7 @@
                         <div class="col-12 col-md-4 my-3">
                             <div class="product-field p-3">
                                 <a href="#">
-                                    <img src="~/assets/img/bedroom/1035158-KRONBORG.jpg" alt="">
+                                    <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
                                     <br>
                                     Carpayi Salling 140*220 natural
                                 </a>
@@ -178,7 +178,7 @@
                         <div class="col-12 col-md-4 my-3">
                             <div class="product-field p-3">
                                 <a href="#">
-                                    <img src="~/assets/img/bedroom/1035158-KRONBORG.jpg" alt="">
+                                    <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
                                     <br>
                                     Carpayi Salling 140*220 natural
                                 </a>
@@ -204,7 +204,7 @@
                         <div class="col-12 col-md-4 my-3">
                             <div class="product-field p-3">
                                 <a href="#">
-                                    <img src="~/assets/img/bedroom/1035158-KRONBORG.jpg" alt="">
+                                    <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
                                     <br>
                                     Carpayi Salling 140*220 natural
                                 </a>
@@ -230,7 +230,7 @@
                         <div class="col-12 col-md-4 my-3">
                             <div class="product-field p-3">
                                 <a href="#">
-                                    <img src="~/assets/img/bedroom/1035158-KRONBORG.jpg" alt="">
+                                    <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
                                     <br>
                                     Carpayi Salling 140*220 natural
                                 </a>
@@ -268,7 +268,7 @@
             <div class="owl-carousel owl-theme owl-carusel-last-seen owl-carusel-store">
                 <div class="product-owl-field p-3">
                     <a href="#">
-                        <img src="~/assets/img/bedroom/1035158-KRONBORG.jpg" alt="">
+                        <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
                         <br>
                         Carpayi Salling 140*220 natural
                     </a>
@@ -291,7 +291,7 @@
 
                 <div class="product-owl-field p-3">
                     <a href="#">
-                        <img src="~/assets/img/bedroom/1035158-KRONBORG.jpg" alt="">
+                        <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
                         <br>
                         Carpayi Salling 140*220 natural
                     </a>
@@ -313,7 +313,7 @@
                 </div>
                 <div class="product-owl-field p-3">
                     <a href="#">
-                        <img src="~/assets/img/bedroom/1035158-KRONBORG.jpg" alt="">
+                        <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
                         <br>
                         Carpayi Salling 140*220 natural
                     </a>
@@ -335,7 +335,7 @@
                 </div>
                 <div class="product-owl-field p-3">
                     <a href="#">
-                        <img src="~/assets/img/bedroom/1035158-KRONBORG.jpg" alt="">
+                        <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
                         <br>
                         Carpayi Salling 140*220 natural
                     </a>
@@ -357,7 +357,7 @@
                 </div>
                 <div class="product-owl-field p-3">
                     <a href="#">
-                        <img src="~/assets/img/bedroom/1035158-KRONBORG.jpg" alt="">
+                        <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
                         <br>
                         Carpayi Salling 140*220 natural
                     </a>
@@ -379,7 +379,7 @@
                 </div>
                 <div class="product-owl-field p-3">
                     <a href="#">
-                        <img src="~/assets/img/bedroom/1035158-KRONBORG.jpg" alt="">
+                        <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
                         <br>
                         Carpayi Salling 140*220 natural
                     </a>

@@ -1,5 +1,13 @@
 
-$(document).ready(function(){
+$(document).ready(function () {
+      
+
+    $(document).on('change', '.selectpicker', function (e) {
+        e.preventDefault();
+
+        window.location = $(this).find('option:selected').val();
+    });
+
     $(document).ready(function(){
         $(".owl-carousel").owlCarousel();
       });
@@ -41,6 +49,8 @@ $(document).ready(function(){
 
        
     })
+
+    
 
     
   });

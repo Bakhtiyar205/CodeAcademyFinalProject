@@ -1,4 +1,4 @@
-﻿
+﻿@model CategoryVM
 @{
     ViewData["Title"] = "Index";
 }
@@ -7,7 +7,7 @@
     <!-- home-naviagtion -->
     <div class="home-navigation my-3">
         <div class="container">
-            <a href="index.html">Ana səhifə</a>/ <a>Yatag otağı</a>
+            <a asp-controller="home" asp-action="index">Ana səhifə</a>/ <a>@Model.Category.Name</a>
         </div>
     </div>
     <!-- Category Wallpaper -->
@@ -17,17 +17,17 @@
                 <div class="row">
                     <div class="col-md-4 d-none d-md-block">
                         <a href="#">
-                            <img src="~/assets/img/bedroom/bedroom.jpg" alt="">
+                            <img src="~/assets/img/subCategory/bedroom.jpg" alt="">
                         </a>
                     </div>
                     <div class="col-md-4 d-none d-md-block">
                         <a href="#">
-                            <img src="~/assets/img/bedroom/bedroom-1.jpg" alt="">
+                            <img src="~/assets/img/subCategory/bedroom-1.jpg" alt="">
                         </a>
                     </div>
                     <div class="col-md-4 d-none d-md-block">
                         <a href="#">
-                            <img src="~/assets/img/bedroom/bedroom-3.jpg" alt="">
+                            <img src="~/assets/img/subCategory/bedroom-3.jpg" alt="">
                         </a>
                     </div>
                 </div>
@@ -42,54 +42,21 @@
                 <!-- Aside -->
                 <div class="d-none d-md-block col-md-3 mt-4">
                     <ul class="ul-main-category">
-                        <li>
-                            <a href="#">
-                                Salam
-                            </a>
-                        </li>
-                        <hr>
-                        <li>
-                            <a href="#">
-                                Salam
-                            </a>
-                        </li>
-                        <hr>
-                        <li>
-                            <a href="#">
-                                Salam
-                            </a>
-                        </li>
-                        <hr>
-                        <li>
-                            <a href="#">
-                                Salam
-                            </a>
-                        </li>
-                        <hr>
-                        <li>
-                            <a href="#">
-                                Salam
-                            </a>
-                        </li>
-                        <hr>
-                        <li>
-                            <a href="#">
-                                Salam
-                            </a>
-                        </li>
-                        <hr>
-                        <li>
-                            <a href="#">
-                                Salam
-                            </a>
-                        </li>
-                        <hr>
-                        <li>
-                            <a href="#">
-                                Salam
-                            </a>
-                        </li>
-                        <hr>
+                        @if (Model.Category.SubCategory != null)
+                        {
+                            @foreach (var subCategory in Model.Category.SubCategory)
+                            {
+                                <li>
+                                    <a asp-controller="subcategory" asp-action="index" asp-route-subCategoryId="@subCategory.Id">
+                                        @subCategory.Name
+                                    </a>
+                                </li>
+                                <hr>
+                            }
+                        }
+
+
+
                     </ul>
                 </div>
                 <!-- Main Side -->
@@ -106,91 +73,21 @@
                         bilərsiniz. Döşək, yorğan,yastıq,yataq dəsti - sizin sağlam yuxunuzun təminatıdır.
                     </p>
                     <div class="row subcategory-fields">
+                        @foreach (var subC in Model.Category.SubCategory)
+                        {
+                            <div class="col-md-4 col-12 my-2 subcategory-field">
+                                <a asp-controller="subcategory" asp-action="index" asp-route-subCategoryId="@subC.Id">
+                                    <div class="subcategory-inner p-2">
+                                        <p>@subC.Name</p>
+                                        <div>
+                                            <img src="~/assets/img/subCategory/@subC.Image"
+                                                 alt="subcategory-photos">
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        }
 
-                        <div class="col-md-4 col-12 my-2 subcategory-field">
-                            <a href="#">
-                                <div class="subcategory-inner p-2">
-                                    <p>Salam</p>
-                                    <div>
-                                        <img src="~/assets/img/bedroom/1035158-KRONBORG.jpg"
-                                             alt="subcategory-photos">
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4 col-12 my-2 subcategory-field">
-                            <a href="#">
-                                <div class="subcategory-inner p-2">
-                                    <p>Salam</p>
-                                    <div>
-                                        <img src="~/assets/img/bedroom/3600389-JENSLEV.jpg"
-                                             alt="subcategory-photos">
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4 col-12 my-2 subcategory-field">
-                            <a href="#">
-                                <div class="subcategory-inner p-2">
-                                    <p>Salam</p>
-                                    <div>
-                                        <img src="~/assets/img/bedroom/4606500-VALMUE-cutout.jpg"
-                                             alt="subcategory-photos">
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4 col-12 my-2 subcategory-field">
-                            <a href="#">
-                                <div class="subcategory-inner p-2">
-                                    <p>Salam</p>
-                                    <div>
-                                        <img src="~/assets/img/bedroom/bedroom-1.jpg" alt="subcategory-photos">
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4 col-12 my-2 subcategory-field">
-                            <a href="#">
-                                <div class="subcategory-inner p-2">
-                                    <p>Salam</p>
-                                    <div>
-                                        <img src="~/assets/img/bedroom/bedroom-3.jpg" alt="subcategory-photos">
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4 col-12 my-2 subcategory-field">
-                            <a href="#">
-                                <div class="subcategory-inner p-2">
-                                    <p>Salam</p>
-                                    <div>
-                                        <img src="~/assets/img/bedroom/KONGSBERG.png" alt="subcategory-photos">
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4 col-12 my-2 subcategory-field">
-                            <a href="#">
-                                <div class="subcategory-inner p-2">
-                                    <p>Salam</p>
-                                    <div>
-                                        <img src="~/assets/img/bedroom/Sheets-in-stead-of-cut-out.jpg"
-                                             alt="subcategory-photos">
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-md-4 col-12 my-2 subcategory-field">
-                            <a href="#">
-                                <div class="subcategory-inner p-2">
-                                    <p>Salam</p>
-                                    <div>
-                                        <img src="~/assets/img/bedroom/VEDDE.png" alt="subcategory-photos">
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>

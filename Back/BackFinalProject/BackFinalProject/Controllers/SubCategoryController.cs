@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BackFinalProject.Services.Interfaces;
+using BackFinalProject.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +10,19 @@ namespace BackFinalProject.Controllers
 {
     public class SubCategoryController : Controller
     {
-        public IActionResult Index()
+        private readonly ISubCategoryService subCategoryService;
+
+        public SubCategoryController(ISubCategoryService subCategoryService)
         {
-            return View();
+            this.subCategoryService = subCategoryService;
+        }
+        public async Task<IActionResult> Index(int subCategoryId)
+        {
+            SubCategoryVM subCategoryVM = new()
+            {
+                SubCategory = await subCategoryService.GetSubCategoriesWithIdAsync(subCategoryId)
+            };
+            return View(subCategoryVM);
         }
     }
 }

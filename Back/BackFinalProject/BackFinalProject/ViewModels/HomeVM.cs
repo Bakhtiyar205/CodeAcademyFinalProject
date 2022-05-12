@@ -9,5 +9,7 @@ namespace BackFinalProject.ViewModels
     public class HomeVM
     {
         public List<Category> Categories { get; set; }
+        public Dictionary<string,string> Setting { get; set; }
+        public List<Brend> Brends { get; set; }
     }
 }

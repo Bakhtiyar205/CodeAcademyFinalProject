@@ -42,5 +42,11 @@ $(document).ready(function(){
        
     })
 
+    $(document).on('change', '.selectpicker', function(e){
+        e.preventDefault();
+    
+        window.location = $(this).find('option:selected').val();
+    });
+
     
   });

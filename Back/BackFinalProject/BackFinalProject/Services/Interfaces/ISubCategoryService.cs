@@ -9,5 +9,6 @@ namespace BackFinalProject.Services.Interfaces
     public interface ISubCategoryService
     {
         Task<List<SubCategory>> GetSubCategoriesAsync();
+        Task<SubCategory> GetSubCategoriesWithIdAsync(int subCategoryID);
     }
 }

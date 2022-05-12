@@ -10,5 +10,6 @@ namespace BackFinalProject.Services.Interfaces
     public interface ICategoryService
     {
        Task<List<Category>> GetCategoriesAsync();
+       Task<Category> GetCategoriesWithIdAsync(int categoryId);
     }
 }

@@ -8,20 +8,20 @@
     <div class="my-md-2 my-1 advertisments-main container-md">
         <div class="main-advertisment">
             <a href="#">
-                <img src="~/assets/img/advertisments/Capture.PNG" alt="advertisment">
+                <img src="~/assets/img/advertisments/@Model.Setting["Main-Home-Photo"]" alt="advertisment">
             </a>
         </div>
         <div class="secondary-advertisments">
             <div class="row">
                 <div class="col-md-6 col-12">
                     <a href="#">
-                        <img src="~/assets/img/advertisments/0-02-05-9690fbbbb33a426b3cdc711717f0c09e4ce4d151a4b26270b1a72fe009ce6dba781688e01d1cc944.png"
+                        <img src="~/assets/img/advertisments/@Model.Setting["Secondary-Home-Photo1"]"
                              alt="advertisment" class="distance-img-advertisment">
                     </a>
                 </div>
                 <div class="col-md-6 col-12">
                     <a href="#">
-                        <img src="~/assets/img/advertisments/JYSKDelivery-White570x280px.jpg" alt="advertisment">
+                        <img src="~/assets/img/advertisments/@Model.Setting["Secondary-Home-Photo2"]" alt="advertisment">
                     </a>
                 </div>
             </div>
@@ -84,7 +84,7 @@
                 {
                     <div class="col-md-4 col-12 mt-4">
                         <div class="category">
-                            <a asp-controller="Category" asp-action="" asp-route-id="@category.Id">
+                            <a asp-controller="Category" asp-action="index" asp-route-categoryId="@category.Id">
                                 <img src="~/assets/img/categoriesMainPictures/@category.Image" alt="category-image">
                             </a>
                             <div class="category-header">
@@ -112,55 +112,45 @@
 
     <!-- Search about brend -->
 
-    <div class="mt-md-3 py-3 search-brend">
+    <div class="mt-md-3 py-3 search-brend d-md-block d-none">
         <div class="container mb-5">
             <h3 class="my-3">Brend uzre Axtar</h3>
             <div class="row">
-                <div class="col-md-2 col-6 mt-2 me-xl-3">
-                    <div class="d-flex justify-content-center search-brend-element">
-                        <a href="#">
-                            <div class="search-brend-img">
-                                <img src="~/assets/img/brendSearch/perfect-price-az.png" alt="">
-                            </div>
-                        </a>
+                @foreach (var brend in Model.Brends)
+                {
+                    <div class="col-md-2 col-6 mt-2 me-xl-3">
+                        <div class="d-flex justify-content-center search-brend-element">
+                            <a asp-controller="brend" asp-action="index" asp-route-brendId="@brend.Id">
+                                <div class="search-brend-img">
+                                    <img src="~/assets/img/brendSearch/@brend.Image" alt="">
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-2 col-6 mt-2 me-xl-3">
-                    <div class="d-flex justify-content-center search-brend-element">
-                        <a href="#">
-                            <div class="search-brend-img">
-                                <img src="~/assets/img/brendSearch/brandsmall2.jpg" alt="">
-                            </div>
-                        </a>
+                }
+
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    <div class="mt-md-3 py-3 search-brend d-md-none d-md-block">
+        <div class="container mb-5">
+            <h3 class="my-3">Brend uzre Axtar</h3>
+            <div class="row">
+                @foreach (var brend in Model.Brends.Take(2))
+                {
+                    <div class="col-md-2 col-6 mt-2 me-xl-3">
+                        <div class="d-flex justify-content-center search-brend-element">
+                            <a asp-controller="brend" asp-action="index" asp-route-brendId="@brend.Id">
+                                <div class="search-brend-img">
+                                    <img src="~/assets/img/brendSearch/@brend.Image" alt="">
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-2 d-none d-md-block mt-2 me-xl-3">
-                    <div class="d-flex justify-content-center search-brend-element">
-                        <a href="#">
-                            <div class="search-brend-img">
-                                <img src="~/assets/img/brendSearch/brandsmall3.jpg" alt="">
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2 d-none d-md-block mt-2 me-xl-3">
-                    <div class="d-flex justify-content-center search-brend-element">
-                        <a href="#">
-                            <div class="search-brend-img">
-                                <img src="~/assets/img/brendSearch/brandsmall4.jpg" alt="">
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-2 d-none d-md-block mt-2 me-xl-3">
-                    <div class="d-flex justify-content-center search-brend-element">
-                        <a href="#">
-                            <div class="search-brend-img">
-                                <img src="~/assets/img/brendSearch/brandsmall5.jpg" alt="">
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                }
+
             </div>
         </div>
         <hr>

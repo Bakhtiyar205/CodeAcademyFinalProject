@@ -1,0 +1,25 @@
+main{
+    .catalog{
+        .catalog-page{
+            border: 1px solid #f8f8f8;
+        }
+        a{
+            color: #333;
+            &:hover{
+                text-decoration: none;
+            }
+            img{
+                width: 120px;
+                height: 150px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 992px){
+   main{
+    .catalog-intext{
+        margin-left: 100px;
+    }
+   }
+}

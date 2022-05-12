@@ -3,268 +3,253 @@
     ViewData["Title"] = "Index";
 }
 
-<main>
-    <!-- Advertisment -->
-    <div class="my-md-2 my-1 advertisments-main container-md">
-        <div class="main-advertisment">
-            <a href="#">
-                <img src="~/assets/img/advertisments/@Model.Setting["Main-Home-Photo"]" alt="advertisment">
-            </a>
-        </div>
-        <div class="secondary-advertisments">
-            <div class="row">
-                <div class="col-md-6 col-12">
-                    <a href="#">
-                        <img src="~/assets/img/advertisments/@Model.Setting["Secondary-Home-Photo1"]"
-                             alt="advertisment" class="distance-img-advertisment">
-                    </a>
-                </div>
-                <div class="col-md-6 col-12">
-                    <a href="#">
-                        <img src="~/assets/img/advertisments/@Model.Setting["Secondary-Home-Photo2"]" alt="advertisment">
-                    </a>
-                </div>
+<!-- Advertisment -->
+<div class="my-md-2 my-1 advertisments-main container-md">
+    <div class="main-advertisment">
+        <a href="#">
+            <img src="~/assets/img/advertisments/@Model.Setting["Main-Home-Photo"]" alt="advertisment">
+        </a>
+    </div>
+    <div class="secondary-advertisments">
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <a href="#">
+                    <img src="~/assets/img/advertisments/@Model.Setting["Secondary-Home-Photo1"]"
+                         alt="advertisment" class="distance-img-advertisment">
+                </a>
+            </div>
+            <div class="col-md-6 col-12">
+                <a href="#">
+                    <img src="~/assets/img/advertisments/@Model.Setting["Secondary-Home-Photo2"]" alt="advertisment">
+                </a>
             </div>
         </div>
     </div>
-    <!-- Secondary-Navigation -->
-    <div class="my-md-3 my-1 py-3 secondary-navigation">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-6 mt-2">
-                    <div class="d-flex justify-content-center secondary-navigation-elements">
-                        <a href="#">
-                            <div class="secondary-navigation-img">
-                                <img src="~/assets/img/icons/1.png" alt="">
-                            </div>
-                            Aksiyaler
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mt-2">
-                    <div class="d-flex justify-content-center secondary-navigation-elements">
-                        <a href="#">
-                            <div class="secondary-navigation-img">
-                                <img src="~/assets/img/icons/2.png" alt="">
-                            </div>
-                            Magazalar
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mt-2">
-                    <div class="d-flex justify-content-center secondary-navigation-elements">
-                        <a href="#">
-                            <div class="secondary-navigation-img">
-                                <img src="~/assets/img/icons/3.png" alt="">
-                            </div>
-                            Bloqlar
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-3 col-6 mt-2">
-                    <div class="d-flex justify-content-center secondary-navigation-elements">
-                        <a href="#">
-                            <div class="secondary-navigation-img">
-                                <img src="~/assets/img/icons/4.png" alt="">
-                            </div>
-                            Ilhamvericilik
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- Categories -->
-    <div class="categories">
-        <div class="container">
-            <div class="row">
-                @foreach (var category in Model.Categories)
-                {
-                    <div class="col-md-4 col-12 mt-4">
-                        <div class="category">
-                            <a asp-controller="Category" asp-action="index" asp-route-categoryId="@category.Id">
-                                <img src="~/assets/img/categoriesMainPictures/@category.Image" alt="category-image">
-                            </a>
-                            <div class="category-header">
-                                @category.Name
-                            </div>
+</div>
+<!-- Secondary-Navigation -->
+<div class="my-md-3 my-1 py-3 secondary-navigation">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-6 mt-2">
+                <div class="d-flex justify-content-center secondary-navigation-elements">
+                    <a href="#">
+                        <div class="secondary-navigation-img">
+                            <img src="~/assets/img/icons/1.png" alt="">
                         </div>
-                    </div>
-                }
+                        Aksiyaler
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mt-2">
+                <div class="d-flex justify-content-center secondary-navigation-elements">
+                    <a href="#">
+                        <div class="secondary-navigation-img">
+                            <img src="~/assets/img/icons/2.png" alt="">
+                        </div>
+                        Magazalar
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mt-2">
+                <div class="d-flex justify-content-center secondary-navigation-elements">
+                    <a href="#">
+                        <div class="secondary-navigation-img">
+                            <img src="~/assets/img/icons/3.png" alt="">
+                        </div>
+                        Bloqlar
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3 col-6 mt-2">
+                <div class="d-flex justify-content-center secondary-navigation-elements">
+                    <a href="#">
+                        <div class="secondary-navigation-img">
+                            <img src="~/assets/img/icons/4.png" alt="">
+                        </div>
+                        Ilhamvericilik
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
+</div>
 
+<!-- Categories -->
+<div class="categories">
+    <div class="container">
+        <div class="row">
+            @foreach (var category in Model.Categories)
+            {
                 <div class="col-md-4 col-12 mt-4">
                     <div class="category">
-                        <a href="#">
-                            <img src="~/assets/img/categoriesMainPictures/Storage-Front-page-4.png"
-                                 alt="category-image">
+                        <a asp-controller="Category" asp-action="index" asp-route-categoryId="@category.Id">
+                            <img src="~/assets/img/categoriesMainPictures/@category.Image" alt="category-image">
                         </a>
                         <div class="category-header">
-                            Yataq otagi
+                            @category.Name
                         </div>
+                    </div>
+                </div>
+            }
+
+
+            <div class="col-md-4 col-12 mt-4">
+                <div class="category">
+                    <a href="#">
+                        <img src="~/assets/img/categoriesMainPictures/Storage-Front-page-4.png"
+                             alt="category-image">
+                    </a>
+                    <div class="category-header">
+                        Yataq otagi
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Search about brend -->
+<!-- Search about brend -->
 
-    <div class="mt-md-3 py-3 search-brend d-md-block d-none">
-        <div class="container mb-5">
-            <h3 class="my-3">Brend uzre Axtar</h3>
-            <div class="row">
-                @foreach (var brend in Model.Brends)
-                {
-                    <div class="col-md-2 col-6 mt-2 me-xl-3">
-                        <div class="d-flex justify-content-center search-brend-element">
-                            <a asp-controller="brend" asp-action="index" asp-route-brendId="@brend.Id">
-                                <div class="search-brend-img">
-                                    <img src="~/assets/img/brendSearch/@brend.Image" alt="">
-                                </div>
-                            </a>
-                        </div>
+<div class="mt-md-3 py-3 search-brend d-md-block d-none">
+    <div class="container mb-5">
+        <h3 class="my-3">Brend uzre Axtar</h3>
+        <div class="row">
+            @foreach (var brend in Model.Brends)
+            {
+                <div class="col-md-2 col-6 mt-2 me-xl-3">
+                    <div class="d-flex justify-content-center search-brend-element">
+                        <a asp-controller="brend" asp-action="index" asp-route-brendId="@brend.Id">
+                            <div class="search-brend-img">
+                                <img src="~/assets/img/brendSearch/@brend.Image" alt="">
+                            </div>
+                        </a>
                     </div>
-                }
+                </div>
+            }
 
-            </div>
         </div>
-        <hr>
     </div>
+    <hr>
+</div>
 
-    <div class="mt-md-3 py-3 search-brend d-md-none d-md-block">
-        <div class="container mb-5">
-            <h3 class="my-3">Brend uzre Axtar</h3>
-            <div class="row">
-                @foreach (var brend in Model.Brends.Take(2))
-                {
-                    <div class="col-md-2 col-6 mt-2 me-xl-3">
-                        <div class="d-flex justify-content-center search-brend-element">
-                            <a asp-controller="brend" asp-action="index" asp-route-brendId="@brend.Id">
-                                <div class="search-brend-img">
-                                    <img src="~/assets/img/brendSearch/@brend.Image" alt="">
-                                </div>
-                            </a>
-                        </div>
+<div class="mt-md-3 py-3 search-brend d-md-none d-md-block">
+    <div class="container mb-5">
+        <h3 class="my-3">Brend uzre Axtar</h3>
+        <div class="row">
+            @foreach (var brend in Model.Brends.Take(2))
+            {
+                <div class="col-md-2 col-6 mt-2 me-xl-3">
+                    <div class="d-flex justify-content-center search-brend-element">
+                        <a asp-controller="brend" asp-action="index" asp-route-brendId="@brend.Id">
+                            <div class="search-brend-img">
+                                <img src="~/assets/img/brendSearch/@brend.Image" alt="">
+                            </div>
+                        </a>
                     </div>
-                }
+                </div>
+            }
 
-            </div>
         </div>
-        <hr>
     </div>
+    <hr>
+</div>
 
     </div>
 
-    <!-- Blogs -->
-    <div class="blogs py-3">
-        <h3 class="text-center">Blog</h3>
-        <div class="container">
-            <div class="row">
+<!-- Blogs -->
+<div class="blogs py-3">
+    <h3 class="text-center">Blog</h3>
+    <div class="container">
+        <div class="row">
+            @foreach (var blog in Model.Blogs)
+            {
                 <div class="col-md-6 col-12 mt-2">
                     <div class="blog-img">
-                        <img src="~/assets/img/blog/6B4BC279-FBC0-4075-900C-ABEF845ADD20-555.png" alt="blog-image">
+                        <img src="~/assets/img/blog/@blog.BlogSpesifications.Where(m=>m.BlogId == blog.Id).FirstOrDefault().Image" alt="blog-image">
                     </div>
                     <div class="blog-text">
-                        <h3>Metbex Yenilenmesi</h3>
-                        <p>
-                            Bəzən kiçik dəyişikliklər böyük təsir göstərə bilər...
-                        </p>
+                        <h3>@blog.Name</h3>
+                        @if (blog.BlogSpesifications.Where(m => m.BlogId == blog.Id).FirstOrDefault().BlogText != null)
+                        {
+                            <p>@blog.BlogSpesifications.Where(m => m.BlogId == blog.Id).FirstOrDefault().BlogText</p>
+                        }
                     </div>
                     <div class="blog-button">
-                        <button type="submit" class="btn btn-outline-dark">Ardini Oxu</button>
+                        <a asp-controller="Navigation" asp-action="blog" asp-route-blogId="@blog.Id" class="btn btn-outline-dark">Ardini Oxu</a>
                     </div>
                 </div>
-                <div class="col-md-6 col-12 mt-2">
-                    <div class="blog-img">
-                        <img src="~/assets/img/blog/Top-image-Decorate-your-home-in-traditional-Christmas-colours-555.png"
-                             alt="blog-image">
-                    </div>
-                    <div class="blog-text">
-                        <h3>Metbex Yenilenmesi</h3>
-                        <p>
-                            Bəzən kiçik dəyişikliklər böyük təsir göstərə bilər...
+            }
+
+        </div>
+    </div>
+</div>
+
+<!-- Products-Quality -->
+<div class="product-qualities">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-12">
+                <div class="product-quality my-md-5 my-4">
+                    <a href="#">
+                        <div class="product-quality-img">
+                            <img src="~/assets/img/icons/1prod.png" alt="">
+                        </div>
+                        <h4>
+                            42 İl Əla Təkliflər
+                        </h4>
+                        <p class="mt-4">
+                            52 ölkədə 3000 mağaza
                         </p>
-                    </div>
-                    <div class="blog-button">
-                        <button type="submit" class="btn btn-outline-dark">Ardini Oxu</button>
-                    </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3 col-12">
+                <div class="product-quality my-md-5 my-4">
+                    <a href="#">
+                        <div class="product-quality-img">
+                            <img src="~/assets/img/icons/2prod.png" alt="">
+                        </div>
+                        <h4>
+                            Skandinaviya Kökləri
+                        </h4>
+                        <p class="mt-4">
+                            Skandinaviya köklərimizlə fəxr edirik. Başlanğıc - Danimarka, 1979.
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3 col-12">
+                <div class="product-quality my-md-5 my-4">
+                    <a href="#">
+                        <div class="product-quality-img">
+                            <img src="~/assets/img/icons/3prod.png" alt="">
+                        </div>
+                        <h4>
+                            DÖŞƏK ZƏMANƏTLƏRİ
+                        </h4>
+                        <p class="mt-4">
+                            GOLD kateqoriyadaki döşəklərə 25 illik zəmanət
+                        </p>
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-3 col-12">
+                <div class="product-quality my-md-5 my-4">
+                    <a href="#">
+                        <div class="product-quality-img">
+                            <img src="~/assets/img/icons/4prod.png" alt="">
+                        </div>
+                        <h4>
+                            DAİMA AŞAĞI QİYMƏTLƏR
+                        </h4>
+                        <p class="mt-4">
+                            Aşağı qiymətə geniş məhsul seçimi təklif edirik
+                        </p>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Products-Quality -->
-    <div class="product-qualities">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-12">
-                    <div class="product-quality my-md-5 my-4">
-                        <a href="#">
-                            <div class="product-quality-img">
-                                <img src="~/assets/img/icons/1prod.png" alt="">
-                            </div>
-                            <h4>
-                                42 İl Əla Təkliflər
-                            </h4>
-                            <p class="mt-4">
-                                52 ölkədə 3000 mağaza
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-3 col-12">
-                    <div class="product-quality my-md-5 my-4">
-                        <a href="#">
-                            <div class="product-quality-img">
-                                <img src="~/assets/img/icons/2prod.png" alt="">
-                            </div>
-                            <h4>
-                                Skandinaviya Kökləri
-                            </h4>
-                            <p class="mt-4">
-                                Skandinaviya köklərimizlə fəxr edirik. Başlanğıc - Danimarka, 1979.
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-3 col-12">
-                    <div class="product-quality my-md-5 my-4">
-                        <a href="#">
-                            <div class="product-quality-img">
-                                <img src="~/assets/img/icons/3prod.png" alt="">
-                            </div>
-                            <h4>
-                                DÖŞƏK ZƏMANƏTLƏRİ
-                            </h4>
-                            <p class="mt-4">
-                                GOLD kateqoriyadaki döşəklərə 25 illik zəmanət
-                            </p>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-md-3 col-12">
-                    <div class="product-quality my-md-5 my-4">
-                        <a href="#">
-                            <div class="product-quality-img">
-                                <img src="~/assets/img/icons/4prod.png" alt="">
-                            </div>
-                            <h4>
-                                DAİMA AŞAĞI QİYMƏTLƏR
-                            </h4>
-                            <p class="mt-4">
-                                Aşağı qiymətə geniş məhsul seçimi təklif edirik
-                            </p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-
-</main>
+</div>
 

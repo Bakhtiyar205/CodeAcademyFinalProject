@@ -1,0 +1,179 @@
+﻿
+@{
+    ViewData["Title"] = "Store";
+}
+
+<div class="home-navigation my-3">
+    <div class="container">
+        <a asp-controller="home" asp-action="index">Ana səhifə</a>/ <a>Mağaza</a>
+    </div>
+</div>
+
+<div class="location-store py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-12">
+                <div class="map-field">
+
+                </div>
+            </div>
+            <div class="col-md-4 col-12">
+                <div class="text-field p-4">
+                    <h4>Magaza Unvani</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, a.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, totam.</p>
+                    <p>
+                        <a asp-controller="navigation" asp-action="catalog">
+                            <svg id="icon-campaign-paper" viewBox="0 0 512 512">
+                                <path d="m416 32l0 448-384 0 0-448 384 0m32-32l-448 0 0 512 448 0z m-229 102c59 0 107 48 107 108 0 56-30 97-54 121-5 5-10 10-16 15l13-29-48 0c-59 0-107-48-107-107 0-61 48-108 105-108m0-32c-75 0-137 61-137 138 0 77 62 139 139 139-10 23-26 47-48 71-2 1-2 3 0 4 0 2 1 2 3 2 0 0 0 0 2 0 41-11 84-37 118-69 29-29 64-78 64-145-2-79-64-140-141-140z m261-70l32 0 0 512-32 0z"></path>
+                            </svg> Qezet ve Kataloqumuza Baxin
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="last-looked py-5 last-looked-secondary">
+    <div class="container">
+        <h4>Son Baxilanlar</h4>
+        <div class="owl-carousel owl-theme owl-carusel-last-seen owl-carusel-store">
+            <div class="product-owl-field p-3">
+                <a href="#">
+                    <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
+                    <br>
+                    Carpayi Salling 140*220 natural
+                </a>
+                <div class="discounted-price my-2"><span>269 AZN</span>/ededi</div>
+                <div class="real-price">299 AZN</div>
+                <div class="discount-percentage my-2">Endirim 10%</div>
+                <div class="extra-information">
+                    <button class="btn btn-light form-control" type="submit">Daha Etrafli</button>
+                </div>
+                <div class="wish-list text-center mt-2">
+                    <a href="#">
+                        <svg id="icon-heart" viewBox="0 0 512 512">
+                            <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
+                            </path>
+                        </svg>
+                        Istek Listi
+                    </a>
+                </div>
+            </div>
+
+            <div class="product-owl-field p-3">
+                <a href="#">
+                    <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
+                    <br>
+                    Carpayi Salling 140*220 natural
+                </a>
+                <div class="discounted-price my-2"><span>269 AZN</span>/ededi</div>
+                <div class="real-price">299 AZN</div>
+                <div class="discount-percentage my-2">Endirim 10%</div>
+                <div class="extra-information">
+                    <button class="btn btn-light form-control" type="submit">Daha Etrafli</button>
+                </div>
+                <div class="wish-list text-center mt-2">
+                    <a href="#">
+                        <svg id="icon-heart" viewBox="0 0 512 512">
+                            <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
+                            </path>
+                        </svg>
+                        Istek Listi
+                    </a>
+                </div>
+            </div>
+            <div class="product-owl-field p-3">
+                <a href="#">
+                    <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
+                    <br>
+                    Carpayi Salling 140*220 natural
+                </a>
+                <div class="discounted-price my-2"><span>269 AZN</span>/ededi</div>
+                <div class="real-price">299 AZN</div>
+                <div class="discount-percentage my-2">Endirim 10%</div>
+                <div class="extra-information">
+                    <button class="btn btn-light form-control" type="submit">Daha Etrafli</button>
+                </div>
+                <div class="wish-list text-center mt-2">
+                    <a href="#">
+                        <svg id="icon-heart" viewBox="0 0 512 512">
+                            <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
+                            </path>
+                        </svg>
+                        Istek Listi
+                    </a>
+                </div>
+            </div>
+            <div class="product-owl-field p-3">
+                <a href="#">
+                    <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
+                    <br>
+                    Carpayi Salling 140*220 natural
+                </a>
+                <div class="discounted-price my-2"><span>269 AZN</span>/ededi</div>
+                <div class="real-price">299 AZN</div>
+                <div class="discount-percentage my-2">Endirim 10%</div>
+                <div class="extra-information">
+                    <button class="btn btn-light form-control" type="submit">Daha Etrafli</button>
+                </div>
+                <div class="wish-list text-center mt-2">
+                    <a href="#">
+                        <svg id="icon-heart" viewBox="0 0 512 512">
+                            <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
+                            </path>
+                        </svg>
+                        Istek Listi
+                    </a>
+                </div>
+            </div>
+            <div class="product-owl-field p-3">
+                <a href="#">
+                    <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
+                    <br>
+                    Carpayi Salling 140*220 natural
+                </a>
+                <div class="discounted-price my-2"><span>269 AZN</span>/ededi</div>
+                <div class="real-price">299 AZN</div>
+                <div class="discount-percentage my-2">Endirim 10%</div>
+                <div class="extra-information">
+                    <button class="btn btn-light form-control" type="submit">Daha Etrafli</button>
+                </div>
+                <div class="wish-list text-center mt-2">
+                    <a href="#">
+                        <svg id="icon-heart" viewBox="0 0 512 512">
+                            <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
+                            </path>
+                        </svg>
+                        Istek Listi
+                    </a>
+                </div>
+            </div>
+            <div class="product-owl-field p-3">
+                <a href="#">
+                    <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
+                    <br>
+                    Carpayi Salling 140*220 natural
+                </a>
+                <div class="discounted-price my-2"><span>269 AZN</span>/ededi</div>
+                <div class="real-price">299 AZN</div>
+                <div class="discount-percentage my-2">Endirim 10%</div>
+                <div class="extra-information">
+                    <button class="btn btn-light form-control" type="submit">Daha Etrafli</button>
+                </div>
+                <div class="wish-list text-center mt-2">
+                    <a href="#">
+                        <svg id="icon-heart" viewBox="0 0 512 512">
+                            <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
+                            </path>
+                        </svg>
+                        Istek Listi
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

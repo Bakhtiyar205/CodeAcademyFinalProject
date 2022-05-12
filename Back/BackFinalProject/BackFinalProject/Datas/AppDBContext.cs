@@ -17,5 +17,9 @@ namespace BackFinalProject.Datas
         public DbSet<Setting> Settings { get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<Brend> Brends { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
+        public DbSet<BlogSpesification> BlogSpesifications { get; set; }
+        public DbSet<PolicySection> Policies { get; set; }
+
     }
 }

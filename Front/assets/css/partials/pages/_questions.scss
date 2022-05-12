@@ -1,0 +1,35 @@
+@import "../variables/variables";
+
+main{
+    .questions-card{
+       .question-card-img{
+        text-align: center;
+           height: 70px;
+       }
+       img{
+           border-radius: 50%;
+       }
+   }
+    .question-card-text{
+        background-color: #fff;
+    }
+
+    .location-store{
+        background-color: #fff;
+        .text-field{
+            background-color: $background-color;
+            height: 300px;
+            a{
+                color:#333;
+                svg{
+                    width: 20px;
+                    height: 20px;
+                }
+                &:hover{
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+   

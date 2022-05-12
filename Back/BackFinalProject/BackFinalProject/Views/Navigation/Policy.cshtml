@@ -1,0 +1,44 @@
+﻿@model PolicyVM
+@{
+    ViewData["Title"] = "Policy";
+    int policyCount = 1;
+}
+
+
+
+<div class="policy-accardion">
+    <div class="container">
+        <div class="policy-accardion-text">
+            <h4>İSTIFADƏÇI RAZILAŞMASI</h4>
+            <p>
+                Aşağıdakı satış və çatdırılma şərtləri JYSK mağazalar şəbəkəsində və JYSK.az saytında edilən Bakı və Bakı ətrafı ərazilərə çatdırılacaq olan bütün alışlara şamil olunur.
+
+                JYSK az saytında və JYSK dukanlarındakı olan bütün razılaşmalar rus və azərbaycan dilində tərtib olunur.JYSK mağazaları və JYSK.az saytından alış etmə hüququna malik olan alıcının minimal yaş həddi 18 yaşdır.
+
+            </p>
+        </div>
+        <div class="accordion" id="accordionExample">
+            @foreach (var policy in Model.Policies)
+            {
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="accardionHeader-@policyCount">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#accardionText-@policyCount" aria-expanded="true" aria-controls="collapseOne">
+                            @policy.Name
+                        </button>
+                    </h2>
+                    <div id="accardionText-@policyCount" class="accordion-collapse collapse" aria-labelledby="accardionHeader-@policyCount;" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            @if (policy.Detail != null)
+                            {
+                                @policy.Detail
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                policyCount++;
+            }
+        </div>
+    </div>
+</div>
+

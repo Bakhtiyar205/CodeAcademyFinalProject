@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./assets/css/jquery.exzoom.css">
+    <link rel="stylesheet" href="./assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="./assets/css/owl.theme.default.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Here is header start -->
+    <header>
+        <div class="header-up">
+            <div class="container-md mt-2 without-container">
+                <div class="row">
+                    <div class="d-none col-md-8 d-md-block">
+                        <div class="row">
+
+                            <div class="col-lg-2 col-md-3 flag">
+                                <ul class="d-flex flag-container">
+                                    <a href="#">
+                                        <li> <img src="./assets/img/flags/az.svg" class="active" alt="Azerbaijan"></li>
+                                    </a>
+                                    <a href="">
+                                        <li> <img src="./assets/img/flags/az.svg" alt="Azerbaijan"></li>
+                                    </a>
+
+                                </ul>
+                            </div>
+
+                            <div class="col-lg-10 col-md-9 number">
+                                <a href="#">+99412 3775555</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Secondary Navbar -->
+                    <div class="col-md-4 col-12">
+                        <ul class="d-flex justify-content-md-end justify-content-center navbar-secondary">
+                            <li class="pe-sm-5 px-md-3 first-header-icon">
+                                <a href="#">
+                                    <svg id="icon-customer-service-2" viewBox="0 0 32 32">
+                                        <g>
+                                            <path
+                                                d="M16,6c5.5,0,10,4.5,10,10s-4.5,10-10,10S6,21.5,6,16S10.5,6,16,6 M16,4C9.4,4,4,9.4,4,16s5.4,12,12,12             s12-5.4,12-12S22.6,4,16,4L16,4z">
+                                            </path>
+                                        </g>
+                                        <path
+                                            d="M16,0C7.2,0,0,7.2,0,16v2v1v1h12v-2H2v-2C2,8.3,8.3,2,16,2c7.7,0,14,6.3,14,14h2C32,7.2,24.8,0,16,0z">
+                                        </path>
+                                        <rect x="11" y="14" width="2" height="2"></rect>
+                                        <rect x="19" y="14" width="2" height="2"></rect>
+                                        <path d="M10.7,22c1.4,1.2,3.2,2,5.3,2s3.9-0.8,5.3-2H10.7z"></path>
+                                        <g>
+                                            <path
+                                                d="M23,13c0.1,0,0.3,0,0.4,0c-0.3-0.7-0.7-1.4-1.2-2c-2.5-0.2-4.7-1.3-6.3-3c-0.8,0-1.6,0.1-2.3,0.4             C15.8,11.2,19.2,13,23,13z">
+                                            </path>
+                                        </g>
+                                        <rect y="30" width="32" height="2"></rect>
+                                    </svg>
+                                    <br>
+                                    Sual&nbsp;Cavab
+                                </a>
+                            </li>
+                            <li class="pe-sm-5 px-md-3 first-header-icon">
+                                <a href="#">
+                                    <svg id="icon-campaign-paper" viewBox="0 0 512 512">
+                                        <path
+                                            d="m416 32l0 448-384 0 0-448 384 0m32-32l-448 0 0 512 448 0z m-229 102c59 0 107 48 107 108 0 56-30 97-54 121-5 5-10 10-16 15l13-29-48 0c-59 0-107-48-107-107 0-61 48-108 105-108m0-32c-75 0-137 61-137 138 0 77 62 139 139 139-10 23-26 47-48 71-2 1-2 3 0 4 0 2 1 2 3 2 0 0 0 0 2 0 41-11 84-37 118-69 29-29 64-78 64-145-2-79-64-140-141-140z m261-70l32 0 0 512-32 0z">
+                                        </path>
+                                    </svg>
+                                    <br>
+                                    Kataloq
+                                </a>
+                            </li>
+
+                            <li class="pe-sm-5 px-md-3 first-header-icon">
+                                <a href="#">
+                                    <svg id="icon-stores" viewBox="0 0 512 512">
+                                        <path
+                                            d="m256 437l-11-11c-7-7-149-156-149-255 0-99 67-171 160-171 93 0 160 72 160 171 0 101-142 248-149 255z m0-405c-75 0-128 58-128 139 0 72 94 183 128 219 34-36 128-147 128-219 0-81-53-139-128-139z m0 208c-46 0-85-38-85-85 0-46 39-85 85-85 46 0 85 39 85 85 0 47-39 85-85 85z m0-136c-29 0-53 24-53 53 0 29 24 53 53 53 29 0 53-24 53-53 0-31-24-53-53-53z m115 254c-8 10-16 21-24 29 87 10 131 32 131 43 0 15-75 48-222 48-147 0-222-33-222-48 0-11 44-33 131-43-8-9-16-19-24-29-79 12-141 36-141 72 0 56 133 80 256 80 123 0 256-25 256-80 0-36-62-60-141-72z">
+                                        </path>
+                                    </svg>
+                                    <br>
+                                    Magazalar
+                                </a>
+                            </li>
+                            <li class="pe-sm-5 px-md-3 first-header-icon">
+                                <a href="#">
+                                    <svg id="icon-profile" viewBox="0 0 512 512">
+                                        <path
+                                            d="m256 256c70 0 128-58 128-128 0-70-58-128-128-128-70 0-128 58-128 128 0 70 58 128 128 128z m0-224c53 0 96 43 96 96 0 53-43 96-96 96-53 0-96-43-96-96 0-53 43-96 96-96z m173 256l-346 0c-64 0-81 54-83 83l0 141 32 0 0-139c0-7 2-53 51-53l347 0c48 0 52 46 52 53l0 139 32 0 0-141c-2-29-20-83-85-83z m-365 96l32 0 0 128-32 0z m352 0l32 0 0 128-32 0z">
+                                        </path>
+                                    </svg>
+                                    <br>
+                                    Girish
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+        <div class="header-mid">
+            <div class="container-md">
+                <div class="row my-4">
+                    <!-- Here is Mobile Navbar -->
+                    <div class="col-3 d-md-none">
+                        <nav class=" navbar navbar-light navbar-mobile">
+                            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarToggleExternalContent"
+                                aria-controls="navbarToggleExternalContent" aria-expanded="false"
+                                aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                        </nav>
+                    </div>
+
+                    <div class="col-md-3 col-5 text-md-start text-center">
+                        <div class="me-md-4">
+                            <a href="#"><img src="./assets/img/logo/jysk-logo.svg" alt="logo"></a>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 d-md-block d-none">
+                        <div class="search-button p-lg-1 mt-1">
+                            <form class="d-flex justify-content-center">
+                                <input class="form-control input-color" type="search" placeholder="Search"
+                                    aria-label="Search">
+                                <button class="btn px-4" type="submit">Axtar</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3 col-4">
+                        <div class="d-flex justify-content-end">
+                            <a href="#">
+                                <svg id="icon-cart" viewBox="0 0 512 512">
+                                    <path
+                                        d="m128 512c-35 0-64-29-64-64 0-35 29-64 64-64 35 0 64 29 64 64 0 35-29 64-64 64z m0-96c-18 0-32 14-32 32 0 18 14 32 32 32 18 0 32-14 32-32 0-18-14-32-32-32z m160 96c-35 0-64-29-64-64 0-35 29-64 64-64 35 0 64 29 64 64 0 35-29 64-64 64z m0-96c-18 0-32 14-32 32 0 18 14 32 32 32 18 0 32-14 32-32 0-18-14-32-32-32z m144-357c-8 27-66 221-66 223-16 38-36 54-80 54l-222 0 0 32 222 0c56 0 90-24 111-75 3-8 59-197 67-224 8-29 14-37 48-37l0-32c-53 0-69 21-80 59z m-69 21c-19 66-40 136-48 160-8 24-27 32-70 32-5 0-11 0-18 0l-163 0c0 0-11 0-19-6-8-8-13-21-13-39l0-115 288 0c3-11 5-21 8-32l-328 0 0 147c0 27 8 48 22 63 18 16 39 16 44 14l163 0c6 0 25 0 30 0 40 0 69-5 88-54 2-7 32-104 51-172l-35 0z">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="search-button p-lg-1 mt-1 d-md-none mb-2">
+                    <form class="d-flex justify-content-center">
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn px-4" type="submit">Axtar</button>
+                    </form>
+                </div>
+
+                <!-- Here is mobile navbar content -->
+                <div class="collapse d-md-none mb-2" id="navbarToggleExternalContent">
+                    <div class="bg-light p-4">
+                        <div class="row">
+                            <div class="col-6 p-3 d-flex justify-content-center">
+                                <a class="nav-link" href="#"><i class="fa-solid fa-bed fa-2x"></i></a>
+                            </div>
+                            <div class="col-6 p-3 d-flex justify-content-center">
+                                <a class="nav-link" href="#"><i class="fa-solid fa-bath fa-2x"></i></a>
+                            </div>
+                            <div class="col-6 p-3 d-flex justify-content-center">
+                                <a class="nav-link" href="#"><i class="fa-solid fa-building fa-2x"></i></a>
+                            </div>
+                            <div class="col-6 p-3 d-flex justify-content-center">
+                                <a class="nav-link" href="#"><i class="fa-solid fa-house-chimney fa-2x"></i></a>
+                            </div>
+                            <div class="col-6 p-3 d-flex justify-content-center">
+                                <a class="nav-link" href="#"><i class="fa-solid fa-house-chimney fa-2x"></i></a>
+                            </div>
+                            <div class="col-6 p-3 d-flex justify-content-center">
+                                <a class="nav-link" href="#"><i class="fa-solid fa-house-chimney fa-2x"></i></a>
+                            </div>
+                            <div class="col-6 p-3 d-flex justify-content-center">
+                                <a class="nav-link" href="#"><i class="fa-solid fa-house-chimney fa-2x"></i></a>
+                            </div>
+                            <div class="col-6 p-3 d-flex justify-content-center">
+                                <a class="nav-link" href="#"><i class="fa-solid fa-house fa-2x"></i></a>
+                            </div>
+                            <div class="col-6 p-3 d-flex justify-content-center">
+                                <a class="nav-link" href="#"><i class="fa-solid fa-percent fa-2x"></i></a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <hr>
+            <div class="container-md">
+                <nav class="navbar navbar-expand-md navbar-light d-none d-md-block">
+                    <div class="container-fluid ">
+                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                            <div class="navbar-nav main-navbar">
+                                <ul class="d-flex ">
+                                    <li>
+                                        <a href="#" class="pe-2">Yataq</a>
+                                        <div class="subMenu">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/carpayilar-2">Çarpayılar</a></li>
+                                                            <li><a href="/az/category/acilan-divanlar-139">Açılan
+                                                                    divanlar</a></li>
+                                                            <li><a href="/az/category/dosek-uzleri-4">Döşək üzləri</a>
+                                                            </li>
+                                                            <li><a href="/az/category/kamodlar-163">Kamodlar</a></li>
+                                                            <li><a href="/az/category/yataq-ortukleri-19">Yataq
+                                                                    örtükləri</a></li>
+                                                            <li><a href="/az/category/paltar-dolablari-172">Paltar
+                                                                    dolabları</a></li>
+                                                            <li><a href="/az/category/yastiq-uzleri-26">Yastıq
+                                                                    üzləri</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/yataq-destleri-30">Yataq
+                                                                    dəstləri</a></li>
+                                                            <li><a href="/az/category/tumbalar-47">Tumbalar</a></li>
+                                                            <li><a href="/az/category/guzguler-241">Güzgülər</a></li>
+                                                            <li><a
+                                                                    href="/az/category/ikimertebeli-carpayilar-ve-taxtalar-49">İkimərtəbəli
+                                                                    çarpayılar və taxtalar</a></li>
+                                                            <li><a href="/az/category/acilan-carpayilar-50">Açılan
+                                                                    Çarpayılar</a></li>
+                                                            <li><a href="/az/category/yastiqlar-51">Yastıqlar</a></li>
+                                                            <li><a href="/az/category/yorganlar-65">Yorğanlar</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/dosekler-78">Döşəklər</a></li>
+                                                            <li><a href="/az/category/hava-dosekleri-283">Hava
+                                                                    döşəkləri</a></li>
+                                                            <li><a href="/az/category/top-dosekler-92">Top Döşəklər</a>
+                                                            </li>
+                                                            <li><a href="/az/category/carpayi-bazasi-96">Çarpayı
+                                                                    Bazası</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="pe-2">Yataq</a>
+                                        <div class="subMenu">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/carpayilar-2">Çarpayılar</a></li>
+                                                            <li><a href="/az/category/acilan-divanlar-139">Açılan
+                                                                    divanlar</a></li>
+                                                            <li><a href="/az/category/dosek-uzleri-4">Döşək üzləri</a>
+                                                            </li>
+                                                            <li><a href="/az/category/kamodlar-163">Kamodlar</a></li>
+                                                            <li><a href="/az/category/yataq-ortukleri-19">Yataq
+                                                                    örtükləri</a></li>
+                                                            <li><a href="/az/category/paltar-dolablari-172">Paltar
+                                                                    dolabları</a></li>
+                                                            <li><a href="/az/category/yastiq-uzleri-26">Yastıq
+                                                                    üzləri</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/yataq-destleri-30">Yataq
+                                                                    dəstləri</a></li>
+                                                            <li><a href="/az/category/tumbalar-47">Tumbalar</a></li>
+                                                            <li><a href="/az/category/guzguler-241">Güzgülər</a></li>
+                                                            <li><a
+                                                                    href="/az/category/ikimertebeli-carpayilar-ve-taxtalar-49">İkimərtəbəli
+                                                                    çarpayılar və taxtalar</a></li>
+                                                            <li><a href="/az/category/acilan-carpayilar-50">Açılan
+                                                                    Çarpayılar</a></li>
+                                                            <li><a href="/az/category/yastiqlar-51">Yastıqlar</a></li>
+                                                            <li><a href="/az/category/yorganlar-65">Yorğanlar</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/dosekler-78">Döşəklər</a></li>
+                                                            <li><a href="/az/category/hava-dosekleri-283">Hava
+                                                                    döşəkləri</a></li>
+                                                            <li><a href="/az/category/top-dosekler-92">Top Döşəklər</a>
+                                                            </li>
+                                                            <li><a href="/az/category/carpayi-bazasi-96">Çarpayı
+                                                                    Bazası</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="pe-2">Yataq</a>
+                                        <div class="subMenu">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/carpayilar-2">Çarpayılar</a></li>
+                                                            <li><a href="/az/category/acilan-divanlar-139">Açılan
+                                                                    divanlar</a></li>
+                                                            <li><a href="/az/category/dosek-uzleri-4">Döşək üzləri</a>
+                                                            </li>
+                                                            <li><a href="/az/category/kamodlar-163">Kamodlar</a></li>
+                                                            <li><a href="/az/category/yataq-ortukleri-19">Yataq
+                                                                    örtükləri</a></li>
+                                                            <li><a href="/az/category/paltar-dolablari-172">Paltar
+                                                                    dolabları</a></li>
+                                                            <li><a href="/az/category/yastiq-uzleri-26">Yastıq
+                                                                    üzləri</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/yataq-destleri-30">Yataq
+                                                                    dəstləri</a></li>
+                                                            <li><a href="/az/category/tumbalar-47">Tumbalar</a></li>
+                                                            <li><a href="/az/category/guzguler-241">Güzgülər</a></li>
+                                                            <li><a
+                                                                    href="/az/category/ikimertebeli-carpayilar-ve-taxtalar-49">İkimərtəbəli
+                                                                    çarpayılar və taxtalar</a></li>
+                                                            <li><a href="/az/category/acilan-carpayilar-50">Açılan
+                                                                    Çarpayılar</a></li>
+                                                            <li><a href="/az/category/yastiqlar-51">Yastıqlar</a></li>
+                                                            <li><a href="/az/category/yorganlar-65">Yorğanlar</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/dosekler-78">Döşəklər</a></li>
+                                                            <li><a href="/az/category/hava-dosekleri-283">Hava
+                                                                    döşəkləri</a></li>
+                                                            <li><a href="/az/category/top-dosekler-92">Top Döşəklər</a>
+                                                            </li>
+                                                            <li><a href="/az/category/carpayi-bazasi-96">Çarpayı
+                                                                    Bazası</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="pe-2">Yataq</a>
+                                        <div class="subMenu">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/carpayilar-2">Çarpayılar</a></li>
+                                                            <li><a href="/az/category/acilan-divanlar-139">Açılan
+                                                                    divanlar</a></li>
+                                                            <li><a href="/az/category/dosek-uzleri-4">Döşək üzləri</a>
+                                                            </li>
+                                                            <li><a href="/az/category/kamodlar-163">Kamodlar</a></li>
+                                                            <li><a href="/az/category/yataq-ortukleri-19">Yataq
+                                                                    örtükləri</a></li>
+                                                            <li><a href="/az/category/paltar-dolablari-172">Paltar
+                                                                    dolabları</a></li>
+                                                            <li><a href="/az/category/yastiq-uzleri-26">Yastıq
+                                                                    üzləri</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/yataq-destleri-30">Yataq
+                                                                    dəstləri</a></li>
+                                                            <li><a href="/az/category/tumbalar-47">Tumbalar</a></li>
+                                                            <li><a href="/az/category/guzguler-241">Güzgülər</a></li>
+                                                            <li><a
+                                                                    href="/az/category/ikimertebeli-carpayilar-ve-taxtalar-49">İkimərtəbəli
+                                                                    çarpayılar və taxtalar</a></li>
+                                                            <li><a href="/az/category/acilan-carpayilar-50">Açılan
+                                                                    Çarpayılar</a></li>
+                                                            <li><a href="/az/category/yastiqlar-51">Yastıqlar</a></li>
+                                                            <li><a href="/az/category/yorganlar-65">Yorğanlar</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/dosekler-78">Döşəklər</a></li>
+                                                            <li><a href="/az/category/hava-dosekleri-283">Hava
+                                                                    döşəkləri</a></li>
+                                                            <li><a href="/az/category/top-dosekler-92">Top Döşəklər</a>
+                                                            </li>
+                                                            <li><a href="/az/category/carpayi-bazasi-96">Çarpayı
+                                                                    Bazası</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="pe-2">Yataq</a>
+                                        <div class="subMenu">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/carpayilar-2">Çarpayılar</a></li>
+                                                            <li><a href="/az/category/acilan-divanlar-139">Açılan
+                                                                    divanlar</a></li>
+                                                            <li><a href="/az/category/dosek-uzleri-4">Döşək üzləri</a>
+                                                            </li>
+                                                            <li><a href="/az/category/kamodlar-163">Kamodlar</a></li>
+                                                            <li><a href="/az/category/yataq-ortukleri-19">Yataq
+                                                                    örtükləri</a></li>
+                                                            <li><a href="/az/category/paltar-dolablari-172">Paltar
+                                                                    dolabları</a></li>
+                                                            <li><a href="/az/category/yastiq-uzleri-26">Yastıq
+                                                                    üzləri</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/yataq-destleri-30">Yataq
+                                                                    dəstləri</a></li>
+                                                            <li><a href="/az/category/tumbalar-47">Tumbalar</a></li>
+                                                            <li><a href="/az/category/guzguler-241">Güzgülər</a></li>
+                                                            <li><a
+                                                                    href="/az/category/ikimertebeli-carpayilar-ve-taxtalar-49">İkimərtəbəli
+                                                                    çarpayılar və taxtalar</a></li>
+                                                            <li><a href="/az/category/acilan-carpayilar-50">Açılan
+                                                                    Çarpayılar</a></li>
+                                                            <li><a href="/az/category/yastiqlar-51">Yastıqlar</a></li>
+                                                            <li><a href="/az/category/yorganlar-65">Yorğanlar</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/dosekler-78">Döşəklər</a></li>
+                                                            <li><a href="/az/category/hava-dosekleri-283">Hava
+                                                                    döşəkləri</a></li>
+                                                            <li><a href="/az/category/top-dosekler-92">Top Döşəklər</a>
+                                                            </li>
+                                                            <li><a href="/az/category/carpayi-bazasi-96">Çarpayı
+                                                                    Bazası</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="pe-2">Yataq</a>
+                                        <div class="subMenu">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/carpayilar-2">Çarpayılar</a></li>
+                                                            <li><a href="/az/category/acilan-divanlar-139">Açılan
+                                                                    divanlar</a></li>
+                                                            <li><a href="/az/category/dosek-uzleri-4">Döşək üzləri</a>
+                                                            </li>
+                                                            <li><a href="/az/category/kamodlar-163">Kamodlar</a></li>
+                                                            <li><a href="/az/category/yataq-ortukleri-19">Yataq
+                                                                    örtükləri</a></li>
+                                                            <li><a href="/az/category/paltar-dolablari-172">Paltar
+                                                                    dolabları</a></li>
+                                                            <li><a href="/az/category/yastiq-uzleri-26">Yastıq
+                                                                    üzləri</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/yataq-destleri-30">Yataq
+                                                                    dəstləri</a></li>
+                                                            <li><a href="/az/category/tumbalar-47">Tumbalar</a></li>
+                                                            <li><a href="/az/category/guzguler-241">Güzgülər</a></li>
+                                                            <li><a
+                                                                    href="/az/category/ikimertebeli-carpayilar-ve-taxtalar-49">İkimərtəbəli
+                                                                    çarpayılar və taxtalar</a></li>
+                                                            <li><a href="/az/category/acilan-carpayilar-50">Açılan
+                                                                    Çarpayılar</a></li>
+                                                            <li><a href="/az/category/yastiqlar-51">Yastıqlar</a></li>
+                                                            <li><a href="/az/category/yorganlar-65">Yorğanlar</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/dosekler-78">Döşəklər</a></li>
+                                                            <li><a href="/az/category/hava-dosekleri-283">Hava
+                                                                    döşəkləri</a></li>
+                                                            <li><a href="/az/category/top-dosekler-92">Top Döşəklər</a>
+                                                            </li>
+                                                            <li><a href="/az/category/carpayi-bazasi-96">Çarpayı
+                                                                    Bazası</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="pe-2">Yataq</a>
+                                        <div class="subMenu">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/carpayilar-2">Çarpayılar</a></li>
+                                                            <li><a href="/az/category/acilan-divanlar-139">Açılan
+                                                                    divanlar</a></li>
+                                                            <li><a href="/az/category/dosek-uzleri-4">Döşək üzləri</a>
+                                                            </li>
+                                                            <li><a href="/az/category/kamodlar-163">Kamodlar</a></li>
+                                                            <li><a href="/az/category/yataq-ortukleri-19">Yataq
+                                                                    örtükləri</a></li>
+                                                            <li><a href="/az/category/paltar-dolablari-172">Paltar
+                                                                    dolabları</a></li>
+                                                            <li><a href="/az/category/yastiq-uzleri-26">Yastıq
+                                                                    üzləri</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/yataq-destleri-30">Yataq
+                                                                    dəstləri</a></li>
+                                                            <li><a href="/az/category/tumbalar-47">Tumbalar</a></li>
+                                                            <li><a href="/az/category/guzguler-241">Güzgülər</a></li>
+                                                            <li><a
+                                                                    href="/az/category/ikimertebeli-carpayilar-ve-taxtalar-49">İkimərtəbəli
+                                                                    çarpayılar və taxtalar</a></li>
+                                                            <li><a href="/az/category/acilan-carpayilar-50">Açılan
+                                                                    Çarpayılar</a></li>
+                                                            <li><a href="/az/category/yastiqlar-51">Yastıqlar</a></li>
+                                                            <li><a href="/az/category/yorganlar-65">Yorğanlar</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/dosekler-78">Döşəklər</a></li>
+                                                            <li><a href="/az/category/hava-dosekleri-283">Hava
+                                                                    döşəkləri</a></li>
+                                                            <li><a href="/az/category/top-dosekler-92">Top Döşəklər</a>
+                                                            </li>
+                                                            <li><a href="/az/category/carpayi-bazasi-96">Çarpayı
+                                                                    Bazası</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="pe-2">Yataq</a>
+                                        <div class="subMenu">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/carpayilar-2">Çarpayılar</a></li>
+                                                            <li><a href="/az/category/acilan-divanlar-139">Açılan
+                                                                    divanlar</a></li>
+                                                            <li><a href="/az/category/dosek-uzleri-4">Döşək üzləri</a>
+                                                            </li>
+                                                            <li><a href="/az/category/kamodlar-163">Kamodlar</a></li>
+                                                            <li><a href="/az/category/yataq-ortukleri-19">Yataq
+                                                                    örtükləri</a></li>
+                                                            <li><a href="/az/category/paltar-dolablari-172">Paltar
+                                                                    dolabları</a></li>
+                                                            <li><a href="/az/category/yastiq-uzleri-26">Yastıq
+                                                                    üzləri</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/yataq-destleri-30">Yataq
+                                                                    dəstləri</a></li>
+                                                            <li><a href="/az/category/tumbalar-47">Tumbalar</a></li>
+                                                            <li><a href="/az/category/guzguler-241">Güzgülər</a></li>
+                                                            <li><a
+                                                                    href="/az/category/ikimertebeli-carpayilar-ve-taxtalar-49">İkimərtəbəli
+                                                                    çarpayılar və taxtalar</a></li>
+                                                            <li><a href="/az/category/acilan-carpayilar-50">Açılan
+                                                                    Çarpayılar</a></li>
+                                                            <li><a href="/az/category/yastiqlar-51">Yastıqlar</a></li>
+                                                            <li><a href="/az/category/yorganlar-65">Yorğanlar</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/dosekler-78">Döşəklər</a></li>
+                                                            <li><a href="/az/category/hava-dosekleri-283">Hava
+                                                                    döşəkləri</a></li>
+                                                            <li><a href="/az/category/top-dosekler-92">Top Döşəklər</a>
+                                                            </li>
+                                                            <li><a href="/az/category/carpayi-bazasi-96">Çarpayı
+                                                                    Bazası</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="pe-2">Yataq</a>
+                                        <div class="subMenu">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/carpayilar-2">Çarpayılar</a></li>
+                                                            <li><a href="/az/category/acilan-divanlar-139">Açılan
+                                                                    divanlar</a></li>
+                                                            <li><a href="/az/category/dosek-uzleri-4">Döşək üzləri</a>
+                                                            </li>
+                                                            <li><a href="/az/category/kamodlar-163">Kamodlar</a></li>
+                                                            <li><a href="/az/category/yataq-ortukleri-19">Yataq
+                                                                    örtükləri</a></li>
+                                                            <li><a href="/az/category/paltar-dolablari-172">Paltar
+                                                                    dolabları</a></li>
+                                                            <li><a href="/az/category/yastiq-uzleri-26">Yastıq
+                                                                    üzləri</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/yataq-destleri-30">Yataq
+                                                                    dəstləri</a></li>
+                                                            <li><a href="/az/category/tumbalar-47">Tumbalar</a></li>
+                                                            <li><a href="/az/category/guzguler-241">Güzgülər</a></li>
+                                                            <li><a
+                                                                    href="/az/category/ikimertebeli-carpayilar-ve-taxtalar-49">İkimərtəbəli
+                                                                    çarpayılar və taxtalar</a></li>
+                                                            <li><a href="/az/category/acilan-carpayilar-50">Açılan
+                                                                    Çarpayılar</a></li>
+                                                            <li><a href="/az/category/yastiqlar-51">Yastıqlar</a></li>
+                                                            <li><a href="/az/category/yorganlar-65">Yorğanlar</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-lg-3">
+                                                        <ul>
+                                                            <li><a href="/az/category/dosekler-78">Döşəklər</a></li>
+                                                            <li><a href="/az/category/hava-dosekleri-283">Hava
+                                                                    döşəkləri</a></li>
+                                                            <li><a href="/az/category/top-dosekler-92">Top Döşəklər</a>
+                                                            </li>
+                                                            <li><a href="/az/category/carpayi-bazasi-96">Çarpayı
+                                                                    Bazası</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+
+
+        </div>
+    </header>
+    <!-- Here is header finish -->
+    <main>
+        <!-- Blog Pictures -->
+        <div class="blog-images my-2">
+            <div class="container">
+                    <img src="./assets/img/blog/6B4BC279-FBC0-4075-900C-ABEF845ADD20-555.png" alt="blog-image" style="width: 100%;">
+            </div>
+        </div>
+
+        <div class="blog-text-image">
+            <div class="container">
+                <h4>Mətbəx Yenilənməsi Üçün Ideyalar.</h4>
+                <p style="font-weight: bold;">
+                    <span class="me-2">Tarix <a href="# " style="font-weight: 200; color: #333;">22/22/22</a></span>
+                    <span class="me-2">Kategoriya: <a href="#" style="font-weight: 200; color: #333">Yatag
+                            Otagi</a></span>
+                    <span class="me-2">Tag:</span>
+                </p>
+                <p>Bəzən kiçik dəyişikliklər böyük təsir göstərə bilər. Bir necə üsulun köməyi ilə ilham sizin
+                    mətbəxinizə gələcək, və siz qonaqlarınızı dadlı yeməklər və gözəl masa bəzəyi ilə sevindirə
+                    bilərsiz.
+                    Əgər siz qabları rəflərdə və dolablarda yerləşdirməyə çətinlik çəkirsinizsə, onda gözəl qablarınızı
+                    ətirli otlarla birgə üst rəflərə düzün.</p>
+                <div class="blog-img">
+                    <div class="row">
+                        <div class="col-md-9 col-12">
+                            <img src="./assets/img/blog/D825A358-282E-4B86-8CFD-D0204F0296B8.png" alt="blog-img" >
+                        </div>
+                    </div>
+                </div>
+                <p>Taxta mətbəx lövhələrivə və salfet tutacaqları mətbəxə təbii bir görünüş verir</p>
+                <div class="blog-img">
+                    <div class="row">
+                        <div class="col-md-9 col-12">
+                            <img src="./assets/img/blog/75F374FA-41C3-4BAE-8347-394DA49ACF9A.png" alt="blog-img">
+                        </div>
+                    </div>
+                </div>
+                <p>Taxta mətbəx lövhələrivə və salfet tutacaqları mətbəxə təbii bir görünüş verir</p>
+
+                <div class="blog-img">
+                    <div class="row">
+                        <div class="col-md-9 col-12">
+                            <img src="./assets/img/blog/92F8FDA9-BBA6-4B0A-953A-BB2F3977653E.png" alt="blog-img">
+                        </div>
+                    </div>
+                </div>
+
+                <p>Taxta mətbəx lövhələrivə və salfet tutacaqları mətbəxə təbii bir görünüş verir</p>
+            </div>
+        </div>
+
+    </main>
+    <footer>
+        <!-- Subscription -->
+        <div class="subscription-fields">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="subscription-field my-4">
+                            <h4 class="mb-2">Yeniliklərə Abunə Olun</h4>
+                            <h6>JYSK bülleteni ilə ən yaxşı təkliflərimiz, müsabiqələrimiz, yeni məhsullarımız və bir az
+                                ilhamvericilik haqqında məlumat alacaqsınız. Bütün bunlar qutunuzda!</h6>
+                            <div class="subscription-form">
+                                <div>
+                                    <input type="checkbox"><span>Bəli, JYSK e-poçt bülleteninə yazılmaq
+                                        istəyirəm,</span>
+                                </div>
+                                <div class="subscription-detail">
+                                    ilhamvericilik üçün məqalələr, mövcud təkliflər, xəbərlər və JYSK.az çeşidli
+                                    elektron təqdimat qəzetləri haqqında məlumatları ehtiva edir. Eyni zamanda,
+                                    <a href="#">qaydaları və şərtləri</a> elektron poçtla qəbul edirəm. İstənilən vaxt
+                                    abunəçilikdən çıxa bilərsiniz. Yuxarıdakı şəxsi məlumatları sizə email göndərmək
+                                    üçün istifadə edirik. Daha ətraflı <a href="#">məxfilik siyasəti</a> haqqında oxuya
+                                    biləriniz.
+
+                                </div>
+                                <div class="subscription-inputs text-center">
+                                    <input type="text" class="my-1" placeholder="Ad">
+                                    <br>
+                                    <input type="text" class="my-1" placeholder="Email">
+                                    <br>
+                                    <button class="btn btn-custom my-1">Abunə Ol</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation Footer -->
+        <div class="navigation-footer">
+            <div class="container">
+                <div class="row pt-3">
+                    <div class="col-md-3 col-12 my-2">
+                        <h4>
+                            Kategoriyalar
+                        </h4>
+                        <hr class="my-2">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    Ish Imkanlari
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Ish Imkanlari
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Ish Imkanlari
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Ish Imkanlari
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Ish Imkanlari
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Ish Imkanlari
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Ish Imkanlari
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Ish Imkanlari
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Ish Imkanlari
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Ish Imkanlari
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-12 my-2">
+                        <h4>
+                            MÜŞTƏRİ XİDMƏTİ
+                        </h4>
+                        <hr class="my-2">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    Ish Imkanlari
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Ish Imkanlari
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Ish Imkanlari
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Ish Imkanlari
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Ish Imkanlari
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Ish Imkanlari
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Ish Imkanlari
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-12 my-2">
+                        <h4>
+                            JYSK
+                        </h4>
+                        <hr class="my-2">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    Ish Imkanlari
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Ish Imkanlari
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Ish Imkanlari
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Ish Imkanlari
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    Ish Imkanlari
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3 col-12 my-2">
+                        <h4>
+                            Mərkəzi Ofis
+                        </h4>
+                        <hr class="my-2">
+                        <p>
+                            Ə.Naxçıvani 13C
+                        </p>
+                        <p>
+                            Əlaqə məlumatları:
+                            <br>
+                            <a href="#">
+                                +994-55-509-5505
+                            </a>
+                            <br>
+                            <a href="#">
+                                marketing@gmail.com
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Social -->
+        <div class="social my-4">
+            <div class="container">
+                <div class="text-center d-flex">
+                    <div class="social-item">
+                        <a href="" class="">
+                            <svg id="icon-facebook" viewBox="0 0 512 512">
+                                <path
+                                    d="m255 0c-141 0-255 114-255 255 0 142 114 256 255 256 142 0 256-114 256-256 1-141-114-255-256-255z m64 265l-41 0c0 67 0 148 0 148l-62 0c0 0 0-81 0-148l-29 0 0-53 29 0 0-34c0-25 12-62 62-62l45 0 0 51c0 0-27 0-32 0-6 0-13 3-13 14l0 31 48 0z">
+                                </path>
+                            </svg>
+                            Facebook
+                        </a>
+                    </div>
+                    <div class="social-item">
+                        <a href="">
+                            <svg id="icon-instagram" viewBox="0 0 512 512">
+                                <path
+                                    d="m255 307c29 0 52-23 52-52 0-28-23-51-52-51-28 0-51 23-51 51 0 29 23 52 51 52z m113-114l0-49-50 0 0 50z m-113-193c-140 1-254 115-254 256 0 141 115 255 256 255 141 0 255-115 255-256-1-141-115-255-257-255z m146 226l0 119c0 31-26 57-57 57l-177 0c-31 0-57-26-57-57l0-178c0-31 26-57 57-57l178 0c31 0 57 26 57 57l0 60z m-66 29c-1 32-20 60-49 72-30 12-63 6-86-17-22-22-30-55-19-84l-42 0 0 119c0 15 13 28 28 28l178 0c15 0 28-13 28-28l0-119-43 0c3 9 5 19 5 29z">
+                                </path>
+                            </svg>
+                            Instagram
+                        </a>
+                    </div>
+                    <div class="social-item">
+                        <a href="">
+                            <svg id="icon-twitter" viewBox="0 0 512 512">
+                                <path
+                                    d="m255 0c-140 1-254 115-254 256 0 141 115 255 256 255 141 0 255-115 255-256-1-141-115-255-257-255z m115 197c0 2 0 5 0 7 0 78-59 168-168 168-32 0-64-9-91-27l15 0c26 0 52-8 73-25-25 0-47-17-55-41l12 0 15-2c-27-5-46-28-47-56-11 28 1 59 26 73-25-17-34-52-18-79 30 37 74 60 121 62-6-26 6-52 30-65 23-12 52-8 70 12 23-21 37-50 38-81-4 14-13 26-25 33 11-1 23-4 34-9-8 12-18 22-30 30z">
+                                </path>
+                            </svg>
+                            Twitter
+                        </a>
+                    </div>
+                    <div class="social-item">
+                        <a href="">
+                            <svg id="icon-youtube" viewBox="0 0 512 512">
+                                <path
+                                    d="m135 275l20 0 0 110 19 0 0-110 21 0 0-18-60 0z m162 13c-6 0-12 4-18 10l0-41-17 0 0 127 17 0 0-9c6 7 12 10 18 10 7 0 11-3 13-10 1-4 2-11 2-20l0-37c0-9-1-15-2-20-2-6-6-10-13-10z m-2 70c0 8-3 13-8 13-2 0-5-2-8-5l0-58c3-3 6-4 8-4 6 0 8 4 8 13z m-66 4c-3 6-7 8-11 8-2 0-3-1-4-4 0-1 0-3 0-7l0-69-17 0 0 75c0 7 0 11 1 14 2 5 6 7 11 7 7 0 13-3 20-11l0 10 18 0 0-95-18 0z m15-160c6 0 9-5 9-14l0-40c0-9-3-13-9-13-5 0-8 4-8 13l0 40c0 9 3 14 8 14z m12-202c-141 0-256 115-256 256 0 141 115 256 256 256 141 0 256-115 256-256 0-141-115-256-256-256z m28 120l18 0 0 71c0 4 0 6 0 6 0 3 1 5 4 5 3 0 7-3 11-9l0-73 17 0 0 96-17 0 0-10c-7 8-14 12-20 12-6 0-10-2-11-8-1-3-2-7-2-14z m-66 31c0-10 2-18 6-22 4-7 11-10 20-10 9 0 16 3 20 10 4 4 6 12 6 22l0 34c0 10-2 18-6 22-4 7-11 10-20 10-9 0-16-3-20-10-4-4-6-12-6-22z m-46-64l13 51 13-51 20 0-23 77 0 52-20 0 0-52c-1-10-5-23-12-41-4-12-8-24-12-36 0 0 21 0 21 0z m222 306c-4 15-16 26-31 28-36 5-71 5-107 5-36 0-72 0-107-5-15-1-27-13-31-28-5-21-5-45-5-67 0-23 0-46 5-68 4-15 16-26 31-28 36-4 71-4 107-4 36 0 72 0 107 4 15 1 27 13 31 28 4 22 4 45 4 68 0 22 0 45-4 67z m-42-105c-9 0-16 3-21 10-3 5-5 12-5 22l0 34c0 10 2 18 6 22 5 7 12 10 21 10 9 0 16-3 21-10 2-3 3-6 4-11 0-1 1-5 1-11l0-2-18 0c0 7 0 11-1 11-1 5-3 7-8 7-5 0-9-4-9-13l0-17 35 0 0-20c0-10-2-17-5-22-6-6-13-10-21-10z m8 38l-17 0 0-9c0-9 3-13 9-13 6 0 8 4 8 13z">
+                                </path>
+                            </svg>
+                            Youtube
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cards -->
+        <div class="cards-footer py-4">
+            <div class="container">
+                <img src="./assets/img/icons/credit-cards-new-ua.svg" alt="">
+            </div>
+        </div>
+
+    </footer>
+    <!-- Here is footer start -->
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="jquery.min.js"></script>
+    <script src="./assets/js/plugins/owlcarousel/owl.carousel.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+
+</html>

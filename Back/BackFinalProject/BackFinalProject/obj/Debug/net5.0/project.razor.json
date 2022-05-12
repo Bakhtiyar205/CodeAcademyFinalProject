@@ -15663,8 +15663,23 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Navigation\\Blog.cshtml",
+      "TargetPath": "Views\\Navigation\\Blog.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Navigation\\Question.cshtml",
+      "TargetPath": "Views\\Navigation\\Question.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Navigation\\Store.cshtml",
+      "TargetPath": "Views\\Navigation\\Store.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15705,6 +15720,16 @@
     {
       "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
       "TargetPath": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Navigation\\Catalog.cshtml",
+      "TargetPath": "Views\\Navigation\\Catalog.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Navigation\\Policy.cshtml",
+      "TargetPath": "Views\\Navigation\\Policy.cshtml",
       "FileKind": "mvc"
     },
     {

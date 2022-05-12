@@ -3,7 +3,6 @@
     ViewData["Title"] = "Index";
 }
 
-<main>
     <!-- home-naviagtion -->
     <div class="home-navigation my-3">
         <div class="container">
@@ -15,21 +14,14 @@
         <div class="container">
             <div class="category-wallpaper-inner">
                 <div class="row">
-                    <div class="col-md-4 d-none d-md-block">
-                        <a href="#">
-                            <img src="~/assets/img/subCategory/bedroom.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="col-md-4 d-none d-md-block">
-                        <a href="#">
-                            <img src="~/assets/img/subCategory/bedroom-1.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="col-md-4 d-none d-md-block">
-                        <a href="#">
-                            <img src="~/assets/img/subCategory/bedroom-3.jpg" alt="">
-                        </a>
-                    </div>
+                    @foreach (var subCategoryImage in Model.Category.SubCategory.OrderByDescending(m=>m.Id).Take(3))
+                    {
+                        <div class="col-md-4 d-none d-md-block">
+                            <a href="#">
+                                <img src="~/assets/img/subCategory/@subCategoryImage.Image" alt="">
+                            </a>
+                        </div>
+                    }
                 </div>
             </div>
         </div>
@@ -61,17 +53,11 @@
                 </div>
                 <!-- Main Side -->
                 <div class="col-12 col-md-9 mt-4">
-                    <h4>DÖŞƏK ,YORĞAN YASTIQ VƏ YATAQ DƏSTLƏRİNİN BÖYÜK SEÇİMİ</h4>
-                    <p>
-                        Mübahisəsiz çarpayı mebelin tərkib hissəsidir ki, insan öz vaxtının əsas hissəsini onunla
-                        keçirir və istirahət edir.Çarpayı insan həyatında əhəmiyyətli rol oynayır.Və ona görə də
-                        insanın bütün ehtiyaclarına cavab verə biləcək və onun dizaynı ilə ahəngləşə biləcək düzgün
-                        çarpayı seçimi çox önəm kəsb edir.Yataq otağı bizdə istirahət təəssuratı oyatmalıdır .Ona
-                        görə də dizayn ve komfort (rahatlıq) bir-biri ilə uyğunlaşmalı və bir-birini
-                        tamamlamalıdır.Biz sizə baha olmayan yataq dəsti avadanlıqlarını almağı,həmçinin bir
-                        seriyadan olan mebel dəstlərini təklif edə bilərik və ya siz təkcə çarpayı, tumba, şkaf seçə
-                        bilərsiniz. Döşək, yorğan,yastıq,yataq dəsti - sizin sağlam yuxunuzun təminatıdır.
-                    </p>
+                    @if (Model.Category.CategoryText != null)
+                    {
+                       <p>@Model.Category.CategoryText</p>
+                    }
+
                     <div class="row subcategory-fields">
                         @foreach (var subC in Model.Category.SubCategory)
                         {
@@ -95,5 +81,4 @@
     </div>
 
 
-</main>
 

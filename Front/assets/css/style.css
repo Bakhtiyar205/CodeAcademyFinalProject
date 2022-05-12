@@ -1344,4 +1344,62 @@ main .brend-img img {
   width: 100%;
   height: 100%;
 }
+
+main .questions-card .question-card-img {
+  text-align: center;
+  height: 70px;
+}
+
+main .questions-card img {
+  border-radius: 50%;
+}
+
+main .question-card-text {
+  background-color: #fff;
+}
+
+main .location-store {
+  background-color: #fff;
+}
+
+main .location-store .text-field {
+  background-color: #fafafa;
+  height: 300px;
+}
+
+main .location-store .text-field a {
+  color: #333;
+}
+
+main .location-store .text-field a svg {
+  width: 20px;
+  height: 20px;
+}
+
+main .location-store .text-field a:hover {
+  text-decoration: none;
+}
+
+main .catalog .catalog-page {
+  border: 1px solid #f8f8f8;
+}
+
+main .catalog a {
+  color: #333;
+}
+
+main .catalog a:hover {
+  text-decoration: none;
+}
+
+main .catalog a img {
+  width: 120px;
+  height: 150px;
+}
+
+@media only screen and (max-width: 992px) {
+  main .catalog-intext {
+    margin-left: 100px;
+  }
+}
 /*# sourceMappingURL=style.css.map */

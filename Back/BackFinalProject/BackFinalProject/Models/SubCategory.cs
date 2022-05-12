@@ -9,6 +9,7 @@ namespace BackFinalProject.Models
     {
         public string Name { get; set; }
         public string Image { get; set; }
+        public string SubCategoryText { get; set; }
         public bool IsDeleted { get; set; }
         public int CategoryID { get; set; }
         public Category Category { get; set; }

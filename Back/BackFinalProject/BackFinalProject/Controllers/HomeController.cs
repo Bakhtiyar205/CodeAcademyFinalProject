@@ -14,14 +14,17 @@ namespace BackFinalProject.Controllers
         private readonly ICategoryService categoryService;
         private readonly ISettingService settingService;
         private readonly IBrendService brendService;
+        private readonly IBlogService blogService;
 
         public HomeController(ICategoryService categoryService,
                                 ISettingService settingService,
-                                IBrendService brendService)
+                                IBrendService brendService,
+                                IBlogService blogService)
         {
             this.categoryService = categoryService;
             this.settingService = settingService;
             this.brendService = brendService;
+            this.blogService = blogService;
         }
         public async Task<IActionResult> Index()
         {
@@ -29,7 +32,8 @@ namespace BackFinalProject.Controllers
             {
                 Categories = await categoryService.GetCategoriesAsync(),
                 Setting = settingService.GetSetting(),
-                Brends = await brendService.GetBrendsAsync()
+                Brends = await brendService.GetBrendsAsync(),
+                Blogs = await blogService.GetBlogsAsync()
             };
             return View(homeVM);
         }

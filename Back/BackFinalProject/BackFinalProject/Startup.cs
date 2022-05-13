@@ -39,6 +39,10 @@ namespace BackFinalProject
             services.AddScoped<IBrendService, BrendService>();
             services.AddScoped<IBlogService, BlogService>();
             services.AddScoped<IPolicyService, PolicyService>();
+            services.AddScoped<IDiscountCategoryService, DiscountCategoryService>();
+            services.AddScoped<IBestOfferService, BestOfferService>();
+
+
 
 
 

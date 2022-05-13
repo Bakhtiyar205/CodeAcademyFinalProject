@@ -6,14 +6,14 @@
 <!-- Advertisment -->
 <div class="my-md-2 my-1 advertisments-main container-md">
     <div class="main-advertisment">
-        <a href="#">
+        <a asp-controller="navigation" asp-action="bestoffer">
             <img src="~/assets/img/advertisments/@Model.Setting["Main-Home-Photo"]" alt="advertisment">
         </a>
     </div>
     <div class="secondary-advertisments">
         <div class="row">
             <div class="col-md-6 col-12">
-                <a href="#">
+                <a asp-controller="navigation" asp-action="discountcategory">
                     <img src="~/assets/img/advertisments/@Model.Setting["Secondary-Home-Photo1"]"
                          alt="advertisment" class="distance-img-advertisment">
                 </a>
@@ -32,7 +32,7 @@
         <div class="row">
             <div class="col-md-3 col-6 mt-2">
                 <div class="d-flex justify-content-center secondary-navigation-elements">
-                    <a href="#">
+                    <a asp-controller="navigation" asp-action="catalog">
                         <div class="secondary-navigation-img">
                             <img src="~/assets/img/icons/1.png" alt="">
                         </div>
@@ -42,7 +42,7 @@
             </div>
             <div class="col-md-3 col-6 mt-2">
                 <div class="d-flex justify-content-center secondary-navigation-elements">
-                    <a href="#">
+                    <a asp-controller="navigation" asp-action="store">
                         <div class="secondary-navigation-img">
                             <img src="~/assets/img/icons/2.png" alt="">
                         </div>
@@ -52,7 +52,7 @@
             </div>
             <div class="col-md-3 col-6 mt-2">
                 <div class="d-flex justify-content-center secondary-navigation-elements">
-                    <a href="#">
+                    <a asp-controller="navigation" asp-action="blog">
                         <div class="secondary-navigation-img">
                             <img src="~/assets/img/icons/3.png" alt="">
                         </div>

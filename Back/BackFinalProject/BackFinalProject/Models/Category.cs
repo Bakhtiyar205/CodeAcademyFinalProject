@@ -13,5 +13,6 @@ namespace BackFinalProject.Models
         public string CategoryText { get; set; }
         public List<SubCategory> SubCategory { get; set; }
         public List<Blog> Blogs { get; set; }
+        public List<DiscountCategroy> DiscountCategroies { get; set; }
     }
 }

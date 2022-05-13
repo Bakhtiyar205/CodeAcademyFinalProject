@@ -1345,6 +1345,13 @@ main .brend-img img {
   height: 100%;
 }
 
+main #map {
+  height: 400px;
+  /* The height is 400 pixels */
+  width: 100%;
+  /* The width is the width of the web page */
+}
+
 main .questions-card .question-card-img {
   text-align: center;
   height: 70px;

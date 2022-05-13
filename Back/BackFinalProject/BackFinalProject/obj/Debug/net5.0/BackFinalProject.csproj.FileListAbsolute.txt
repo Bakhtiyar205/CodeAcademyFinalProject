@@ -154,3 +154,5 @@ C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFi
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Views\Navigation\Store.cshtml.g.cs
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Views\Navigation\Policy.cshtml.g.cs
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Views\Navigation\Blog.cshtml.g.cs
+C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Views\Navigation\DiscountCategory.cshtml.g.cs
+C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Views\Navigation\BestOffer.cshtml.g.cs

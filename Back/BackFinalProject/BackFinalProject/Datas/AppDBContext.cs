@@ -20,6 +20,11 @@ namespace BackFinalProject.Datas
         public DbSet<Blog> Blogs { get; set; }
         public DbSet<BlogSpesification> BlogSpesifications { get; set; }
         public DbSet<PolicySection> Policies { get; set; }
+        public DbSet<DiscountCategroy> DiscountCategroies { get; set; }
+        public DbSet<BestOffer> BestOffers { get; set; }
+
+
+
 
     }
 }

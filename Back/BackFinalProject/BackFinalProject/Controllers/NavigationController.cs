@@ -12,12 +12,18 @@ namespace BackFinalProject.Controllers
     {
         private readonly IBlogService blogService;
         private readonly IPolicyService policyService;
+        private readonly IDiscountCategoryService discountCategoryService;
+        private readonly IBestOfferService bestOfferService;
 
         public NavigationController(IBlogService blogService,
-                                     IPolicyService policyService)
+                                     IPolicyService policyService,
+                                     IDiscountCategoryService discountCategoryService,
+                                     IBestOfferService bestOfferService)
         {
             this.blogService = blogService;
             this.policyService = policyService;
+            this.discountCategoryService = discountCategoryService;
+            this.bestOfferService = bestOfferService;
         }
         public async Task<IActionResult> Question()
         {
@@ -50,6 +56,24 @@ namespace BackFinalProject.Controllers
                 Blog = await blogService.GetBlogAsync(blogId)
             };
             return View(blogVM);
+        }
+
+        public async Task<IActionResult> DiscountCategory()
+        {
+            DiscountCategoryVM discountCategoryVM = new()
+            {
+                DiscountCategroy = await discountCategoryService.GetDiscountCategroyAsync()
+            };
+            return View(discountCategoryVM);
+        }
+
+        public async Task<IActionResult> BestOffer()
+        {
+            BestOfferVM bestOfferVM = new()
+            {
+                BestOffer = await bestOfferService.GetBestOfferAsync()
+            };
+            return View(bestOfferVM);
         }
     }
 }

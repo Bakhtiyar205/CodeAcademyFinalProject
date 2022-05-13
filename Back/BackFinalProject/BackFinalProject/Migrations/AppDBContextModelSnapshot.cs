@@ -18,6 +18,47 @@ namespace BackFinalProject.Migrations
                 .HasAnnotation("ProductVersion", "5.0.16")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("BackFinalProject.Models.BestOffer", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Text")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("BestOffers");
+                });
+
+            modelBuilder.Entity("BackFinalProject.Models.BestOfferImages", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("BestOfferId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BestOfferId");
+
+                    b.ToTable("BestOfferImages");
+                });
+
             modelBuilder.Entity("BackFinalProject.Models.Blog", b =>
                 {
                     b.Property<int>("Id")
@@ -115,6 +156,35 @@ namespace BackFinalProject.Migrations
                     b.ToTable("Categories");
                 });
 
+            modelBuilder.Entity("BackFinalProject.Models.DiscountCategroy", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("DiscountCategoryText")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.ToTable("DiscountCategroies");
+                });
+
             modelBuilder.Entity("BackFinalProject.Models.PolicySection", b =>
                 {
                     b.Property<int>("Id")
@@ -183,6 +253,17 @@ namespace BackFinalProject.Migrations
                     b.ToTable("SubCategories");
                 });
 
+            modelBuilder.Entity("BackFinalProject.Models.BestOfferImages", b =>
+                {
+                    b.HasOne("BackFinalProject.Models.BestOffer", "BestOffer")
+                        .WithMany("Images")
+                        .HasForeignKey("BestOfferId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("BestOffer");
+                });
+
             modelBuilder.Entity("BackFinalProject.Models.Blog", b =>
                 {
                     b.HasOne("BackFinalProject.Models.Category", "Category")
@@ -205,6 +286,17 @@ namespace BackFinalProject.Migrations
                     b.Navigation("Blog");
                 });
 
+            modelBuilder.Entity("BackFinalProject.Models.DiscountCategroy", b =>
+                {
+                    b.HasOne("BackFinalProject.Models.Category", "Category")
+                        .WithMany("DiscountCategroies")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Category");
+                });
+
             modelBuilder.Entity("BackFinalProject.Models.SubCategory", b =>
                 {
                     b.HasOne("BackFinalProject.Models.Category", "Category")
@@ -216,6 +308,11 @@ namespace BackFinalProject.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("BackFinalProject.Models.BestOffer", b =>
+                {
+                    b.Navigation("Images");
+                });
+
             modelBuilder.Entity("BackFinalProject.Models.Blog", b =>
                 {
                     b.Navigation("BlogSpesifications");
@@ -224,6 +321,8 @@ namespace BackFinalProject.Migrations
             modelBuilder.Entity("BackFinalProject.Models.Category", b =>
                 {
                     b.Navigation("Blogs");
+
+                    b.Navigation("DiscountCategroies");
 
                     b.Navigation("SubCategory");
                 });

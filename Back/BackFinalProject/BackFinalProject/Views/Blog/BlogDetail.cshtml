@@ -1,7 +1,16 @@
 ﻿@model BlogVM
 @{
-    ViewData["Title"] = "Blog";
+    ViewData["Title"] = "BlogDetail";
 }
+
+
+<div class="home-navigation my-3">
+    <div class="container">
+        <a asp-controller="home" asp-action="index">Ana səhifə</a>/
+        <a asp-controller="blog" asp-action="index">Bloqlar</a> /
+        <a>@Model.Blog.Name</a>
+    </div>
+</div>
 
 <!-- Blog Pictures -->
 <div class="blog-images my-2">
@@ -43,4 +52,6 @@
 
     </div>
 </div>
+
+
 

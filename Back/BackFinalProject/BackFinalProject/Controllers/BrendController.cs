@@ -16,13 +16,22 @@ namespace BackFinalProject.Controllers
         {
             this.brendService = brendService;
         }
-        public async Task<IActionResult> Index(int brendId)
+        public async Task<IActionResult> BrendDetail(int brendId)
         {
             BrendVM brendVM = new()
             {
                 Brend = await brendService.GetBrendWithIdAsync(brendId)
             };
             return View(brendVM);
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            BrendsVM brendsVM = new()
+            {
+                Brends = await brendService.GetBrendsAsync()
+            };
+            return View(brendsVM);
         }
     }
 }

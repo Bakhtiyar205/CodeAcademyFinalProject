@@ -1,0 +1,65 @@
+﻿@model GiftCardDetailVM
+@{
+    ViewData["Title"] = "GiftCardDetail";
+}
+
+<!-- home-naviagtion -->
+<div class="home-navigation my-3">
+    <div class="container">
+        <a asp-controller="home" asp-action="index">Ana səhifə</a>/Hədiyyə Kartları
+    </div>
+</div>
+
+<!-- Main Category -->
+<div class="main-category">
+    <div class="container">
+        <div class="row">
+            <!-- Aside -->
+            <div class="d-none d-md-block col-md-3 mt-4">
+                <ul class="ul-main-category">
+                            @foreach (var category in Model.Categories)
+                            {
+                                <li>
+                                    <a asp-controller="category" asp-action="index" asp-route-categoryId="@category.Id">
+                                        @category.Name
+                                    </a>
+                                </li>
+                                <hr>
+                            }
+
+
+
+                </ul>
+            </div>
+            <!-- Main Side -->
+            <div class="col-12 col-md-9 mt-4">
+                <div class="gift-card-detail">
+                    <h4>Hediyye kartlari</h4>
+                    <div class="row mb-5">
+                        <div class="col-9">
+                            JYSK Hədiyyə Kartı ailəniz və dostlarınız üçün mükəmməl bir hədiyyədir, çünki onlar, ev və bağ üçün Skandinaviya üslublu məhsulları, öz zövq və istəklərinə uyğun seçə bilərlər. Bir hədiyyə kartı JYSK mağazalarında alış-veriş üçün istifadə edilə bilər.
+                        </div>
+                        <div class="col-3">
+                            <img src="~/assets/img/giftCard/@Model.GiftCard.Image" alt="">
+                        </div>
+                    </div>
+                    <div class="gift-card-form my-5 my-lg-2 p-3">
+                        <h6 class="p-2 gift-card-fomr-head">Hediyye Kartlari</h6>
+                        <h6 class="mt-4">AŞAĞIDAKI XANALARI DOLDURUN</h6>
+                        <input type="text" class="form-control mt-3" placeholder="Ad,soyad">
+                        <input type="text" class="form-control mt-3" placeholder="Telefon">
+                        <input type="text" class="form-control mt-3" placeholder="Bashliq">
+                        <input type="text" class="form-control mt-3" placeholder="Əlavə mesaj">
+                        <button class="btn btn-primary mt-3">Sifarish et</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+
+

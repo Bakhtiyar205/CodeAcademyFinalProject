@@ -30,5 +30,13 @@ namespace BackFinalProject.Services
                                         .Include(m=>m.Category)
                                         .FirstOrDefaultAsync();
         }
+
+        public async Task<List<Blog>> GetBlogWithCategoryAsync(int categoryId)
+        {
+            return await context.Blogs.Where(m => m.CategoryId == categoryId && m.IsDeleted == false)
+                                        .Include(m => m.BlogSpesifications)
+                                        .Include(m => m.Category)
+                                        .ToListAsync();
+        }
     }
 }

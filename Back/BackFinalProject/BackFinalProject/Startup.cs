@@ -41,11 +41,7 @@ namespace BackFinalProject
             services.AddScoped<IPolicyService, PolicyService>();
             services.AddScoped<IDiscountCategoryService, DiscountCategoryService>();
             services.AddScoped<IBestOfferService, BestOfferService>();
-
-
-
-
-
+            services.AddScoped<IGiftCardService, GiftCardService>();
 
         }
 

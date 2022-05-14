@@ -1,0 +1,40 @@
+﻿@model GiftCardsVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="gift-cards">
+        <div class="row">
+            <div class="col-12">
+                <h4 class="mt-3">Hədiyyə Katları</h4>
+                <p class="mt-3">
+                    JYSK Hədiyyə Kartı ailəniz və dostlarınız üçün mükəmməl bir hədiyyədir, çünki
+                    onlar,
+                    ev və bağ üçün Skandinaviya üslublu məhsulları, öz zövq və istəklərinə uyğun seçə bilərlər.
+                    Bir
+                    hədiyyə kartı JYSK mağazalarında alış-veriş üçün istifadə edilə bilər.
+                </p>
+                <p class="mt-3">Hədiyyə kartı 6 ay müddətində etibarlıdır.</p>
+            </div>
+
+            <div class="col-12">
+                <div class="row">
+                    @foreach (var giftCard in Model.GiftCards)
+                    {
+                        <div class="col-md-4 col-12 my-2">
+                            <a asp-controller="giftcard" asp-action="giftcarddetail" asp-route-giftCardId="@giftCard.Id">
+                                <img src="~/assets/img/giftCard/@giftCard.Image" alt="">
+                            </a>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+    </div>
+</div>

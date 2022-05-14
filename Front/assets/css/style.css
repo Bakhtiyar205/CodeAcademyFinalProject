@@ -1409,4 +1409,89 @@ main .catalog a img {
     margin-left: 100px;
   }
 }
+
+main .secondary-home .main-text:after {
+  display: block;
+  width: 100px;
+  height: 2px;
+  margin: 20px auto 0;
+  content: "";
+  background: #000;
+}
+
+main .secondary-home ul li:first-child {
+  list-style: none;
+}
+
+main .secondary-home ul li a {
+  color: #333;
+  font-size: 20px;
+}
+
+main .secondary-home ::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+@media only screen and (max-width: 992px) {
+  main ul {
+    margin-left: -30px;
+  }
+}
+
+main {
+  background-color: #fff;
+}
+
+main .gift-cards {
+  width: 70%;
+}
+
+main .gift-cards img {
+  border: 1px solid #fafafa;
+  height: 100%;
+  width: 100%;
+}
+
+@media only screen and (max-width: 992px) {
+  main .gift-cards {
+    width: 100%;
+  }
+}
+
+main .gift-card-detail img {
+  width: 100%;
+  height: 100%;
+}
+
+main .gift-card-detail .gift-card-form {
+  position: relative;
+  background-color: #fafafa;
+}
+
+main .gift-card-detail .gift-card-form .gift-card-fomr-head {
+  text-align: center;
+  position: absolute;
+  top: -20px;
+  font-weight: bold;
+  width: 18%;
+  background-color: #fff;
+  border: 1px solid #b0b0b0;
+}
+
+@media only screen and (max-width: 992px) {
+  .gift-card-form {
+    position: relative !important;
+    background-color: #fafafa;
+  }
+  .gift-card-form .gift-card-fomr-head {
+    text-align: center;
+    font-size: 10px;
+    top: -20px;
+    font-weight: bold;
+    width: 18%;
+    background-color: #fff;
+    border: 1px solid #b0b0b0;
+  }
+}
 /*# sourceMappingURL=style.css.map */

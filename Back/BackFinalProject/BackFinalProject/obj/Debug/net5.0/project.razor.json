@@ -15663,23 +15663,23 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Navigation\\Blog.cshtml",
-      "TargetPath": "Views\\Navigation\\Blog.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Home\\Index.cshtml",
       "TargetPath": "Views\\Home\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Navigation\\Question.cshtml",
-      "TargetPath": "Views\\Navigation\\Question.cshtml",
+      "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Navigation\\Store.cshtml",
+      "TargetPath": "Views\\Navigation\\Store.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Navigation\\Store.cshtml",
-      "TargetPath": "Views\\Navigation\\Store.cshtml",
+      "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Question\\Index.cshtml",
+      "TargetPath": "Views\\Question\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Policy\\Index.cshtml",
+      "TargetPath": "Views\\Policy\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15693,6 +15693,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\DiscountCategory\\Index.cshtml",
+      "TargetPath": "Views\\DiscountCategory\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\GiftCard\\Index.cshtml",
+      "TargetPath": "Views\\GiftCard\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\SubCategory\\Index.cshtml",
       "TargetPath": "Views\\SubCategory\\Index.cshtml",
       "FileKind": "mvc"
@@ -15700,6 +15710,11 @@
     {
       "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\GiftCard\\GiftCardDetail.cshtml",
+      "TargetPath": "Views\\GiftCard\\GiftCardDetail.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15713,8 +15728,23 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Blog\\BlogDetail.cshtml",
+      "TargetPath": "Views\\Blog\\BlogDetail.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Brend\\Index.cshtml",
       "TargetPath": "Views\\Brend\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Store\\Index.cshtml",
+      "TargetPath": "Views\\Store\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Blog\\Index.cshtml",
+      "TargetPath": "Views\\Blog\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15723,13 +15753,23 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Navigation\\Catalog.cshtml",
-      "TargetPath": "Views\\Navigation\\Catalog.cshtml",
+      "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Catalog\\Index.cshtml",
+      "TargetPath": "Views\\Catalog\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Navigation\\Policy.cshtml",
-      "TargetPath": "Views\\Navigation\\Policy.cshtml",
+      "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Blog\\BlogWithCategory.cshtml",
+      "TargetPath": "Views\\Blog\\BlogWithCategory.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\BestOffer\\Index.cshtml",
+      "TargetPath": "Views\\BestOffer\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Brend\\BrendDetail.cshtml",
+      "TargetPath": "Views\\Brend\\BrendDetail.cshtml",
       "FileKind": "mvc"
     },
     {

@@ -1,0 +1,113 @@
+﻿@model BlogsVM
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="home-navigation my-3">
+    <div class="container">
+        <a asp-controller="home" asp-action="index">Ana səhifə</a>/ <a>Blog</a>
+    </div>
+</div>
+
+<div class="secondary-home">
+    <div class="container">
+        <div class="text-center">
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="main-text">JYSK Blog</h4>
+
+                    <p>
+                        Bloqlarımıza göz atın və ən yaxşı trendlər, daxili fikirlərdən və rahat gece yuxusu almaqla
+                        bağlı ipuçları əldə edin.
+                    </p>
+
+                    <ul class="d-flex justify-content-md-center justify-content-between">
+                        <li class="px-md-5">
+                            <a href="#">
+                                Ilham
+                            </a>
+                        </li>
+                        <li class="px-md-5">
+                            <a style="font-weight:bold;">
+                                Blog
+                            </a>
+                        </li>
+                        <li class="px-md-5">
+                            <a href="#">
+                                Bələdçi
+                            </a>
+                        </li>
+                        <li class="px-md-5">
+                            <a asp-controller="brend" asp-action="index">
+                                Brend Üzrə Axtarış
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div class="blogs">
+    <div class="container">
+        <div class="row">
+            @foreach (var blog in Model.Blogs)
+            {
+                <div class="col-md-6 col-12 mt-2">
+                    <div class="blog-img">
+                        <img src="~/assets/img/blog/@blog.BlogSpesifications.Where(m=>m.BlogId == blog.Id).FirstOrDefault().Image" alt="blog-image">
+                    </div>
+                    <div class="blog-text">
+                        <h3>@blog.Name</h3>
+                        @if (blog.BlogSpesifications.Where(m => m.BlogId == blog.Id).FirstOrDefault().BlogText != null)
+                        {
+                            <p>@blog.BlogSpesifications.Where(m => m.BlogId == blog.Id).FirstOrDefault().BlogText</p>
+                        }
+                    </div>
+                    <div class="blog-button">
+                        <a asp-controller="blog" asp-action="blogdetail" asp-route-blogId="@blog.Id" class="btn btn-outline-dark">Ardini Oxu</a>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+</div>
+
+
+<div class="categories">
+    <div class="container">
+        <div class="row">
+
+            @foreach (var category in Model.Categories)
+            {
+                <div class="col-md-4 col-12 mt-4">
+                    <div class="category">
+                        <a asp-controller="blog" asp-action="BlogWithCategory" asp-route-categoryId="@category.Id">
+                            <img src="~/assets/img/categoriesMainPictures/@category.Image" alt="category-image">
+                        </a>
+                        <div class="category-header">
+                            @category.Name
+                            <p>
+                                Yazılanların sayı:
+                                @if (category.Blogs != null)
+                                {
+                                    @category.Blogs.Count()
+                                }
+                                else
+                                {
+                                    @Html.Raw(0)
+                                }
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

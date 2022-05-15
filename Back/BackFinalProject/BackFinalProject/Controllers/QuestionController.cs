@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BackFinalProject.Services.Interfaces;
+using BackFinalProject.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +10,19 @@ namespace BackFinalProject.Controllers
 {
     public class QuestionController : Controller
     {
+        private readonly ISettingService settingService;
+
+        public QuestionController(ISettingService settingService)
+        {
+            this.settingService = settingService;
+        }
         public IActionResult Index()
         {
-            return View();
+            QuestionVM questionVM = new()
+            {
+                Settings = settingService.GetSetting()
+            };
+            return View(questionVM);
         }
     }
 }

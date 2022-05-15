@@ -1,4 +1,4 @@
-﻿
+﻿@model StoreVM
 @{
     ViewData["Title"] = "Index";
 }
@@ -14,14 +14,14 @@
         <div class="row">
             <div class="col-md-8 col-12">
                 <div class="map-field">
-                    <iframe src="https://www.google.com/maps/d/embed?mid=1NpxBZwpAlL4wmhZ7R0E5L73uwCbvZs52&ehbc=2E312F" width="100%" height="480"></iframe>
+                    @Html.Raw(Model.Setting["StoreLocation"]);
                 </div>
             </div>
             <div class="col-md-4 col-12">
                 <div class="text-field p-4">
                     <h4>Magaza Unvani</h4>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, a.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, totam.</p>
+                    <p>Ish Saatlari @Model.Setting["StoreTime"]</p>
                     <p>
                         <a asp-controller="catalog" asp-action="index">
                             <svg id="icon-campaign-paper" viewBox="0 0 512 512">

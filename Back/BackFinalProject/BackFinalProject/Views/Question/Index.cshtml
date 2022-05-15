@@ -1,6 +1,6 @@
-﻿
+﻿@model QuestionVM
 @{
-    ViewData["Title"] = "Question";
+    ViewData["Title"] = "Index";
 }
 
 <div class="home-navigation my-3">
@@ -15,7 +15,7 @@
             <h4>MÜŞTƏRİ XİDMƏTİ - SUALLAR-CAVABLAR</h4>
 
             <p>
-                Siz bizə elektron məktub göndərə və ya +994512073330 nömrəsinə zəng edə bilərsiniz.Müştəri xidməti
+                Siz bizə elektron məktub göndərə və ya @Model.Settings["Phone"] nömrəsinə zəng edə bilərsiniz.Müştəri xidməti
                 şöbəsinə
                 zəng edərkən, nəzərə alın ki, bəzən xətlərdə yaranan tıxanıqlıq zamanı sizin zənginizə cavab
                 verməkdə
@@ -29,14 +29,14 @@
         <div class="col-md-3 col-12">
             <div class="questions-card mt-5">
                 <div class="question-card-img">
-                    <img src="~/assets/img/subscription/customer-service01.png" alt="hot-call">
+                    <img src="~/assets/img/subscription/@Model.Settings["QuestionsImg"]" alt="hot-call">
                 </div>
                 <div class="question-card-text p-3 pt-5">
                     <h4>MÜŞTƏRİ XİDMƏTİ</h4>
-                    <p>Tel:+99412 3775555</p>
-                    <a href="#" class="btn btn-light">Bize yazin</a>
-                    <p>Bazar ertəsi - Şəmbə günü : 10:00 - 18:00</p>
-                    <p>Mağazaların iş qrafiki haqqında məlumat üçün <a href="#">bura</a> daxil olun</p>
+                    <p>@Model.Settings["Phone"]</p>
+                    <a href="https://mail.google.com/" class="btn btn-light">Bize yazin</a>
+                    <p>@Model.Settings["QuestionTime"]</p>
+                    <p>Mağazaların iş qrafiki haqqında məlumat üçün <a asp-controller="store" asp-action="index">bura</a> daxil olun</p>
 
                 </div>
             </div>

@@ -1,0 +1,1024 @@
+// This code will send csrf-token every ajax request
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+}); 
+
+$(document).on('click','.make-payment', function(){
+    if($(this).hasClass('registered')) {
+        alert( $('.payment-error').attr('data-message') )
+        return false;
+    }
+})
+
+$('.service.serviceQuestions #accordion .card-body .accBtn').click(function () {
+    $('.service.serviceQuestions #accordion .card-body form').toggleClass('d-none')
+});
+$(".nav-tabs a").click(function(e){
+    e.preventDefault();
+    $(this).tab('show');
+});
+$(document).on('click','.plus',function(){
+    var input = $(this).closest('.addMore').find('input');
+    var inputVal = Number(input.val());
+    var max = Number(input.attr('max'));
+    if (inputVal < max){
+        inputVal++;
+        input.val(inputVal);
+    }
+    else {
+    }
+
+    input.trigger('change')
+});
+
+$(document).on('click','.min',function(){
+    var input = $(this).closest('.addMore').find('input');
+    var inputVal = Number(input.val());
+    if (inputVal > 1) {
+        inputVal--;
+        input.val(inputVal);
+    } else {
+
+    }
+
+    input.trigger('change')
+});
+
+$('.midHeader .cart').click(function () {
+    $('.cartMenu').toggleClass('open');
+});
+
+$('.service .card-body a, .questions a').click(function () {
+    var id = $(this).attr('href');
+    var str = id.slice(id.lastIndexOf('#') + 1);
+    console.log(str);
+    localStorage.setItem("accId", str);
+});
+if (localStorage.getItem("accId") !== null) {
+    var storeVal = localStorage.getItem("accId");
+
+    if($("#"+storeVal).length) {
+        $("#"+storeVal).addClass('show');
+        localStorage.clear();
+    }
+
+} else {
+    console.log('storage null')
+}
+
+$('#buy').click(function () {
+    $('.modalContent').html('');
+    $('body').addClass('openModal');
+    var modalContent = '<div class="closeBtn">\n' +
+        '            x\n' +
+        '        </div>\n' +
+        '        <div class="head">\n' +
+        '            <h3 class="pageTitle">ТОВАР ДОБАВЛЕН В КОРЗИНУ</h3>\n' +
+        '        </div>\n' +
+        '        <div class="cartCol">\n' +
+        '            <ul>\n' +
+        '                <li>\n' +
+        '                    <div class="cartImg">\n' +
+        '                        <img src="img/cart1.jfif" alt="">\n' +
+        '                    </div>\n' +
+        '                    <div class="details">\n' +
+        '                        <p class="name">Кровать PORSGRUNN 80 / 160х200 белый</p>\n' +
+        '                        <p class="sku">SKU: 3600910</p>\n' +
+        '                        <p class="discount"></p>\n' +
+        '                    </div>\n' +
+        '                    <div class="addMore">\n' +
+        '                        <input type="text" name="qty" min="2" max="12" value="5"/>\n' +
+        '                    </div>\n' +
+        '                    <div class="cartPrice">\n' +
+        '                        <span>14997,00 грн</span>\n' +
+        '                    </div>\n' +
+        '                </li>\n' +
+        '            </ul>\n' +
+        '            <div class="cartInfo">\n' +
+        '                <div class="basketTotal">\n' +
+        '                    <p>Всего <span>9400,00 грн</span></p>\n' +
+        '                </div>\n' +
+        '                <div class="address">\n' +
+        '                    <p>м. Киев: отделение до 30кг - 70грн., от 30кг - 200грн. в адрес до 30кг - 150грн., от 30кг - 300грн.</p>\n' +
+        '                    <p>Регионы: отделение до 30кг - 70грн., От 30кг - 250грн .; в адрес до 30кг - 150грн., от 30кг - 400грн.</p>\n' +
+        '                </div>\n' +
+        '                <div class="buttons">\n' +
+        '                    <a href="javascript:void(0);" class="btn allBtn closeBtn">Продолжить покупки </a>\n' +
+        '                    <a href="cart.html" class="btn blueBtn">Оформить заказ</a>\n' +
+        '                </div>\n' +
+        '            </div>\n' +
+        '        </div>';
+        $('.modalContent').html(modalContent);
+});
+
+// $('#shopStorage').click(function () {
+//     $('.modalContent').html('');
+//     $('body').addClass('openModal');
+//     var modalContent = '<div class="closeBtn">\n' +
+//         '            x\n' +
+//         '        </div>\n' +
+//         '        <div class="head">\n' +
+//         '            <h3 class="pageTitle">ЗАПАСЫ МАГАЗИНА</h3>\n' +
+//         '        </div>\n' +
+//         '        <div class="storageContent">\n' +
+//         '            <p class="noClass">Проверить наличие товара в любом магазине JYSK</p>\n' +
+//         '            <form action="">\n' +
+//         '                <label>ИНДЕКС ИЛИ ГОРОД:</label>\n' +
+//         '                <div class="form-group">\n' +
+//         '                    <input type="text" class="form-control">\n' +
+//         '                    <button class="blueBtn btn" type="button">найти магазин</button>\n' +
+//         '                </div>\n' +
+//         '            </form>\n' +
+//         '            <h3 class="pageTitle">\n' +
+//         '                БЛИЖАЙШИЕ К ВАМ МАГАЗИНЫ\n' +
+//         '            </h3>\n' +
+//         '            <p class="noClass">В списке приведены ближайшие магазины, в которых есть нужный товар. Установите флажок "Показать все магазины", чтобы просмотреть все магазины независимо от их состояния.</p>\n' +
+//         '            <label>\n' +
+//         '                <input type="checkbox">\n' +
+//         '                Показать все магазины <span>( 57 )</span>\n' +
+//         '            </label>\n' +
+//         '            <div class="storesList">\n' +
+//         '                <ul>\n' +
+//         '                    <li>\n' +
+//         '                        <div class="storeName">\n' +
+//         '                            <p>\n' +
+//         '                                <strong>JYSK Запорожье, ТЦ Амстор</strong>\n' +
+//         '                                Победы 64, 69000 Запорожье\n' +
+//         '                            </p>\n' +
+//         '                        </div>\n' +
+//         '                        <div class="countInStore">\n' +
+//         '                            <p>\n' +
+//         '                                <span>1</span>\n' +
+//         '                                шт. В наличии\n' +
+//         '                            </p>\n' +
+//         '                            <p>\n' +
+//         '                                (данные обновленные 12:33 - 13.02.2020)\n' +
+//         '                            </p>\n' +
+//         '                        </div>\n' +
+//         '                        <br>\n' +
+//         '                        <div class="showOnMap">\n' +
+//         '                            <a href="stores.html">Магазин на карте</a>\n' +
+//         '                        </div>\n' +
+//         '                    </li>\n' +
+//         '                    <li>\n' +
+//         '                        <div class="storeName">\n' +
+//         '                            <p>\n' +
+//         '                                <strong>JYSK Запорожье, ТЦ Амстор</strong>\n' +
+//         '                                Победы 64, 69000 Запорожье\n' +
+//         '                            </p>\n' +
+//         '                        </div>\n' +
+//         '                        <div class="countInStore">\n' +
+//         '                            <p>\n' +
+//         '                                <span>1</span>\n' +
+//         '                                шт. В наличии\n' +
+//         '                            </p>\n' +
+//         '                            <p>\n' +
+//         '                                (данные обновленные 12:33 - 13.02.2020)\n' +
+//         '                            </p>\n' +
+//         '                        </div>\n' +
+//         '                        <br>\n' +
+//         '                        <div class="showOnMap">\n' +
+//         '                            <a href="stores.html">Магазин на карте</a>\n' +
+//         '                        </div>\n' +
+//         '                    </li>\n' +
+//         '                </ul>\n' +
+//         '            </div>\n' +
+//         '            <div class="showMore">\n' +
+//         '                <a href="javascript:void(0);">Показать больше магазинов</a>\n' +
+//         '            </div>\n' +
+//         '            <div class="closeBtn">\n' +
+//         '                <a href="javascript:void(0);" class="btn allBtn">Закрыть</a>\n' +
+//         '            </div>\n' +
+//         '        </div>';
+//     $('.modalContent').html(modalContent);
+// });
+
+$('#getInStore').click(function () {
+    $('.modalContent').html('');
+    $('body').addClass('openModal');
+    var modalContent = '<div class="closeBtn">\n' +
+        '            x\n' +
+        '        </div>\n' +
+        '        <div class="head">\n' +
+        '            <h3 class="pageTitle">\n' +
+        '                ЗАБРАТЬ В МАГАЗИНЕ</h3>\n' +
+        '        </div>\n' +
+        '        <div class="storageContent">\n' +
+        '            <p class="noClass">В течение 1:00 (в рабочие часы магазина) вы получите электронное письмо и смс, в которых вас проинформируют, что ваши товары готовы.</p>\n' +
+        '            <form action="">\n' +
+        '                <label>ИНДЕКС ИЛИ ГОРОД:</label>\n' +
+        '                <div class="form-group">\n' +
+        '                    <input type="text" class="form-control">\n' +
+        '                    <button class="blueBtn btn" type="button">найти магазин</button>\n' +
+        '                </div>\n' +
+        '            </form>\n' +
+        '            <p class="noClass">Укажите, где Вы хотите забрать заказ:</p>\n' +
+        '            <label>\n' +
+        '                <input type="checkbox">\n' +
+        '                Показать все магазины <span>( 57 )</span>\n' +
+        '            </label>\n' +
+        '            <p>В перечне указаны все магазины, в которых данный товар есть в наличии. Нажмите «Показать все магазины», чтобы увидеть перечень всех магазинов.</p>\n' +
+        '            <div class="storesList">\n' +
+        '                <ul>\n' +
+        '                    <li>\n' +
+        '                        <div class="storeName">\n' +
+        '                            <p>\n' +
+        '                                <strong>JYSK Запорожье, ТЦ Амстор</strong>\n' +
+        '                                Победы 64, 69000 Запорожье\n' +
+        '                            </p>\n' +
+        '                        </div>\n' +
+        '                        <div class="countInStore">\n' +
+        '                            <p>\n' +
+        '                                <span>1</span>\n' +
+        '                                шт. В наличии\n' +
+        '                            </p>\n' +
+        '                            <p>\n' +
+        '                                (данные обновленные 12:33 - 13.02.2020)\n' +
+        '                            </p>\n' +
+        '                        </div>\n' +
+        '                    </li>\n' +
+        '                    <li>\n' +
+        '                        <div class="storeName">\n' +
+        '                            <p>\n' +
+        '                                <strong>JYSK Запорожье, ТЦ Амстор</strong>\n' +
+        '                                Победы 64, 69000 Запорожье\n' +
+        '                            </p>\n' +
+        '                        </div>\n' +
+        '                        <div class="countInStore">\n' +
+        '                            <p>\n' +
+        '                                <span>1</span>\n' +
+        '                                шт. В наличии\n' +
+        '                            </p>\n' +
+        '                            <p>\n' +
+        '                                (данные обновленные 12:33 - 13.02.2020)\n' +
+        '                            </p>\n' +
+        '                        </div>\n' +
+        '                    </li>\n' +
+        '                </ul>\n' +
+        '            </div>\n' +
+        '            <div class="showMore">\n' +
+        '                <a href="javascript:void(0);">Показать больше магазинов</a>\n' +
+        '            </div>\n' +
+        '        </div>';
+    $('.modalContent').html(modalContent);
+});
+
+$('#comment').click(function () {
+    $('body').addClass('openModal');
+});
+
+$('.someForm label a').click(function () {
+    $('body').addClass('openModal');
+});
+
+$(document).on('mouseover ','#rating-select .star', function () {
+    $(this).prevAll('.star').removeClass('none').addClass('hovered');
+    $(this).removeClass('none').addClass('hovered');
+});
+
+$(document).on('mouseleave ','#rating-select .star.hovered', function () {
+    $(this).prevAll('.star').removeClass('hovered').addClass('none');
+    $(this).removeClass('hovered').addClass('none');
+});
+
+$(document).on('click','#rating-select .star', function () {
+    $(this).prevAll('.star').removeClass('none').addClass('full');
+    $(this).nextAll('.star').removeClass('full').addClass('none');
+    $(this).removeClass('none').addClass('full');
+    $('.selectedStars').val($('#rating-select .star.full').length).trigger('change')
+});
+
+$(document).on('click','.closeBtn, .modalBlur', function () {
+    $('body').removeClass('openModal')
+});
+
+$(document).click(function(e) {
+    var target = e.target;
+    if (!$(target).is('.cartMenu') && !$(target).parents().is('.cartMenu') && !$(target).is('.midHeader .cart') && !$(target).parents().is('.midHeader .cart')) {
+        $('.cartMenu').removeClass('open');
+    }
+});
+
+$('#sc-lead-generation-closed').click(function (e) {
+    var target = e.target;
+    if (!$(target).is('#sc-lead-generation-closed .close-x')) {
+        $(this).hide();
+        $('#sc-lead-generation').show()
+    }
+});
+
+$('#sc-lead-generation').click(function (e) {
+    var target = e.target;
+    if (!$(target).is('#sc-modal') && !$(target).parents().is('#sc-modal')) {
+        $('#sc-lead-generation-closed').show();
+        $('#sc-lead-generation').hide()
+    }
+});
+
+$('#sc-lead-generation .close-x').click(function () {
+        $('#sc-lead-generation-closed').show();
+        $('#sc-lead-generation').hide()
+});
+
+$('#sc-lead-generation-closed .close-x').click(function () {
+    $('#sc-lead-generation-closed').hide()
+});
+
+var a = 1;
+$('#addAddress').click(function (e) {
+    e.preventDefault();
+    var newAddress = '<div class="card">\n' +
+        '    <div class="card-header">\n' +
+        '        <a class="card-link" data-toggle="collapse" href="#info'+a+'">\n' +
+        '            <p>Адрес доставки # '+a+' </p>\n' +
+        '        </a>\n' +
+        '    </div>\n' +
+        '    <div id="info'+a+'" class="collapse show">\n' +
+        '        <div class="card-body">\n' +
+        '            <div class="item">\n' +
+        '                <form action="">\n' +
+        '                    <div class="form-group">\n' +
+        '                        <input type="text" placeholder="Телефон" class="form-control">\n' +
+        '                    </div>\n' +
+        '                    <div class="two">\n' +
+        '                        <div class="form-group">\n' +
+        '                            <input type="text" placeholder="Имя" class="form-control">\n' +
+        '                        </div>\n' +
+        '                        <div class="form-group">\n' +
+        '                            <input type="text" placeholder="Фамилия" class="form-control">\n' +
+        '                        </div>\n' +
+        '                    </div>\n' +
+        '                    <div class="form-group">\n' +
+        '                        <input type="text" placeholder="Город" class="form-control">\n' +
+        '                    </div>\n' +
+        '                    <div class="three">\n' +
+        '                        <div class="form-group">\n' +
+        '                            <input type="text" placeholder="Улица" class="form-control">\n' +
+        '                        </div>\n' +
+        '                        <div class="form-group">\n' +
+        '                            <input type="text" placeholder="Номер дома" class="form-control">\n' +
+        '                        </div>\n' +
+        '                        <div class="form-group">\n' +
+        '                            <input type="text" placeholder="Этаж" class="form-control">\n' +
+        '                        </div>\n' +
+        '                    </div>\n' +
+        '                    <a class="deleteAddress" href="javascript:void(0);">удалить адрес</a>\n'+
+        '                </form>\n' +
+        '            </div>\n' +
+        '        </div>\n' +
+        '    </div>\n' +
+        '</div>';
+    document.getElementById('accordion1').innerHTML += newAddress;
+    a++
+});
+
+$(document).on('click','.deleteAddress', function () {
+   $('#accordion1 .card:last-child').remove();
+   a--
+});
+$('.hiddenForm').css('display','none');
+
+
+$('#newAddress').change(function () {
+    if ($(this)[0].checked){
+        $('.hiddenForm').css('display','block');
+    }
+    else{
+        $('.hiddenForm').css('display','none');
+    }
+});
+
+// $('.searchBar input').keyup(function () {
+//     if ($(this).val().length >= 2){
+//         $('.searchContainer').addClass('open')
+//     }
+//     else{
+//         $('.searchContainer').removeClass('open')
+//     }
+// });
+
+
+function getCartList(basket_modal=false)
+{
+    $.ajax({
+        url: '/get-header-count.html',
+        type: 'get',
+        data: {'basket_modal': basket_modal},
+        dataType: 'json',
+        success: function(data) {
+            if(data.success)
+            {
+                if(data.response.wish_count)
+                {
+                    $('.item-wish-list span').html('(' + data.response.wish_count + ')')
+                }
+
+                if(data.response.cart_count && data.response.cart_count > 0)
+                {
+                    $('.cartIcon .count').html(data.response.cart_count).removeClass('d-none')
+                } else {
+                    $('.cartIcon .count').html(data.response.cart_count).addClass('d-none')
+                }
+                
+                if($('.basket-main').length) {
+                    $('.basket-main').html(data.response.basket_inside)
+                } else {
+                    $('.cartMenu').html(data.response.cart_inside)
+                }
+
+                if(basket_modal) {
+                    $('.modalContent').html('');
+                    $('body').addClass('openModal');
+                    $('.modalContent').html(data.response.basket_modal);
+                }
+            }
+
+            $('body').removeClass('body-loading ajax-loading')
+        }
+    });
+}
+
+getCartList();
+
+
+$(document).on('change','.cart-product-count,.basket-product-count', function(){
+    var count = parseInt($(this).val());
+
+    if(count < 1) {
+        $('.cart-product-count').val(1);
+    }
+})
+
+
+$(document).on('beforeSubmit','.countToBuy form',function(event, jqXHR, settings) {
+    var form = $(this);
+    if (form.find('.has-error').length > 0)
+        return false;
+
+    $.ajax({
+        url: form.attr('action'),
+        type: 'post',
+        data: form.serialize(),
+        dataType: 'json',
+        success: function(data) {
+            if(data.success) {
+                getCartList(basket_modal = true);
+            } else {
+                alert(data.response)
+            }
+        }
+    });
+
+    return false;
+});
+
+
+
+$(document).on('click','.deleteBtn',function(event, jqXHR, settings) {
+
+    var id = parseInt($(this).attr('data-id'))
+
+    $.ajax({
+        url: '/delete-cart-item.html',
+        type: 'post',
+        data: {'cart_item_id': id},
+        dataType: 'json',
+        success: function(data) {
+            getCartList();
+        }
+    });
+
+    return false;
+});
+
+$(document).on('change','.basket-product-count',function(event, jqXHR, settings) {
+
+    var id = parseInt($(this).parents('li').find('.deleteBtn').attr('data-id'))
+    var count = parseInt($(this).val())
+
+    $.ajax({
+        url: '/update-cart.html',
+        type: 'post',
+        data: {'id': id,'count': count},
+        dataType: 'json',
+        success: function(data) {
+            getCartList();
+        }
+    });
+
+    return false;
+});
+
+
+$(document).on('change','.delivery-option', function(){
+    $('.delivering, .pickup').addClass('d-none')
+
+    if($(this).val()) {
+        $('.' + $(this).val()).removeClass('d-none')
+    }
+})
+
+$(document).on('beforeSubmit','form.create-order',function(event, jqXHR, settings) {
+    var form = $(this);
+    if (form.find('.has-error').length > 0)
+        return false;
+    
+    $('body').addClass('spinner')
+
+    $.ajax({
+        url: form.attr('action'),
+        type: 'post',
+        data: form.serialize(),
+        dataType: 'json',
+        success: function(data) {
+            // getCartList();
+        }
+    });
+
+    return false;
+});
+
+
+
+
+const scrollToElement = function(){
+    
+    if(typeof $('.has-error').first().offset() !== 'undefined') {
+
+        if($('.has-error').parents('#colorbox_content').length) {
+            $.colorbox.resize();
+        }
+
+        var scrollOffset = $('.has-error').first().offset().top-200;
+
+        $('html, body').animate({
+            scrollTop: scrollOffset
+        }, 400);
+    }
+}
+
+// // SCROLL TO ERROR FIELD WHEN FORM SUBMIT WITH ERROR
+// $('form').on('afterValidate', function (event, messages) {
+//     scrollToElement();
+// });
+
+
+// Submit sign form
+$(document).on('beforeSubmit','.sp-form', function(event, jqXHR, settings) {
+    var form = $(this);
+    var form_class = form.attr('form-class')
+    if (form.find('.has-error').length > 0)
+        return false;
+
+    $('.alert-danger').hide();
+
+    $('body').addClass('spinner')
+    
+    $.ajax({
+        url: form.attr('action'),
+        type: 'post',
+        data: form.serialize(),
+        dataType: 'json',
+        success: function(data) {
+            if(data.show_notf) {
+                form.find('.alert-' + (data.success ? 'success' : 'danger')).html(data.response).fadeIn()
+            } else {
+               
+                $.each(data.response,function(key,value){
+                    $('.field-' + form_class + '-'+key).addClass('has-error').removeClass('has-success');
+                    $('.field-' + form_class + '-'+key).find('.help-block').html(value);
+                })
+                if($('#signupform-recaptcha').length) {
+                    $('#signupform-recaptcha').val('')
+                }
+                grecaptcha.reset();
+                
+                $('body').removeClass('spinner')
+
+                scrollToElement();
+            }
+
+            if(data.success && form.hasClass('password-form')) {
+                form[0].reset();
+            }
+
+            if(data.success) {
+                form[0].reset()
+            }
+
+            $('body').removeClass('spinner')
+        }
+    });
+    return false;
+});
+
+
+$(document).on('click','.wish-link', function(){
+    var t = $(this);
+    var id = parseInt(t.attr('data-id'))
+
+    if(id) {
+        $.ajax({
+            url: '/control-wish-list.html',
+            type: 'post',
+            data: {'id': id},
+            dataType: 'json',
+            success: function(data) {
+                if(data.status == 'added') {
+                    t.addClass('active')
+                } else {
+                    t.removeClass('active')
+
+                    if(t.parents('.wishListItem').length) {
+                        t.parents('.col-lg-4').fadeOut(100, function() { $(this).remove(); })
+                    }
+                }
+
+                t.find('span').html( data.response )
+                getCartList();
+            }       
+        });
+    }
+
+    return false;
+})
+
+
+$(document).on('click','#shopStorage', function(){
+    var id = parseInt($(this).attr('data-id'))
+
+    if(id) {
+
+        $('body').addClass('spinner')
+
+        $.ajax({
+            url: '/get-product-store.html',
+            type: 'post',
+            data: {'id': id},
+            dataType: 'json',
+            success: function(data) {
+                if(data.success) {
+                    $('.modalContent').html('');
+                    $('body').addClass('openModal');
+                    $('.modalContent').html(data.response);
+                }
+
+                $('body').removeClass('spinner')
+            }       
+        });
+    }
+})
+
+// SUBSCRIBE FORM
+$('.subscribe-form form').on('beforeSubmit', function(event, jqXHR, settings) 
+{   
+    var form = $(this);
+    if(form.find('.has-error').length) {
+        return false;
+    }
+
+    $.ajax({
+        url: form.attr('action'),
+        type: 'post',
+        data: form.serialize(),
+        dataType:"json",
+        success: function(data) {
+            if(data.response != "" || data.response !="undefined")
+            {
+                form.parents('.subscribe-form').html(data.response);
+            } 
+        },
+    });
+    return false;
+});
+
+
+const getCatalog = function() {
+    $('.ajax-category').each(function() {
+        var id = parseInt($(this).attr('data-category'));
+        $.ajax({
+            url: '/category-products.html',
+            type: 'get',
+            data: {'id': id,'priceSort': $('.price-sorting').val()},
+            dataType:"json",
+            success: function(data) {
+                if(data.success && data.response.length) {
+                    $('#category-products-'+id + ' .product-list').html(data.response);
+                    $('#category-products-'+id ).fadeIn(100)
+                }
+                $('.product-main-parent').removeClass('spinner')
+            },
+        });
+    })
+}
+
+$(document).on('change','.outlet-check',function() {
+    $(this).parents('form').submit()
+})
+
+$(document).on('change','.price-sorting', function(){
+
+    if($(this).hasClass('outlet-sort')) {
+        $('.sort-by').val($(this).val())
+        $('.sort-by').parents('form').submit()
+        return;
+    }
+
+    $('.ajax-category .product-list').html('')
+    $('.ajax-category').fadeOut(200)
+    $('.product-main-parent').addClass('spinner')
+    getCatalog();
+})
+
+if($('.ajax-category').length) {
+    getCatalog();
+}
+
+
+if($('.product-view').length) 
+{
+    var id = parseInt($('.product-view').attr('data-id'));
+    var productList = JSON.parse(localStorage.getItem('viewedProducts')) || [];
+
+    if($.inArray(id, productList) < 0) 
+    {
+        productList.push(id);
+        localStorage.setItem('viewedProducts', JSON.stringify(productList))
+    }
+
+     $.ajax({
+        url: '/get-same-collection-products.html',
+        type: 'post',
+        data: {'product_id': id},
+        dataType: 'json',
+        success: function(data) {
+            if(data.success) {
+                $('.same-collection-products').html(data.response)
+                $('.same-collection-products .productsViewed .carousel').flickity({
+                    "wrapAround": true, 
+                    "pageDots": false, 
+                    "cellAlign": "left" 
+                })
+            } else {
+                $('.same-collection-products').hide();
+            }
+        }
+    });
+}
+
+if($('.soonView-main').length) 
+{
+    var productList = JSON.parse(localStorage.getItem('viewedProducts')) || [];
+
+    if($(productList).length) {
+        $.ajax({
+            url: '/get-viewed-products.html',
+            type: 'post',
+            data: {'products': JSON.stringify(productList)},
+            dataType: 'json',
+            success: function(data) {
+                if(data.success) {
+                    $('.soonView-main').html(data.response)
+                    $('.soonView-main .productsViewed .carousel').flickity({
+                        "wrapAround": true, 
+                        "pageDots": false, 
+                        "cellAlign": "left" 
+                    })
+                } else {
+                    $('.soonView-main').hide();
+                }
+            }
+        });
+    }
+}
+
+
+
+$(document).on('click','.btn-show-products', function(){
+
+    var id = parseInt($(this).attr('data-id'))
+
+    $.ajax({
+        url: '/account/get-order-products',
+        type: 'get',
+        data: {'id': id},
+        dataType: 'json',
+        success: function(data) {
+            if(data.success)
+            {
+                $('.modalContent').html('');
+                $('body').addClass('openModal');
+                $('.modalContent').html(data.response);
+            }
+
+            $('body').removeClass('body-loading ajax-loading')
+        }
+    });
+
+    return false;
+})
+
+$(document).on('change','.select-tab select',function(){
+    $('.tab-pane').removeClass('fade active')
+    $($(this).find('option:selected').attr('data-tab')).addClass('active')
+})
+
+$(document).on('click','.midHeaderLeft .navbar-toggle', function(){
+    if($(this).hasClass('active')) {
+        $(this).removeClass('active')
+        $('.mobile-category').slideUp(300)
+    } else {
+        $(this).addClass('active')
+        $('.mobile-category').slideDown(300)
+    }
+})
+
+$(document).on('change','.product-group-items', function(){
+    window.top.location = $(this).val()
+})
+
+
+
+// HOME PAGE AUTOCOMPLETE BOX
+$('.autocomplete-input').autocomplete({
+    minLength: 2,
+    delay: 300,
+    source: function(request, response) {
+        $.ajax({
+            url: "/filter.html",
+            type: "GET",
+            data: {
+                term: request.term
+            },
+            dataType: "json",
+            success: function(data) {
+                $('.sr').empty();
+
+                if(data.response.show_search_bar) 
+                {
+                    $('.sr').fadeIn(200)
+
+                } else {
+                    $('.sr').fadeOut(200);
+                }
+
+                var result = "";
+
+                $.each(data.response, function(key, el) {
+
+                    $(el).each(function(i,el){
+                        
+                        if(el.result != undefined && el.result.length) {
+                            result += '<div class="sr-group">';
+                                result += '<h1 class="sr-group-title">' + el.title  + '</h1>';
+                                result += '<ul>';
+                                    $(el.result).each(function(key,item) {
+                                        result += '<li>';
+                                            result += '<a href="' + item.url + '" class="clearfix" title="">';
+                                                result +='<div class="sr-left">'
+                                                    result +='<img src="' + item.img + '" class="sr-img" alt="">'
+                                                    result +='<div class="sr-title">' + item.title + '</div>'
+                                                result +='</div>'
+                                                result +='<div class="sr-amount sr-right">' + item.right_info + '</div>'
+                                            result += '</a>';
+                                        result += '</li>';
+                                    })
+                                result += '</ul>';
+                            result += '</div>';
+                        }
+                    })        
+                })
+
+                if(data.response.group[1].result.length == 5) {
+                    result += '<div class="show-all">';
+                    result += '   <a href="#" title="">' + $(".autocomplete-input").attr("data-btn-title") + '</a>';
+                    result += '</div>';
+                }
+
+                $('.sr').append(result)
+                
+            }
+        });
+        
+    },
+    select: function(event, ui) {
+         window.location = ui.item.url;
+    },
+});
+
+const capitalize = (s) => {
+  if (typeof s !== 'string') return ''
+  return s.charAt(0).toUpperCase() + s.slice(1)
+}
+
+$(document).on('click','.show-all', function(){
+    $(this).parents('.searchBar').find('form').submit()
+    return false;
+})
+
+if($('.image-link').length) {
+    $('.image-link').magnificPopup({type:'image',gallery: {enabled: true}});
+}
+
+
+$(document).on('click','.outlet-sidebar-block-title',function() {
+    $(this).toggleClass('active')
+    if($(this).hasClass('active')) {
+        $(this).parent().find('.product-list-filter-options').slideDown(300)
+    } else {
+        $(this).parent().find('.product-list-filter-options').slideUp(300)
+    }
+})
+
+var width = $(window).width()
+
+$(document).on('click','.inline',function() {
+    $.colorbox({
+        href: $(this).attr('href'),
+        inline:true, 
+        width: (width > 800 ? "450px" : "90%"),
+        fixed: true,
+        transition:"fade"
+    });    
+
+    return false;
+})
+
+
+
+function getcookie(name = '') {
+    let cookies = document.cookie;
+    let cookiestore = {};
+    
+    cookies = cookies.split(";");
+    
+    if (cookies[0] == "" && cookies[0][0] == undefined) {
+        return undefined;
+    }
+    
+    cookies.forEach(function(cookie) {
+        cookie = cookie.split(/=(.+)/);
+        if (cookie[0].substr(0, 1) == ' ') {
+            cookie[0] = cookie[0].substr(1);
+        }
+        cookiestore[cookie[0]] = cookie[1];
+    });
+    
+    return (name !== '' ? cookiestore[name] : cookiestore);
+}
+
+function setcookie(name,value) {
+     var date = new Date();
+    date.setDate(date.getDate() + 1);
+    var expires = "; expires="+date.toGMTString();
+     document.cookie = name+"="+value+expires+";";
+}
+
+if(!getcookie('show_modal') && $('.campaign-modal').length) 
+{
+    setTimeout(function() {
+        $('.campaign-modal').click();
+        setcookie('show_modal', 'show_modal_cookie'); 
+    },5000)
+}
+
+
+if($('.clock').length) {
+    var clock;
+
+    clock = $('.clock').FlipClock({
+        clockFace: 'DailyCounter',
+        autoStart: false,
+        callbacks: {
+            stop: function() {
+                $('.message').html('The clock has stopped!')
+            }
+        }
+    });
+            
+    clock.setTime(parseInt($('.clock').attr('data-time')));
+    clock.setCountdown(true);
+    clock.start();
+}
+
+var $mainCarousel = $('.prodViewSlider').flickity({
+      prevNextButtons: false,
+    });
+
+    var $navCarousel = $('.carousel-nav').flickity({
+      // asNavFor: '.carousel-main',
+      // cellSelector: '.carousel-cell-item',
+      contain: true,
+      pageDots: false,
+      prevNextButtons: false,
+    });
+
+    $('.prev-button').on( 'click', function() {
+      $mainCarousel.flickity('previous');
+    });
+
+    $('.next-button').on( 'click', function() {
+      $mainCarousel.flickity('next');
+    });

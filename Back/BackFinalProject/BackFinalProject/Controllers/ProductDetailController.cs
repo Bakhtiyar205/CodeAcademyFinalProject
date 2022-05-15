@@ -1,4 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BackFinalProject.Models;
+using BackFinalProject.Services.Interfaces;
+using BackFinalProject.ViewModels;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +11,20 @@ namespace BackFinalProject.Controllers
 {
     public class ProductDetailController : Controller
     {
-        public IActionResult Index()
+        private readonly IProductService productService;
+
+        public ProductDetailController(IProductService productService)
         {
-            return View();
+            this.productService = productService;
+        }
+        public async Task<IActionResult> Index(int productId)
+        {
+            ProductVM productVM = new(await productService.GetProductWithIdAsync(productId))
+            {
+                Product = await productService.GetProductWithIdAsync(productId),
+                Products = await productService.GetProductsAsync()
+            };
+            return View(productVM);
         }
     }
 }

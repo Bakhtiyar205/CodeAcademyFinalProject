@@ -26,7 +26,9 @@ namespace BackFinalProject.Services
 
         public async Task<Category> GetCategoriesWithIdAsync(int categoryId)
         {
-            return await _context.Categories.Where(m => m.Id == categoryId).Include(m=>m.SubCategory).FirstOrDefaultAsync();
+            return await _context.Categories.Where(m => m.Id == categoryId)
+                                            .Include(m=>m.SubCategory)
+                                            .FirstOrDefaultAsync();
         }
     }
 }

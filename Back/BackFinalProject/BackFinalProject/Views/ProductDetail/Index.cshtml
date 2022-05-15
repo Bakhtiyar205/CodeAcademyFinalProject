@@ -1,61 +1,204 @@
-﻿
+﻿@model ProductVM
 @{
     ViewData["Title"] = "Index";
 }
 
-    <!-- home-naviagtion -->
-    <div class="home-navigation my-3">
-        <div class="container">
-            <a href="index.html">Ana səhifə</a>/ <a href="#">Yatag otağı</a> /<a href="#">Yatag otağı</a>/<a>Yatag otağı</a>
-        </div>
+<!-- home-naviagtion -->
+<div class="home-navigation my-3">
+    <div class="container">
+        <a asp-controller="Home" asp-action="Index">Ana səhifə</a>/
+        <a asp-controller="subcategory" asp-action="Index" asp-route-subcategoryId="@Model.Product.SubCategoryId">@Model.Product.SubCategory.Name</a>
+        /<a>@Model.Product.Name</a>
     </div>
+</div>
 
-    <!-- Product Name -->
-    <div class="product-name">
-        <div class="container">
-            <h3>Divan GEDVED 2 Nəfərlik Boz</h3>
-        </div>
+<!-- Product Name -->
+<div class="product-name">
+    <div class="container">
+        <h3>@Model.Product.Name</h3>
     </div>
+</div>
 
-    <!-- Product Detail -->
-    <div class="product-detail-main">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-md-6">
-                    <div class="owl-carousel-container">
-                        <div class="owl-carousel-product owl-carousel owl-theme">
+<!-- Product Detail -->
+<div class="product-detail-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="owl-carousel-container">
+                    <div class="owl-carousel-product owl-carousel owl-theme">
+                        @foreach (var productImage in Model.Product.ProductImages)
+                        {
                             <div class="owl-field p-5">
-                                <img src="~/assets/img/subCategory/3600389-JENSLEV.jpg" alt="">
+                                <img src="~/assets/img/products/@productImage.Image" alt="">
                             </div>
-                            <div class="owl-field p-5">
-                                <img src="~/assets/img/subCategory/3600389-JENSLEV.jpg" alt="">
-                            </div>
-                            <div class="owl-field p-5">
-                                <img src="~/assets/img/subCategory/3600389-JENSLEV.jpg" alt="">
-                            </div>
-                        </div>
-                        <!-- Small Picture -->
-                        <div class="owl-small-img">
-                            <span class="img-count"> 1</span>
-                            <img src="~/assets/img/subCategory/3600389-JENSLEV.jpg" alt="">
-                        </div>
+                        }
+                    </div>
+                    <!-- Small Picture -->
+                    <div class="owl-small-img">
+                        <span class="img-count">@Model.Product.ProductImages.Where(m => m.ProductId == Model.Product.Id).Count()</span>
+                        <img src="~/assets/img/products/@Model.Product.ProductImages.FirstOrDefault().Image" alt="product-image">
                     </div>
                 </div>
-                <div class="col-12 col-md-6 mt-5">
-                    <div class="shop-product p-4">
-                        <ul>
-                            <li>Magaza : 10 product movcuddur</li>
-                            <li>Magaza : 10 product movcuddur</li>
-                        </ul>
-                        <p>Magazada sergi numunesini gore bilersiniz</p>
-                        <hr class="my-3">
-                        <h6>Aksiya bu tarixe geder kecerlidir: 11.05.2022</h6>
-                        <div class="discount-percentage p-1">Endirim 17%</div>
-                        <div class="discounted-price"><span>24.99</span>/ededi</div>
-                        <div class="real-price">29.9</div>
-                        <div class="form-group field-cart-product">
-                            <input type="number" placeholder="1" class="p-3" min="1">
-                            <button class="btn btn-primary btn-custom">Sebete at</button>
+            </div>
+            <div class="col-12 col-md-6 mt-5">
+                <div class="shop-product p-4">
+                    <ul>
+                        <li>Magaza : 10 product movcuddur</li>
+                        @if (Model.Product.IsOnline == false)
+                        {
+
+
+                            <li>Online alish-verish uchun movcud deyil</li>
+                        }
+                        else
+                        {
+                            <li>Online alish-verish uchun movcuddur</li>
+                        }
+
+                    </ul>
+                    <p>Magazada sergi numunesini gore bilersiniz</p>
+                    <hr class="my-3">
+                    <h6>Aksiya bu tarixe geder kecerlidir: 11.05.2022</h6>
+                    @if (Model.Product.Discount == 0)
+                    {
+                        <div class="discounted-price"><span>@Math.Truncate(Model.Product.RealPrice) Azn</span>/ededi</div>
+                    }
+                    else
+                    {
+                        <div class="discount-percentage p-1">@Math.Truncate(Model.Product.Discount)</div>
+                        <div class="discounted-price"><span>@Math.Truncate(Model.DiscountedPrice) Azn</span>/ededi</div>
+                        <div class="real-price">@Math.Truncate(Model.Product.RealPrice) AZN</div>
+                    }
+
+                    <div class="form-group field-cart-product">
+                        <input type="number" placeholder="1" class="p-3" min="1">
+                        <button class="btn btn-primary btn-custom">Sebete at</button>
+                    </div>
+                    <div class="wish-list text-center mt-2">
+                        <a href="#">
+                            <svg id="icon-heart" viewBox="0 0 512 512">
+                                <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
+                                </path>
+                            </svg>
+                            Istek Listi
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+<!-- Advantage Company Product Policy -->
+<div class="advantage-product-shop">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="changeable-product">
+                <div class="changeable-icon text-center">
+                    <img src="~/assets/img/icons/icon1.png" alt="">
+                </div>
+                <h6 class="text-center">Qaytarilma ve Deyishdirilme</h6>
+                <p class="text-center">Alinan mallar 14 gun erzinde qaytarila ve ya deyishdirile biler</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="changeable-product">
+                <div class="changeable-icon text-center">
+                    <img src="~/assets/img/icons/icon3.png" alt="">
+                </div>
+                <h6 class="text-center">Qaytarilma ve Deyishdirilme</h6>
+                <p class="text-center">Alinan mallar 14 gun erzinde qaytarila ve ya deyishdirile biler</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Nav Product Detail Delivering -->
+
+<div class="product-detail-delivering-nav">
+    <div class="background-img"></div>
+    <div class="product-detail-delivering-nav-inner">
+        <div class="container">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+                </li>
+            </ul>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active home-nav" id="home" role="tabpanel" aria-labelledby="home-tab">
+                    <table>
+                        <tr>
+                            <td class="td-first">Alfreds Futterkiste</td>
+                            <td>Maria Anders</td>
+                        </tr>
+                        <tr>
+                            <td class="td-first">Centro comercial Moctezuma</td>
+                            <td>Francisco Chang</td>
+                        </tr>
+                        <tr>
+                            <td class="td-first">Ernst Handel</td>
+                            <td>Roland Mendel</td>
+                        </tr>
+                        <tr>
+                            <td class="td-first">Island Trading</td>
+                            <td>Helen Bennett</td>
+                        </tr>
+                        <tr>
+                            <td class="td-first">Laughing Bacchus Winecellars</td>
+                            <td>Yoshi Tannamuri</td>
+                        </tr>
+                        <tr>
+                            <td class="td-first">Magazzini Alimentari Riuniti</td>
+                            <td>Giovanni Rovelli</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="tab-pane fade home-nav" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                    <ul>
+                        <li>SAlam</li>
+                        <li>SAlam</li>
+                        <li>SAlam</li>
+                        <li>SAlam</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Related Product -->
+<div class="last-looked py-5 related-product">
+    <div class="container">
+        <h4>Oxshar Meshullar</h4>
+        <div class="owl-carousel owl-theme owl-carusel-last-seen owl-carusel-store">
+            @if (Model.Products.Where(m => m.SubCategoryId == Model.Product.SubCategoryId).Count() >= 4)
+            {
+                foreach (var product in Model.Products.Where(m => m.SubCategoryId == Model.Product.SubCategoryId).Take(4).ToList())
+                {
+                    <div class="product-owl-field p-3">
+                        <a href="#">
+                            <img src="~/assets/img/products/@product.ProductImages.FirstOrDefault().Image" alt="" />
+                            <br>
+                            @product.Name
+                        </a>
+                        @if (product.Discount == 0)
+                        {
+                            <div class="discounted-price my-2"><span>@Math.Truncate(product.RealPrice)</span>/ededi</div>
+                            <div class="real-price" style="visibility:hidden">P126</div>
+                            <div class="discount-percentage my-2" style="visibility:hidden">P126</div>
+                        }
+                        else
+                        {
+                            <div class="discounted-price my-2"><span>@Math.Truncate(product.RealPrice * (100 - product.Discount) / 100)</span>/ededi</div>
+                            <div class="real-price">@Math.Truncate(product.RealPrice)</div>
+                            <div class="discount-percentage my-2">@Math.Truncate(product.Discount) % Endirim</div>
+                        }
+                        <div class="extra-information">
+                            <button class="btn btn-light form-control" type="submit">Daha Etrafli</button>
                         </div>
                         <div class="wish-list text-center mt-2">
                             <a href="#">
@@ -67,131 +210,54 @@
                             </a>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <hr>
-    <!-- Advantage Company Product Policy -->
-    <div class="advantage-product-shop">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="changeable-product">
-                    <div class="changeable-icon text-center">
-                        <img src="~/assets/img/icons/icon1.png" alt="">
-                    </div>
-                    <h6 class="text-center">Qaytarilma ve Deyishdirilme</h6>
-                    <p class="text-center">Alinan mallar 14 gun erzinde qaytarila ve ya deyishdirile biler</p>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="changeable-product">
-                    <div class="changeable-icon text-center">
-                        <img src="~/assets/img/icons/icon3.png" alt="">
-                    </div>
-                    <h6 class="text-center">Qaytarilma ve Deyishdirilme</h6>
-                    <p class="text-center">Alinan mallar 14 gun erzinde qaytarila ve ya deyishdirile biler</p>
-                </div>
-            </div>
+                }
+            }
         </div>
     </div>
 
-    <!-- Nav Product Detail Delivering -->
 
-    <div class="product-detail-delivering-nav">
-        <div class="background-img"></div>
-        <div class="product-detail-delivering-nav-inner">
-            <div class="container">
-                <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
-                    </li>
-                </ul>
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active home-nav" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <table>
-                            <tr>
-                                <td class="td-first">Alfreds Futterkiste</td>
-                                <td>Maria Anders</td>
-                            </tr>
-                            <tr>
-                                <td class="td-first">Centro comercial Moctezuma</td>
-                                <td>Francisco Chang</td>
-                            </tr>
-                            <tr>
-                                <td class="td-first">Ernst Handel</td>
-                                <td>Roland Mendel</td>
-                            </tr>
-                            <tr>
-                                <td class="td-first">Island Trading</td>
-                                <td>Helen Bennett</td>
-                            </tr>
-                            <tr>
-                                <td class="td-first">Laughing Bacchus Winecellars</td>
-                                <td>Yoshi Tannamuri</td>
-                            </tr>
-                            <tr>
-                                <td class="td-first">Magazzini Alimentari Riuniti</td>
-                                <td>Giovanni Rovelli</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="tab-pane fade home-nav" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <ul>
-                            <li>SAlam</li>
-                            <li>SAlam</li>
-                            <li>SAlam</li>
-                            <li>SAlam</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+</div>
 
-    </div>
 
-    <!-- Related Product -->
-    <div class="last-looked py-5 related-product">
-        <div class="container">
-            <h4>Oxshar Meshullar</h4>
-            <div class="owl-carousel owl-theme owl-carusel-last-seen owl-carusel-store">
-                <div class="product-owl-field p-3">
-                    <a href="#">
-                        <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
-                        <br>
-                        Carpayi Salling 140*220 natural
-                    </a>
-                    <div class="discounted-price my-2"><span>269 AZN</span>/ededi</div>
-                    <div class="real-price">299 AZN</div>
-                    <div class="discount-percentage my-2">Endirim 10%</div>
-                    <div class="extra-information">
-                        <button class="btn btn-light form-control" type="submit">Daha Etrafli</button>
-                    </div>
-                    <div class="wish-list text-center mt-2">
-                        <a href="#">
-                            <svg id="icon-heart" viewBox="0 0 512 512">
-                                <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
-                                </path>
-                            </svg>
-                            Istek Listi
-                        </a>
-                    </div>
-                </div>
 
+
+<!-- Last Looked -->
+<div class="last-looked py-5">
+    <div class="container">
+        <h4>Last Added Product</h4>
+        <div class="owl-carousel owl-theme owl-carusel-last-seen owl-carusel-store">
+            @foreach (var lastAddedPictures in Model.Products.OrderByDescending(m => m.Date).Take(5))
+            {
                 <div class="product-owl-field p-3">
                     <a href="#">
-                        <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
+                        <img src="~/assets/img/products/@lastAddedPictures.ProductImages.FirstOrDefault().Image" alt="">
                         <br>
                         Carpayi Salling 140*220 natural
                     </a>
-                    <div class="discounted-price my-2"><span>269 AZN</span>/ededi</div>
-                    <div class="real-price">299 AZN</div>
-                    <div class="discount-percentage my-2">Endirim 10%</div>
+                    @if (lastAddedPictures.Discount != 0)
+                    {
+                        <div class="discounted-price my-2">
+                            <span>
+                                @Math.Truncate(lastAddedPictures.RealPrice
+                           * (100 - lastAddedPictures.Discount) / 100) AZN
+                            </span>/ededi
+                        </div>
+                        <div class="real-price">@Math.Truncate(lastAddedPictures.RealPrice) AZN</div>
+                        <div class="discount-percentage my-2">Endirim @lastAddedPictures.Discount%</div>
+                    }
+                    else
+                    {
+                        <div class="discounted-price my-2">
+                            <span>
+                                @Math.Truncate(lastAddedPictures.RealPrice) AZN
+                            </span>/ededi
+                        </div>
+                        <div class="real-price" style="visibility:hidden">P126</div>
+                        <div class="discount-percentage my-2" style="visibility:hidden">P126</div>
+                    }
+
                     <div class="extra-information">
-                        <button class="btn btn-light form-control" type="submit">Daha Etrafli</button>
+                        <a asp-controller="ProductDetail" asp-action="Index" asp-route-productId="@lastAddedPictures.Id" class="btn btn-light form-control">Daha Etrafli</a>
                     </div>
                     <div class="wish-list text-center mt-2">
                         <a href="#">
@@ -203,237 +269,10 @@
                         </a>
                     </div>
                 </div>
-                <div class="product-owl-field p-3">
-                    <a href="#">
-                        <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
-                        <br>
-                        Carpayi Salling 140*220 natural
-                    </a>
-                    <div class="discounted-price my-2"><span>269 AZN</span>/ededi</div>
-                    <div class="real-price">299 AZN</div>
-                    <div class="discount-percentage my-2">Endirim 10%</div>
-                    <div class="extra-information">
-                        <button class="btn btn-light form-control" type="submit">Daha Etrafli</button>
-                    </div>
-                    <div class="wish-list text-center mt-2">
-                        <a href="#">
-                            <svg id="icon-heart" viewBox="0 0 512 512">
-                                <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
-                                </path>
-                            </svg>
-                            Istek Listi
-                        </a>
-                    </div>
-                </div>
-                <div class="product-owl-field p-3">
-                    <a href="#">
-                        <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
-                        <br>
-                        Carpayi Salling 140*220 natural
-                    </a>
-                    <div class="discounted-price my-2"><span>269 AZN</span>/ededi</div>
-                    <div class="real-price">299 AZN</div>
-                    <div class="discount-percentage my-2">Endirim 10%</div>
-                    <div class="extra-information">
-                        <button class="btn btn-light form-control" type="submit">Daha Etrafli</button>
-                    </div>
-                    <div class="wish-list text-center mt-2">
-                        <a href="#">
-                            <svg id="icon-heart" viewBox="0 0 512 512">
-                                <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
-                                </path>
-                            </svg>
-                            Istek Listi
-                        </a>
-                    </div>
-                </div>
-                <div class="product-owl-field p-3">
-                    <a href="#">
-                        <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
-                        <br>
-                        Carpayi Salling 140*220 natural
-                    </a>
-                    <div class="discounted-price my-2"><span>269 AZN</span>/ededi</div>
-                    <div class="real-price">299 AZN</div>
-                    <div class="discount-percentage my-2">Endirim 10%</div>
-                    <div class="extra-information">
-                        <button class="btn btn-light form-control" type="submit">Daha Etrafli</button>
-                    </div>
-                    <div class="wish-list text-center mt-2">
-                        <a href="#">
-                            <svg id="icon-heart" viewBox="0 0 512 512">
-                                <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
-                                </path>
-                            </svg>
-                            Istek Listi
-                        </a>
-                    </div>
-                </div>
-                <div class="product-owl-field p-3">
-                    <a href="#">
-                        <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
-                        <br>
-                        Carpayi Salling 140*220 natural
-                    </a>
-                    <div class="discounted-price my-2"><span>269 AZN</span>/ededi</div>
-                    <div class="real-price">299 AZN</div>
-                    <div class="discount-percentage my-2">Endirim 10%</div>
-                    <div class="extra-information">
-                        <button class="btn btn-light form-control" type="submit">Daha Etrafli</button>
-                    </div>
-                    <div class="wish-list text-center mt-2">
-                        <a href="#">
-                            <svg id="icon-heart" viewBox="0 0 512 512">
-                                <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
-                                </path>
-                            </svg>
-                            Istek Listi
-                        </a>
-                    </div>
-                </div>
-            </div>
+            }
+
+
         </div>
     </div>
-
-    <!-- Last Looked -->
-    <div class="last-looked py-5 last-looked-secondary">
-        <div class="container">
-            <h4>Son Baxilanlar</h4>
-            <div class="owl-carousel owl-theme owl-carusel-last-seen owl-carusel-store">
-                <div class="product-owl-field p-3">
-                    <a href="#">
-                        <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
-                        <br>
-                        Carpayi Salling 140*220 natural
-                    </a>
-                    <div class="discounted-price my-2"><span>269 AZN</span>/ededi</div>
-                    <div class="real-price">299 AZN</div>
-                    <div class="discount-percentage my-2">Endirim 10%</div>
-                    <div class="extra-information">
-                        <button class="btn btn-light form-control" type="submit">Daha Etrafli</button>
-                    </div>
-                    <div class="wish-list text-center mt-2">
-                        <a href="#">
-                            <svg id="icon-heart" viewBox="0 0 512 512">
-                                <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
-                                </path>
-                            </svg>
-                            Istek Listi
-                        </a>
-                    </div>
-                </div>
-
-                <div class="product-owl-field p-3">
-                    <a href="#">
-                        <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
-                        <br>
-                        Carpayi Salling 140*220 natural
-                    </a>
-                    <div class="discounted-price my-2"><span>269 AZN</span>/ededi</div>
-                    <div class="real-price">299 AZN</div>
-                    <div class="discount-percentage my-2">Endirim 10%</div>
-                    <div class="extra-information">
-                        <button class="btn btn-light form-control" type="submit">Daha Etrafli</button>
-                    </div>
-                    <div class="wish-list text-center mt-2">
-                        <a href="#">
-                            <svg id="icon-heart" viewBox="0 0 512 512">
-                                <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
-                                </path>
-                            </svg>
-                            Istek Listi
-                        </a>
-                    </div>
-                </div>
-                <div class="product-owl-field p-3">
-                    <a href="#">
-                        <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
-                        <br>
-                        Carpayi Salling 140*220 natural
-                    </a>
-                    <div class="discounted-price my-2"><span>269 AZN</span>/ededi</div>
-                    <div class="real-price">299 AZN</div>
-                    <div class="discount-percentage my-2">Endirim 10%</div>
-                    <div class="extra-information">
-                        <button class="btn btn-light form-control" type="submit">Daha Etrafli</button>
-                    </div>
-                    <div class="wish-list text-center mt-2">
-                        <a href="#">
-                            <svg id="icon-heart" viewBox="0 0 512 512">
-                                <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
-                                </path>
-                            </svg>
-                            Istek Listi
-                        </a>
-                    </div>
-                </div>
-                <div class="product-owl-field p-3">
-                    <a href="#">
-                        <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
-                        <br>
-                        Carpayi Salling 140*220 natural
-                    </a>
-                    <div class="discounted-price my-2"><span>269 AZN</span>/ededi</div>
-                    <div class="real-price">299 AZN</div>
-                    <div class="discount-percentage my-2">Endirim 10%</div>
-                    <div class="extra-information">
-                        <button class="btn btn-light form-control" type="submit">Daha Etrafli</button>
-                    </div>
-                    <div class="wish-list text-center mt-2">
-                        <a href="#">
-                            <svg id="icon-heart" viewBox="0 0 512 512">
-                                <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
-                                </path>
-                            </svg>
-                            Istek Listi
-                        </a>
-                    </div>
-                </div>
-                <div class="product-owl-field p-3">
-                    <a href="#">
-                        <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
-                        <br>
-                        Carpayi Salling 140*220 natural
-                    </a>
-                    <div class="discounted-price my-2"><span>269 AZN</span>/ededi</div>
-                    <div class="real-price">299 AZN</div>
-                    <div class="discount-percentage my-2">Endirim 10%</div>
-                    <div class="extra-information">
-                        <button class="btn btn-light form-control" type="submit">Daha Etrafli</button>
-                    </div>
-                    <div class="wish-list text-center mt-2">
-                        <a href="#">
-                            <svg id="icon-heart" viewBox="0 0 512 512">
-                                <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
-                                </path>
-                            </svg>
-                            Istek Listi
-                        </a>
-                    </div>
-                </div>
-                <div class="product-owl-field p-3">
-                    <a href="#">
-                        <img src="~/assets/img/subCategory/1035158-KRONBORG.jpg" alt="">
-                        <br>
-                        Carpayi Salling 140*220 natural
-                    </a>
-                    <div class="discounted-price my-2"><span>269 AZN</span>/ededi</div>
-                    <div class="real-price">299 AZN</div>
-                    <div class="discount-percentage my-2">Endirim 10%</div>
-                    <div class="extra-information">
-                        <button class="btn btn-light form-control" type="submit">Daha Etrafli</button>
-                    </div>
-                    <div class="wish-list text-center mt-2">
-                        <a href="#">
-                            <svg id="icon-heart" viewBox="0 0 512 512">
-                                <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
-                                </path>
-                            </svg>
-                            Istek Listi
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+</div>
 

@@ -11,16 +11,21 @@ namespace BackFinalProject.Controllers
     public class SubCategoryController : Controller
     {
         private readonly ISubCategoryService subCategoryService;
+        private readonly IProductService productService;
 
-        public SubCategoryController(ISubCategoryService subCategoryService)
+        public SubCategoryController(ISubCategoryService subCategoryService,
+                                        IProductService productService)
         {
             this.subCategoryService = subCategoryService;
+            this.productService = productService;
         }
         public async Task<IActionResult> Index(int subCategoryId)
         {
+            
             SubCategoryVM subCategoryVM = new()
             {
-                SubCategory = await subCategoryService.GetSubCategoriesWithIdAsync(subCategoryId)
+                SubCategory = await subCategoryService.GetSubCategoriesWithIdAsync(subCategoryId),
+                Products = await productService.GetProductWithSubCategoryIdAsync(subCategoryId)
             };
             return View(subCategoryVM);
         }

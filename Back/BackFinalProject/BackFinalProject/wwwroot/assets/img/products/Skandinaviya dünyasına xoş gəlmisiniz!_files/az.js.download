@@ -1,0 +1,725 @@
+(function(global){var Language = {};
+
+Language.pluralFormFunction = function (n) {
+		if (n === 1) {
+			return 'one';
+		}
+
+		return 'other';
+	};
+
+
+Language.bubble = Language.bubble || {};
+
+Language.bubble.attention_grabber = {
+	"message": "Chat attention grabber"
+};
+
+
+Language.chat = Language.chat || {};
+
+Language.chat.Warning = {
+	"message": "Diqqət"
+};
+Language.chat.accept_call = {
+	"message": "Qəbul et"
+};
+Language.chat.active = {
+	"message": "Active"
+};
+Language.chat.agent_profile_image = {
+	"message": "Agent profile image"
+};
+Language.chat.agent_ringing = {
+	"message": "Gələn zəng"
+};
+Language.chat.all_conversations = {
+	"message": "See all conversations"
+};
+Language.chat.call_end_details = {
+	"message": "#startedOn-da başladı və #duration davam etdi",
+	"vars": [
+		"startedOn",
+		"duration"
+	]
+};
+Language.chat.call_error_load = {
+	"message": "Zəng məlumatları yüklənmədi."
+};
+Language.chat.call_started_on = {
+	"message": "#startedOn-da başladı",
+	"vars": [
+		"startedOn"
+	]
+};
+Language.chat.chatEnded = {
+	"message": "Söhbətiniz bitmişdir"
+};
+Language.chat.chat_icon = {
+	"message": "Chat icon"
+};
+Language.chat.chat_qm = {
+	"message": "Söhbət etmək istəyirsiniz?"
+};
+Language.chat.chat_text = {
+	"message": "Söhbət"
+};
+Language.chat.close_icon = {
+	"message": "Close icon"
+};
+Language.chat.completed_call = {
+	"message": "Zəng bitdi"
+};
+Language.chat.decline_call = {
+	"message": "Rədd et"
+};
+Language.chat.defaultName = {
+	"message": "Siz (adınızı qeyd edin)"
+};
+Language.chat.departmentIsAway = {
+	"message": "#strongStart #departmentName #strongEnd şöbəsi fasilədədir.",
+	"vars": [
+		"departmentName",
+		"strongStart",
+		"strongEnd"
+	]
+};
+Language.chat.departmentIsOffline = {
+	"message": "#strongStart #departmentName #strongEnd şöbəsi hazırda xətdə deyil. İstəsəniz sizə başqa şöbə xidmət göstərə bilər.",
+	"vars": [
+		"departmentName",
+		"strongStart",
+		"strongEnd"
+	]
+};
+Language.chat.download = {
+	"message": "Endir"
+};
+Language.chat.downloadFile = {
+	"message": "Faylı endir"
+};
+Language.chat.dragDropText = {
+	"message": "Yükləmək üçün faylı buraya atın"
+};
+Language.chat.emoji_error_load = {
+	"message": "Emojiləri yükləmək mümkün olmadı"
+};
+Language.chat.error_title = {
+	"message": "Xəta"
+};
+Language.chat.failed = {
+	"message": "Uğursuz oldu"
+};
+Language.chat.generalUploadError = {
+	"message": "\"#fileName\", zəhmət olmasa təkrar cəhd edin.",
+	"vars": [
+		"fileName"
+	]
+};
+Language.chat.generalUploadErrorLabel = {
+	"message": "Fayl yüklənmədi"
+};
+Language.chat.goToLatest = {
+	"message": "Go to latest"
+};
+Language.chat.hideButton = {
+	"message": "Söhbəti gizlət"
+};
+Language.chat.incoming_call_message = {
+	"message": "#name zəng edir",
+	"vars": [
+		"name"
+	]
+};
+Language.chat.insert_emoji = {
+	"message": "Emoji əlavə et"
+};
+Language.chat.justNow = {
+	"message": "indicə"
+};
+Language.chat.limit2 = {
+	"message": "Mobil səyyahlar üçün fayl ölçüsü maksimum 2 MB ola bilər, lütfən kiçik fayl yükləyin."
+};
+Language.chat.limit50 = {
+	"message": "Faylın ölçüsü maksimum 50 MB ola bilər, zəhmət olmasa kiçik fayl yükləyin."
+};
+Language.chat.message_not_delivered = {
+	"message": "Mesaj çatdırılmadı, təkrar göndərmək üçün klikləyin."
+};
+Language.chat.message_too_long = {
+	"message": "Mesajın mətni 5000 simvoldan çox ola bilməz"
+};
+Language.chat.missed_agent = {
+	"message": "Sizin zənginiz cavabsız qaldı"
+};
+Language.chat.missed_visitor = {
+	"message": "Siz zəngi cavabsız qoydunuz"
+};
+Language.chat.missed_visitor_messagePreview = {
+	"message": "#name edən zəng cavabsız qaldı"
+};
+Language.chat.mobileName = {
+	"message": "Siz"
+};
+Language.chat.newChat = {
+	"message": "Yeni söhbət başlansın"
+};
+Language.chat.newMessages = {
+	"message": "Yeni ismarışlar"
+};
+Language.chat.new_conversation = {
+	"message": "Yeni söhbət"
+};
+Language.chat.notificationTitle = {
+	"message": "bildiriş"
+};
+Language.chat.ongoing_call = {
+	"message": "Gedən zəng"
+};
+Language.chat.past = {
+	"message": "#time ago",
+	"vars": [
+		"time"
+	]
+};
+Language.chat.pasted_image_title = {
+	"message": "#dateTime tarixdəki təsvir əlavə olundu",
+	"vars": [
+		"dateTime"
+	]
+};
+Language.chat.profile_prechat_text = {
+	"message": "Söhbətə başlamaq üçün zəhmət olmasa aşağıdakı formanı doldurun."
+};
+Language.chat.rejected_call = {
+	"message": "Siz bu zəngi rədd etdiniz"
+};
+Language.chat.remove_rate = {
+	"message": "Bu söhbətləşmə barədə qiymətləndirmənizi sildiniz"
+};
+Language.chat.resend = {
+	"message": "Yenidən göndər"
+};
+Language.chat.retry = {
+	"message": "Təkrar cəhd."
+};
+Language.chat.say_something = {
+	"message": "Cavab yaz.."
+};
+Language.chat.screen_share_error = {
+	"message": "Ekranı paylaşma mövcud deyil"
+};
+Language.chat.send_mail = {
+	"message": "İsmarış göndər"
+};
+Language.chat.sent_file = {
+	"message": "Sent a file"
+};
+Language.chat.today_time = {
+	"message": "Today, #time",
+	"vars": [
+		"time"
+	]
+};
+Language.chat.tryAgain = {
+	"message": "Yenidən."
+};
+Language.chat.unanswered = {
+	"message": "Unanswered"
+};
+Language.chat.uploading = {
+	"message": "Yüklənir..."
+};
+Language.chat.video_call_error = {
+	"message": "Video zəng mövcud deyil"
+};
+Language.chat.visitor_ringing = {
+	"message": "Zəng..."
+};
+Language.chat.voice_call_error = {
+	"message": "Video zəng mövcud deyil"
+};
+Language.chat.we_are_live = {
+	"message": "Biz hazırda xətdəyik və sizinlə söhbətə hazırıq. Canlı söhbətə başlamaq üçün aşağıdakı xanada yazın."
+};
+
+
+Language.days = Language.days || {};
+
+Language.days['0'] = {
+	"message": "Bazar"
+};
+Language.days['1'] = {
+	"message": "Bazar ertəsi"
+};
+Language.days['2'] = {
+	"message": "Çərşənbə axşamı"
+};
+Language.days['3'] = {
+	"message": "Çərşənbə"
+};
+Language.days['4'] = {
+	"message": "Cümə axşamı"
+};
+Language.days['5'] = {
+	"message": "Cümə"
+};
+Language.days['6'] = {
+	"message": "Şənbə"
+};
+
+
+Language.form = Language.form || {};
+
+Language.form.CancelButton = {
+	"message": "Ləğv et"
+};
+Language.form.CloseButton = {
+	"message": "Bağla"
+};
+Language.form.DepartmentsErrorMessage = {
+	"message": "Şöbə mütləq seçilməlidir."
+};
+Language.form.DepartmentsPlaceholder = {
+	"message": "Şöbə seçin.."
+};
+Language.form.EmailErrorMessage = {
+	"message": "E-mail ünvanı düzgün deyil."
+};
+Language.form.EmailPlaceholder = {
+	"message": "Email ünvanı"
+};
+Language.form.EmailTranscriptFormMessage = {
+	"message": "Söhbətin mətninin sizin e-mailinizə göndərilməsi üçün lütfən aşağıdakı formanı doldurun."
+};
+Language.form.EmailTranscriptSuccess = {
+	"message": "Sent email transcript request."
+};
+Language.form.EmailTranscriptTo = {
+	"message": "Məzmun  e-mailə göndərilsin"
+};
+Language.form.EndChatMessage = {
+	"message": "Bizimlə yazışdığınız üçün təşəkkür edirik. Yeni söhbət başlatmaqdan çəkinməyin və ya email ünvanınızı qeyd edin və bu yazışmanın surəti emailinizə göndərilsin."
+};
+Language.form.EndChatMessage2 = {
+	"message": "Thank you for chatting with us. Feel free to start a new chat session."
+};
+Language.form.EndChatTitle = {
+	"message": "Söhbəti bitirməyinizə əminsiniz?"
+};
+Language.form.MessagePlaceholder = {
+	"message": "İsmarışınız.."
+};
+Language.form.NameErrorMessage = {
+	"message": "Adınızı mütləq qeyd etməlisiniz."
+};
+Language.form.NameFormMessage = {
+	"message": "Növbəti dəfə Sizi tanıya bilməyimiz üçün zəhmət olmasa adınızı qeyd edin."
+};
+Language.form.OfflineFormMessage = {
+	"message": "Tezliklə Sizə cavab yaza bilməyimiz üçün zəhmət olmasa aşağıdakı formanı doldurun."
+};
+Language.form.OfflineMessageNotSent = {
+	"message": "İsmarışınız göndərilə bilmədi, təkrar cəd edin"
+};
+Language.form.OfflineMessageSent = {
+	"message": "Müraciətiniz müvəffəqiyyətlə göndərildi!"
+};
+Language.form.PhoneErrorMessage = {
+	"message": "Yanlış telefon nömrəsi"
+};
+Language.form.PreChatFormMessage = {
+	"message": "Növbəti azad agentlə danışmaq üçün lütfən aşağıdakı formanı doldurun."
+};
+Language.form.PreChatFormMessageProfile = {
+	"message": "Mənimlə söhbətə başlamaq üçün lütfən aşağıdakı formanı doldurun."
+};
+Language.form.QuestionPlaceholder = {
+	"message": "Müraciətiniz.."
+};
+Language.form.RequiredErrorMessage = {
+	"message": "Bu xana vacibdir"
+};
+Language.form.SaveButton = {
+	"message": "Saxla"
+};
+Language.form.SendButton = {
+	"message": "Göndər"
+};
+Language.form.SendMessage = {
+	"message": "İsmarışı göndər"
+};
+Language.form.StartChatButton = {
+	"message": "Söhbətə başla"
+};
+Language.form.SubmitButton = {
+	"message": "Tamam"
+};
+Language.form.SubmittedFrom = {
+	"message": "Göndərilmiş forma"
+};
+Language.form.SubmittingProcess = {
+	"message": "Tamamlanır"
+};
+Language.form.TranscriptMessage = {
+	"message": "Email envanınızı qeyd edin və bu yazışmanın surətini emailinizə göndərin."
+};
+Language.form.any = {
+	"message": "İstənilən"
+};
+Language.form.chatEnded = {
+	"message": "Söhbətiniz bitmişdir"
+};
+Language.form.department = {
+	"message": "Şöbə"
+};
+Language.form.email = {
+	"message": "E-mail"
+};
+Language.form.errorSaving = {
+	"message": "Saxlanma uğursuz oldu. Lütfən təkrar cəhd edin"
+};
+Language.form.message = {
+	"message": "İsmarış"
+};
+Language.form.name = {
+	"message": "Ad"
+};
+Language.form.sendAgain = {
+	"message": "Yenidən Göndərin"
+};
+Language.form.visitButton = {
+	"message": "tawk.to saytına keçid"
+};
+
+
+Language.home = Language.home || {};
+
+Language.home.banner_image = {
+	"message": "Banner image"
+};
+Language.home.chat_button = {
+	"message": "New Conversation"
+};
+Language.home.chat_input = {
+	"message": "Type here and press enter.."
+};
+Language.home.heading_main = {
+	"message": "Hi there 👋"
+};
+Language.home.heading_sub = {
+	"message": "Need help? Search our help center for answers or start a conversation:"
+};
+Language.home.kb_search = {
+	"message": "Search for answers"
+};
+Language.home.logo_image = {
+	"message": "Logo image"
+};
+
+
+Language.kb = Language.kb || {};
+
+Language.kb.article_image = {
+	"message": "Article image"
+};
+Language.kb.article_rating = {
+	"message": "Was this article helpful?"
+};
+Language.kb.article_rating_count = {
+	"message": "#totalLikes out of #totalVotes liked this article",
+	"vars": [
+		"totalLikes",
+		"totalVotes"
+	]
+};
+Language.kb.author_profile_image = {
+	"message": "Author profile image"
+};
+Language.kb.clear_search = {
+	"message": "Clear Search"
+};
+Language.kb.downvote_rating_button = {
+	"message": "No"
+};
+Language.kb.help_center = {
+	"message": "Help Center"
+};
+Language.kb.negative_rating = {
+	"message": "Negative"
+};
+Language.kb.positive_rating = {
+	"message": "Positive"
+};
+Language.kb.recent_searches = {
+	"message": "Recent Searches"
+};
+Language.kb.search_fail_description = {
+	"message": "Please, try again"
+};
+Language.kb.search_fail_title = {
+	"message": "No search results"
+};
+Language.kb.search_placeholder = {
+	"message": "Search for answers"
+};
+Language.kb.search_results = {
+	"message": "Search Results"
+};
+Language.kb.show_all_results = {
+	"message": "Show all results (#num)",
+	"vars": [
+		"num"
+	]
+};
+Language.kb.submit_search = {
+	"message": "Submit Search"
+};
+Language.kb.upvote_rating_button = {
+	"message": "Yes"
+};
+Language.kb.view_full = {
+	"message": "View in full"
+};
+
+
+Language.menu = Language.menu || {};
+
+Language.menu.change_name = {
+	"message": "Adınızı qeyd edin"
+};
+Language.menu.email_transcript = {
+	"message": "Surəti göndər"
+};
+Language.menu.end_chat_session = {
+	"message": "Söhbəti bitir"
+};
+Language.menu.popout_widget = {
+	"message": "Widgeti böyüt"
+};
+Language.menu.sound_off = {
+	"message": "Səs effektləri bağlansın"
+};
+Language.menu.sound_on = {
+	"message": "Səs effektləri açılsın"
+};
+
+
+Language.months = Language.months || {};
+
+Language.months['0'] = {
+	"message": "Yanvar"
+};
+Language.months['1'] = {
+	"message": "Fevral"
+};
+Language.months['10'] = {
+	"message": "Noyabr"
+};
+Language.months['11'] = {
+	"message": "Dekabr"
+};
+Language.months['2'] = {
+	"message": "Mart"
+};
+Language.months['3'] = {
+	"message": "Aprel"
+};
+Language.months['4'] = {
+	"message": "May"
+};
+Language.months['5'] = {
+	"message": "İyun"
+};
+Language.months['6'] = {
+	"message": "İyul"
+};
+Language.months['7'] = {
+	"message": "Avqust"
+};
+Language.months['8'] = {
+	"message": "Sentyabr"
+};
+Language.months['9'] = {
+	"message": "Oktyabr"
+};
+
+
+Language.notifications = Language.notifications || {};
+
+Language.notifications.dismiss_alert = {
+	"message": "Dismiss Alert"
+};
+Language.notifications.maximum_file_upload_warning = {
+	"message": "Üzr istəyirik, fayl göndərmə limiti #limitFileNumber ədəddir. Zəhmət olmasa bu fayl(lar)ı yenidən yükləyin:",
+	"vars": [
+		"limitFileNumber"
+	]
+};
+Language.notifications.maximum_size_upload_warning = {
+	"message": "Üzr istəyirik, fayl ölçüsü limiti #limitFileSize qədərdir. Zəhmət olmasa bu fayl(lar)ın ölçüsünü kiçildin və yenidən yükləyin.",
+	"vars": [
+		"limitFileSize"
+	]
+};
+Language.notifications.reconnecting = {
+	"message": "Reconnecting"
+};
+Language.notifications.retry = {
+	"message": "Təkrar cəhd"
+};
+
+
+Language.overlay = Language.overlay || {};
+
+Language.overlay.cookiesOff = {
+	"message": "Səyyahınızın cookie funksiyası bağlı olduğuna görə söhbətə başlaya bilmirsiniz. Zəhmət olmasa həmin funskiyanı qoşun və səhifəni yeniləyin."
+};
+Language.overlay.inactive = {
+	"message": "Söhbəti yenidən başlatmaq üçün buraya sıxın"
+};
+Language.overlay.maintenance = {
+	"message": "Söhbət moduluna texniki servis göstərilir"
+};
+Language.overlay.tawkContent = {
+	"message": "Bu widget tawk.to - saytınızın ziyarətçiləri ilə ünsiyyətə keçməyə imkan verən pulsuz söhbətləşmə tətbiqetməsi tərəfindən hazırlanıb."
+};
+
+
+Language.rollover = Language.rollover || {};
+
+Language.rollover.back = {
+	"message": "Back"
+};
+Language.rollover.chatMenu = {
+	"message": "Menü"
+};
+Language.rollover.emailTranscriptOption = {
+	"message": "Məzmunun emailə göndərilməsi"
+};
+Language.rollover.end = {
+	"message": "Söhbəti bitir"
+};
+Language.rollover.knowledgeBase = {
+	"message": "bilik Bazası"
+};
+Language.rollover.maximize = {
+	"message": "Böyüt"
+};
+Language.rollover.minimize = {
+	"message": "Kiçilt"
+};
+Language.rollover.negativeRating = {
+	"message": "Söhbəti mənfi qiymətləndir"
+};
+Language.rollover.popOut = {
+	"message": "Sərbəst pəncərə"
+};
+Language.rollover.positiveRating = {
+	"message": "Söhbəti müsbət qiymətləndir"
+};
+Language.rollover.rateChat = {
+	"message": "Rate this chat"
+};
+Language.rollover.resendMessage = {
+	"message": "İsmarışı yenidən göndər"
+};
+Language.rollover.resize = {
+	"message": "Ölçüsünü dəyiş"
+};
+Language.rollover.screenShare = {
+	"message": "Ekranı paylaş"
+};
+Language.rollover.uploadFile = {
+	"message": "Fayl yüklə"
+};
+Language.rollover.videoCall = {
+	"message": "Video Zəng"
+};
+Language.rollover.voiceCall = {
+	"message": "Səsli zəng"
+};
+
+
+Language.routes = Language.routes || {};
+
+Language.routes.all_agents = {
+	"message": "All Agents"
+};
+Language.routes.conversations = {
+	"message": "Conversations"
+};
+Language.routes.load_more = {
+	"message": "Load More"
+};
+
+
+Language.status = Language.status || {};
+
+Language.status.away = {
+	"message": "Fasilədə"
+};
+Language.status.offline = {
+	"message": "Xətdə deyil"
+};
+Language.status.online = {
+	"message": "Xətdə"
+};
+
+
+
+
+Language.chat = Language.chat || {};
+
+Language.chat.hours = {
+	"pluralVars": [
+		"num"
+	],
+	"message": {
+		"one": "#num saat",
+		"other": "#num saat"
+	}
+};
+Language.chat.messageQueuedText = {
+	"pluralVars": [
+		"t"
+	],
+	"message": {
+		"one": "Təxmini gözləmə müddəti #strongStart #t dəqiqədir. #strongEnd",
+		"other": "Təxmini gözləmə müddəti #strongStart #t dəqiqədir. #strongEnd"
+	},
+	"vars": [
+		"strongStart",
+		"strongEnd"
+	]
+};
+Language.chat.minutes = {
+	"pluralVars": [
+		"num"
+	],
+	"message": {
+		"one": "#num dəqiqə",
+		"other": "#num dəqiqə"
+	}
+};
+Language.chat.newMessage = {
+	"pluralVars": [
+		"num"
+	],
+	"message": {
+		"one": "#num yeni ismarış",
+		"other": "#num yeni ismarış"
+	}
+};
+Language.chat.seconds = {
+	"pluralVars": [
+		"num"
+	],
+	"message": {
+		"one": "#num saniyə",
+		"other": "#num saniyə"
+	}
+};
+
+
+global.$_Tawk.language = Language;})(window);

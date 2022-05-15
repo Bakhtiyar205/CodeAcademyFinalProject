@@ -15668,11 +15668,6 @@
       "FileKind": "mvc"
     },
     {
-      "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Navigation\\Store.cshtml",
-      "TargetPath": "Views\\Navigation\\Store.cshtml",
-      "FileKind": "mvc"
-    },
-    {
       "FilePath": "c:\\Users\\Baxtiyar\\Documents\\CodeAcademyFinalProject\\Back\\BackFinalProject\\BackFinalProject\\Views\\Question\\Index.cshtml",
       "TargetPath": "Views\\Question\\Index.cshtml",
       "FileKind": "mvc"

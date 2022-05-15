@@ -10,5 +10,6 @@ namespace BackFinalProject.Services.Interfaces
     {
         Task<List<SubCategory>> GetSubCategoriesAsync();
         Task<SubCategory> GetSubCategoriesWithIdAsync(int subCategoryID);
+        
     }
 }

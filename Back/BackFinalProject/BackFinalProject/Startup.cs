@@ -42,6 +42,8 @@ namespace BackFinalProject
             services.AddScoped<IDiscountCategoryService, DiscountCategoryService>();
             services.AddScoped<IBestOfferService, BestOfferService>();
             services.AddScoped<IGiftCardService, GiftCardService>();
+            services.AddScoped<IProductService, ProductService>();
+
 
         }
 

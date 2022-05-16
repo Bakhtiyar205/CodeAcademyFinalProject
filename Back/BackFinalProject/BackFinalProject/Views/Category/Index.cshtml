@@ -1,64 +1,72 @@
 ﻿@model CategoryVM
 @{
     ViewData["Title"] = "Index";
+
 }
 
-    <!-- home-naviagtion -->
-    <div class="home-navigation my-3">
-        <div class="container">
-            <a asp-controller="home" asp-action="index">Ana səhifə</a>/ <a>@Model.Category.Name</a>
-        </div>
+
+<!-- home-naviagtion -->
+<div class="home-navigation my-3">
+    <div class="container">
+            <a asp-controller="home" asp-action="index">Ana səhifə</a>@Html.Raw("/") <a>@Model.Category.Name</a>
+
     </div>
-    <!-- Category Wallpaper -->
-    <div class="category-wallpaper py-5 d-none d-md-block">
-        <div class="container">
-            <div class="category-wallpaper-inner">
-                <div class="row">
-                    @foreach (var subCategoryImage in Model.Category.SubCategory.OrderByDescending(m=>m.Id).Take(3))
-                    {
-                        <div class="col-md-4 d-none d-md-block">
-                            <a href="#">
-                                <img src="~/assets/img/subCategory/@subCategoryImage.Image" alt="">
-                            </a>
-                        </div>
-                    }
-                </div>
+</div>
+<!-- Category Wallpaper -->
+<div class="category-wallpaper py-5 d-none d-md-block">
+    <div class="container">
+        <div class="category-wallpaper-inner">
+            <div class="row">
+                @foreach (var subCategoryImage in Model.Category.SubCategory.OrderByDescending(m => m.Id).Take(3))
+                {
+                    <div class="col-md-4 d-none d-md-block">
+                        <a href="#">
+                            <img src="~/assets/img/subCategory/@subCategoryImage.Image" alt="">
+                        </a>
+                    </div>
+                }
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Main Category -->
-    <div class="main-category">
-        <div class="container">
-            <div class="row">
-                <!-- Aside -->
-                <div class="d-none d-md-block col-md-3 mt-4">
-                    <ul class="ul-main-category">
-                        @if (Model.Category.SubCategory != null)
+<!-- Main Category -->
+<div class="main-category">
+    <div class="container">
+        <div class="row">
+            <!-- Aside -->
+            <div class="d-none d-md-block col-md-3 mt-4">
+                <ul class="ul-main-category">
+                    @if (Model.Category.SubCategory.Count() != 0)
+                    {
+                        @foreach (var subCategory in Model.Category.SubCategory)
                         {
-                            @foreach (var subCategory in Model.Category.SubCategory)
-                            {
-                                <li>
-                                    <a asp-controller="subcategory" asp-action="index" asp-route-subCategoryId="@subCategory.Id">
-                                        @subCategory.Name
-                                    </a>
-                                </li>
-                                <hr>
-                            }
+                            <li>
+                                <a asp-controller="subcategory" asp-action="index" asp-route-subCategoryId="@subCategory.Id">
+                                    @subCategory.Name
+                                </a>
+                            </li>
+                            <hr>
                         }
 
 
 
-                    </ul>
-                </div>
-                <!-- Main Side -->
-                <div class="col-12 col-md-9 mt-4">
-                    @if (Model.Category.CategoryText != null)
-                    {
-                       <p>@Model.Category.CategoryText</p>
                     }
 
-                    <div class="row subcategory-fields">
+
+
+                </ul>
+            </div>
+            <!-- Main Side -->
+            <div class="col-12 col-md-9 mt-4">
+                @if (Model.Category.CategoryText != null)
+                {
+                    <p>@Model.Category.CategoryText</p>
+                }
+
+                <div class="row subcategory-fields">
+                    @if (Model.Category.SubCategory.Count() != 0)
+                    {
                         @foreach (var subC in Model.Category.SubCategory)
                         {
                             <div class="col-md-4 col-12 my-2 subcategory-field">
@@ -73,12 +81,101 @@
                                 </a>
                             </div>
                         }
+                    }
+                    else
+                    {
+                        @foreach (var product in Model.Products.Datas)
+                        {
+                            <div class="col-12 col-md-4 my-3">
+                                <div class="product-field p-3">
+                                    <a asp-controller="ProductDetail" asp-action="index" asp-route-productId="@product.Id">
+                                        <img src="~/assets/img/products/@product.ProductImages.FirstOrDefault().Image" alt="">
+                                        <br>
+                                        @product.Name
+                                    </a>
+                                    @if (product.Discount != 0)
+                                    {
+                                        <div class="discounted-price my-2"><span>@Math.Truncate(product.RealPrice * (100 - product.Discount) / 100) AZN</span>/ededi</div>
+                                        <div class="real-price">@Math.Truncate(product.RealPrice) AZN</div>
+                                        <div class="discount-percentage my-2">@Math.Truncate(product.Discount)% ENDIRIM</div>
+                                    }
+                                    else
+                                    {
+                                        <div class="discounted-price my-2"><span>@product.RealPrice AZN</span>/ededi</div>
+                                        <div class="real-price" style="visibility:hidden">P126</div>
+                                        <div class="discount-percentage my-2" style="visibility:hidden">P126</div>
 
-                    </div>
+                                    }
+
+                                    <div class="extra-information">
+                                        <a class="btn btn-light form-control" asp-controller="ProductDetail" asp-action="index" asp-route-productId="@product.Id">Daha Etrafli</a>
+                                    </div>
+                                    <div class="wish-list text-center mt-2">
+                                        <a href="#">
+                                            <svg id="icon-heart" viewBox="0 0 512 512">
+                                                <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
+                                                </path>
+                                            </svg>
+                                            Istek Listi
+                                        </a>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        }
+
+                        <div class="row my-3">
+                            <nav aria-label="...">
+                                @if (Model.Products.TotalPage > 0)
+                                {
+                                    <ul class="pagination">
+                                        <li class="page-item @(Model.Products.HasPrevious ? "" : "disabled") ">
+                                            <a class="page-link" asp-controller="category"
+                                               asp-action="Index"
+                                               asp-route-page="1"
+                                               asp-route-categoryId="@Model.Category.Id">First</a>
+                                        </li>
+                                        <li class="page-item @(Model.Products.HasPrevious ? "" : "disabled")">
+                                            <a class="page-link" asp-controller="category"
+                                               asp-action="Index"
+                                               asp-route-page="@(Model.Products.CurrentPage-1)"
+                                               asp-route-categoryId="@Model.Category.Id">Previous</a>
+                                        </li>
+                                        @for (int i = Model.Products.StartPage; i <= Model.Products.EndPage; i++)
+                                        {
+                                            <li class="page-item @(i==Model.Products.CurrentPage ? "active" : "")">
+                                                <a class="page-link" asp-controller="category"
+                                                   asp-action="Index" asp-route-page="@i"
+                                                   asp-route-categoryId="@Model.Category.Id">@i</a>
+                                            </li>
+                                        }
+                                    <li class="page-item @(Model.Products.HasNext ? "" : "disabled")">
+                                        <a class="page-link" asp-controller="category"
+                                           asp-action="Index"
+                                           asp-route-page="@(Model.Products.CurrentPage+1)"
+                                           asp-route-categoryId="@Model.Category.Id">Next</a>
+                                    </li>
+                                    <li class="page-item @(Model.Products.HasNext ? "" : "disabled")">
+                                        <a class="page-link" asp-controller="category"
+                                           asp-action="Index"
+                                           asp-route-page="@(Model.Products.TotalPage)"
+                                           asp-route-categoryId="@Model.Category.Id">Last</a>
+                                    </li>
+                                    </ul>
+                                }
+
+                            </nav>
+                        </div>
+
+                    }
+
+
                 </div>
             </div>
         </div>
     </div>
+</div>
 
 
 

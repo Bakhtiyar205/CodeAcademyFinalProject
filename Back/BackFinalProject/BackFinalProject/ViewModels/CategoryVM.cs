@@ -1,4 +1,5 @@
 ﻿using BackFinalProject.Models;
+using BackFinalProject.Utilities.Pagination;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,5 +10,6 @@ namespace BackFinalProject.ViewModels
     public class CategoryVM
     {
         public Category Category { get; set; }
+        public Paginate<Product> Products { get; set; }
     }
 }

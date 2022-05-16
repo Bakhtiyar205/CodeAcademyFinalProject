@@ -14,6 +14,7 @@ namespace BackFinalProject.Models
         public DateTime Date { get; set; }
         public bool IsOnline { get; set; }
         public bool IsDeleted { get; set; }
+        public bool IsOutlet { get; set; }
         public int SubCategoryId { get; set; }
         public SubCategory SubCategory { get; set; }
         public List<ProductImage> ProductImages { get; set; }

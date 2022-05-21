@@ -1,3 +1,7 @@
+main {
+  background-color: #fafafa !important;
+}
+
 main .advertisments-main .main-advertisment img {
   height: 200px;
   width: 100%;
@@ -210,7 +214,7 @@ main .product-qualities .product-quality a .product-quality-img img {
 }
 
 body {
-  background-color: #fafafa;
+  background-color: #fafafa !important;
 }
 
 a {
@@ -363,6 +367,42 @@ header .navbar-secondary li {
   z-index: 100;
   -webkit-transform: translateY(0);
           transform: translateY(0);
+}
+
+.header-mid .basket {
+  position: relative;
+  cursor: pointer;
+  height: 100%;
+}
+
+.header-mid .basket .basket-click {
+  border-radius: 5px;
+  opacity: 0;
+  background-color: #fafafa !important;
+  position: absolute;
+  width: 300px;
+  height: 220px;
+  top: 50px;
+  right: 20px;
+  text-align: center;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  z-index: -98;
+}
+
+.header-mid .basket .basket-click .no-product {
+  padding-top: 80px;
+  height: 180px;
+}
+
+.header-mid .basket .basket-click .no-product i {
+  color: #143c8a;
+  font-size: 50px;
+}
+
+.header-mid .basket .basket-clicked {
+  opacity: 0.9;
+  z-index: 98;
 }
 
 .sub-categories-menu {

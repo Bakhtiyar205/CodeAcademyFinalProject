@@ -43,7 +43,10 @@ namespace BackFinalProject
             services.AddScoped<IBestOfferService, BestOfferService>();
             services.AddScoped<IGiftCardService, GiftCardService>();
             services.AddScoped<IProductService, ProductService>();
-
+            services.AddControllersWithViews()
+                    .AddNewtonsoftJson(options =>
+                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            );
 
         }
 

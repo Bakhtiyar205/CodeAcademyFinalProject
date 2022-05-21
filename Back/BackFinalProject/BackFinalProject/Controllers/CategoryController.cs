@@ -23,7 +23,7 @@ namespace BackFinalProject.Controllers
             CategoryVM categoryVM = new()
             {
                 Category = await categoryService.GetCategoriesWithIdAsync(categoryId),
-                Products = await productService.GetPaginateOutletProductsAsync(9,page)
+                Products = await productService.GetPaginateOutletProductsAsync(1,page)
             };
 
             

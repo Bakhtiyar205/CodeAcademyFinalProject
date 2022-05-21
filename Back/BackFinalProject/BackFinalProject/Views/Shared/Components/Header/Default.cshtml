@@ -113,8 +113,8 @@
 
                 <div class="col-md-6 d-md-block d-none">
                     <div class="search-button p-lg-1 mt-1">
-                        <form class="d-flex justify-content-center">
-                            <input class="form-control input-color" type="search" placeholder="Search"
+                        <form asp-controller="search" asp-action="index" class="d-flex justify-content-center">
+                            <input name="search" class="form-control input-color" type="search" placeholder="Search"
                                    aria-label="Search">
                             <button class="btn px-4" type="submit">Axtar</button>
                         </form>
@@ -123,18 +123,62 @@
 
                 <div class="col-md-3 col-4">
                     <div class="d-flex justify-content-end">
-                        <a href="#">
-                            <svg id="icon-cart" viewBox="0 0 512 512">
-                                <path d="m128 512c-35 0-64-29-64-64 0-35 29-64 64-64 35 0 64 29 64 64 0 35-29 64-64 64z m0-96c-18 0-32 14-32 32 0 18 14 32 32 32 18 0 32-14 32-32 0-18-14-32-32-32z m160 96c-35 0-64-29-64-64 0-35 29-64 64-64 35 0 64 29 64 64 0 35-29 64-64 64z m0-96c-18 0-32 14-32 32 0 18 14 32 32 32 18 0 32-14 32-32 0-18-14-32-32-32z m144-357c-8 27-66 221-66 223-16 38-36 54-80 54l-222 0 0 32 222 0c56 0 90-24 111-75 3-8 59-197 67-224 8-29 14-37 48-37l0-32c-53 0-69 21-80 59z m-69 21c-19 66-40 136-48 160-8 24-27 32-70 32-5 0-11 0-18 0l-163 0c0 0-11 0-19-6-8-8-13-21-13-39l0-115 288 0c3-11 5-21 8-32l-328 0 0 147c0 27 8 48 22 63 18 16 39 16 44 14l163 0c6 0 25 0 30 0 40 0 69-5 88-54 2-7 32-104 51-172l-35 0z"></path>
-                            </svg>
-                        </a>
+                        <div class="basket">
+                            <div class="basket-icon" id="basket">
+                                <a href="#">
+                                    <svg id="icon-cart" viewBox="0 0 512 512">
+                                        <path d="m128 512c-35 0-64-29-64-64 0-35 29-64 64-64 35 0 64 29 64 64 0 35-29 64-64 64z m0-96c-18 0-32 14-32 32 0 18 14 32 32 32 18 0 32-14 32-32 0-18-14-32-32-32z m160 96c-35 0-64-29-64-64 0-35 29-64 64-64 35 0 64 29 64 64 0 35-29 64-64 64z m0-96c-18 0-32 14-32 32 0 18 14 32 32 32 18 0 32-14 32-32 0-18-14-32-32-32z m144-357c-8 27-66 221-66 223-16 38-36 54-80 54l-222 0 0 32 222 0c56 0 90-24 111-75 3-8 59-197 67-224 8-29 14-37 48-37l0-32c-53 0-69 21-80 59z m-69 21c-19 66-40 136-48 160-8 24-27 32-70 32-5 0-11 0-18 0l-163 0c0 0-11 0-19-6-8-8-13-21-13-39l0-115 288 0c3-11 5-21 8-32l-328 0 0 147c0 27 8 48 22 63 18 16 39 16 44 14l163 0c6 0 25 0 30 0 40 0 69-5 88-54 2-7 32-104 51-172l-35 0z">
+                                        </path>
+                                    </svg>
+                                </a>
+                            </div>
+                            <div class="basket-click" id="basket-toggle">
+                                <div class="hovered-basket d-lg-block d-md-none">
+                                    <a asp-controller="Basket" asp-action="index" id="getData">
+
+
+                                            <div id="icon-basket" class="text-align-center no-product d-none" >
+                                                <p><i class="fa-solid fa-basket-shopping"></i></p>
+                                            </div>
+                                      
+                                            <table class="table table-striped" id="tableBasket">
+                                                <thead>
+                                                    <tr>
+                                                        <th>
+                                                            Image
+                                                        </th>
+                                                        <th>
+                                                            Name
+                                                        </th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="basket-parent">
+
+                                                        <!--<tr class="basket-child">-->
+                                                            @*<td id="basket-child-img">
+                                                                
+                                                            </td>
+                                                            <td id="basket-child-name">
+
+                                                            </td>*@
+
+                                                        <!--</tr>-->
+                                                </tbody>
+                                            </table>
+                                        
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
 
             <div class="search-button p-lg-1 mt-1 d-md-none mb-2">
-                <form class="d-flex justify-content-center">
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                <form asp-controller="search" asp-action="index" class="d-flex justify-content-center" >
+                    <input class="form-control" name="search" type="search" placeholder="Search" na aria-label="Search" >
                     <button class="btn px-4" type="submit">Axtar</button>
                 </form>
             </div>
@@ -176,19 +220,19 @@
                                                     {
                                                         for (int i = 0; i < (Math.Ceiling((decimal)category.SubCategory.Count() / 7)); i++)
                                                         {
-                                                    <div class="col-md-3">
-                                                        <ul>
-                                                            @foreach (var subCategory in category.SubCategory.Skip(i * 7).Take(7))
+                                                            <div class="col-md-3">
+                                                                <ul>
+                                                                    @foreach (var subCategory in category.SubCategory.Skip(i * 7).Take(7))
 
-                                                            {
-                                                                if (category.Id == subCategory.CategoryID)
-                                                                {
+                                                                    {
+                                                                        if (category.Id == subCategory.CategoryID)
+                                                                        {
 
-                                                                    <li><a asp-controller="subcategory" asp-action="Index" asp-route-subCategoryId="@subCategory.Id">@subCategory.Name</a></li>
-                                                                }
-                                                            }
-                                                        </ul>
-                                                    </div>
+                                                                            <li><a asp-controller="subcategory" asp-action="Index" asp-route-subCategoryId="@subCategory.Id">@subCategory.Name</a></li>
+                                                                        }
+                                                                    }
+                                                                </ul>
+                                                            </div>
                                                         }
                                                     }
                                                 </div>

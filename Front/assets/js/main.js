@@ -50,6 +50,11 @@ $(document).ready(function(){
         window.location = $(this).find('option:selected').val();
     });
 
+    $("#basket").click(function(){
+        $("#basket-toggle").toggleClass("basket-clicked");
+        $("")
+      });
+
     // Initialize and add the map
 function initMap() {
     // The location of Uluru

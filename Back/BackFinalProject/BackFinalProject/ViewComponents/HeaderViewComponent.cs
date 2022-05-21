@@ -2,6 +2,7 @@
 using BackFinalProject.Services.Interfaces;
 using BackFinalProject.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,14 +15,17 @@ namespace BackFinalProject.ViewComponents
         private readonly ICategoryService categoryService;
         private readonly ISubCategoryService subCategoryService;
         private readonly ISettingService settingService;
+        private readonly IProductService productService;
 
         public HeaderViewComponent(ICategoryService categoryService,
                                    ISubCategoryService subCategoryService,
-                                   ISettingService settingService)
+                                   ISettingService settingService,
+                                   IProductService productService)
         {
             this.categoryService = categoryService;
             this.subCategoryService = subCategoryService;
             this.settingService = settingService;
+            this.productService = productService;
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {

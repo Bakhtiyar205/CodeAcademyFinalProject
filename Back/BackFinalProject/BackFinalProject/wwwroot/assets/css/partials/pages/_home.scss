@@ -1,6 +1,7 @@
 @import "../variables/variables";
 
 main{
+    background-color: $background-color !important;
     // Advertisment
     .advertisments-main{
         .main-advertisment{

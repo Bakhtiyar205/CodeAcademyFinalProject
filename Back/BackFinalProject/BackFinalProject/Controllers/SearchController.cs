@@ -18,7 +18,7 @@ namespace BackFinalProject.Controllers
         }
         public async Task<IActionResult> Index(string search)
         {
-            List<Product> products = await productService.GetProductsAsync();
+            List<Product> products = await productService.GetNewOutletProductsAsync();
             List<Product> productResults = new();
 
             foreach (var product in products)
@@ -28,7 +28,23 @@ namespace BackFinalProject.Controllers
                     productResults.Add(product);
                 }
             }
+
             return View(productResults);
+        }
+
+        [HttpGet]
+        public async Task<JsonResult> Products(string search)
+        {
+            List<Product> products = await productService.GetNewOutletProductsAsync();
+            List<Product> productResults = new();
+            foreach (var product in products)
+            {
+                if (product.Name.ToLower().Trim().Contains(search.ToLower().Trim()))
+                {
+                    productResults.Add(product);
+                }
+            }
+            return Json(productResults);
         }
     }
 }

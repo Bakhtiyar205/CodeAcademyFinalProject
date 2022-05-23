@@ -2,6 +2,7 @@
 $(document).ready(function () {
     let getData = $('#getData');
 
+    //cookie
     cookie = $.cookie('basket');
     basketIcon = $("#icon-basket");
     tableBasket = $("#tableBasket");
@@ -15,11 +16,18 @@ $(document).ready(function () {
     if (cookie == null) {
         $(basketIcon).removeClass("d-none");
         $(tableBasket).addClass("d-none");
-    } else {
+    }
+    else {
         $(basketIcon).addClass("d-none");
         $(tableBasket).removeClass("d-none");
 
         cookieJson = JSON.parse(cookie);
+
+        if (cookieJson.length == 0) {
+            $(basketIcon).removeClass("d-none");
+            $(tableBasket).addClass("d-none");
+        }
+
         for (var i = 0; i < cookieJson.length; i++) {
             var newTr = document.createElement('tr')
             $(basketParent).append(newTr)
@@ -30,13 +38,60 @@ $(document).ready(function () {
 
 
 
+    //search-field
+    let searchClick = $("#search-click");
+    let searhcField = $(".search-field");
+    let searchNoProduct = $("#searchNoProduct");
+    let searchProducts = $(".search-products");
+    let searchProductHeader = $(".search-product-header");
+    let searchTable = $("#table-search");
+
+    $(searchClick).click(function (e) {
+        e.preventDefault();
+
+        $(searhcField).toggleClass("d-none")
+
+    });
+
+    $(searchClick).on('keyup',function (e) {
+        e.preventDefault();
+
+        $(searchNoProduct).addClass("d-none");
+        $(searchProducts).removeClass("d-none");
+        $(searchProductHeader).removeClass("d-none");
+
+        $.ajax({
+            url: "/search/products?search=" + searchClick.val(),
+            type: "Get",
+            success: function (data) {
+                $(searchTable).empty()
+                console.log(data);
+
+                for (var i = 0; i < data.length; i++) {
+
+                    var newTr = document.createElement('tr')
+                    $(newTr).addClass("search-products")
+                    $(searchTable).append(newTr)
+                    $(newTr).html('<td class="search-img-field"><a href="/ProductDetail?productId=' + data[i].id + '"><img  src="/assets/img/products/'
+                        + data[i].productImages[0].image + '" style="width:50px;height:50px"/></a></td>'
+                        + '<td class="search-product-field"><a href="/ProductDetail?productId=' + data[i].id + '" style="color:#333;">' + data[i].name + '</a></td>'
+                        + ' <td class="search-price-field text-end"><a href="/ProductDetail?productId=' + data[i].id + '" style="color:#333;">' + data[i].realPrice + 'Azn/ededi</a></td >')
+
+                }
+
+            }
+        })
+    })
+
+
+
 
 
 
     let tableChild = ("#table-child");
     let tableChildImg = ("#basket-child-img")
 
-
+    //Basket
     $("#basket").click(function () {
         $("#basket-toggle").toggleClass("basket-clicked");
 
@@ -45,13 +100,15 @@ $(document).ready(function () {
     $(document).on("click", "#addBasket", function (e) {
         e.preventDefault();
         let id = $("#product-id").val();
-
-        //let getData = $('#getData');
+        let productCount = $("#product-count").val();
+        console.log(productCount);
 
         $.ajax({
-            url: "/productdetail/addbasket?productId=" + id,
+            url: "/productdetail/addbasket?productId=" + id + "&productCount=" + productCount,
             type: "Post",
             success: function (data) {
+
+                console.log(data)
 
                 $(basketIcon).addClass("d-none");
                 $(tableBasket).removeClass("d-none");
@@ -67,10 +124,16 @@ $(document).ready(function () {
                         } 
                     }
                 }
+
+                if ($('.data-id').text() == data.id) {
+                    return
+                }
+
+
                 var newTr = document.createElement('tr')
                 $(basketParent).append(newTr)
                 $(basketParent).append(newTr)
-                $(newTr).html('<td><img  src="/assets/img/products/' + data.image
+                $(newTr).html('<td class="data-id" style="display:none;">'+data.id +'</td><td><img  src="/assets/img/products/' + data.image
                                  + '" style="width:50px;height:50px"/></td>'
                                  + '<td>' + data.name + '</td>')
                 
@@ -82,6 +145,48 @@ $(document).ready(function () {
     })
 
 
+    //RemoveProduct
+    //productdetail/removeproduct?productId=2
+
+    $(".basket-remove").on('click', function (e) {
+        e.preventDefault;
+        let productId = Number(this.id);
+        let tableId = $('#table-basket');
+        let totalPrice = $('#total-price');
+
+        console.log("salam");
+
+
+        $.ajax({
+            url: "/productdetail/removeproduct?productId=" + productId,
+            type: "Post",
+            success: function (data) {
+                $(tableId).empty()
+                $(totalPrice).empty()
+
+                console.log(data)
+
+
+
+
+                for (var i = 0; i < data.length; i++) {
+                    var newTr = document.createElement('tr')
+                    $(tableId).append(newTr)
+                    $(newTr).html('<td><a href="/ProductDetail?productId=' + data[i].id + '"><img  src="/assets/img/products/'
+                        + data[i].image + '" style="width:50px;height:50px"/></a></td>'
+                        + '<td><a href="/ProductDetail?productId=' + data[i].id + '" style="color:#333;">' + data[i].name + '</a></td>'
+                        + '<td><a href="/ProductDetail?productId=' + data[i].id + '" style="color:#333;">' + data[i].count + '</a></td>'
+                        + ' <td><a href="/ProductDetail?productId=' + data[i].id + '" style="color:#333;">' + data[i].price + '</a></td >'
+                        + '<td><a class="basket-remove" id="' + data[i].id + '" >X</a></td >')
+                    $(totalPrice).html()
+                }
+
+               
+
+            }
+        })
+        
+    })
 
 
     $(document).on('change', '.selectpicker', function (e) {

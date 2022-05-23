@@ -30,21 +30,26 @@ namespace BackFinalProject.Controllers
 
 
         [HttpPost]
-        public async Task<BasketCookieVM> AddBasket(int? productId)
+        public async Task<BasketCookieVM> AddBasket(int? productId,int productCount)
         {
             if (productId is null) BadRequest();
+
+            if (productCount < 1)
+            {
+                productCount = 1;
+            }
 
             Product product = await productService.GetProductWithIdAsync((int)productId);
 
             List<BasketCookieVM> basket = GetBasket();
 
-            UpdateBasket(basket, product);
+            UpdateBasket(basket, product,productCount);
 
             //await UpdateBasketDatas(basket);
 
             Response.Cookies.Append("basket", JsonConvert.SerializeObject(basket));
 
-            return UpdateBasket(basket,product);
+            return UpdateBasket(basket,product,productCount);
         }
 
         //public async Task<List<BasketDetailVM>> UpdateBasketDatas(List<BasketCookieVM> baskets)
@@ -84,9 +89,14 @@ namespace BackFinalProject.Controllers
             return basket;
         }
 
-        public BasketCookieVM UpdateBasket(List<BasketCookieVM> basket, Product product)
+        public BasketCookieVM UpdateBasket(List<BasketCookieVM> basket, Product product,int productCount)
         {
             BasketCookieVM existProduct = basket.Find(m => m.Id == product.Id);
+
+            if (product.Discount < 1)
+            {
+                product.Discount = 1;
+            }
 
             if(existProduct == null)
             {
@@ -95,15 +105,32 @@ namespace BackFinalProject.Controllers
                     Id = product.Id,
                     Name = product.Name,
                     Image = product.ProductImages.FirstOrDefault().Image,
-                    Count = 1
-                });
+                    Price = product.RealPrice *(100 - product.Discount)/ 100,
+                    Count = productCount
+                }) ;
             }
             else
             {
-                existProduct.Count++;
-            }
+                existProduct.Count = productCount;
+            };
 
             return existProduct;
+        }
+
+
+        [HttpPost]
+        public List<BasketCookieVM> RemoveProduct(int productId)
+        {
+            List<BasketCookieVM> basketCookies = JsonConvert.DeserializeObject<List<BasketCookieVM>>(Request.Cookies["basket"]);
+
+            BasketCookieVM productRemove = basketCookies.Find(m=>m.Id == productId);
+
+            basketCookies.Remove(productRemove);
+
+            Response.Cookies.Append("basket", JsonConvert.SerializeObject(basketCookies));
+
+            return basketCookies;
+
         }
 
     };

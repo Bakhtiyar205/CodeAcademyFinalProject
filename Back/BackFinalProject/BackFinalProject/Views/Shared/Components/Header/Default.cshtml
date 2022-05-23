@@ -111,13 +111,43 @@
                     </div>
                 </div>
 
-                <div class="col-md-6 d-md-block d-none">
+                <div class="col-md-6 d-md-block d-none search-main">
                     <div class="search-button p-lg-1 mt-1">
-                        <form asp-controller="search" asp-action="index" class="d-flex justify-content-center">
-                            <input name="search" class="form-control input-color" type="search" placeholder="Search"
-                                   aria-label="Search">
+                        <form class="d-flex justify-content-center" method="get" asp-controller="search" asp-action="SearchAsync">
+                            <input class="form-control input-color" name="search" type="search" placeholder="Search"
+                                   aria-label="Search" id="search-click">
                             <button class="btn px-4" type="submit">Axtar</button>
                         </form>
+                    </div>
+                    <div class="search-field d-none">
+                        <table class="ms-3" style="width:96%;" id="table-search">
+                            <tr id="searchNoProduct">
+                                <td class="search-no-product">Search Here</td>
+                            </tr>
+                            <tr class="search-product-header d-none">
+                                <th>Məhsullar</th>
+                            </tr>
+                            
+                                 @*<tr class="search-products d-none">
+
+                                     <td class="search-img-field">
+                                         <a asp-controller="productdetail" asp-action="index" asp-route-productId="2">
+                                             <img src="./assets/img/bedroom/1035158-KRONBORG.jpg" alt="">
+                                             </a>
+                                     </td>
+                                <td class="search-product-field">Charpayi</td>
+                                <td class="search-price-field text-end">1200 Azn/ədədi</td>
+
+                                </tr>
+                            <tr class="search-products d-none">
+                                <td class="search-img-field">
+                                    <img src="./assets/img/bedroom/1035158-KRONBORG.jpg" alt="">
+                                </td>
+                                <td class="search-product-field">Charpayi</td>
+                                <td class="search-price-field text-end">1200 Azn/ədədi</td>
+                            </tr>*@
+
+                        </table>
                     </div>
                 </div>
 
@@ -137,35 +167,35 @@
                                     <a asp-controller="Basket" asp-action="index" id="getData">
 
 
-                                            <div id="icon-basket" class="text-align-center no-product d-none" >
-                                                <p><i class="fa-solid fa-basket-shopping"></i></p>
-                                            </div>
-                                      
-                                            <table class="table table-striped" id="tableBasket">
-                                                <thead>
-                                                    <tr>
-                                                        <th>
-                                                            Image
-                                                        </th>
-                                                        <th>
-                                                            Name
-                                                        </th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="basket-parent">
+                                        <div id="icon-basket" class="text-align-center no-product d-none">
+                                            <p><i class="fa-solid fa-basket-shopping"></i></p>
+                                        </div>
 
-                                                        <!--<tr class="basket-child">-->
-                                                            @*<td id="basket-child-img">
-                                                                
-                                                            </td>
-                                                            <td id="basket-child-name">
+                                        <table class="table table-striped" id="tableBasket">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        Image
+                                                    </th>
+                                                    <th>
+                                                        Name
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="basket-parent">
 
-                                                            </td>*@
+                                                <!--<tr class="basket-child">-->
+                                                @*<td id="basket-child-img">
 
-                                                        <!--</tr>-->
-                                                </tbody>
-                                            </table>
-                                        
+                                                    </td>
+                                                    <td id="basket-child-name">
+
+                                                    </td>*@
+
+                                                <!--</tr>-->
+                                            </tbody>
+                                        </table>
+
                                     </a>
 
                                 </div>
@@ -177,8 +207,8 @@
             </div>
 
             <div class="search-button p-lg-1 mt-1 d-md-none mb-2">
-                <form asp-controller="search" asp-action="index" class="d-flex justify-content-center" >
-                    <input class="form-control" name="search" type="search" placeholder="Search" na aria-label="Search" >
+                <form asp-controller="search" asp-action="index" class="d-flex justify-content-center">
+                    <input class="form-control" name="search" type="search" placeholder="Search" na aria-label="Search">
                     <button class="btn px-4" type="submit">Axtar</button>
                 </form>
             </div>

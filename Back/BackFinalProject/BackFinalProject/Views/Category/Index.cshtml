@@ -8,7 +8,7 @@
 <!-- home-naviagtion -->
 <div class="home-navigation my-3">
     <div class="container">
-            <a asp-controller="home" asp-action="index">Ana səhifə</a>@Html.Raw("/") <a>@Model.Category.Name</a>
+        <a asp-controller="home" asp-action="index">Ana səhifə</a>@Html.Raw("/") <a>@Model.Category.Name</a>
 
     </div>
 </div>
@@ -17,14 +17,32 @@
     <div class="container">
         <div class="category-wallpaper-inner">
             <div class="row">
-                @foreach (var subCategoryImage in Model.Category.SubCategory.OrderByDescending(m => m.Id).Take(3))
+                @if (Model.Category.SubCategory.Count > 0)
                 {
-                    <div class="col-md-4 d-none d-md-block">
-                        <a href="#">
-                            <img src="~/assets/img/subCategory/@subCategoryImage.Image" alt="">
-                        </a>
-                    </div>
+                    @foreach (var subCategoryImage in Model.Category.SubCategory.OrderByDescending(m => m.Id).Take(3))
+                    {
+                        <div class="col-md-4 d-none d-md-block">
+                            <a href="#">
+                                <img src="~/assets/img/subCategory/@subCategoryImage.Image" alt="">
+                            </a>
+                        </div>
+                    }
                 }
+                else
+                {
+
+
+                    @foreach (var product in Model.Products.Datas.OrderByDescending(m => m.Id).Take(3))
+                    {
+                        <div class="col-md-4 d-none d-md-block">
+                            <a href="#">
+                                <img src="~/assets/img/products/@product.ProductImages.FirstOrDefault().Image" alt="">
+                            </a>
+                        </div>
+                    }
+
+                }
+
             </div>
         </div>
     </div>
@@ -48,9 +66,6 @@
                             </li>
                             <hr>
                         }
-
-
-
                     }
 
 
@@ -150,18 +165,18 @@
                                                    asp-route-categoryId="@Model.Category.Id">@i</a>
                                             </li>
                                         }
-                                    <li class="page-item @(Model.Products.HasNext ? "" : "disabled")">
-                                        <a class="page-link" asp-controller="category"
-                                           asp-action="Index"
-                                           asp-route-page="@(Model.Products.CurrentPage+1)"
-                                           asp-route-categoryId="@Model.Category.Id">Next</a>
-                                    </li>
-                                    <li class="page-item @(Model.Products.HasNext ? "" : "disabled")">
-                                        <a class="page-link" asp-controller="category"
-                                           asp-action="Index"
-                                           asp-route-page="@(Model.Products.TotalPage)"
-                                           asp-route-categoryId="@Model.Category.Id">Last</a>
-                                    </li>
+                                        <li class="page-item @(Model.Products.HasNext ? "" : "disabled")">
+                                            <a class="page-link" asp-controller="category"
+                                               asp-action="Index"
+                                               asp-route-page="@(Model.Products.CurrentPage+1)"
+                                               asp-route-categoryId="@Model.Category.Id">Next</a>
+                                        </li>
+                                        <li class="page-item @(Model.Products.HasNext ? "" : "disabled")">
+                                            <a class="page-link" asp-controller="category"
+                                               asp-action="Index"
+                                               asp-route-page="@(Model.Products.TotalPage)"
+                                               asp-route-categoryId="@Model.Category.Id">Last</a>
+                                        </li>
                                     </ul>
                                 }
 

@@ -21,15 +21,25 @@ namespace BackFinalProject.Services
 
         public async Task<List<Product>> GetProductsAsync()
         {
-            return await context.Products.Where(m => m.IsDeleted == false && m.IsOutlet == false)
+            return await context.Products.Where(m => m.IsDeleted == false
+                                             && m.IsOutlet == false)
                                             .Include(m=>m.SubCategory)
                                             .Include(m=>m.ProductImages)
                                             .ToListAsync();
         }
 
+        public async Task<List<Product>> GetNewOutletProductsAsync()
+        {
+            return await context.Products.Where(m => m.IsDeleted == false)
+                                            .Include(m => m.SubCategory)
+                                            .Include(m => m.ProductImages)
+                                            .ToListAsync();
+        }
+
         public async Task<Product> GetProductWithIdAsync(int productId)
         {
-            return await context.Products.Where(m => m.Id == productId && m.IsDeleted == false)
+            return await context.Products.Where(m => m.Id == productId 
+                                             && m.IsDeleted == false)
                                             .Include(m => m.SubCategory)
                                             .Include(m => m.ProductImages)
                                             .FirstOrDefaultAsync();
@@ -37,7 +47,9 @@ namespace BackFinalProject.Services
 
         public async Task<List<Product>> GetProductWithSubCategoryIdAsync(int subcategoryId)
         {
-            return await context.Products.Where(m=>m.SubCategoryId == subcategoryId && m.IsDeleted == false && m.IsOutlet == false)
+            return await context.Products.Where(m=>m.SubCategoryId == subcategoryId 
+                                             && m.IsDeleted == false 
+                                             && m.IsOutlet == false)
                                             .Include(m => m.SubCategory)
                                             .Include(m => m.ProductImages)
                                             .ToListAsync();
@@ -54,7 +66,8 @@ namespace BackFinalProject.Services
             {
                 newPage = (int)page;
             }
-            List<Product> products = await context.Products.Where(m => m.IsDeleted == false && m.IsOutlet == true)
+            List<Product> products = await context.Products.Where(m => m.IsDeleted == false 
+                                             && m.IsOutlet == true)
                                             .Include(m => m.SubCategory)
                                             .Include(m => m.ProductImages)
                                             .OrderByDescending(m => m.Date)
@@ -72,7 +85,9 @@ namespace BackFinalProject.Services
 
         public async Task<Product> GetOutletProductWithIdAsync(int productId)
         {
-            return await context.Products.Where(m => m.Id == productId && m.IsDeleted == false && m.IsOutlet == false)
+            return await context.Products.Where(m => m.Id == productId 
+                                            && m.IsDeleted == false 
+                                            && m.IsOutlet == false)
                                             .Include(m => m.SubCategory)
                                             .Include(m => m.ProductImages)
                                             .FirstOrDefaultAsync();
@@ -80,7 +95,9 @@ namespace BackFinalProject.Services
 
         public async Task<List<Product>> GetOutletProductWithSubCategoryIdAsync(int subcategoryId)
         {
-            return await context.Products.Where(m => m.SubCategoryId == subcategoryId && m.IsDeleted == false && m.IsOutlet == false)
+            return await context.Products.Where(m => m.SubCategoryId == subcategoryId 
+                                             && m.IsDeleted == false 
+                                             && m.IsOutlet == false)
                                             .Include(m => m.SubCategory)
                                             .Include(m => m.ProductImages)
                                             .ToListAsync();

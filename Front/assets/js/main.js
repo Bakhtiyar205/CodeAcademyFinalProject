@@ -2,6 +2,28 @@
 $(document).ready(function(){
 
 
+    let searchClick = $("#search-click");
+    let searhcField = $(".search-field");
+    let searchNoProduct = $("#searchNoProduct");
+    let searchProducts = $(".search-products");
+    let searchProductHeader = $(".search-product-header");
+
+
+    $(searchClick).click(function(e){
+        e.preventDefault();
+        
+        $(searhcField).toggleClass("d-none")
+        
+    });
+
+    $(searchClick).keyup(function(e){
+        e.preventDefault();
+
+        $(searchNoProduct).addClass("d-none");
+        $(searchProducts).removeClass("d-none");
+        $(searchProductHeader).removeClass("d-none");
+    })
+
     $(document).ready(function(){
         $(".owl-carousel").owlCarousel();
       });

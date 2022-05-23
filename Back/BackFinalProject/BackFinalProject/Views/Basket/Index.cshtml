@@ -16,7 +16,11 @@
         </div>
         @if (Model == null)
         {
-            <p>There is no product added basket</p>
+            <p>There is not product in basket</p>
+        }
+        else if (Model.Count() < 1)
+        {
+            <p>There is not product in basket</p>
         }
         else
         {
@@ -24,9 +28,6 @@
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th>
-                                Number
-                            </th>
                             <th>
                                 Image
                             </th>
@@ -41,15 +42,13 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="table-basket">
                         @foreach (var item in Model)
                         {
 
                             <tr>
                                 <td>
-                                    @count
-                                </td>
-                                <td>
+                                    <a asp-controller="productdetail" asp-action="index" asp-route-productId="@item.Product.Id"></a>
                                     <img src="~/assets/img/products/@item.Product.ProductImages.FirstOrDefault().Image" height="50" width="50" />
                                 </td>
                                 <td>
@@ -71,21 +70,24 @@
                                     </td>
                                 }
 
+                                <td>
+                                    <a class="basket-remove" id="@item.Product.Id">X</a>
+                                </td>
+
                             </tr>
-                            count++;
                             if (item.Product.Discount == 0)
                             {
-                                price += item.Product.RealPrice;
+                                price += (item.Product.RealPrice * item.ProductCount);
                             }
                             else
                             {
-                                price += item.Product.RealPrice * (100 - item.Product.Discount) / 100;
+                                price += (item.Product.RealPrice * (100 - item.Product.Discount) / 100 * item.ProductCount);
                             }
 
 
                         }
 
-                        <h3>Total Price: @Math.Truncate(price)</h3>
+                        <h3>Total Price: <span id="total-price">@Math.Truncate(price)</span></h3>
 
                     </tbody>
                 </table>

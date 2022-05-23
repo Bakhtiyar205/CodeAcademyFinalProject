@@ -15,5 +15,6 @@ namespace BackFinalProject.Services.Interfaces
         Task<Paginate<Product>> GetPaginateOutletProductsAsync(int take = 1, int? page = 1);
         Task<Product> GetOutletProductWithIdAsync(int productId);
         Task<List<Product>> GetOutletProductWithSubCategoryIdAsync(int subcategoryId);
+        Task<List<Product>> GetNewOutletProductsAsync();
     }
 }

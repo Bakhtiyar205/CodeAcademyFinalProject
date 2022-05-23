@@ -148,28 +148,30 @@ $(document).ready(function () {
     //RemoveProduct
     //productdetail/removeproduct?productId=2
 
-    $(".basket-remove").on('click', function (e) {
+    $('body').on('click', ".basket-remove", function (e) {
         e.preventDefault;
         let productId = Number(this.id);
         let tableId = $('#table-basket');
-        let totalPrice = $('#total-price');
+        let tableMainId = $('#table-main-id');
+        let tableResponsive = $('#table-responsive');
+        //let totalPrice = parseInt($('#total-price').text());
 
-        console.log("salam");
-
-
+        let priceAjax = 0;
+        //totalPrice = 0;
         $.ajax({
             url: "/productdetail/removeproduct?productId=" + productId,
             type: "Post",
             success: function (data) {
+                debugger
+                
                 $(tableId).empty()
-                $(totalPrice).empty()
+                
 
-                console.log(data)
-
-
-
+                console.log(typeof ($('#total-price').text()));
 
                 for (var i = 0; i < data.length; i++) {
+
+                    priceAjax += data[i].price
                     var newTr = document.createElement('tr')
                     $(tableId).append(newTr)
                     $(newTr).html('<td><a href="/ProductDetail?productId=' + data[i].id + '"><img  src="/assets/img/products/'
@@ -178,10 +180,19 @@ $(document).ready(function () {
                         + '<td><a href="/ProductDetail?productId=' + data[i].id + '" style="color:#333;">' + data[i].count + '</a></td>'
                         + ' <td><a href="/ProductDetail?productId=' + data[i].id + '" style="color:#333;">' + data[i].price + '</a></td >'
                         + '<td><a class="basket-remove" id="' + data[i].id + '" >X</a></td >')
-                    $(totalPrice).html()
+                    //totalPrice += priceAjax;
                 }
-
-               
+                if (priceAjax > 0) {
+                    $('#total-price').text(priceAjax.toString())
+                } else {
+                    tableMainId.addClass('d-none')
+                    var newP = document.createElement('p')
+                    tableResponsive.append(newP)
+                    $(newP).html('<p>There is not product in Basket</p>')
+                    $('#total-price').addClass('d-none')
+                    $('#letter-total-price').addClass('d-none')
+                }
+                
 
             }
         })

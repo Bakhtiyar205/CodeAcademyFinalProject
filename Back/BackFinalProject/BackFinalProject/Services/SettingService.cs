@@ -1,5 +1,7 @@
 ﻿using BackFinalProject.Datas;
+using BackFinalProject.Models;
 using BackFinalProject.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +22,16 @@ namespace BackFinalProject.Services
         {
             Dictionary<string, string> settings = context.Settings.ToDictionary(m => m.Key, m => m.Value);
             return settings;
+        }
+
+        public async Task<List<Setting>> GetListSettingsAsync()
+        {
+            return await context.Settings.ToListAsync();
+        }
+
+        public async Task<Setting> GetSettingWithIdAsync(int settingId)
+        {
+            return await context.Settings.AsNoTracking().FirstOrDefaultAsync(m => m.Id == settingId);
         }
     }
 }

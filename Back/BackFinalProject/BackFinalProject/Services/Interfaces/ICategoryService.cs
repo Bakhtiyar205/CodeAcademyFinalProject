@@ -11,5 +11,6 @@ namespace BackFinalProject.Services.Interfaces
     {
        Task<List<Category>> GetCategoriesAsync();
        Task<Category> GetCategoriesWithIdAsync(int categoryId);
+        Task<Category> GetCategoryAsNoTrackingAsync(int categoryId);
     }
 }

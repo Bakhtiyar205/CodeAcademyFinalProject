@@ -1,0 +1,40 @@
+﻿
+@model Category
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <form class="forms-sample" method="post" asp-controller="Category" asp-action="Edit" asp-route-categoryId="@Model.Id" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input class="form-control" asp-for="Name" style="width:350px;">
+            <span class="text-danger" asp-validation-for="Name" type="text"></span>
+        </div>
+        <div>
+            <label asp-for="Photo">Images: </label>
+            <input class="form-control" asp-for="Photo" style="width:350px;">
+            <span class="text-danger" asp-validation-for="Photo"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="CategoryText"></label>
+            <textarea class="form-control" asp-for="CategoryText" style="width:350px;" id="CategoryText"></textarea>
+            <span class="text-danger" asp-validation-for="CategoryText" type="text"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary me-2">Submit</button>
+        <a asp-action="Index" class="btn btn-light">Cancel</a>
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationPartialView" />
+
+    <script src="~/ckeditor/ckeditor.js"></script>
+
+    <script>
+        CKEDITOR.replace("CategoryText")
+    </script>
+}
+

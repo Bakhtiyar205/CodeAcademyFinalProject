@@ -24,8 +24,8 @@
         }
         else
         {
-            <div class="table-responsive">
-                <table class="table table-striped">
+            <div class="table-responsive" id="table-responsive">
+                <table class="table table-striped" id="table-main-id">
                     <thead>
                         <tr>
                             <th>
@@ -87,7 +87,7 @@
 
                         }
 
-                        <h3>Total Price: <span id="total-price">@Math.Truncate(price)</span></h3>
+                        <h3 id="letter-total-price">Total Price: <span id="total-price">@Math.Truncate(price)</span></h3>
 
                     </tbody>
                 </table>

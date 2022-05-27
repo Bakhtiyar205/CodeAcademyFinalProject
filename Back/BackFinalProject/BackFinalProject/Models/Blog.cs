@@ -10,7 +10,7 @@ namespace BackFinalProject.Models
         public string Name { get; set; }
         public bool IsDeleted { get; set; }
         public int CategoryId { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime Date { get; set; } = DateTime.Now;
         public Category Category { get; set; }
         public List<BlogSpesification> BlogSpesifications { get; set; }
     }

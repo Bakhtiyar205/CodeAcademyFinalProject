@@ -1,0 +1,35 @@
+﻿@model PolicySection
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <form class="forms-sample" method="post" asp-controller="Policy" asp-action="Create" enctype="multipart/form-data">
+        <h1>Create</h1>
+        <div class="form-group">
+            @* For Naming Label *@
+            <label asp-for="Name"></label>
+            <input class="form-control" asp-for="Name" style="width:350px;">
+            <span class="text-danger" asp-validation-for="Name" type="text"></span>
+        </div>
+        <div>
+            <label asp-for="Detail">Text: </label>
+            <textarea class="form-control" asp-for="Detail" style="width:350px;" id="PolciyText"></textarea>
+            <span class="text-danger" asp-validation-for="Detail"></span>
+        </div>
+        <button type="submit" class="btn btn-primary me-2">Submit</button>
+        <a asp-action="Index" class="btn btn-light">Cancel</a>
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationPartialView" />
+
+    <script src="~/ckeditor/ckeditor.js"></script>
+
+    <script>
+        CKEDITOR.replace("PolciyText")
+    </script>
+}
+

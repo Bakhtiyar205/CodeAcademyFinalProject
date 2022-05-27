@@ -134,5 +134,14 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
+        public async Task<IActionResult> Detail(int categoryId)
+        {
+            Category category = await categoryService.GetCategoriesWithIdAsync(categoryId);
+
+            if (category is null) NotFound();
+
+            return View(category);
+        }
     }
 }

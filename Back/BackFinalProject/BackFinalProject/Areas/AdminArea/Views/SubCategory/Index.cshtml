@@ -1,0 +1,117 @@
+﻿@model Paginate<SubCategory>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+    int count = 1;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="justify-content-between d-flex mt-3 justify-content-between" style="width:100%;">
+            <div>
+                <h1>Categories</h1>
+            </div>
+            <div>
+                <a class="btn btn-success" asp-controller="subcategory" asp-action="create">Create Subcategory</a>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Number
+                        </th>
+                        <th>
+                            SubCategory Image
+                        </th>
+                        <th>
+                            SubCategory Name
+                        </th>
+                        <th>
+                            Settings
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var subCategory in Model.Datas)
+                    {
+                        <tr>
+                            <td>
+                                @count
+                            </td>
+                            <td>
+                                <img src="~/Assets/img/subCategory/@subCategory.Image" alt="Alternative Image" style="width:100px; height:100px;border-radius:10%;" />
+
+                            </td>
+                            <td>
+                                @subCategory.Name
+                            </td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" asp-action="Detail" asp-route-subCategoryId="@subCategory.Id">
+                                    <i class="mdi mdi-account-box-outline"></i>
+                                </a>
+                                <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-subCategoryId="@subCategory.Id">
+                                    <i class="mdi mdi-credit-card"></i>
+                                </a>
+                                <form method="post" asp-action="Delete" asp-route-subCategoryId="@subCategory.Id" style="display:inline-block">
+                                    <button class="btn btn-danger btn-sm" type="submit">
+                                        <i class="mdi mdi-delete-forever"> </i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        count++;
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="row my-3">
+            <nav aria-label="...">
+                @if (Model.TotalPage > 0)
+                {
+                    <ul class="pagination">
+                        <li class="page-item @(Model.HasPrevious ? "" : "disabled") ">
+                            <a class="page-link" asp-controller="subcategory"
+                               asp-action="Index"
+                               asp-route-page="1">First</a>
+                        </li>
+                        <li class="page-item @(Model.HasPrevious ? "" : "disabled")">
+                            <a class="page-link" asp-controller="subcategory"
+                               asp-action="Index"
+                               asp-route-page="@(Model.CurrentPage-1)">
+                                Previous
+                            </a>
+                        </li>
+                        @for (int i = Model.StartPage; i <= Model.EndPage; i++)
+                        {
+                            <li class="page-item @(i==Model.CurrentPage ? "active" : "")">
+                                <a class="page-link" asp-controller="subcategory"
+                                   asp-action="Index" asp-route-page="@i">@i</a>
+                            </li>
+                        }
+                        <li class="page-item @(Model.HasNext ? "" : "disabled")">
+                            <a class="page-link" asp-controller="subcategory"
+                               asp-action="Index"
+                               asp-route-page="@(Model.CurrentPage+1)">Next</a>
+                        </li>
+                        <li class="page-item @(Model.HasNext ? "" : "disabled")">
+                            <a class="page-link" asp-controller="subcategory"
+                               asp-action="Index"
+                               asp-route-page="@(Model.TotalPage)">Last</a>
+                        </li>
+                    </ul>
+                }
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+
+
+
+

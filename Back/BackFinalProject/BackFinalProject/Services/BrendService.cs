@@ -25,7 +25,7 @@ namespace BackFinalProject.Services
 
         public async Task<List<Brend>> GetBrendsAsync()
         {
-            return await context.Brends.ToListAsync();
+            return await context.Brends.Where(m=>!m.IsDeleted).ToListAsync();
         }
 
     }

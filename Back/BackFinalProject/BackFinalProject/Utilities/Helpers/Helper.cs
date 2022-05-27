@@ -15,7 +15,7 @@ namespace BackFinalProject.Utilities.Helpers
 
         public static void DeleteFile(string path)
         {
-            if (!File.Exists(path))
+            if (File.Exists(path))
             {
                 File.Delete(path);
             }

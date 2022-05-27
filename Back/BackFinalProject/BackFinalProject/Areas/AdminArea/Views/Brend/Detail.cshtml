@@ -1,0 +1,26 @@
+﻿@model Brend
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="container">
+    <h1>Detail</h1>
+    <div class="form-group">
+        <h3>Brend Name</h3>
+        <p>@Model.Name</p>
+    </div>
+    <div class="form-group">
+        <h3>Brend Text</h3>
+        <p>@Html.Raw(Model.Text)</p>
+    </div>
+    <div class="form-group">
+        <h3>Brend Image</h3>
+        <div>
+            <img src="~/assets/img/brendSearch/@Model.Image" alt="Category Image" />
+        </div>
+    </div>
+
+</div>
+

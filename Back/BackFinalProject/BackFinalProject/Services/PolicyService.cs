@@ -20,7 +20,12 @@ namespace BackFinalProject.Services
 
         public async Task<List<PolicySection>> GetPoliciesAsync()
         {
-            return await context.Policies.Where(m=>m.False == false).ToListAsync();
+            return await context.Policies.Where(m=>m.IsDelete == false).ToListAsync();
+        }
+
+        public async Task<PolicySection> GetPolicyWithIdAsync(int policyId)
+        {
+            return await context.Policies.Where(m => m.Id == policyId && !m.IsDelete).FirstOrDefaultAsync();
         }
     }
 }

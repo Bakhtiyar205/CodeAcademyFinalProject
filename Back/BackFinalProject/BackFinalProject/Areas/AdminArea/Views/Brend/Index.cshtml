@@ -1,0 +1,73 @@
+﻿@model List<Brend>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+    int count = 1;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="justify-content-between d-flex mt-3 justify-content-between" style="width:100%;">
+            <div>
+                <h1>Brends</h1>
+            </div>
+            <div>
+                <a class="btn btn-success" asp-controller="brend" asp-action="create">Create Brend</a>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Number
+                        </th>
+                        <th>
+                            Brend Image
+                        </th>
+                        <th>
+                            Brend Name
+                        </th>
+                        <th>
+                            Settings
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var brend in Model)
+                    {
+                        <tr>
+                            <td>
+                                @count
+                            </td>
+                            <td>
+                                <img src="~/Assets/img/brendSearch/@brend.Image" alt="Alternative Image" style="width:100px; height:100px;border-radius:10%;" />
+
+                            </td>
+                            <td>
+                                @brend.Name
+                            </td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" asp-controller="brend" asp-action="Detail" asp-route-brendId="@brend.Id">
+                                    <i class="mdi mdi-account-box-outline"></i>
+                                </a>
+                                <a class="btn btn-warning btn-sm" asp-controller="brend" asp-action="Edit" asp-route-brendId="@brend.Id">
+                                    <i class="mdi mdi-credit-card"></i>
+                                </a>
+                                <form method="post" asp-controller="brend" asp-action="Delete" asp-route-brendId="@brend.Id" style="display:inline-block">
+                                    <button class="btn btn-danger btn-sm" type="submit">
+                                        <i class="mdi mdi-delete-forever"> </i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        count++;
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

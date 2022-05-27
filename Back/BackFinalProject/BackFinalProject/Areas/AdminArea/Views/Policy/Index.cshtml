@@ -1,0 +1,66 @@
+﻿@model List<PolicySection>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+    int count = 1;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="justify-content-between d-flex mt-3 justify-content-between" style="width:100%;">
+            <div>
+                <h1>Brends</h1>
+            </div>
+            <div>
+                <a class="btn btn-success" asp-controller="policy" asp-action="create">Create Brend</a>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Number
+                        </th>
+                        <th>
+                            Policy Name
+                        </th>
+                        <th>
+                            Settings
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var policy in Model)
+                    {
+                        <tr>
+                            <td>
+                                @count
+                            </td>
+                            <td>
+                                @policy.Name
+                            </td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" asp-controller="policy" asp-action="Detail" asp-route-policyId="@policy.Id">
+                                    <i class="mdi mdi-account-box-outline"></i>
+                                </a>
+                                <a class="btn btn-warning btn-sm" asp-controller="policy" asp-action="Edit" asp-route-policyId="@policy.Id">
+                                    <i class="mdi mdi-credit-card"></i>
+                                </a>
+                                <form method="post" asp-controller="policy" asp-action="Delete" asp-route-policyId="@policy.Id" style="display:inline-block">
+                                    <button class="btn btn-danger btn-sm" type="submit">
+                                        <i class="mdi mdi-delete-forever"> </i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        count++;
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,81 @@
+﻿@model List<Blog>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+int count = 1;
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="justify-content-between d-flex mt-3 justify-content-between" style="width:100%;">
+            <div>
+                <h1>Blogs</h1>
+            </div>
+            <div>
+                <a class="btn btn-success" asp-controller="blog" asp-action="create">Create Blog</a>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Number
+                        </th>
+                        <th>
+                            Blog Image
+                        </th>
+                        <th>
+                            Blog Name
+                        </th>
+                        <th>
+                            Settings
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var blog in Model)
+                    {
+                        <tr>
+                            <td>
+                                @count
+                            </td>
+                            <td>
+                                <img src="~/Assets/img/blog/@blog.BlogSpesifications.FirstOrDefault().Image" alt="Alternative Image" style="width:100px; height:100px;border-radius:10%;" />
+
+                            </td>
+                            <td>
+                                @blog.Name
+                            </td>
+                            <td>
+                                <a class="btn btn-primary btn-sm" asp-action="Detail" asp-route-blogId="@blog.Id">
+                                    <i class="mdi mdi-account-box-outline"></i>
+                                </a>
+                                <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-blogId="@blog.Id">
+                                    <i class="mdi mdi-credit-card"></i>
+                                </a>
+                                <form method="post" asp-action="Delete" asp-route-blogId="@blog.Id" style="display:inline-block">
+                                    <button class="btn btn-danger btn-sm" type="submit">
+                                        <i class="mdi mdi-delete-forever"> </i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        count++;
+                    }
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+

@@ -20,20 +20,32 @@ namespace BackFinalProject.Services
 
         public async Task<List<Category>> GetCategoriesAsync()
         {
-            List<Category> categories = await _context.Categories.Where(m=>m.İsDeleted ==false).ToListAsync();
+            List<Category> categories = await _context.Categories
+                                            .Where(m=>m.İsDeleted ==false)
+                                            .Include(m=>m.Blogs)
+                                            .Include(m=>m.SubCategory)
+                                            .Include(m=>m.DiscountCategroies)
+                                            .ToListAsync();
             return categories;
         }
 
         public async Task<Category> GetCategoriesWithIdAsync(int categoryId)
         {
             return await _context.Categories.Where(m => m.Id == categoryId)
-                                            .Include(m=>m.SubCategory)
+                                            .Include(m => m.Blogs)
+                                            .Include(m => m.SubCategory)
+                                            .Include(m => m.DiscountCategroies)
                                             .FirstOrDefaultAsync();
         }
 
         public async Task<Category> GetCategoryAsNoTrackingAsync(int categoryId)
         {
-            return await _context.Categories.AsNoTracking().FirstOrDefaultAsync(m => m.Id == categoryId);
+            return await _context.Categories
+                        .Include(m => m.Blogs)
+                        .Include(m => m.SubCategory)
+                        .Include(m => m.DiscountCategroies)
+                        .AsNoTracking()
+                        .FirstOrDefaultAsync(m => m.Id == categoryId);
         }
     }
 }

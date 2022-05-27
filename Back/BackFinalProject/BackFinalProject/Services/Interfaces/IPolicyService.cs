@@ -9,5 +9,6 @@ namespace BackFinalProject.Services.Interfaces
     public interface IPolicyService
     {
         Task<List<PolicySection>> GetPoliciesAsync();
+        Task<PolicySection> GetPolicyWithIdAsync(int policyId);
     }
 }

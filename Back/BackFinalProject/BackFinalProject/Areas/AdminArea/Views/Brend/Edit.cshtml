@@ -1,0 +1,41 @@
+﻿@model Brend
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h1>Edit</h1>
+    <form class="forms-sample" method="post" asp-controller="Brend" asp-action="Edit" asp-route-brendId="@Model.Id" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <input class="form-control" asp-for="Name" style="width:350px;">
+            <span class="text-danger" asp-validation-for="Name" type="text"></span>
+        </div>
+        <div>
+            <img src="~/assets/img/brendSearch/@Model.Image" alt="Alternate Text"  style="width:100px;height:100px;"/>
+            <label asp-for="Photo">Images: </label>
+            <input class="form-control" asp-for="Photo" style="width:350px;">
+            <span class="text-danger" asp-validation-for="Photo"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Text"></label>
+            <textarea class="form-control" asp-for="Text" style="width:350px;" id="BrendText"></textarea>
+            <span class="text-danger" asp-validation-for="Text" type="text"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary me-2">Submit</button>
+        <a asp-action="Index" class="btn btn-light">Cancel</a>
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationPartialView" />
+
+    <script src="~/ckeditor/ckeditor.js"></script>
+
+    <script>
+        CKEDITOR.replace("BrendText")
+    </script>
+}
+

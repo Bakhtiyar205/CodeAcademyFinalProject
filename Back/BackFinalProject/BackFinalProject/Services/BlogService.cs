@@ -20,7 +20,9 @@ namespace BackFinalProject.Services
 
         public async Task<List<Blog>> GetBlogsAsync()
         {
-            return await context.Blogs.Where(m => m.IsDeleted == false).Include(m=>m.BlogSpesifications).ToListAsync();
+            return await context.Blogs.Where(m => m.IsDeleted == false)
+                                        .Include(m=>m.BlogSpesifications)
+                                        .ToListAsync();
         }
 
         public async Task<Blog> GetBlogAsync(int blogId)

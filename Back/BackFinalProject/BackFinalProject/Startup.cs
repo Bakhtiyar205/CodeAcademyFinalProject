@@ -44,6 +44,7 @@ namespace BackFinalProject
             services.AddScoped<IGiftCardService, GiftCardService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<IBlogSpecificationService, BlogSpecificationsService>();
+            services.AddScoped<IBestOfferImageService, BestOfferImageService>();
             services.AddControllersWithViews()
                     .AddNewtonsoftJson(options =>
                      options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore

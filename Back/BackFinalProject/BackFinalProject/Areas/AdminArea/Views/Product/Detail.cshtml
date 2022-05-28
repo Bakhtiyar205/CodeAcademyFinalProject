@@ -1,0 +1,35 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div>
+        <h6 style="color:aqua">Name</h6>
+        <p>@Model.Name</p>
+    </div>
+    <div>
+        <h6 style="color:aqua">Detail</h6>
+        <p>@Model.Detail</p>
+    </div>
+    <div>
+        <h6 style="color:aqua">Price, Discount and Discounted Price</h6>
+        <p>@Math.Truncate(Model.RealPrice) AZN</p>
+        <p>@Math.Truncate(Model.Discount)%</p>
+        <p>@Math.Truncate(Model.RealPrice*(100-Model.Discount)/100) AZN</p>
+    </div>
+    <div>
+        <h6 style="color:aqua">Subcategory Name</h6>
+        <p>@Model.SubCategory.Name</p>
+    </div>
+    <div class="row">
+        @foreach (var image in Model.ProductImages)
+        {
+            <div class="col-md-4 col-12">
+                <img src="~/assets/img/products/@image.Image" alt="Product Image" style="width:100%; height:200px;"/>
+            </div>
+        }
+    </div>
+</div>
+

@@ -1,0 +1,28 @@
+﻿@model List<BestOfferImages>
+@{
+    ViewData["Title"] = "ImageList";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (var bestOfferImage in Model)
+        {
+            <div class="col-md-4 col-12 mt-2">
+                <a asp-controller="bestoffer" asp-action="EditImage" asp-route-id="@bestOfferImage.Id">
+                    <img src="~/assets/img/bestOffer/@bestOfferImage.Image" alt="Alternate Text" style="width:100%; height:200px;" />
+                </a>
+            </div>
+        }
+        <div class="col-md-4 col-12 mt-2">
+            <a asp-controller="bestoffer" asp-action="CreateImage">
+                <div class="d-flex justify-content-center text-center align-items-center btn btn-primary" style="width:100%; height:200px !important; font-size:50px;">
+                    <div>
+                        +
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+

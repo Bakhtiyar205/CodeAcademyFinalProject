@@ -19,6 +19,38 @@ namespace BackFinalProject.Services
             this.context = context;
         }
 
+        public async Task<Paginate<Product>> GetAllProductsAsync(int? take=9, int? page=1)
+        {
+            int newPage;
+            int newTake;
+            if (page == null)
+            {
+                newPage = 1;
+            }
+            else
+            {
+                newPage = (int)page;
+            }
+
+            if (take == null)
+            {
+                newTake = 9;
+            }
+            else
+            {
+                newTake = (int)take;
+            }
+            List<Product> products = await context.Products.Where(m => m.IsDeleted == false)
+                                           .Include(m => m.SubCategory)
+                                           .Include(m => m.ProductImages)
+                                           .Skip((newPage - 1) * newTake)
+                                           .Take(newTake)
+                                           .ToListAsync();
+            int countPages = await GetPageCount(newTake);
+            Paginate<Product> resultProducts = new(products, newPage, countPages);
+            return resultProducts;
+        }
+
         public async Task<List<Product>> GetProductsAsync()
         {
             return await context.Products.Where(m => m.IsDeleted == false

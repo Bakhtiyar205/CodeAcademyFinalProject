@@ -10,8 +10,8 @@ namespace BackFinalProject.Models
         public string Name { get; set; }
         public string Detail { get; set; }
         public decimal Discount { get; set; }
-        public decimal RealPrice { get; set; } 
-        public DateTime Date { get; set; }
+        public decimal RealPrice { get; set; }
+        public DateTime Date { get; set; } = DateTime.Now;
         public bool IsOnline { get; set; }
         public bool IsDeleted { get; set; }
         public bool IsOutlet { get; set; }

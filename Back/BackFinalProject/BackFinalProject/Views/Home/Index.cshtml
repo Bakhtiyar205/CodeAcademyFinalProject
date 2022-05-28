@@ -115,7 +115,7 @@
     <div class="container mb-5">
         <h3 class="my-3">Brend uzre Axtar</h3>
         <div class="row">
-            @foreach (var brend in Model.Brends)
+            @foreach (var brend in Model.Brends.Take(5))
             {
                 <div class="col-md-2 col-6 mt-2 me-xl-3">
                     <div class="d-flex justify-content-center search-brend-element">
@@ -162,7 +162,7 @@
     <h3 class="text-center">Blog</h3>
     <div class="container">
         <div class="row">
-            @foreach (var blog in Model.Blogs)
+            @foreach (var blog in Model.Blogs.Take(2))
             {
                 <div class="col-md-6 col-12 mt-2">
                     <div class="blog-img">

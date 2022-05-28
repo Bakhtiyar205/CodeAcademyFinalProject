@@ -200,3 +200,9 @@ C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFi
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\BackFinalProject.csproj.AssemblyReference.cache
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\BestOffer\Index.cshtml.g.cs
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\BestOffer\Edit.cshtml.g.cs
+C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\BestOffer\ImageList.cshtml.g.cs
+C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\BestOffer\EditImage.cshtml.g.cs
+C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\BestOffer\CreateImage.cshtml.g.cs
+C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\Product\Index.cshtml.g.cs
+C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\Product\Create.cshtml.g.cs
+C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\Product\Detail.cshtml.g.cs

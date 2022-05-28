@@ -9,6 +9,7 @@ namespace BackFinalProject.Services.Interfaces
 {
     public interface IProductService
     {
+        Task<Paginate<Product>> GetAllProductsAsync(int? take = 9, int? page = 1);
         Task<List<Product>> GetProductsAsync();
         Task<Product> GetProductWithIdAsync(int productId);
         Task<List<Product>> GetProductWithSubCategoryIdAsync(int subcategoryId);
@@ -16,5 +17,6 @@ namespace BackFinalProject.Services.Interfaces
         Task<Product> GetOutletProductWithIdAsync(int productId);
         Task<List<Product>> GetOutletProductWithSubCategoryIdAsync(int subcategoryId);
         Task<List<Product>> GetNewOutletProductsAsync();
+
     }
 }

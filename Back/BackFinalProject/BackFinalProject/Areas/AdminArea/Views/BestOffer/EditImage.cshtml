@@ -1,0 +1,26 @@
+﻿@model BestOfferImages
+@{
+    ViewData["Title"] = "EditImage";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <form class="forms-sample" method="post" asp-controller="bestoffer" asp-action="editImage" asp-route-id="@Model.Id" enctype="multipart/form-data">
+        <div>
+            <input type="hidden" asp-for="BestOfferId" value="@Model.BestOfferId" />
+            <img src="~/assets/img/bestOffer/@Model.Image" alt="Alternate Text" style="width:100%; height:100%;"/>
+            <label asp-for="Photo">Images: </label>
+            <input class="form-control" asp-for="Photo" style="width:350px;">
+            <span class="text-danger my-2" asp-validation-for="Photo"></span>
+            <button type="submit" class="btn btn-primary me-2 mt-2">Submit</button>
+            <a asp-action="Index" class="btn btn-light mt-2">Cancel</a>
+
+        </div>
+    </form>
+    <form method="post" asp-controller="bestoffer" asp-action="Delete" asp-route-Id="@Model.Id" style="display:inline-block">
+        <button class="btn btn-danger btn-sm mt-2" type="submit">
+            <i class="mdi mdi-delete-forever"> </i> Delete
+        </button>
+    </form>
+</div>
+

@@ -22,6 +22,7 @@ namespace BackFinalProject.Datas
         public DbSet<PolicySection> Policies { get; set; }
         public DbSet<DiscountCategroy> DiscountCategroies { get; set; }
         public DbSet<BestOffer> BestOffers { get; set; }
+        public DbSet<BestOfferImages> BestOfferImages { get; set; }
         public DbSet<GiftCard> GiftCards { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }

@@ -1,0 +1,21 @@
+﻿@model BestOfferImages
+@{
+    ViewData["Title"] = "CreateImage";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="container">
+        <form class="forms-sample" method="post" asp-controller="bestoffer" asp-action="createImage" enctype="multipart/form-data">
+            <div>
+                <input type="hidden" asp-for="BestOfferId" value="1" />
+                <label asp-for="Photo">Images: </label>
+                <input class="form-control" asp-for="Photo" style="width:350px;">
+                <span class="text-danger" asp-validation-for="Photo"></span>
+                <button type="submit" class="btn btn-primary me-2">Submit</button>
+                <a asp-action="Index" class="btn btn-light">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+

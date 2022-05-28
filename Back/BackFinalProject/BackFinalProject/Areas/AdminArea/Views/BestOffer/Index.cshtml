@@ -1,0 +1,58 @@
+﻿@model BestOffer
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+    int count = 1;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="justify-content-between d-flex mt-3 justify-content-between" style="width:100%;">
+            <div>
+                <h1>Best Offer</h1>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Number
+                        </th>
+                        <th>
+                            Best Offer Image
+                        </th>
+                        <th>
+                            Best Offer Name
+                        </th>
+                        <th>
+                            Settings
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            @count
+                        </td>
+                        <td>
+                            <img src="~/Assets/img/bestOffer/@Model.Images.FirstOrDefault().Image" alt="Alternative Image" style="width:100px; height:100px;border-radius:10%;" />
+
+                        </td>
+                        <td>
+                            @Model.Text
+                        </td>
+                        <td>
+                            <a class="btn btn-warning btn-sm" asp-controller="bestoffer" asp-action="Edit">
+                                <i class="mdi mdi-credit-card"></i>
+                            </a>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

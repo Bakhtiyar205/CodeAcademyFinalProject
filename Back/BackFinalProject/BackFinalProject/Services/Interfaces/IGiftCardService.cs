@@ -10,5 +10,6 @@ namespace BackFinalProject.Services.Interfaces
     {
         Task<List<GiftCard>> GiftCardsAsync();
         Task<GiftCard> GiftCarWithIddAsync(int giftCardId);
+        Task<GiftCard> GiftCarForUpdatedAsync(int giftCardId);
     }
 }

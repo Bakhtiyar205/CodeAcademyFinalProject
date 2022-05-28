@@ -21,8 +21,17 @@ namespace BackFinalProject.Services
         public async Task<DiscountCategroy> GetDiscountCategroyAsync()
         {
             return await context.DiscountCategroies.Where(m => m.IsDeleted == false)
-                                                    .Include(m=>m.Category)
-                                                    .ThenInclude(m=>m.SubCategory)
+                                                    .Include(m => m.Category)
+                                                    .ThenInclude(m => m.SubCategory)
+                                                    .OrderByDescending(m => m.Id)
+                                                    .FirstOrDefaultAsync();
+        }
+
+        public async Task<DiscountCategroy> GetDiscountCategroyCrudAsync()
+        {
+            return await context.DiscountCategroies.Where(m => m.IsDeleted == false)
+                                                    .Include(m => m.Category)
+                                                    .AsNoTracking()
                                                     .OrderByDescending(m => m.Id)
                                                     .FirstOrDefaultAsync();
         }

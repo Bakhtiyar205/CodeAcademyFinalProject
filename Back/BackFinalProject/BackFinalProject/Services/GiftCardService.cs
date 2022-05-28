@@ -29,5 +29,12 @@ namespace BackFinalProject.Services
             return await context.GiftCards.Where(m => m.IsDeleted == false && m.Id == giftCardId)
                                            .FirstOrDefaultAsync();
         }
+
+        public async Task<GiftCard> GiftCarForUpdatedAsync(int giftCardId)
+        {
+            return await context.GiftCards.Where(m => m.IsDeleted == false && m.Id == giftCardId)
+                                           .AsNoTracking()
+                                           .FirstOrDefaultAsync();
+        }
     }
 }

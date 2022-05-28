@@ -1,0 +1,60 @@
+﻿@model DiscountCategroy
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+    int count = 1;
+}
+<div class="container">
+    <div class="row">
+        <div class="justify-content-between d-flex mt-3 justify-content-between" style="width:100%;">
+            <div>
+                <h1>Categories</h1>
+            </div>
+            <div>
+                <a class="btn btn-success" asp-controller="category" asp-action="create">Create Category</a>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Number
+                        </th>
+                        <th>
+                            Category Image
+                        </th>
+                        <th>
+                            Category Name
+                        </th>
+                        <th>
+                            Settings
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td>
+                                @count
+                            </td>
+                            <td>
+                                <img src="~/Assets/img/categoriesDiscount/@Model.Image" alt="Alternative Image" style="width:100px; height:100px;border-radius:10%;" />
+
+                            </td>
+                            <td>
+                                @Model.Name
+                            </td>
+                            <td>
+                                <a class="btn btn-warning btn-sm" asp-controller="discountcategory" asp-action="Edit">
+                                    <i class="mdi mdi-credit-card"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

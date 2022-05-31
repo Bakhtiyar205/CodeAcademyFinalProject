@@ -11,13 +11,13 @@ namespace BackFinalProject.Models
     public class BlogSpesification:BaseEntity
     { 
         [Required]
-        [DataType(DataType.Text)]
+        [DataType(DataType.Text),MaxLength(255)]
         public string Image { get; set; }
+        [DataType(DataType.Text), MaxLength(300)]
         public string BlogText { get; set; }
         public bool IsDeleted { get; set; }
         public int BlogId { get; set; }
         public Blog Blog { get; set; }
-        [Required]
         [NotMapped]
         public IFormFile Photo { get; set; }
     }

@@ -10,6 +10,7 @@ namespace BackFinalProject.Models
 {
     public class BestOfferImages : BaseEntity
     {
+        [DataType(DataType.Text), MaxLength(400), MinLength(10)]
         public string Image { get; set; }
         public bool IsDeleted { get; set; }
         public int BestOfferId { get; set; }

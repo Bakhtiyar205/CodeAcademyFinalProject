@@ -57,7 +57,7 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
                 return View(category);
             }
 
-            string fileName = Guid.NewGuid().ToString() + "_" + category.Photo.FileName;
+            string fileName = Guid.NewGuid().ToString() + "_" + category.Photo.FileName.Substring(category.Photo.FileName.IndexOf("."));
 
             string path = Helper.GetFilePath(environment.WebRootPath, "assets/img/categoriesMainPictures", fileName);
 
@@ -120,7 +120,7 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
 
             Helper.DeleteFile(path);
 
-            string fileName = Guid.NewGuid().ToString() + "_" + category.Photo.FileName;
+            string fileName = Guid.NewGuid().ToString() + "_" + category.Photo.FileName.Substring(category.Photo.FileName.IndexOf("."));
 
             string newPath = Helper.GetFilePath(environment.WebRootPath, "assets/img/categoriesMainPictures", fileName);
 

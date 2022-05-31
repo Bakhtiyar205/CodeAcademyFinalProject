@@ -23,13 +23,13 @@
     <div class="form-group">
         @* For Naming Label *@
         <label asp-for="Discount"></label>
-        <input class="form-control" asp-for="Discount" style="width:350px;">
+        <input class="form-control" asp-for="Discount" min="0" max="100" style="width:350px;">
         <span class="text-danger" asp-validation-for="Discount" type="text"></span>
     </div>
     <div class="form-group">
         @* For Naming Label *@
         <label asp-for="RealPrice"></label>
-        <input class="form-control" asp-for="RealPrice" style="width:350px;">
+        <input class="form-control" asp-for="RealPrice" min="0" style="width:350px;">
         <span class="text-danger" asp-validation-for="RealPrice" type="text"></span>
     </div>
     <div>

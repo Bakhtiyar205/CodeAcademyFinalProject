@@ -22,14 +22,17 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
         private readonly AppDBContext context;
         private readonly IWebHostEnvironment environment;
         private readonly IProductService productService;
+        private readonly IProductImageService productImageService;
 
         public ProductController(AppDBContext context,
                                  IWebHostEnvironment environment,
-                                 IProductService productService)
+                                 IProductService productService,
+                                 IProductImageService productImageService)
         {
             this.context = context;
             this.environment = environment;
             this.productService = productService;
+            this.productImageService = productImageService;
         }
         public async Task<IActionResult> Index(int? take, int? page)
         {
@@ -76,7 +79,7 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
             await context.Products.AddAsync(newProduct);
             foreach (var photo in product.Photos)
             {
-                string fileName = Guid.NewGuid().ToString() + "_" + photo.FileName;
+                string fileName = Guid.NewGuid().ToString() + "_" + photo.FileName.Substring(photo.FileName.IndexOf("."));
                 string path = Helper.GetFilePath(environment.WebRootPath, "assets/img/products", fileName);
                 await photo.SaveFiles(path);
                 ProductImage productImage = new()
@@ -103,6 +106,106 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
                 Helper.DeleteFile(path);
             }
             product.IsDeleted = true;
+            await context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            ViewBag.SelectList = await GetSelectList();
+            Product product = await productService.GetProductWithIdAsync(id);
+            if (product is null) return NotFound();
+            ProductUpdateVM productUpdate = new()
+            {
+                Product = product
+            };
+            return View(productUpdate);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id,ProductUpdateVM productUpdate)
+        {
+            ViewBag.SelectList = await GetSelectList();
+            if (productUpdate.Product.ProductImages != null)
+            {
+                foreach (var formPhoto in productUpdate.Product.ProductImages)
+                {
+                    if(formPhoto.FormPhoto != null)
+                    {
+                        if (!formPhoto.FormPhoto.CheckFileType("image/"))
+                        {
+                            ModelState.AddModelError("Photo", "Only image type is accebtible");
+                            return View();
+                        }
+
+                        if (!formPhoto.FormPhoto.CheckFileSize(800))
+                        {
+                            ModelState.AddModelError("Photo", "Must be Less than 800KB");
+                            return View();
+                        }
+                    }
+                    
+
+                }
+            }
+            if(productUpdate.Photos != null)
+            {
+                foreach (var photo in productUpdate.Photos)
+                {
+                        if (!photo.CheckFileType("image/"))
+                        {
+                            ModelState.AddModelError("Photo", "Only image type is accebtible");
+                            return View();
+                        }
+
+                        if (!photo.CheckFileSize(800))
+                        {
+                            ModelState.AddModelError("Photo", "Must be Less than 800KB");
+                            return View();
+                        }
+                }
+
+            }
+            Product dbProduct = await productService.GetProductWithIdAsync(id);
+            if (dbProduct is null) return NotFound();
+            dbProduct.Name = productUpdate.Product.Name;
+            dbProduct.Detail = productUpdate.Product.Detail;
+            dbProduct.Discount = productUpdate.Product.Discount;
+            dbProduct.RealPrice = productUpdate.Product.RealPrice;
+            dbProduct.IsOnline = productUpdate.Product.IsOnline;
+            dbProduct.IsOutlet = productUpdate.Product.IsOutlet;
+            dbProduct.SubCategoryId = productUpdate.Product.SubCategoryId;
+            foreach (var productImage in productUpdate.Product.ProductImages)
+            {
+                ProductImage productUpdateImage = await productImageService.ProductImageWithIdAsync(productImage.Id);
+                productUpdateImage.IsDeleted = productImage.IsDeleted;
+                if (productImage.FormPhoto != null)
+                {
+                    string path = Helper.GetFilePath(environment.WebRootPath, "assets/img/products", productImage.Image);
+                    Helper.DeleteFile(path);
+                    string fileName = Guid.NewGuid().ToString() + "_" + productImage.FormPhoto.FileName;
+                    string newPath = Helper.GetFilePath(environment.WebRootPath, "assets/img/products", fileName);
+                    await productImage.FormPhoto.SaveFiles(newPath);
+                    productUpdateImage.Image = fileName;
+                }
+            }
+            if(productUpdate.Photos != null)
+            {
+                foreach (var photo in productUpdate.Photos)
+                {
+                    string fileName = Guid.NewGuid().ToString() + "_" + photo.FileName.Substring(photo.FileName.IndexOf("."));
+                    string path = Helper.GetFilePath(environment.WebRootPath, "assets/img/products", fileName);
+                    await photo.SaveFiles(path);
+                    ProductImage productImage = new()
+                    {
+                        Image = fileName,
+                        ProductId = dbProduct.Id
+                    };
+                    await context.ProductImages.AddAsync(productImage);
+                }
+            }
             await context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

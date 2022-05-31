@@ -47,6 +47,7 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(BestOffer bestOffer)
         {
+            if (ModelState["Text"].ValidationState == ModelValidationState.Invalid) return View(bestOffer);
             context.BestOffers.Update(bestOffer);
             await context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -84,7 +85,7 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
             }
             string path = Helper.GetFilePath(environment.WebRootPath, "assets/img/bestOffer", dbBestOfferImage.Image);
             Helper.DeleteFile(path);
-            string fileName = Guid.NewGuid().ToString() + "_" + bestOfferImages.Photo.FileName;
+            string fileName = Guid.NewGuid().ToString() + "_" + bestOfferImages.Photo.FileName.Substring(bestOfferImages.Photo.FileName.IndexOf("."));
             string newPath = Helper.GetFilePath(environment.WebRootPath, "assets/img/bestOffer", fileName);
             await bestOfferImages.Photo.SaveFiles(newPath);
             bestOfferImages.Image = fileName;
@@ -113,7 +114,7 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
                 ModelState.AddModelError("Photos", "The File should be less than 800KB");
                 return View(bestOfferImages);
             }
-            string fileName = Guid.NewGuid().ToString() + "_" + bestOfferImages.Photo.FileName;
+            string fileName = Guid.NewGuid().ToString() + "_" + bestOfferImages.Photo.FileName.Substring(bestOfferImages.Photo.FileName.IndexOf("."));
             string path = Helper.GetFilePath(environment.WebRootPath, "assets/img/bestOffer", fileName);
             await bestOfferImages.Photo.SaveFiles(path);
             bestOfferImages.Image = fileName;

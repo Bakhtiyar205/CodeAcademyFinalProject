@@ -56,7 +56,7 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
                 ModelState.AddModelError("Photos", "The File should be less than 400KB");
                 return View(brend);
             }
-            string fileName = Guid.NewGuid().ToString() + "_" + brend.Photo.FileName;
+            string fileName = Guid.NewGuid().ToString() + "_" + brend.Photo.FileName.Substring(brend.Photo.FileName.IndexOf("."));
             string path = Helper.GetFilePath(environment.WebRootPath, "assets/img/brendSearch", fileName);
             await brend.Photo.SaveFiles(path);
             brend.Image = fileName;
@@ -95,7 +95,7 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
             if (dbBrend == null) return NotFound();
             string path = Helper.GetFilePath(environment.WebRootPath, "assets/img/brendSearch", dbBrend.Image);
             Helper.DeleteFile(path);
-            string fileName = Guid.NewGuid().ToString() + "_" + brend.Photo.FileName;
+            string fileName = Guid.NewGuid().ToString() + "_" + brend.Photo.FileName.Substring(brend.Photo.FileName.IndexOf("."));
             string newPath = Helper.GetFilePath(environment.WebRootPath, "assets/img/brendSearch", fileName);
             await brend.Photo.SaveFiles(newPath);
             brend.Image = fileName;

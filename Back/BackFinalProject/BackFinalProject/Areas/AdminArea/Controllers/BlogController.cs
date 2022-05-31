@@ -58,6 +58,7 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Blog blog)
         {
+                
             ViewBag.SelectList = await GetSelectList();
 
             foreach (var blogSpesification in blog.BlogSpesifications)
@@ -81,7 +82,7 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
             
             foreach (var blogSpesification in blog.BlogSpesifications)
             {
-                string fileName = Guid.NewGuid().ToString() + "_" + blogSpesification.Photo.FileName;
+                string fileName = Guid.NewGuid().ToString() + "_" + blogSpesification.Photo.FileName.Substring(blogSpesification.Photo.FileName.IndexOf("."));
 
                 string path = Helper.GetFilePath(environment.WebRootPath, "assets/img/blog", fileName);
 
@@ -96,10 +97,10 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> Edit(int blogId, int? blogSpecificationId,int? blogSpecRow)
+        public async Task<IActionResult> Edit(int Id, int? blogSpecificationId,int? blogSpecRow)
         {
           
-            Blog blog = await blogService.GetBlogAsync(blogId);
+            Blog blog = await blogService.GetBlogAsync(Id);
 
             if (blog == null) NotFound();
 
@@ -145,16 +146,95 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int blogId,Blog blog)
+        public async Task<IActionResult> Edit(int Id,Blog blog)
         {
-            Blog dbBlog = await blogService.GetBlogAsync(blogId);
+            if (blog.BlogSpesifications != null)
+            {
+                foreach (var blogDetails in blog.BlogSpesifications)
+                {
+                    if (blogDetails.Photo != null)
+                    {
+                        if (!blogDetails.Photo.CheckFileType("image/"))
+                        {
+                            ModelState.AddModelError("Photo", "Only image type is accebtible");
+                            return View();
+                        }
 
-            if (blog == null) NotFound();
+                        if (!blogDetails.Photo.CheckFileSize(800))
+                        {
+                            ModelState.AddModelError("Photo", "Must be Less than 800KB");
+                            return View();
+                        }
+                    }
+
+
+                }
+
+            }
+            Blog dbBlog = await blogService.GetBlogAsync(Id);
+
+            if (dbBlog == null) NotFound();
 
             ViewBag.SelectList = await GetSelectList();
 
 
-            return View(dbBlog);
+            dbBlog.Name = blog.Name;
+            dbBlog.CategoryId = blog.CategoryId;
+            if(blog.BlogSpesifications != null)
+            {
+                foreach (var blogSpesification in blog.BlogSpesifications)
+                {
+                    if (blogSpesification.Id != 0)
+                    {
+                        BlogSpesification blogSpecUpdate = await blogSpecificationService.GetBlogSpecificationAsync(blogSpesification.Id);
+                        blogSpecUpdate.BlogText = blogSpesification.BlogText;
+                        if (blogSpesification.Photo != null)
+                        {
+                            string path = Helper.GetFilePath(environment.WebRootPath, "assets/img/blog", blogSpecUpdate.Image);
+                            Helper.DeleteFile(path);
+                            string fileName = Guid.NewGuid().ToString() + "_" + blogSpesification.Photo.FileName.Substring(blogSpesification.Photo.FileName.IndexOf("."));
+                            string newPath = Helper.GetFilePath(environment.WebRootPath, "assets/img/blog", fileName);
+                            await blogSpesification.Photo.SaveFiles(newPath);
+                            blogSpecUpdate.Image = fileName;
+                        }
+                    }
+                    else if (blogSpesification.Id == 0)
+                    {
+                        if (blogSpesification != null)
+                        {
+                            BlogSpesification blogSpecCreate = new()
+                            {
+                                BlogId = dbBlog.Id,
+                                Blog = dbBlog
+
+                            };
+                            if (blogSpesification.BlogText != null)
+                            {
+                                blogSpecCreate.BlogText = blogSpesification.BlogText;
+                            }
+                            else
+                            {
+                                blogSpecCreate.BlogText = " ";
+                            }
+                            if (blogSpesification.Photo != null)
+                            {
+                                string fileName = Guid.NewGuid().ToString() + "_" + blogSpesification.Photo.FileName.Substring(blogSpesification.Photo.FileName.IndexOf("."));
+                                string path = Helper.GetFilePath(environment.WebRootPath, "assets/img/blog", fileName);
+                                await blogSpesification.Photo.SaveFiles(path);
+                                blogSpecCreate.Image = fileName;
+                            }
+
+
+                            await context.BlogSpesifications.AddAsync(blogSpecCreate);
+                        }
+
+                    }
+                }
+
+            }
+
+            await context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
         private async Task<SelectList> GetSelectList()
         {

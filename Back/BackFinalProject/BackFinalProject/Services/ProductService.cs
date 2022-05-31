@@ -42,7 +42,7 @@ namespace BackFinalProject.Services
             }
             List<Product> products = await context.Products.Where(m => m.IsDeleted == false)
                                            .Include(m => m.SubCategory)
-                                           .Include(m => m.ProductImages)
+                                           .Include(m => m.ProductImages.Where(m => m.IsDeleted == false))
                                            .Skip((newPage - 1) * newTake)
                                            .Take(newTake)
                                            .ToListAsync();
@@ -56,7 +56,7 @@ namespace BackFinalProject.Services
             return await context.Products.Where(m => m.IsDeleted == false
                                              && m.IsOutlet == false)
                                             .Include(m=>m.SubCategory)
-                                            .Include(m=>m.ProductImages)
+                                            .Include(m=>m.ProductImages.Where(m=>m.IsDeleted==false))
                                             .ToListAsync();
         }
 
@@ -64,16 +64,26 @@ namespace BackFinalProject.Services
         {
             return await context.Products.Where(m => m.IsDeleted == false)
                                             .Include(m => m.SubCategory)
-                                            .Include(m => m.ProductImages)
+                                            .Include(m => m.ProductImages.Where(m => m.IsDeleted == false))
                                             .ToListAsync();
         }
 
         public async Task<Product> GetProductWithIdAsync(int productId)
         {
-            return await context.Products.Where(m => m.Id == productId 
+            return await context.Products.Where(m => m.Id == productId
                                              && m.IsDeleted == false)
                                             .Include(m => m.SubCategory)
-                                            .Include(m => m.ProductImages)
+                                            .Include(m => m.ProductImages.Where(m => m.IsDeleted == false))
+                                            .FirstOrDefaultAsync();
+        }
+
+        public async Task<Product> UpdateProductWithId(int productId)
+        {
+            return await context.Products.Where(m => m.Id == productId
+                                             && m.IsDeleted == false)
+                                            .Include(m => m.SubCategory)
+                                            .Include(m => m.ProductImages.Where(m => m.IsDeleted == false))
+                                            .AsNoTracking()
                                             .FirstOrDefaultAsync();
         }
 
@@ -83,7 +93,7 @@ namespace BackFinalProject.Services
                                              && m.IsDeleted == false 
                                              && m.IsOutlet == false)
                                             .Include(m => m.SubCategory)
-                                            .Include(m => m.ProductImages)
+                                            .Include(m => m.ProductImages.Where(m => m.IsDeleted == false))
                                             .ToListAsync();
         }
 
@@ -101,7 +111,7 @@ namespace BackFinalProject.Services
             List<Product> products = await context.Products.Where(m => m.IsDeleted == false 
                                              && m.IsOutlet == true)
                                             .Include(m => m.SubCategory)
-                                            .Include(m => m.ProductImages)
+                                            .Include(m => m.ProductImages.Where(m => m.IsDeleted == false))
                                             .OrderByDescending(m => m.Date)
                                             .Skip((newPage - 1) * take)
                                             .Take(take)
@@ -121,7 +131,7 @@ namespace BackFinalProject.Services
                                             && m.IsDeleted == false 
                                             && m.IsOutlet == false)
                                             .Include(m => m.SubCategory)
-                                            .Include(m => m.ProductImages)
+                                            .Include(m => m.ProductImages.Where(m => m.IsDeleted == false))
                                             .FirstOrDefaultAsync();
         }
 
@@ -131,7 +141,7 @@ namespace BackFinalProject.Services
                                              && m.IsDeleted == false 
                                              && m.IsOutlet == false)
                                             .Include(m => m.SubCategory)
-                                            .Include(m => m.ProductImages)
+                                            .Include(m => m.ProductImages.Where(m => m.IsDeleted == false))
                                             .ToListAsync();
         }
 

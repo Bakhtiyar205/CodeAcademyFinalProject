@@ -1,0 +1,93 @@
+﻿@model ProductUpdateVM
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <h1>Edit</h1>
+    <form class="forms-sample" method="post" asp-controller="product" asp-action="Edit" asp-route-Id="@Model.Product.Id" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="@Model.Product.Name"></label>
+            <input class="form-control" asp-for="@Model.Product.Name" style="width:350px;">
+            <span class="text-danger" asp-validation-for="@Model.Product.Name" type="text"></span>
+        </div>
+        <div class="form-group">
+            @* For Naming Label *@
+            <label asp-for="@Model.Product.Detail"></label>
+            <textarea class="form-control" asp-for="@Model.Product.Detail" style="width:350px;" id="ProductText"></textarea>
+            <span class="text-danger" asp-validation-for="@Model.Product.Detail" type="text"></span>
+        </div>
+        <div class="form-group">
+            @* For Naming Label *@
+            <label asp-for="@Model.Product.Discount"></label>
+            <input class="form-control" asp-for="@Model.Product.Discount" min="0" max="100" style="width:350px;">
+            <span class="text-danger" asp-validation-for="@Model.Product.Discount" type="text"></span>
+        </div>
+        <div class="form-group">
+            @* For Naming Label *@
+            <label asp-for="@Model.Product.RealPrice"></label>
+            <input class="form-control" asp-for="@Model.Product.RealPrice" min="0" style="width:350px;">
+            <span class="text-danger" asp-validation-for="@Model.Product.RealPrice" type="text"></span>
+        </div>
+        <div class="form-group my-2">
+            <label asp-for="@Model.Product.SubCategoryId">SubCategory</label>
+            <select asp-for="@Model.Product.SubCategoryId" asp-items="@ViewBag.SelectList"></select>
+            <span class="text-danger" asp-validation-for="@Model.Product.SubCategoryId"></span>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col-md-6 col-12">
+                    <label asp-for="@Model.Product.IsOutlet"></label>
+                    <input asp-for="@Model.Product.IsOutlet">
+                    <span class="text-danger" asp-validation-for="@Model.Product.IsOutlet" type="text"></span>
+                </div>
+                <div class="col-md-6 col-12">
+                    <label asp-for="@Model.Product.IsOnline"></label>
+                    <input asp-for="@Model.Product.IsOnline" />
+                    <span class="text-danger" asp-validation-for="@Model.Product.IsOnline"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            @for (int i = 0; i < Model.Product.ProductImages.Count(m=>m.IsDeleted==false); i++)
+            {
+                <div class="col-md-4 col-12 mb-2">
+                    @*<label asp-for="ProductImages[i].FormPhoto"></label>*@
+                    <input type="hidden" asp-for="@Model.Product.ProductImages[i].Id" style="width:350px;" />
+                    <input type="hidden" asp-for="@Model.Product.ProductImages[i].Image" style="width:350px;" />
+                    <img src="~/assets/img/products/@Model.Product.ProductImages[i].Image" alt="Product Image" style="width:99%; height:200px; border-radius:5px" />
+                    <input class="form-control mt-2" asp-for="@Model.Product.ProductImages[i].FormPhoto" style="width:350px;">
+                    <span class="text-danger" asp-validation-for="@Model.Product.ProductImages[i].FormPhoto"></span>
+                    <label asp-for="@Model.Product.ProductImages[i].IsDeleted">Delete Image</label>
+                    <input asp-for="@Model.Product.ProductImages[i].IsDeleted" />
+                </div>
+            }
+            <div class="col-md-4 col-12">
+                <div style="position: absolute; top:0; right:0; opacity:0; width:100%; height:100%; z-index:1000; cursor:pointer;">
+                    <input asp-for="@Model.Photos" style="width:98%; height:200px;" />
+                </div>
+                <div class="btn btn-primary d-flex text-center justify-content-center align-items-center" style="width:99%; height:200px; font-size:100px;">
+                    +
+                </div>
+            </div>
+
+        </div>
+
+
+        <button type="submit" class="btn btn-primary me-2">Submit</button>
+        <a asp-action="Index" class="btn btn-light">Cancel</a>
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationPartialView" />
+
+    <script src="~/ckeditor/ckeditor.js"></script>
+
+    <script>
+        CKEDITOR.replace("ProductText")
+    </script>
+}
+

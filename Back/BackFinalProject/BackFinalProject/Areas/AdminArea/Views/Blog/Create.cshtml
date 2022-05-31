@@ -11,7 +11,7 @@
         <div class="form-group">
             @* For Naming Label *@
             <label asp-for="Name"></label>
-            <input class="form-control" asp-for="Name" style="width:350px;">
+            <input class="form-control" asp-for="Name" style="width:350px;"  maxlength="10">
             <span class="text-danger" asp-validation-for="Name" type="text"></span>
         </div>
         <div class="form-group my-2">
@@ -28,7 +28,7 @@
             </div>
             <div>
                 <label asp-for="@Model.BlogSpesifications[i].BlogText">Images: </label>
-                <textarea class="form-control CategoryText" asp-for="@Model.BlogSpesifications[i].BlogText" style="width:350px;"></textarea>
+                <textarea class="form-control CategoryText" asp-for="@Model.BlogSpesifications[i].BlogText" style="width:350px;" maxlength="300"></textarea>
                 <span class="text-danger" asp-validation-for="@Model.BlogSpesifications[i].BlogText"></span>
             </div>
 

@@ -21,14 +21,14 @@ namespace BackFinalProject.Services
         public async Task<List<Blog>> GetBlogsAsync()
         {
             return await context.Blogs.Where(m => m.IsDeleted == false)
-                                        .Include(m=>m.BlogSpesifications)
+                                        .Include(m=>m.BlogSpesifications.Where(m => m.IsDeleted == false))
                                         .ToListAsync();
         }
 
         public async Task<Blog> GetBlogAsync(int blogId)
         {
             return await context.Blogs.Where(m => m.Id == blogId && m.IsDeleted == false)
-                                        .Include(m => m.BlogSpesifications)
+                                        .Include(m => m.BlogSpesifications.Where(m=>m.IsDeleted == false))
                                         .Include(m=>m.Category)
                                         .FirstOrDefaultAsync();
         }

@@ -54,7 +54,7 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
                 ModelState.AddModelError("Photos", "The File should be less than 400KB");
                 return View(giftCard);
             }
-            string fileName = Guid.NewGuid().ToString() + "_" + giftCard.Photo.FileName;
+            string fileName = Guid.NewGuid().ToString() + "_" + giftCard.Photo.FileName.Substring(giftCard.Photo.FileName.IndexOf("."));
             string path = Helper.GetFilePath(environment.WebRootPath, "assets/img/giftCard", fileName);
             await giftCard.Photo.SaveFiles(path);
             giftCard.Image = fileName;
@@ -89,7 +89,7 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
             }
             string path = Helper.GetFilePath(environment.WebRootPath, "assets/img/giftCard", dbGiftCard.Image);
             Helper.DeleteFile(path);
-            string fileName = Guid.NewGuid().ToString() + "_" + giftCard.Photo.FileName;
+            string fileName = Guid.NewGuid().ToString() + "_" + giftCard.Photo.FileName.Substring(giftCard.Photo.FileName.IndexOf("."));
             string newPath = Helper.GetFilePath(environment.WebRootPath, "assets/img/giftCard", fileName);
             await giftCard.Photo.SaveFiles(newPath);
             giftCard.Image = fileName;

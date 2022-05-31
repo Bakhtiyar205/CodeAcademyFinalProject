@@ -62,7 +62,7 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
             DiscountCategroy dbCategory = await discountCategoryService.GetDiscountCategroyCrudAsync();
             string path = Helper.GetFilePath(environment.WebRootPath, "assets/img/categoriesDiscount", dbCategory.Image);
             Helper.DeleteFile(path);
-            string fileName = Guid.NewGuid().ToString() + "_" + categroy.Photo.FileName;
+            string fileName = Guid.NewGuid().ToString() + "_" + categroy.Photo.FileName.Substring(categroy.Photo.FileName.IndexOf("."));
             string newPath = Helper.GetFilePath(environment.WebRootPath, "assets/img/categoriesDiscount", fileName);
             await categroy.Photo.SaveFiles(path);
             categroy.Image = fileName;

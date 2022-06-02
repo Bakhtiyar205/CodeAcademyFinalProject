@@ -49,13 +49,13 @@
                                 @subCategory.Name
                             </td>
                             <td>
-                                <a class="btn btn-primary btn-sm" asp-action="Detail" asp-route-subCategoryId="@subCategory.Id">
+                                <a class="btn btn-primary btn-sm" asp-action="Detail" asp-route-Id="@subCategory.Id">
                                     <i class="mdi mdi-account-box-outline"></i>
                                 </a>
-                                <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-subCategoryId="@subCategory.Id">
+                                <a class="btn btn-warning btn-sm" asp-action="Edit" asp-route-Id="@subCategory.Id">
                                     <i class="mdi mdi-credit-card"></i>
                                 </a>
-                                <form method="post" asp-action="Delete" asp-route-subCategoryId="@subCategory.Id" style="display:inline-block">
+                                <form method="post" asp-action="Delete" asp-route-Id="@subCategory.Id" style="display:inline-block">
                                     <button class="btn btn-danger btn-sm" type="submit">
                                         <i class="mdi mdi-delete-forever"> </i>
                                     </button>

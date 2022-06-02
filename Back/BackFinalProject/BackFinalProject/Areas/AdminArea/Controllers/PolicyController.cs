@@ -40,6 +40,19 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
         public async Task<IActionResult> Create(int policyId, PolicySection policy)
         {
             if (!ModelState.IsValid) return View(policy);
+            if(policy.Name.Length > 100)
+            {
+                ModelState.AddModelError(nameof(policy.Name), "Name should be less than 100 characters");
+                return View(policy);
+            }
+            if(policy.Detail != null)
+            {
+                if (policy.Detail.Length > 700)
+                {
+                    ModelState.AddModelError(nameof(policy.Detail), "Detail should be less than 100 characters");
+                    return View(policy);
+                }
+            }
             await context.Policies.AddAsync(policy);
             await context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -56,6 +69,20 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int policyId, PolicySection policy)
         {
+            if (!ModelState.IsValid) return View(policy);
+            if (policy.Name.Length > 100)
+            {
+                ModelState.AddModelError(nameof(policy.Name), "Name should be less than 100 characters");
+                return View(policy);
+            }
+            if (policy.Detail != null)
+            {
+                if (policy.Detail.Length > 700)
+                {
+                    ModelState.AddModelError(nameof(policy.Detail), "Detail should be less than 100 characters");
+                    return View(policy);
+                }
+            }
             PolicySection dbPolicy = await policyService.GetPolicyWithIdAsync(policyId);
             if (!ModelState.IsValid) return View(policy);
             dbPolicy.Name = policy.Name;

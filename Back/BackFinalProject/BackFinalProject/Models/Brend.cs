@@ -10,8 +10,12 @@ namespace BackFinalProject.Models
 {
     public class Brend : BaseEntity
     {
+        [Required]
+        [DataType(DataType.Text),MaxLength(100)]
         public string Name { get; set; }
+        [DataType(DataType.Text), MaxLength(50)]
         public string Image { get; set; }
+        [DataType(DataType.Text), MaxLength(1000)]
         public string Text { get; set; }
         public bool IsDeleted { get; set; }
         [Required]

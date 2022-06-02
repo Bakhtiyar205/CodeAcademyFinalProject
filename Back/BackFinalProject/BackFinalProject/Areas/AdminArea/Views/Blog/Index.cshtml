@@ -45,7 +45,7 @@
                             <td>
                                 @if (blog.BlogSpesifications != null)
                                 {
-                                    <img src="~/Assets/img/blog/@blog.BlogSpesifications.FirstOrDefault().Image" alt="Alternative Image" style="width:100px; height:100px;border-radius:10%;" />
+                                    <img src="~/Assets/img/blog/@blog.BlogSpesifications.FirstOrDefault()?.Image" alt="Alternative Image" style="width:100px; height:100px;border-radius:10%;" />
                                 }
                                 else
                                 {

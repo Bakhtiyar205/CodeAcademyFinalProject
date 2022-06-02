@@ -50,9 +50,16 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
         public async Task<IActionResult> Create(SubCategory subCategory)
         {
             ViewBag.categories = await GetSelectList();
-            if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid) return View();
-            if (ModelState["Name"].ValidationState == ModelValidationState.Invalid) return View();
-            if (ModelState["SubCategoryText"].ValidationState == ModelValidationState.Invalid) return View();
+            if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid) return View(subCategory);
+            if (ModelState["Name"].ValidationState == ModelValidationState.Invalid) return View(subCategory);
+            if(subCategory.Name.Length > 100)
+            {
+                ModelState.AddModelError(nameof(subCategory.Name), "Name characters should be less than 100");
+            }
+            if (subCategory.SubCategoryText.Length > 100)
+            {
+                ModelState.AddModelError(nameof(subCategory.SubCategoryText), "Text characters should be less than 100");
+            }
 
             if (!subCategory.Photo.CheckFileType("image/"))
             {
@@ -65,7 +72,7 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
                 return View(subCategory);
             }
 
-            string fileName = Guid.NewGuid().ToString() + "_" + subCategory.Photo.FileName;
+            string fileName = Guid.NewGuid().ToString() + "_" + subCategory.Photo.FileName.Substring(subCategory.Photo.FileName.LastIndexOf("."));
 
             string path = Helper.GetFilePath(environment.WebRootPath, "assets/img/subCategory", fileName);
 
@@ -82,9 +89,9 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Delete(int subCategoryId)
+        public async Task<IActionResult> Delete(int Id)
         {
-            SubCategory subCategory = await subCategoryService.GetSubCategoriesWithIdAsync(subCategoryId);
+            SubCategory subCategory = await subCategoryService.GetSubCategoriesWithIdAsync(Id);
 
             if (subCategory == null) return NotFound();
             string path = Helper.GetFilePath(environment.WebRootPath, "assets/img/subCategory", subCategory.Image);
@@ -94,9 +101,9 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> Edit(int subCategoryId)
+        public async Task<IActionResult> Edit(int Id)
         {
-            SubCategory subCategory = await subCategoryService.GetSubCategoriesWithIdAsync(subCategoryId);
+            SubCategory subCategory = await subCategoryService.GetSubCategoriesWithIdAsync(Id);
 
             if (subCategory == null) NotFound();
 
@@ -107,13 +114,23 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int subCategoryId, SubCategory subCategory)
+        public async Task<IActionResult> Edit(int Id, SubCategory subCategory)
         {
+            if (subCategory.Name.Length > 100)
+            {
+                ModelState.AddModelError(nameof(subCategory.Name), "Name characters should be less than 100");
+                return View(subCategory);
+            }
+            if (subCategory.SubCategoryText.Length > 100)
+            {
+                ModelState.AddModelError(nameof(subCategory.SubCategoryText), "Text characters should be less than 100");
+                return View(subCategory);
+            }
             ViewBag.SelectList = await GetSelectList();
-            SubCategory dbSubCategory = await subCategoryService.GetSubCategoriesWithIdAsync(subCategoryId);
-            if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid) return View();
-            if (ModelState["Name"].ValidationState == ModelValidationState.Invalid) return View();
-            if (ModelState["SubCategoryText"].ValidationState == ModelValidationState.Invalid) return View();
+            SubCategory dbSubCategory = await subCategoryService.GetSubCategoriesWithIdAsync(Id);
+            if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid) return View(subCategory);
+            if (ModelState["Name"].ValidationState == ModelValidationState.Invalid) return View(subCategory);
+            if (ModelState["SubCategoryText"].ValidationState == ModelValidationState.Invalid) return View(subCategory);
 
             if (!subCategory.Photo.CheckFileType("image/"))
             {
@@ -127,19 +144,20 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
             }
             string path = Helper.GetFilePath(environment.WebRootPath, "assets/img/subCategory", dbSubCategory.Image);
             Helper.DeleteFile(path);
-            string fileName = Guid.NewGuid().ToString() + "_" + subCategory.Photo.FileName;
+            string fileName = Guid.NewGuid().ToString() + "_" + subCategory.Photo.FileName.Substring(subCategory.Photo.FileName.LastIndexOf("."));
             string newPath = Helper.GetFilePath(environment.WebRootPath, "assets/img/subCategory", fileName);
             await subCategory.Photo.SaveFiles(newPath);
-            subCategory.Image = fileName;
-            context.SubCategories.Update(subCategory);
+            dbSubCategory.Image = fileName;
+            dbSubCategory.Name = subCategory.Name;
+            dbSubCategory.SubCategoryText = subCategory.SubCategoryText;
             await context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> Detail(int subCategoryId)
+        public async Task<IActionResult> Detail(int Id)
         {
             ViewBag.categories = await GetSelectList();
-            SubCategory subCategory = await subCategoryService.GetSubCategoriesWithIdAsync(subCategoryId);
+            SubCategory subCategory = await subCategoryService.GetSubCategoriesWithIdAsync(Id);
 
             if (subCategory is null) NotFound();
 

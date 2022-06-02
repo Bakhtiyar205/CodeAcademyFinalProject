@@ -10,7 +10,7 @@
             <input type="hidden" asp-for="Id" />
             <input type="hidden" asp-for="Key" />
             <label>@Model.Key</label><br />
-            <input class="form-control" asp-for="Value" style="width:350px;"><br />
+            <input class="form-control" asp-for="Value" style="width:350px;" maxlength="255"><br />
             <span class="text-danger" asp-validation-for="Value"></span>
         </div>
         <button type="submit" class="btn btn-primary me-2">Submit</button>

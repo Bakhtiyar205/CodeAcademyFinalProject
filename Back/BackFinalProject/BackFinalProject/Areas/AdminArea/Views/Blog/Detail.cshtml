@@ -1,0 +1,32 @@
+﻿@model Blog
+@{
+    ViewData["Title"] = "Detail";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div>
+        <h6 style="color:aqua">Name</h6>
+        <p>@Model.Name</p>
+    </div>
+    <div>
+        <h6 style="color:aqua">Category Name</h6>
+        <p>@Model.Category.Name</p>
+    </div>
+    <div class="row">
+        @foreach (var blogSpesification in Model.BlogSpesifications)
+        {
+            <div class="col-12">
+                <img src="~/assets/img/blog/@blogSpesification.Image" alt="Product Image" style="width:50%; height:200px;" />
+            </div>
+            <div class="col-12">
+                <p style="width:50%;">
+                    @Html.Raw(blogSpesification.BlogText)
+
+                </p>
+            </div>
+        }
+    </div>
+</div>
+
+

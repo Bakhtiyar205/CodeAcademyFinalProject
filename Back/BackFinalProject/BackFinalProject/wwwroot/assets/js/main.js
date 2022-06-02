@@ -99,6 +99,8 @@ $(document).ready(function () {
 
     $(document).on("click", "#addBasket", function (e) {
         e.preventDefault();
+
+        swal("Product is added to Basket!", "More Information Visit Basket!", "success");
         let id = $("#product-id").val();
         let productCount = $("#product-count").val();
         console.log(productCount);
@@ -150,6 +152,7 @@ $(document).ready(function () {
 
     $('body').on('click', ".basket-remove", function (e) {
         e.preventDefault;
+        swal("Product is Removed from Basket!", "", "warning");
         let productId = Number(this.id);
         let tableId = $('#table-basket');
         let tableMainId = $('#table-main-id');

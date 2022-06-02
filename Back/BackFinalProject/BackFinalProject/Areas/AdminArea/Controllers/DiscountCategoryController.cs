@@ -46,9 +46,22 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
         public async Task<IActionResult> Edit(DiscountCategroy categroy)
         {
             ViewBag.GetCategories = await GetSelectList();
-            if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid) return View();
-            if (ModelState["Name"].ValidationState == ModelValidationState.Invalid) return View();
-            if (ModelState["DiscountCategoryText"].ValidationState == ModelValidationState.Invalid) return View();
+            if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid) return View(categroy);
+            if (ModelState["Name"].ValidationState == ModelValidationState.Invalid) return View(categroy);
+            if (ModelState["DiscountCategoryText"].ValidationState == ModelValidationState.Invalid) return View(categroy);
+            if(categroy.Name.Length > 100)
+            {
+                ModelState.AddModelError(nameof(categroy.Name), "Name should be less than 100 characters");
+                return View(categroy);
+            }
+            if(categroy.DiscountCategoryText != null)
+            {
+                if (categroy.DiscountCategoryText.Length > 255)
+                {
+                    ModelState.AddModelError(nameof(categroy.DiscountCategoryText), "DiscountCategoryText should be less than 255 characters");
+                    return View(categroy);
+                }
+            }
             if (!categroy.Photo.CheckFileType("image/"))
             {
                 ModelState.AddModelError("Photos", "Only Image Type Is Acceptible");
@@ -64,9 +77,12 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
             Helper.DeleteFile(path);
             string fileName = Guid.NewGuid().ToString() + "_" + categroy.Photo.FileName.Substring(categroy.Photo.FileName.IndexOf("."));
             string newPath = Helper.GetFilePath(environment.WebRootPath, "assets/img/categoriesDiscount", fileName);
-            await categroy.Photo.SaveFiles(path);
-            categroy.Image = fileName;
-            await context.DiscountCategroies.AddAsync(categroy);
+            await categroy.Photo.SaveFiles(newPath);
+            dbCategory.Image = fileName;
+            dbCategory.Photo = categroy.Photo;
+            dbCategory.Name = categroy.Name;
+            dbCategory.DiscountCategoryText = categroy.DiscountCategoryText;
+            dbCategory.CategoryId = categroy.CategoryId;
             await context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

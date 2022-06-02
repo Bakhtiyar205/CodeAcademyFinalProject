@@ -48,6 +48,14 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
         public async Task<IActionResult> Edit(BestOffer bestOffer)
         {
             if (ModelState["Text"].ValidationState == ModelValidationState.Invalid) return View(bestOffer);
+            if(bestOffer.Text != null)
+            {
+                if (bestOffer.Text.Length > 400)
+                {
+                    ModelState.AddModelError(nameof(bestOffer.Text), "Text should be less than 400 character");
+                    return View(bestOffer);
+                }
+            }
             context.BestOffers.Update(bestOffer);
             await context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -85,7 +93,7 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
             }
             string path = Helper.GetFilePath(environment.WebRootPath, "assets/img/bestOffer", dbBestOfferImage.Image);
             Helper.DeleteFile(path);
-            string fileName = Guid.NewGuid().ToString() + "_" + bestOfferImages.Photo.FileName.Substring(bestOfferImages.Photo.FileName.IndexOf("."));
+            string fileName = Guid.NewGuid().ToString() + "_" + bestOfferImages.Photo.FileName.Substring(bestOfferImages.Photo.FileName.LastIndexOf("."));
             string newPath = Helper.GetFilePath(environment.WebRootPath, "assets/img/bestOffer", fileName);
             await bestOfferImages.Photo.SaveFiles(newPath);
             bestOfferImages.Image = fileName;
@@ -103,15 +111,15 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateImage(BestOfferImages bestOfferImages)
         {
-            if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid) return View();
+            if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid) return View(bestOfferImages);
             if (!bestOfferImages.Photo.CheckFileType("image/"))
             {
-                ModelState.AddModelError("Photos", "Only Image Type Is Acceptible");
+                ModelState.AddModelError("Photo", "Only Image Type Is Acceptible");
                 return View(bestOfferImages);
             }
-            if (!bestOfferImages.Photo.CheckFileSize(800))
+            if (!bestOfferImages.Photo.CheckFileSize(4500))
             {
-                ModelState.AddModelError("Photos", "The File should be less than 800KB");
+                ModelState.AddModelError("Photo", "The File should be less than 4500KB");
                 return View(bestOfferImages);
             }
             string fileName = Guid.NewGuid().ToString() + "_" + bestOfferImages.Photo.FileName.Substring(bestOfferImages.Photo.FileName.IndexOf("."));

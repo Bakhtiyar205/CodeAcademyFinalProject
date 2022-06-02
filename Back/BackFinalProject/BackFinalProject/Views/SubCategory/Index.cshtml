@@ -19,7 +19,7 @@
                     {
                         <div class="col-4">
                             <a href="#">
-                                <img src="~/assets/img/products/@productImg.ProductImages.FirstOrDefault().Image" alt="">
+                                <img src="~/assets/img/products/@productImg.ProductImages.FirstOrDefault()?.Image" alt="Image">
                             </a>
                         </div>
                     }
@@ -69,7 +69,7 @@
                             <div class="col-12 col-md-4 my-3">
                                 <div class="product-field p-3">
                                     <a asp-controller="ProductDetail" asp-action="index" asp-route-productId="@product.Id">
-                                        <img src="~/assets/img/products/@product.ProductImages.FirstOrDefault().Image" alt="">
+                                        <img src="~/assets/img/products/@product.ProductImages.FirstOrDefault()?.Image" alt="">
                                         <br>
                                         @product.Name
                                     </a>
@@ -121,7 +121,7 @@
                 {
                     <div class="product-owl-field p-3">
                         <a href="#">
-                            <img src="~/assets/img/products/@lastAddedPictures.ProductImages.FirstOrDefault().Image" alt="">
+                            <img src="~/assets/img/products/@lastAddedPictures.ProductImages.FirstOrDefault()?.Image" alt="">
                             <br>
                             Carpayi Salling 140*220 natural
                         </a>

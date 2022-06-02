@@ -11,12 +11,10 @@ namespace BackFinalProject.Models
     public class SubCategory : BaseEntity
     {
         [Required]
-        [DataType(DataType.Text),MaxLength(255)]
+        [DataType(DataType.Text),MaxLength(100)]
         public string Name { get; set; }
-        [Required]
-        [DataType(DataType.Text), MaxLength(255)]
+        [DataType(DataType.Text), MaxLength(100)]
         public string Image { get; set; }
-        [Required]
         [DataType(DataType.Text), MaxLength(255)]
         public string SubCategoryText { get; set; }
         public bool IsDeleted { get; set; }

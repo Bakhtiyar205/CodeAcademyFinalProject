@@ -9,7 +9,7 @@
         <div class="form-group">
             <input type="hidden" asp-for="@Model.Id" value="@Model.Id"/>
             <label asp-for="Name"></label>
-            <input class="form-control" asp-for="Name" style="width:350px;">
+            <input class="form-control" asp-for="Name" style="width:350px;" maxlength="100">
             <span class="text-danger" asp-validation-for="Name" type="text"></span>
         </div>
         <div>

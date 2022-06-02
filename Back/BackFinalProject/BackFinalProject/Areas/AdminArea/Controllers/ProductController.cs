@@ -79,7 +79,7 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
             await context.Products.AddAsync(newProduct);
             foreach (var photo in product.Photos)
             {
-                string fileName = Guid.NewGuid().ToString() + "_" + photo.FileName.Substring(photo.FileName.IndexOf("."));
+                string fileName = Guid.NewGuid().ToString() + "_" + photo.FileName.Substring(photo.FileName.LastIndexOf("."));
                 string path = Helper.GetFilePath(environment.WebRootPath, "assets/img/products", fileName);
                 await photo.SaveFiles(path);
                 ProductImage productImage = new()
@@ -177,25 +177,28 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
             dbProduct.IsOnline = productUpdate.Product.IsOnline;
             dbProduct.IsOutlet = productUpdate.Product.IsOutlet;
             dbProduct.SubCategoryId = productUpdate.Product.SubCategoryId;
-            foreach (var productImage in productUpdate.Product.ProductImages)
+            if(productUpdate.Product.ProductImages != null)
             {
-                ProductImage productUpdateImage = await productImageService.ProductImageWithIdAsync(productImage.Id);
-                productUpdateImage.IsDeleted = productImage.IsDeleted;
-                if (productImage.FormPhoto != null)
+                foreach (var productImage in productUpdate.Product.ProductImages)
                 {
-                    string path = Helper.GetFilePath(environment.WebRootPath, "assets/img/products", productImage.Image);
-                    Helper.DeleteFile(path);
-                    string fileName = Guid.NewGuid().ToString() + "_" + productImage.FormPhoto.FileName;
-                    string newPath = Helper.GetFilePath(environment.WebRootPath, "assets/img/products", fileName);
-                    await productImage.FormPhoto.SaveFiles(newPath);
-                    productUpdateImage.Image = fileName;
+                    ProductImage productUpdateImage = await productImageService.ProductImageWithIdAsync(productImage.Id);
+                    productUpdateImage.IsDeleted = productImage.IsDeleted;
+                    if (productImage.FormPhoto != null)
+                    {
+                        string path = Helper.GetFilePath(environment.WebRootPath, "assets/img/products", productImage.Image);
+                        Helper.DeleteFile(path);
+                        string fileName = Guid.NewGuid().ToString() + "_" + productImage.FormPhoto.FileName.Substring(productImage.FormPhoto.FileName.LastIndexOf("."));
+                        string newPath = Helper.GetFilePath(environment.WebRootPath, "assets/img/products", fileName);
+                        await productImage.FormPhoto.SaveFiles(newPath);
+                        productUpdateImage.Image = fileName;
+                    }
                 }
             }
-            if(productUpdate.Photos != null)
+            if (productUpdate.Photos != null)
             {
                 foreach (var photo in productUpdate.Photos)
                 {
-                    string fileName = Guid.NewGuid().ToString() + "_" + photo.FileName.Substring(photo.FileName.IndexOf("."));
+                    string fileName = Guid.NewGuid().ToString() + "_" + photo.FileName.Substring(photo.FileName.LastIndexOf("."));
                     string path = Helper.GetFilePath(environment.WebRootPath, "assets/img/products", fileName);
                     await photo.SaveFiles(path);
                     ProductImage productImage = new()
@@ -212,7 +215,7 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
 
         public async Task<IActionResult> Detail(int id)
         {
-            Product product = await productService.GetOutletProductWithIdAsync(id);
+            Product product = await productService.GetProductWithIdAsync(id);
             if (product is null) NotFound();
             return View(product);
         }

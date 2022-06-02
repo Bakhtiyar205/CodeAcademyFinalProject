@@ -28,6 +28,7 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
 
         public async Task<IActionResult> Edit(int settingId)
         {
+            
             Setting setting = await settingService.GetSettingWithIdAsync(settingId);
             if (setting == null) NotFound();
             return View(setting);
@@ -39,6 +40,10 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
         public async Task<IActionResult> Edit(int settingId, Setting setting)
         {
             if (!ModelState.IsValid) return View();
+            if(setting.Value.Length > 255)
+            {
+                ModelState.AddModelError(nameof(setting.Value), "Character should be less than 255");
+            }
             if (settingId != setting.Id) return View();
             try
             {

@@ -11,16 +11,20 @@ namespace BackFinalProject.Controllers
     public class StoreController : Controller
     {
         private readonly ISettingService settingService;
+        private readonly IProductService productService;
 
-        public StoreController(ISettingService settingService)
+        public StoreController(ISettingService settingService,
+                               IProductService productService)
         {
             this.settingService = settingService;
+            this.productService = productService;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             StoreVM storeVM = new()
             {
-                Setting = settingService.GetSetting()
+                Setting = settingService.GetSetting(),
+                Products = await productService.GetProductsAsync()
             };
             return View(storeVM);
         }

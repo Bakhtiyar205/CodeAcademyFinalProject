@@ -5,17 +5,18 @@
 }
 
 <div class="container">
-    <form class="forms-sample" method="post" asp-controller="SubCategory" asp-action="Edit" asp-route-subCategoryId="@Model.Id" enctype="multipart/form-data">
+    <form class="forms-sample" method="post" asp-controller="SubCategory" asp-action="Edit" asp-route-Id="@Model.Id" enctype="multipart/form-data">
         <div class="form-group">
             @* For Naming Label *@
             <label asp-for="Name"></label>
-            <input class="form-control" asp-for="Name" style="width:350px;">
+            <input class="form-control" asp-for="Name" style="width:350px;" maxlength="100">
             <span class="text-danger" asp-validation-for="Name" type="text"></span>
         </div>
         <input type="hidden" name="name" asp-for="Image" value="" />
 
         <div>
             <label asp-for="Photo">Images: </label>
+            <img src="~/assets/img/subCategory/@Model.Image" alt="Alternate Text" />
             <input class="form-control" asp-for="Photo" style="width:350px;">
             <span class="text-danger" asp-validation-for="Photo"></span>
         </div>

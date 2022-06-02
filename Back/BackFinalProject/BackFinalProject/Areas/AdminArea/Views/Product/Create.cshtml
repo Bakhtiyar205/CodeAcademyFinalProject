@@ -29,7 +29,7 @@
     <div class="form-group">
         @* For Naming Label *@
         <label asp-for="RealPrice"></label>
-        <input class="form-control" asp-for="RealPrice" min="0" style="width:350px;">
+        <input class="form-control" asp-for="RealPrice" min="0" max="10000" style="width:350px;">
         <span class="text-danger" asp-validation-for="RealPrice" type="text"></span>
     </div>
     <div>

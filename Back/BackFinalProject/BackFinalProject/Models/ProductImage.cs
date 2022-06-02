@@ -10,6 +10,7 @@ namespace BackFinalProject.Models
 {
     public class ProductImage:BaseEntity
     {
+        [DataType(DataType.Text),MaxLength(70)]
         public string Image { get; set; }
         public bool IsDeleted { get; set; }
         public int ProductId { get; set; }

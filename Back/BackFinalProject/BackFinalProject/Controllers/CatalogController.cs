@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BackFinalProject.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,9 +9,15 @@ namespace BackFinalProject.Controllers
 {
     public class CatalogController : Controller
     {
-        public IActionResult Index()
+        private readonly IProductService productService;
+
+        public CatalogController(IProductService productService)
         {
-            return View();
+            this.productService = productService;
+        }
+        public async Task<IActionResult> Index()
+        {
+            return View(await productService.GetProductsAsync());
         }
     }
 }

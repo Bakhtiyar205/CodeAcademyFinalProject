@@ -11,16 +11,20 @@ namespace BackFinalProject.Controllers
     public class QuestionController : Controller
     {
         private readonly ISettingService settingService;
+        private readonly IProductService productService;
 
-        public QuestionController(ISettingService settingService)
+        public QuestionController(ISettingService settingService,
+                                  IProductService productService)
         {
             this.settingService = settingService;
+            this.productService = productService;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             QuestionVM questionVM = new()
             {
-                Settings = settingService.GetSetting()
+                Settings = settingService.GetSetting(),
+                Products = await productService.GetProductsAsync()
             };
             return View(questionVM);
         }

@@ -31,7 +31,6 @@ namespace BackFinalProject.Services
         {
             return await context.DiscountCategroies.Where(m => m.IsDeleted == false)
                                                     .Include(m => m.Category)
-                                                    .AsNoTracking()
                                                     .OrderByDescending(m => m.Id)
                                                     .FirstOrDefaultAsync();
         }

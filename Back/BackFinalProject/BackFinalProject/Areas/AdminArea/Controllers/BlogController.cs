@@ -4,6 +4,7 @@ using BackFinalProject.Services.Interfaces;
 using BackFinalProject.Utilities.Files;
 using BackFinalProject.Utilities.Helpers;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -49,7 +50,7 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
             {
                 blogSpec++;
             }
-            
+
             ViewBag.BlogSpec = blogSpec;
             ViewBag.SelectList = await GetSelectList();
             return View();
@@ -58,11 +59,21 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(Blog blog)
         {
-                
+
             ViewBag.SelectList = await GetSelectList();
 
             foreach (var blogSpesification in blog.BlogSpesifications)
             {
+                if (blogSpesification.BlogText.Length > 500)
+                {
+                    ModelState.AddModelError(nameof(blogSpesification.BlogText), "Characters should be less than 300");
+                    return View(blog);
+                }
+                if (blogSpesification.Photo == null)
+                {
+                    ModelState.AddModelError(nameof(blogSpesification.Photo), "Please Upload New Photo");
+                    return View(blog);
+                }
                 if (!blogSpesification.Photo.CheckFileType("image/"))
                 {
                     ModelState.AddModelError("Photo", "Only image type is accebtible");
@@ -78,8 +89,8 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
 
 
             await context.Blogs.AddAsync(blog);
-            Blog blogId =  await context.Blogs.OrderByDescending(m=>m.Id).FirstOrDefaultAsync();
-            
+            Blog blogId = await context.Blogs.OrderByDescending(m => m.Id).FirstOrDefaultAsync();
+
             foreach (var blogSpesification in blog.BlogSpesifications)
             {
                 string fileName = Guid.NewGuid().ToString() + "_" + blogSpesification.Photo.FileName.Substring(blogSpesification.Photo.FileName.IndexOf("."));
@@ -97,9 +108,9 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> Edit(int Id, int? blogSpecificationId,int? blogSpecRow)
+        public async Task<IActionResult> Edit(int Id, int? blogSpecificationId, int? blogSpecRow)
         {
-          
+
             Blog blog = await blogService.GetBlogAsync(Id);
 
             if (blog == null) NotFound();
@@ -114,7 +125,7 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
                 for (int i = 0; i < blogSpecRow; i++)
                 {
                     blog.BlogSpesifications.Add(new BlogSpesification
-                    {});
+                    { });
                 }
             }
 
@@ -124,7 +135,7 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
 
             if (blogSpecificationId != null)
             {
-                if(blogSpecificationId != 0)
+                if (blogSpecificationId != 0)
                 {
                     int newBlogSpecificationId = (int)blogSpecificationId;
                     BlogSpesification blogSpesification = await blogSpecificationService.GetBlogSpecificationAsync(newBlogSpecificationId);
@@ -139,31 +150,48 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
                     blogSpecRow--;
                 }
             }
-            
+
 
             return View(blog);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int Id,Blog blog)
+        public async Task<IActionResult> Edit(int Id, Blog blog)
         {
+            if (!ModelState.IsValid) return View(blog);
             if (blog.BlogSpesifications != null)
             {
                 foreach (var blogDetails in blog.BlogSpesifications)
                 {
+                    if(blogDetails.BlogText != null)
+                    {
+                        if (blogDetails.BlogText.Length > 500)
+                        {
+                            ModelState.AddModelError(nameof(blogDetails.BlogText), "Characters should be less than 300");
+                            return View(blog);
+                        }
+                    }
+                    if (blogDetails.Id == 0)
+                    {
+                        if (blogDetails.Photo == null)
+                        {
+                            ModelState.AddModelError(nameof(blogDetails.Photo), "Please Upload New Photo");
+                            return View(blog);
+                        }
+                    }
                     if (blogDetails.Photo != null)
                     {
                         if (!blogDetails.Photo.CheckFileType("image/"))
                         {
                             ModelState.AddModelError("Photo", "Only image type is accebtible");
-                            return View();
+                            return View(blog);
                         }
 
                         if (!blogDetails.Photo.CheckFileSize(800))
                         {
                             ModelState.AddModelError("Photo", "Must be Less than 800KB");
-                            return View();
+                            return View(blog);
                         }
                     }
 
@@ -180,7 +208,7 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
 
             dbBlog.Name = blog.Name;
             dbBlog.CategoryId = blog.CategoryId;
-            if(blog.BlogSpesifications != null)
+            if (blog.BlogSpesifications != null)
             {
                 foreach (var blogSpesification in blog.BlogSpesifications)
                 {
@@ -236,6 +264,24 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
             await context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+
+        public async Task<IActionResult> Detail(int id)
+        {
+            Blog blog = await blogService.GetBlogAsync(id);
+            if (blog is null) return NotFound();
+            ViewBag.GetSelectList = GetSelectList();
+            return View(blog);
+        }
+
+        public async Task<IActionResult> Delete(int id)
+        {
+            Blog blog = await blogService.GetBlogAsync(id);
+            if (blog is null) return NotFound();
+            blog.IsDeleted = true;
+            await context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
         private async Task<SelectList> GetSelectList()
         {
             var categories = await context.Categories.Where(m => !m.İsDeleted).ToListAsync();

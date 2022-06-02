@@ -207,3 +207,4 @@ C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFi
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\Product\Create.cshtml.g.cs
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\Product\Detail.cshtml.g.cs
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\Product\Edit.cshtml.g.cs
+C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\Blog\Detail.cshtml.g.cs

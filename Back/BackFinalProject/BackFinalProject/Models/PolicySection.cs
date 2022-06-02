@@ -9,9 +9,9 @@ namespace BackFinalProject.Models
     public class PolicySection:BaseEntity
     {
         [Required]
-        [DataType(DataType.Text), MaxLength(255)]
+        [DataType(DataType.Text), MaxLength(100)]
         public string Name { get; set; }
-        [Required]
+        [DataType(DataType.Text), MaxLength(700)]
         public string Detail { get; set; }
         public bool IsDelete { get; set; }
     }

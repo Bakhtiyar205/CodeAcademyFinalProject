@@ -11,8 +11,9 @@ namespace BackFinalProject.Models
     public class GiftCard:BaseEntity
     {
         [Required]
-        [DataType(DataType.Text),MaxLength(255)]
+        [DataType(DataType.Text),MaxLength(100)]
         public string Name { get; set; }
+        [DataType(DataType.Text), MaxLength(50)]
         public string Image { get; set; }
         [Required]
         [NotMapped]

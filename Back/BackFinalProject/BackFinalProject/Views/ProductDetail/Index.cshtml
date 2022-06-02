@@ -130,39 +130,15 @@
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active home-nav" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <table>
-                        <tr>
-                            <td class="td-first">Alfreds Futterkiste</td>
-                            <td>Maria Anders</td>
-                        </tr>
-                        <tr>
-                            <td class="td-first">Centro comercial Moctezuma</td>
-                            <td>Francisco Chang</td>
-                        </tr>
-                        <tr>
-                            <td class="td-first">Ernst Handel</td>
-                            <td>Roland Mendel</td>
-                        </tr>
-                        <tr>
-                            <td class="td-first">Island Trading</td>
-                            <td>Helen Bennett</td>
-                        </tr>
-                        <tr>
-                            <td class="td-first">Laughing Bacchus Winecellars</td>
-                            <td>Yoshi Tannamuri</td>
-                        </tr>
-                        <tr>
-                            <td class="td-first">Magazzini Alimentari Riuniti</td>
-                            <td>Giovanni Rovelli</td>
-                        </tr>
-                    </table>
+                    @Html.Raw(Model.Product.Detail)
                 </div>
                 <div class="tab-pane fade home-nav" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <ul>
-                        <li>SAlam</li>
-                        <li>SAlam</li>
-                        <li>SAlam</li>
-                        <li>SAlam</li>
+                        <li>Çatdırılma qiyməti - 10 AZN (Bakı şəhəri ərazisində)</li>
+                        <li>Baki şəhəri daxilində çatdırılma müddəti - 2 gün.</li>
+                        <li>Ətraf ərazilərə çatdırılma müddəti - 4 gün.</li>
+                        <li>JYSK.az saytından sifariş etdiyiniz zaman, seçdiyiniz məhsullar göstərdiyiniz ünvana çatdırılır.</li>
+                        <li>Alınan mallar 14 gün ərzində qəbz ilə birlikdə Baş ofisimizdə dəyişdirilə və ya qaytarıla bilər</li>
                     </ul>
                 </div>
             </div>
@@ -230,7 +206,7 @@
             @foreach (var lastAddedPictures in Model.Products.OrderByDescending(m => m.Date).Take(5))
             {
                 <div class="product-owl-field p-3">
-                    <a href="#">
+                    <a asp-controller="ProductDetail" asp-action="index" asp-route-productId="@lastAddedPictures.Id">
                         <img src="~/assets/img/products/@lastAddedPictures.ProductImages.FirstOrDefault().Image" alt="">
                         <br>
                         Carpayi Salling 140*220 natural

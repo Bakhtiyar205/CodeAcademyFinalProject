@@ -42,9 +42,19 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Category category)
         {
-            if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid) return View();
-            if (ModelState["Name"].ValidationState == ModelValidationState.Invalid) return View();
-            if (ModelState["CategoryText"].ValidationState == ModelValidationState.Invalid) return View();
+            if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid) return View(category);
+            if (ModelState["Name"].ValidationState == ModelValidationState.Invalid) return View(category);
+            if (ModelState["CategoryText"].ValidationState == ModelValidationState.Invalid) return View(category);
+            if(category.Name.Length > 100)
+            {
+                ModelState.AddModelError(nameof(category.Name), "Name should be less than 100 characters");
+                return View(category);
+            }
+            if (category.CategoryText.Length > 255)
+            {
+                ModelState.AddModelError(nameof(category.CategoryText), "CategoryText should be less than 255 characters");
+                return View(category);
+            }
 
             if (!category.Photo.CheckFileType("image/"))
             {
@@ -57,7 +67,7 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
                 return View(category);
             }
 
-            string fileName = Guid.NewGuid().ToString() + "_" + category.Photo.FileName.Substring(category.Photo.FileName.IndexOf("."));
+            string fileName = Guid.NewGuid().ToString() + "_" + category.Photo.FileName.Substring(category.Photo.FileName.LastIndexOf("."));
 
             string path = Helper.GetFilePath(environment.WebRootPath, "assets/img/categoriesMainPictures", fileName);
 
@@ -101,9 +111,19 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
         {
             category.Id = categoryId;
             Category dbCategory = await categoryService.GetCategoryAsNoTrackingAsync(categoryId);
-            if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid) return View();
-            if (ModelState["Name"].ValidationState == ModelValidationState.Invalid) return View();
-            if (ModelState["CategoryText"].ValidationState == ModelValidationState.Invalid) return View();
+            if (ModelState["Photo"].ValidationState == ModelValidationState.Invalid) return View(category);
+            if (ModelState["Name"].ValidationState == ModelValidationState.Invalid) return View(category);
+            if (ModelState["CategoryText"].ValidationState == ModelValidationState.Invalid) return View(category);
+            if (category.Name.Length > 100)
+            {
+                ModelState.AddModelError(nameof(category.Name), "Name should be less than 100 characters");
+                return View(category);
+            }
+            if (category.CategoryText.Length > 255)
+            {
+                ModelState.AddModelError(nameof(category.CategoryText), "CategoryText should be less than 255 characters");
+                return View(category);
+            }
             if (!category.Photo.CheckFileType("image/"))
             {
                 ModelState.AddModelError("Photos", "Only Image Type Is Acceptible");
@@ -120,7 +140,7 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
 
             Helper.DeleteFile(path);
 
-            string fileName = Guid.NewGuid().ToString() + "_" + category.Photo.FileName.Substring(category.Photo.FileName.IndexOf("."));
+            string fileName = Guid.NewGuid().ToString() + "_" + category.Photo.FileName.Substring(category.Photo.FileName.LastIndexOf("."));
 
             string newPath = Helper.GetFilePath(environment.WebRootPath, "assets/img/categoriesMainPictures", fileName);
 

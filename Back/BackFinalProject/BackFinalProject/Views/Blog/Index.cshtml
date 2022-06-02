@@ -33,11 +33,6 @@
                             </a>
                         </li>
                         <li class="px-md-5">
-                            <a href="#">
-                                Bələdçi
-                            </a>
-                        </li>
-                        <li class="px-md-5">
                             <a asp-controller="brend" asp-action="index">
                                 Brend Üzrə Axtarış
                             </a>
@@ -58,13 +53,13 @@
             {
                 <div class="col-md-6 col-12 mt-2">
                     <div class="blog-img">
-                        <img src="~/assets/img/blog/@blog.BlogSpesifications.Where(m=>m.BlogId == blog.Id).FirstOrDefault().Image" alt="blog-image">
+                        <img src="~/assets/img/blog/@blog.BlogSpesifications.Where(m=>m.BlogId == blog.Id).FirstOrDefault()?.Image" alt="blog-image">
                     </div>
                     <div class="blog-text">
                         <h3>@blog.Name</h3>
-                        @if (blog.BlogSpesifications.Where(m => m.BlogId == blog.Id).FirstOrDefault().BlogText != null)
+                        @if (blog.BlogSpesifications.Where(m => m.BlogId == blog.Id).FirstOrDefault()?.BlogText != null)
                         {
-                            <p>@blog.BlogSpesifications.Where(m => m.BlogId == blog.Id).FirstOrDefault().BlogText</p>
+                            <p>@blog.BlogSpesifications.Where(m => m.BlogId == blog.Id).FirstOrDefault()?.BlogText</p>
                         }
                     </div>
                     <div class="blog-button">
@@ -95,7 +90,7 @@
                                 Yazılanların sayı:
                                 @if (category.Blogs != null)
                                 {
-                                    @category.Blogs.Count()
+                                    @category.Blogs.Where(m=>!m.IsDeleted).Count()
                                 }
                                 else
                                 {

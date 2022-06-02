@@ -1215,6 +1215,16 @@ footer .cards-footer {
   vertical-align: middle;
 }
 
+.shop-product .out-of-stock::before {
+  content: "";
+  width: 14px !important;
+  height: 14px !important;
+  margin-right: 10px;
+  display: inline-block;
+  background-image: url("../img/icons/out-of-stock.svg");
+  vertical-align: middle;
+}
+
 .shop-product li {
   list-style: none;
 }
@@ -1602,5 +1612,45 @@ main .gift-card-detail .gift-card-form .gift-card-fomr-head {
     background-color: #fff;
     border: 1px solid #b0b0b0;
   }
+}
+
+.login-register {
+  background-color: #fff;
+}
+
+.login-register .login-register-in {
+  border-right: 1px solid #ccc;
+}
+
+.login-register .login-register-in hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+.login-register .login-register-inner {
+  width: 98%;
+}
+
+.login-register .create-account h4 {
+  margin-left: 7.2%;
+}
+
+.login-register .create-account ul li {
+  list-style: none;
+  font-size: 14px;
+}
+
+.login-register .create-account ul li:before {
+  font-family: FontAwesome;
+  content: "\f00c";
+  margin: 0 8px 0 0;
+}
+
+.login-register .create-account .create-account-button {
+  margin-left: 7.2%;
 }
 /*# sourceMappingURL=style.css.map */

@@ -103,6 +103,15 @@
         background-image: url("../img/icons/in-stock.svg");
         vertical-align: middle;
     }
+    .out-of-stock::before{
+        content: "";
+        width: 14px !important;
+        height: 14px !important;
+        margin-right: 10px;
+        display: inline-block;
+        background-image: url("../img/icons/out-of-stock.svg");
+        vertical-align: middle;
+    }
     li{
         list-style: none;
     }

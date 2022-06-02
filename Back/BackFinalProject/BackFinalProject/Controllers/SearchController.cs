@@ -18,14 +18,18 @@ namespace BackFinalProject.Controllers
         {
             List<Product> products = await productService.GetNewOutletProductsAsync();
             List<Product> productResults = new();
-
-            foreach (var product in products)
+            
+            if(search != null)
             {
-                if (product.Name.ToLower().Trim().Contains(search.ToLower().Trim()))
+                foreach (var product in products)
                 {
-                    productResults.Add(product);
+                    if (product.Name.ToLower().Trim().Contains(search.ToLower().Trim()))
+                    {
+                        productResults.Add(product);
+                    }
                 }
             }
+            
 
             return View(productResults);
         }

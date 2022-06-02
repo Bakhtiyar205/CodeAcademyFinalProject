@@ -1,0 +1,35 @@
+@import "../variables/variables";
+
+.login-register{
+    background-color: #fff;
+    .login-register-in{
+        border-right: 1px solid #ccc;
+        hr { display: block; height: 1px;
+            border: 0; border-top: 1px solid #ccc;
+            margin: 1em 0; padding: 0; }
+    }
+    .login-register-inner{
+        width: 98%;
+    }
+    .create-account{
+        h4{
+            margin-left: 7.2%;
+        }
+        ul{
+            li{
+                list-style: none;
+                font-size: 14px;
+                &:before {
+                    font-family: FontAwesome;
+                    content: "\f00c";
+                    margin: 0 8px 0 0;
+                }
+            }
+        }
+        .create-account-button{
+            margin-left: 7.2%;
+        }
+        
+    }
+}
+

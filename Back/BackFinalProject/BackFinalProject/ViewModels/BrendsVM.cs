@@ -9,5 +9,6 @@ namespace BackFinalProject.ViewModels
     public class BrendsVM
     {
         public List<Brend> Brends { get; set; }
+        public List<Product> Products { get; set; }
     }
 }

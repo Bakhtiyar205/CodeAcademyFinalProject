@@ -8,16 +8,20 @@ namespace BackFinalProject.Controllers
     public class BrendController : Controller
     {
         private readonly IBrendService brendService;
+        private readonly IProductService productService;
 
-        public BrendController(IBrendService brendService)
+        public BrendController(IBrendService brendService,
+                               IProductService productService)
         {
             this.brendService = brendService;
+            this.productService = productService;
         }
         public async Task<IActionResult> BrendDetail(int brendId)
         {
             BrendVM brendVM = new()
             {
-                Brend = await brendService.GetBrendWithIdAsync(brendId)
+                Brend = await brendService.GetBrendWithIdAsync(brendId),
+                Products = await productService.GetProductsAsync()
             };
             return View(brendVM);
         }
@@ -26,7 +30,8 @@ namespace BackFinalProject.Controllers
         {
             BrendsVM brendsVM = new()
             {
-                Brends = await brendService.GetBrendsAsync()
+                Brends = await brendService.GetBrendsAsync(),
+                Products = await productService.GetProductsAsync()
             };
             return View(brendsVM);
         }

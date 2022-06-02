@@ -76,7 +76,7 @@
             <div class="col-12 col-md-9 mt-4">
                 @if (Model.Category.CategoryText != null)
                 {
-                    <p>@Model.Category.CategoryText</p>
+                    <p>@Html.Raw(Model.Category.CategoryText)</p>
                 }
 
                 <div class="row subcategory-fields">

@@ -15,7 +15,7 @@
 <!-- Blog Pictures -->
 <div class="blog-images my-2">
     <div class="container">
-        <img src="~/assets/img/blog/@Model.Blog.BlogSpesifications.FirstOrDefault().Image" alt="blog-image" style="width: 100%;">
+        <img src="~/assets/img/blog/@Model.Blog.BlogSpesifications.FirstOrDefault()?.Image" alt="blog-image" style="width: 100%;">
     </div>
 </div>
 
@@ -23,7 +23,7 @@
     <div class="container">
         <h4>Mətbəx Yenilənməsi Üçün Ideyalar.</h4>
         <p style="font-weight: bold;">
-            <span class="me-2">Tarix <a href="# " style="font-weight: 200; color: #333;">22/22/22</a></span>
+            <span class="me-2">Tarix <a href="# " style="font-weight: 200; color: #333;">@Model.Blog.Date.ToString("dd/mm/yy")</a></span>
             <span class="me-2">
                 Kategoriya: <a href="#" style="font-weight: 200; color: #333">
                     @Model.Blog.Category.Name
@@ -31,22 +31,26 @@
             </span>
             <span class="me-2">Tag:</span>
         </p>
-        @foreach (var blogSpesification in Model.Blog.BlogSpesifications.Skip(1).ToList())
+        @if (Model.Blog.BlogSpesifications != null)
         {
-            <p>
-                @if (blogSpesification.BlogText != null)
-                {
-                    @blogSpesification.BlogText
-                }
+            @foreach (var blogSpesification in Model.Blog.BlogSpesifications.Skip(1).ToList())
+            {
+                <p>
+                    @if (blogSpesification.BlogText != null)
+                    {
+                        @Html.Raw(blogSpesification.BlogText)
+                    }
 
-            </p>
-            <div class="blog-img">
-                <div class="row">
-                    <div class="col-md-9 col-12">
-                        <img src="~/assets/img/blog/@blogSpesification.Image" alt="blog-img">
+                </p>
+                <div class="blog-img">
+                    <div class="row">
+                        <div class="col-md-9 col-12">
+                            <img src="~/assets/img/blog/@blogSpesification.Image" alt="blog-img">
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
+
         }
 
 

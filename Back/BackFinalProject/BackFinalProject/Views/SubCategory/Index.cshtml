@@ -46,13 +46,11 @@
                 </div>
                 <!-- Main Side -->
                 <div class="col-12 col-md-9 mt-4">
-                    <h4>UZUNÖMÜRLÜ ÇARPAYILAR VƏ UYĞUN QİYMƏTƏ ÇARPAYILAR</h4>
-                    <p>
-                        Təbii ağacdan və yumşaq üzləmədən hazırlanmış skandinaviya dizaynı olan geniş çeşid
-                        çarpayılarımızla tanış olun.Öz yataq otağınız üçün müasir və uzunömürlü çarpayı seçin.Öz
-                        yataq otağınız üçün ən uyğun çarpayını seçin və mebelinizin rahatlığından və eleqantlığından
-                        zövq alın.
-                    </p>
+                    @if (Model.SubCategory.SubCategoryText != null)
+                    {
+                        @Html.Raw(Model.SubCategory.SubCategoryText)
+
+                    }
                     <!-- SelectLsit -->
                     <div class="row mb-md-2">
                         <div class="col-12 col-md-5">

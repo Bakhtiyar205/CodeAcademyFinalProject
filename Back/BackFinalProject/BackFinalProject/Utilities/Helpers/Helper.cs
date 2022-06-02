@@ -20,5 +20,12 @@ namespace BackFinalProject.Utilities.Helpers
                 File.Delete(path);
             }
         }
+
+        public enum UserRoles
+        {
+            Admin,
+            Member,
+            Moderator
+        }
     }
 }

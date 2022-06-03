@@ -2,6 +2,7 @@ using BackFinalProject.Datas;
 using BackFinalProject.Models;
 using BackFinalProject.Services;
 using BackFinalProject.Services.Interfaces;
+using BackFinalProject.Utilities.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -68,6 +69,11 @@ namespace BackFinalProject
             services.AddScoped<IBlogSpecificationService, BlogSpecificationsService>();
             services.AddScoped<IBestOfferImageService, BestOfferImageService>();
             services.AddScoped<IProductImageService, ProductImageService>();
+            services.AddScoped<IMailService, MailService>();
+            services.AddScoped<ISubscriptionService, SubscriptionService>();
+            services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
+
+
 
             services.AddControllersWithViews()
                     .AddNewtonsoftJson(options =>

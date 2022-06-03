@@ -218,3 +218,10 @@ C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFi
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\ref\BackFinalProject.dll
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\BackFinalProject.pdb
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\BackFinalProject.genruntimeconfig.cache
+C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\BackFinalProject.csproj.AssemblyReference.cache
+C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Views\Account\Register.cshtml.g.cs
+C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Views\Account\EmailVerification.cshtml.g.cs
+C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Views\Account\ForgetPassword.cshtml.g.cs
+C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Views\Account\ForgetPasswordConfirm.cshtml.g.cs
+C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Views\Account\ResetPassword.cshtml.g.cs

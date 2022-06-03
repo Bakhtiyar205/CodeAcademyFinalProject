@@ -22,7 +22,7 @@ namespace BackFinalProject.Services
         {
             return await context.DiscountCategroies.Where(m => m.IsDeleted == false)
                                                     .Include(m => m.Category)
-                                                    .ThenInclude(m => m.SubCategory)
+                                                    .ThenInclude(m => m.SubCategory.Where(m => !m.IsDeleted))
                                                     .OrderByDescending(m => m.Id)
                                                     .FirstOrDefaultAsync();
         }

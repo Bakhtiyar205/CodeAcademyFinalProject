@@ -1,0 +1,30 @@
+﻿@model RegisterVM
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="home-navigation my-3">
+    <div class="container">
+        <a asp-controller="Home" asp-action="Index">Ana səhifə</a>/<a>Register</a>
+    </div>
+</div>
+
+<div class="create-account-page py-4 login-register">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <form class="forms-sample" method="post" asp-controller="Account" asp-action="Register">
+                    <input class="form-control mb-3" asp-for="FullName" placeholder="FullName">
+                    <input class="form-control mb-3" asp-for="UserName" placeholder="UserName">
+                    <input class="form-control mb-3" asp-for="Email" placeholder="Email">
+                    <input class="form-control mb-3" asp-for="Password" placeholder="Password">
+                    <input class="form-control mb-3" asp-for="ConfirmPassword" placeholder="ConfirmPassword">
+                    <button type="submit" class="btn btn-primary me-2">Hesab Yarat</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

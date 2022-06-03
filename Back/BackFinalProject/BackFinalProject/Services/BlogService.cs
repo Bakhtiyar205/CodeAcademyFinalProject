@@ -36,7 +36,7 @@ namespace BackFinalProject.Services
         public async Task<List<Blog>> GetBlogWithCategoryAsync(int categoryId)
         {
             return await context.Blogs.Where(m => m.CategoryId == categoryId && m.IsDeleted == false)
-                                        .Include(m => m.BlogSpesifications)
+                                        .Include(m => m.BlogSpesifications.Where(m => !m.IsDeleted))
                                         .Include(m => m.Category)
                                         .ToListAsync();
         }

@@ -21,7 +21,7 @@ namespace BackFinalProject.Services
         public async Task<BestOffer> GetBestOfferAsync()
         {
             return await context.BestOffers.Where(m => m.IsDeleted == false)
-                                            .Include(m=>m.Images)
+                                            .Include(m=>m.Images.Where(m => !m.IsDeleted))
                                             .OrderByDescending(m => m.Id)
                                             .FirstOrDefaultAsync();
         }

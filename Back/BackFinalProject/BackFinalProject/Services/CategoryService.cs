@@ -22,8 +22,8 @@ namespace BackFinalProject.Services
         {
             List<Category> categories = await _context.Categories
                                             .Where(m=>m.İsDeleted ==false)
-                                            .Include(m=>m.Blogs)
-                                            .Include(m=>m.SubCategory)
+                                            .Include(m=>m.Blogs.Where(m => !m.IsDeleted))
+                                            .Include(m=>m.SubCategory.Where(m=>!m.IsDeleted))
                                             .Include(m=>m.DiscountCategroies)
                                             .ToListAsync();
             return categories;
@@ -32,8 +32,8 @@ namespace BackFinalProject.Services
         public async Task<Category> GetCategoriesWithIdAsync(int categoryId)
         {
             return await _context.Categories.Where(m => m.Id == categoryId)
-                                            .Include(m => m.Blogs)
-                                            .Include(m => m.SubCategory)
+                                            .Include(m => m.Blogs.Where(m => !m.IsDeleted))
+                                            .Include(m => m.SubCategory.Where(m => !m.IsDeleted))
                                             .Include(m => m.DiscountCategroies)
                                             .FirstOrDefaultAsync();
         }
@@ -41,8 +41,8 @@ namespace BackFinalProject.Services
         public async Task<Category> GetCategoryAsNoTrackingAsync(int categoryId)
         {
             return await _context.Categories
-                        .Include(m => m.Blogs)
-                        .Include(m => m.SubCategory)
+                        .Include(m => m.Blogs.Where(m => !m.IsDeleted))
+                        .Include(m => m.SubCategory.Where(m => !m.IsDeleted))
                         .Include(m => m.DiscountCategroies)
                         .AsNoTracking()
                         .FirstOrDefaultAsync(m => m.Id == categoryId);

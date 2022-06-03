@@ -22,16 +22,17 @@ namespace BackFinalProject.Services
 
         public async Task<List<SubCategory>> GetSubCategoriesAsync()
         {
-            List<SubCategory> subCategories = await context.SubCategories.ToListAsync();
+            List<SubCategory> subCategories = await context.SubCategories.Where(m=>!m.IsDeleted).ToListAsync();
             
             return subCategories;
         }
 
         public async Task<SubCategory> GetSubCategoriesWithIdAsync(int subCategoryID)
         {
-            return await context.SubCategories.Where(m => m.Id == subCategoryID)
+            return await context.SubCategories.Where(m => m.Id == subCategoryID 
+                                                    && m.IsDeleted ==false)
                                               .Include(m=>m.Category)
-                                              .Include(m=>m.Products)
+                                              .Include(m=>m.Products.Where(m => !m.IsDeleted))
                                               .FirstOrDefaultAsync();
         }
 
@@ -59,7 +60,7 @@ namespace BackFinalProject.Services
 
             List<SubCategory> subCategories = await context.SubCategories
                                               .Where(m => m.IsDeleted == false)
-                                              .Include(m => m.Products)
+                                              .Include(m => m.Products.Where(m => !m.IsDeleted))
                                               .Include(m => m.Category)
                                               .Skip((newPage - 1) * newTake)
                                               .Take(newTake)

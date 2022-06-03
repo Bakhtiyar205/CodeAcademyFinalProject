@@ -1,0 +1,57 @@
+﻿@model LoginVM
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div class="home-navigation my-3">
+    <div class="container">
+        <a asp-controller="Home" asp-action="Index">Ana səhifə</a>/<a>Login</a>
+    </div>
+</div>
+
+
+<div class="login-register py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-12 my-2 login-register-in">
+                <div class="login-register-inner">
+                    <h4>
+                        Hesaba Giriş
+                    </h4>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <form method="post" asp-controller="Account" asp-action="Login">
+                        <input asp-for="UserNameOrEmail" class="form-control my-2" placeholder="Email or Username">
+                        <input asp-for="Password" class="form-control my-2" placeholder="Şifrə">
+                        <hr>
+                        <div class="login-forget-buttons">
+                            <button class="btn btn-primary">
+                                Girish
+                            </button>
+                            <a asp-controller="Account" asp-action="ForgetPassWord">Şifrəni unutmuşam?</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-6 col-12 my-2">
+                <div class="create-account">
+                    <div class="row">
+                        <div class="col-8">
+                            <h4 class="mb-2 ">Hesab Yarat</h4>
+                            <ul>
+                                <li class="mb-2">Sifariş tarixini saxla</li>
+                                <li class="mb-2">İstək listinizə məhsul əlavə edin</li>
+                                <li class="mb-2">Gələcəkdə satın alma işləmləriniz üçün bilgi saxlayın</li>
+                            </ul>
+                            <a asp-controller="Account" asp-action="register" class="btn btn-outline-primary mt-3 create-account-button"> Hesab Yarat</a>
+                        </div>
+                        <div class="col-4 text-end d-flex justify-content-end align-items-center " style="height: 200px;">
+                            <img src="~/assets/img/logo/loginImg.jpg" alt="login-image" class="me-3" style="width: 50%; height: 100px; border-radius: 50%;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

@@ -14,11 +14,15 @@ namespace BackFinalProject.ViewComponents
     {
         private readonly ISettingService settingService;
         private readonly ICategoryService categoryService;
+        private readonly ISubscriptionService subscriptionService;
 
-        public FooterViewComponent(ISettingService settingService,ICategoryService categoryService)
+        public FooterViewComponent(ISettingService settingService,
+                                   ICategoryService categoryService,
+                                   ISubscriptionService subscriptionService)
         {
             this.settingService = settingService;
             this.categoryService = categoryService;
+            this.subscriptionService = subscriptionService;
         }
         public async Task<IViewComponentResult> InvokeAsync()
         {
@@ -30,5 +34,6 @@ namespace BackFinalProject.ViewComponents
 
             return await Task.FromResult(View(footerVM));
         }
+       
     }
 }

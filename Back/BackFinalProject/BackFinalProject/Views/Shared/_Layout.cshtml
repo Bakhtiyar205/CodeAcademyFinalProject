@@ -49,15 +49,6 @@
     <script src="jquery.min.js"></script>
     <script src="~/assets/js/plugins/owlcarousel/owl.carousel.min.js"></script>
     <script src="~/assets/js/main.js"></script>
-    <script>
-        jQuery(function ($) {
-            $(document).on('change', '.selectpicker', function (e) {
-                e.preventDefault();
-
-                window.location = $(this).find('option:selected').val();
-            });
-        });
-    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 

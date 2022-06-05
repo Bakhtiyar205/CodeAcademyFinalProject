@@ -87,11 +87,36 @@ namespace BackFinalProject.Services
                                             .FirstOrDefaultAsync();
         }
 
-        public async Task<List<Product>> GetProductWithSubCategoryIdAsync(int subcategoryId)
+        public async Task<List<Product>> GetProductWithSubCategoryIdAsync(int subcategoryId, int productPrice = 1)
         {
-            return await context.Products.Where(m=>m.SubCategoryId == subcategoryId 
-                                             && m.IsDeleted == false 
+            if(productPrice == 2) {
+                return await context.Products.Where(m => m.SubCategoryId == subcategoryId
+                                                 && m.IsDeleted == false
+                                                 && m.IsOutlet == false)
+                                                .OrderByDescending(m => m.RealPrice * (100 - m.Discount) / 100)
+                                                .Include(m => m.SubCategory)
+                                                .Include(m => m.ProductImages.Where(m => m.IsDeleted == false))
+                                                .ToListAsync();
+            }
+            else
+            {
+                return await context.Products.Where(m => m.SubCategoryId == subcategoryId
+                                            && m.IsDeleted == false
+                                            && m.IsOutlet == false)
+                                           .OrderBy(m => m.RealPrice * (100 - m.Discount) / 100)
+                                           .Include(m => m.SubCategory)
+                                           .Include(m => m.ProductImages.Where(m => m.IsDeleted == false))
+                                           .ToListAsync();
+            }
+           
+        }
+
+        public async Task<List<Product>> GetProductWithSubCategoryIdDesc(int subcategoryId)
+        {
+            return await context.Products.Where(m => m.SubCategoryId == subcategoryId
+                                             && m.IsDeleted == false
                                              && m.IsOutlet == false)
+                                            .OrderByDescending(m => m.RealPrice * (100 - m.Discount) / 100)
                                             .Include(m => m.SubCategory)
                                             .Include(m => m.ProductImages.Where(m => m.IsDeleted == false))
                                             .ToListAsync();

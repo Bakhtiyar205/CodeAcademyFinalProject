@@ -10,6 +10,7 @@
             <a asp-controller="Home" asp-action="index">Ana səhifə</a>/ <a asp-controller="Category" asp-action="index" asp-route-categoryId="@Model.SubCategory.CategoryID">@Model.SubCategory.Category.Name</a> /<a>@Model.SubCategory.Name</a>
         </div>
     </div>
+    <input type="hidden" name="name" value="@Model.SubCategory.Id" id="subcategory-id"/>
     <!-- Category Wallpaper -->
     <div class="category-wallpaper py-5">
         <div class="container">
@@ -54,10 +55,10 @@
                     <!-- SelectLsit -->
                     <div class="row mb-md-2">
                         <div class="col-12 col-md-5">
-                            <select class="form-select" aria-label="Default select example">
+                            <select class="form-select" id="desc-asc" aria-label="Default select example">
                                 <option selected>Open this select menu</option>
-                                <option value="1">Dushen</option>
-                                <option value="2">Qalxan</option>
+                                <option value="1">Artan</option>
+                                <option value="2">Dushen</option>
                             </select>
                         </div>
                     </div>
@@ -66,8 +67,8 @@
                         {
                             <div class="col-12 col-md-4 my-3">
                                 <div class="product-field p-3">
-                                    <a asp-controller="ProductDetail" asp-action="index" asp-route-productId="@product.Id">
-                                        <img src="~/assets/img/products/@product.ProductImages.FirstOrDefault()?.Image" alt="">
+                                    <a asp-controller="ProductDetail" asp-action="index" asp-route-productId="@product.Id" id="@Math.Truncate(product.RealPrice*(100-product.Discount)/100)">
+                                        <img src="~/assets/img/products/@product.ProductImages.FirstOrDefault()?.Image" alt="image">
                                         <br>
                                         @product.Name
                                     </a>

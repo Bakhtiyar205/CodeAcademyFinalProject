@@ -71,6 +71,7 @@ namespace BackFinalProject
             services.AddScoped<IProductImageService, ProductImageService>();
             services.AddScoped<IMailService, MailService>();
             services.AddScoped<ISubscriptionService, SubscriptionService>();
+            services.AddScoped<IUserService, UserService>();
             services.Configure<MailSettings>(Configuration.GetSection("MailSettings"));
 
 

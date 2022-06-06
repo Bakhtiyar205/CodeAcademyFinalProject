@@ -1,16 +1,15 @@
 ﻿using BackFinalProject.Datas;
 using BackFinalProject.Models;
 using BackFinalProject.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace BackFinalProject.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
+    [Authorize(Roles = "Admin")]
     public class SettingController : Controller
     {
         private readonly ISettingService settingService;

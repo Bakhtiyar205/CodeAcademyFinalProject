@@ -12,7 +12,7 @@ namespace BackFinalProject.ViewModels
         [MaxLength(100)]
         public string FullName { get; set; }
         [Required]
-        [MaxLength(255)]
+        [MaxLength(100)]
         public string UserName { get; set; }
         [Required]
         [MaxLength(100)]

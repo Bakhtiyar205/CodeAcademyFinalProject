@@ -1,0 +1,81 @@
+﻿@model List<AppUser>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+    int count = 1;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="justify-content-between d-flex mt-3 justify-content-between" style="width:100%;">
+            <div>
+                <h1>User</h1>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Number
+                        </th>
+                        <th>
+                            User Name
+                        </th>
+                        <th>
+                            User Email
+                        </th>
+                        <th>
+                            Settings
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>
+                                @count
+                            </td>
+                            <td>
+                                @user.FullName
+                            </td>
+                            <td>
+                                @user.Email
+                            </td>
+                            <td>
+                                <form asp-controller="user" asp-action="IsModerator" asp-route-id="@user.Id" style="display:inline-block">
+                                    <button type="submit" class="btn btn-primary btn-sm">Moderator</button>
+                                </form>
+                                <form asp-controller="user" asp-action="IsMember" asp-route-id="@user.Id" style="display:inline-block">
+                                    <button type="submit" class="btn btn-warning btn-sm">Member</button>
+                                </form>
+                                @if (user.IsActivated)
+                                {
+                                    <form asp-controller="user" asp-action="active" asp-route-id="@user.Id" style="display:inline-block">
+                                        <button type="submit" class="btn btn-success btn-sm">Active/Deactive</button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <form asp-controller="user" asp-action="active" asp-route-id="@user.Id" style="display:inline-block">
+                                        <button type="submit" class="btn btn-danger btn-sm">Active/Deactive</button>
+                                    </form>
+                                }
+                                @if (user.IsSubscribed)
+                                {
+                                    <a href="#" class="btn btn-secondary btn-sm" style="display:inline-block;">Subscribed</a>
+                                }
+
+                            </td>
+                        </tr>
+                        count++;
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

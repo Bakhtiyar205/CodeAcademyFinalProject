@@ -1,13 +1,10 @@
 ﻿using BackFinalProject.Models;
-using BackFinalProject.Services;
 using BackFinalProject.Services.Interfaces;
 using BackFinalProject.Utilities.Helpers;
 using BackFinalProject.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using static BackFinalProject.Utilities.Helpers.Helper;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
@@ -20,17 +17,19 @@ namespace BackFinalProject.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IMailService _mailService;
-
+        private readonly IUserService userService;
 
         public AccountController(RoleManager<IdentityRole> roleManager,
                                  UserManager<AppUser> userManager,
                                  SignInManager<AppUser> signInManager,
-                                 IMailService mailService)
+                                 IMailService mailService,
+                                 IUserService userService)
         {
             _roleManager = roleManager;
             _userManager = userManager;
             _signInManager = signInManager;
             _mailService = mailService;
+            this.userService = userService;
         }
         public IActionResult Register()
         {
@@ -56,6 +55,7 @@ namespace BackFinalProject.Controllers
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError("", error.Description);
+                    return View(registerVM);
                 }
             }
 
@@ -164,7 +164,7 @@ namespace BackFinalProject.Controllers
             var code = await _userManager.GeneratePasswordResetTokenAsync(user);
             var link = Url.Action(nameof(ResetPassword),"Account", new { email = user.Email, token = code}, Request.Scheme, Request.Host.ToString());
             string html = $"<a href={link}>Click Here</a>";
-            string content = "Email For Register Confirmation";
+            string content = "Email For Forget Password Confirmation";
             var mailRequest = new MailRequest
             {
                 Subject = content,

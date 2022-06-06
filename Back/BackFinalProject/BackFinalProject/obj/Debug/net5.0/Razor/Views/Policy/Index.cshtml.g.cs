@@ -34,7 +34,7 @@ using BackFinalProject.ViewModels;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"5a0aeb2c3ffc7fb3a9d41098a4a18f299e683c37", @"/Views/Policy/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"4d3d641e37de95c462efdf874848a16765eb7eb0", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"15490e073c7c2c777c5f124e21b763f88e8c6385", @"/Views/_ViewImports.cshtml")]
     public class Views_Policy_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<PolicyVM>
     {
         #pragma warning disable 1998

@@ -1,8 +1,6 @@
 ﻿using BackFinalProject.Models;
 using BackFinalProject.Utilities.Pagination;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace BackFinalProject.Services.Interfaces

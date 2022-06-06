@@ -1,6 +1,4 @@
-
 $(document).ready(function () {
-    let getData = $('#getData');
 
     //cookie
     cookie = $.cookie('basket');
@@ -208,7 +206,7 @@ $(document).ready(function () {
 
         window.location = $(this).find('option:selected').val();
     });
-
+    //Products Order By ascending and descending
     $('body').on('change', '#desc-asc', function (e) {
         e.preventDefault();
 
@@ -258,6 +256,29 @@ $(document).ready(function () {
             }
         })
     });
+
+    $(document).on('click', '#subscription-button', function (e) {
+        let nameSubscriptionHidden = $('#name-subscription-hidden').val();
+        let nameSubsctiption = $('#name-subscription').val();
+        let emailSubscriptionHidden = $('#email-subscription-hidden').val();
+        let emailSubscription = $('#email-subscription').val()
+        let nameSubscriptionValid = document.querySelector("#name-subscription");
+        let emailSubscriptionValid = document.querySelector("#email-subscription");
+        if (nameSubsctiption != nameSubscriptionHidden) {
+            nameSubscriptionValid.setCustomValidity("Please enter your Username");
+        } else {
+            nameSubscriptionValid.setCustomValidity("");
+            if (emailSubscription != emailSubscriptionHidden) {
+                emailSubscriptionValid.setCustomValidity("Please enter your Email");
+            } else {
+                emailSubscriptionValid.setCustomValidity("");
+                swal("You Subscribed, Please Check Your Email!", "", "success");
+
+            }
+        }
+        
+        
+    })
 
 
 

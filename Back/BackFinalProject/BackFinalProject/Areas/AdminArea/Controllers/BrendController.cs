@@ -1,20 +1,20 @@
 ﻿using BackFinalProject.Datas;
 using BackFinalProject.Models;
-using BackFinalProject.Services;
 using BackFinalProject.Services.Interfaces;
 using BackFinalProject.Utilities.Files;
 using BackFinalProject.Utilities.Helpers;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace BackFinalProject.Areas.AdminArea.Controllers
 {
     [Area("AdminArea")]
+    [Authorize(Roles = "Admin")]
+
     public class BrendController : Controller
     {
         private readonly IBrendService brendService;

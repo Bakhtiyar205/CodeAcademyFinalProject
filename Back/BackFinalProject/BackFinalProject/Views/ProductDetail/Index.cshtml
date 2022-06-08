@@ -125,7 +125,7 @@
                     <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Home</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Comment</button>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
@@ -134,12 +134,36 @@
                 </div>
                 <div class="tab-pane fade home-nav" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <ul>
+                        @foreach (var comment in Model.Comments)
+                        {
+
+                            <li><span>@comment.Name:</span> <span>@comment.CommentSection</span></li>
+
+                        }
+                    </ul>
+                    @*<ul>
                         <li>Çatdırılma qiyməti - 10 AZN (Bakı şəhəri ərazisində)</li>
                         <li>Baki şəhəri daxilində çatdırılma müddəti - 2 gün.</li>
                         <li>Ətraf ərazilərə çatdırılma müddəti - 4 gün.</li>
                         <li>JYSK.az saytından sifariş etdiyiniz zaman, seçdiyiniz məhsullar göstərdiyiniz ünvana çatdırılır.</li>
                         <li>Alınan mallar 14 gün ərzində qəbz ilə birlikdə Baş ofisimizdə dəyişdirilə və ya qaytarıla bilər</li>
-                    </ul>
+                    </ul>*@
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <form method="post">
+                            <input type="hidden" name="productId" id="product-comment-id" value="@Model.Product.Id"/>
+                            <input type="hidden" name="name" value="@User.Identity.Name" id="user-comment-name"/>
+                            <input type="text" name="comment" id="comment-text" maxlength="200" class="form-control" style="width:30%" placeholder="Comment"/>
+                            <br />
+                            <button type="submit" class="btn btn-primary btn-sm my-1" id="add-comment-button">Add Your Comment</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <input type="text" name="name" maxlength="200" class="form-control"/>
+                        <a asp-controller="account" asp-action="login" class="btn btn-primary btn-sm">Submit</a>
+                    }
+
                 </div>
             </div>
         </div>

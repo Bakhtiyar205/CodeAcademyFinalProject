@@ -4,14 +4,16 @@ using BackFinalProject.Datas;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BackFinalProject.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220608125705_CreateCommentTable")]
+    partial class CreateCommentTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -270,12 +272,7 @@ namespace BackFinalProject.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("Comments");
                 });
@@ -646,17 +643,6 @@ namespace BackFinalProject.Migrations
                     b.Navigation("Blog");
                 });
 
-            modelBuilder.Entity("BackFinalProject.Models.Comment", b =>
-                {
-                    b.HasOne("BackFinalProject.Models.Product", "Product")
-                        .WithMany("Comments")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-                });
-
             modelBuilder.Entity("BackFinalProject.Models.DiscountCategroy", b =>
                 {
                     b.HasOne("BackFinalProject.Models.Category", "Category")
@@ -773,8 +759,6 @@ namespace BackFinalProject.Migrations
 
             modelBuilder.Entity("BackFinalProject.Models.Product", b =>
                 {
-                    b.Navigation("Comments");
-
                     b.Navigation("ProductImages");
                 });
 

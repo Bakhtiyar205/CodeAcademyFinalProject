@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BackFinalProject.Services
 {
-    public class SubscriptionService:ISubscriptionService
+    public class SubscriptionService : ISubscriptionService
     {
         private readonly AppDBContext _context;
         private readonly IMailService _mailService;
@@ -17,11 +17,13 @@ namespace BackFinalProject.Services
             _context = context;
             _mailService = mailService;
         }
+
         public async Task<AppUser> Subscription(string email, string name)
         {
             var subscription = await _context.Users.FirstOrDefaultAsync(m => m.Email.ToLower().Trim() == email.ToLower().Trim()
                                                                         && m.UserName.ToLower().Trim() == name.ToLower().Trim());
             if (subscription is null) return subscription;
+            if (subscription.IsSubscribed) return subscription;
             subscription.IsSubscribed = true;
             await _context.SaveChangesAsync();
             string content = "Email For Subscription";
@@ -32,6 +34,7 @@ namespace BackFinalProject.Services
             };
             await _mailService.SendEmailAsync(mailRequest);
             return subscription;
+
         }
     }
 }

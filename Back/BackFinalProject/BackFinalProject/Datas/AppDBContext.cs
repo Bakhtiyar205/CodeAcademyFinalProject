@@ -27,5 +27,7 @@ namespace BackFinalProject.Datas
         public DbSet<GiftCard> GiftCards { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductImage> ProductImages { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using BackFinalProject.Models;
+﻿using BackFinalProject.Areas.AdminArea.ViewModels;
+using BackFinalProject.Models;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -6,7 +7,7 @@ namespace BackFinalProject.Services.Interfaces
 {
     public interface IUserService
     {
-        Task<List<AppUser>> AppUsersAsync();
+        Task<List<UsersVM>> AppUsersAsync();
         Task<AppUser> AppUserNameFindAsync(string userName);
         Task<AppUser> AppUserIdAsync(string id);
         Task AppUserActiveAsync(string id);

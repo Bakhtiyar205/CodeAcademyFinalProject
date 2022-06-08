@@ -28,5 +28,6 @@ namespace BackFinalProject.Models
         public int SubCategoryId { get; set; }
         public SubCategory SubCategory { get; set; }
         public List<ProductImage> ProductImages { get; set; }
+        public List<Comment> Comments { get; set; }
     }
 }

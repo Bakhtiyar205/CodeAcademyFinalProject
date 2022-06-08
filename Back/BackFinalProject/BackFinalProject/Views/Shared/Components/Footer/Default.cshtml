@@ -5,6 +5,7 @@
 @{
     var usr = await UserManager.GetUserAsync(User);
     var email = usr?.Email;
+    var isSubscibed = usr?.IsSubscribed;
 }
 <footer>
     <!-- Subscription -->
@@ -21,33 +22,72 @@
                         <div class="subscription-form">
                             @if (User.Identity.IsAuthenticated)
                             {
-                                <form method="post" asp-controller="Home" asp-action="Subscribe">
-                                    <div>
-                                        <input required type="checkbox" name="policy" id="policy" value="true" oninvalid="this.setCustomValidity('You should agree with Policy of JYSK for Subscription')" onchange="this.setCustomValidity('')" />
-                                        <span>
-                                            Bəli, JYSK e-poçt bülleteninə yazılmaq
-                                            istəyirəm,
-                                        </span>
-                                    </div>
-                                    <div class="subscription-detail">
-                                        ilhamvericilik üçün məqalələr, mövcud təkliflər, xəbərlər və JYSK.az çeşidli
-                                        elektron təqdimat qəzetləri haqqında məlumatları ehtiva edir. Eyni zamanda,
-                                        <a asp-controller="Policy" asp-action="Index">qaydaları və şərtləri</a> elektron poçtla qəbul edirəm. İstənilən vaxt
-                                        abunəçilikdən çıxa bilərsiniz. Yuxarıdakı şəxsi məlumatları sizə email göndərmək
-                                        üçün istifadə edirik. Daha ətraflı <a asp-controller="Policy" asp-action="Index">məxfilik siyasəti</a> haqqında oxuya
-                                        biləriniz.
+                                @if (isSubscibed == true)
+                                {
+                                    <form method="post" asp-controller="Home" asp-action="Subscribe">
+                                        <div>
+                                            <input required type="checkbox" name="policy" id="policy" value="true" oninvalid="this.setCustomValidity('You should agree with Policy of JYSK for Subscription')" onchange="this.setCustomValidity('')" />
+                                            <span>
+                                                Bəli, JYSK e-poçt bülleteninə yazılmaq
+                                                istəyirəm,
+                                            </span>
+                                        </div>
+                                        <div class="subscription-detail">
+                                            ilhamvericilik üçün məqalələr, mövcud təkliflər, xəbərlər və JYSK.az çeşidli
+                                            elektron təqdimat qəzetləri haqqında məlumatları ehtiva edir. Eyni zamanda,
+                                            <a asp-controller="Policy" asp-action="Index">qaydaları və şərtləri</a> elektron poçtla qəbul edirəm. İstənilən vaxt
+                                            abunəçilikdən çıxa bilərsiniz. Yuxarıdakı şəxsi məlumatları sizə email göndərmək
+                                            üçün istifadə edirik. Daha ətraflı <a asp-controller="Policy" asp-action="Index">məxfilik siyasəti</a> haqqında oxuya
+                                            biləriniz.
 
-                                    </div>
-                                    <div class="subscription-inputs text-center">
-                                        <input type="hidden" name="@User.Identity.Name" value="@User.Identity.Name" id="name-subscription-hidden"/>
-                                        <input type="hidden" name="@email" value="@email" id="email-subscription-hidden"/>
-                                        <input required type="text" class="my-1" placeholder="Ad" name="name" id="name-subscription" maxlength="100">
-                                        <br>
-                                        <input required type="text" class="my-1" placeholder="Email" name="email" id="email-subscription" maxlength="100">
-                                        <br>
-                                        <button class="btn btn-custom my-1" id="subscription-button">Abunə Ol</button>
-                                    </div>
-                                </form>
+                                        </div>
+                                        <div class="subscription-inputs text-center">
+                                            <input type="hidden" name="@User.Identity.Name" value="@User.Identity.Name" id="name-subscription-hidden" />
+                                            <input type="hidden" name="@email" value="@email" id="email-subscription-hidden" />
+                                            <input type="hidden" name="IsSubscribed" value="@isSubscibed.ToString()" id="again-subscription-hidden" />
+                                            <input required type="text" class="my-1" placeholder="Ad" name="name" id="name-subscription" maxlength="100">
+                                            <br>
+                                            <input required type="text" class="my-1" placeholder="Email" name="email" id="email-subscription" maxlength="100">
+                                            <br />
+                                            <button class="btn btn-custom my-1" id="subscription-button">Abunə Ol</button>
+                                        </div>
+                                        <div id="validation-error" style="color:red;" class="d-none">You are subscribed</div>
+                                    </form>
+
+                                }
+                                else
+                                {
+                                    <form method="post" asp-controller="Home" asp-action="Subscribe">
+                                        <div>
+                                            <input required type="checkbox" name="policy" id="policy" value="true" oninvalid="this.setCustomValidity('You should agree with Policy of JYSK for Subscription')" onchange="this.setCustomValidity('')" />
+                                            <span>
+                                                Bəli, JYSK e-poçt bülleteninə yazılmaq
+                                                istəyirəm,
+                                            </span>
+                                        </div>
+                                        <div class="subscription-detail">
+                                            ilhamvericilik üçün məqalələr, mövcud təkliflər, xəbərlər və JYSK.az çeşidli
+                                            elektron təqdimat qəzetləri haqqında məlumatları ehtiva edir. Eyni zamanda,
+                                            <a asp-controller="Policy" asp-action="Index">qaydaları və şərtləri</a> elektron poçtla qəbul edirəm. İstənilən vaxt
+                                            abunəçilikdən çıxa bilərsiniz. Yuxarıdakı şəxsi məlumatları sizə email göndərmək
+                                            üçün istifadə edirik. Daha ətraflı <a asp-controller="Policy" asp-action="Index">məxfilik siyasəti</a> haqqında oxuya
+                                            biləriniz.
+
+                                        </div>
+                                        <div class="subscription-inputs text-center">
+                                            <input type="hidden" name="@User.Identity.Name" value="@User.Identity.Name" id="name-subscription-hidden" />
+                                            <input type="hidden" name="@email" value="@email" id="email-subscription-hidden" />
+                                            <input type="hidden" name="IsSubscribed" value="@isSubscibed.ToString()" id="again-subscription-hidden" />
+                                            <input required type="text" class="my-1" placeholder="Ad" name="name" id="name-subscription" maxlength="100">
+                                            <br>
+                                            <input required type="text" class="my-1" placeholder="Email" name="email" id="email-subscription" maxlength="100">
+                                            <br />
+                                            <button class="btn btn-custom my-1" id="subscription-button">Abunə Ol</button>
+                                        </div>
+                                        <div id="validation-error" style="color:red;" class="d-none">You are subscribed</div>
+                                    </form>
+
+                                }
                             }
                             else
                             {

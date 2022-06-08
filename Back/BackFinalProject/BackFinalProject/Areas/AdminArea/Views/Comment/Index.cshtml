@@ -1,0 +1,78 @@
+﻿@model List<CommentVM>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+    int count = 1;
+}
+
+<h1>Index</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="justify-content-between d-flex mt-3 justify-content-between" style="width:100%;">
+            <div>
+                <h1>User</h1>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Number
+                        </th>
+                        <th>
+                            User Name
+                        </th>
+                        <th>
+                            Comments
+                        </th>
+                        <th>
+                           Product
+                        </th>
+                        <th>
+                            Settings
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @count
+                            </td>
+                            <td>
+                                @item.Comment.Name
+                            </td>
+                            <td>
+                                @item.Comment.CommentSection
+                            </td>
+                            <td>
+                                @item.Product.Name
+                            </td>
+                            <td>
+                                @if (item.Comment.IsConfirmed)
+                                {
+                                    <form asp-controller="comment" asp-action="ApproveDisapproveComments" asp-route-id="@item.Comment.Id" style="display:inline-block">
+                                        <button type="submit" class="btn btn-success btn-sm">Approve</button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <form asp-controller="comment" asp-action="ApproveDisapproveComments" asp-route-id="@item.Comment.Id" style="display:inline-block">
+                                        <button type="submit" class="btn btn-warning btn-sm">Approve</button>
+                                    </form>
+                                }
+
+                            </td>
+                        </tr>
+                        count++;
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

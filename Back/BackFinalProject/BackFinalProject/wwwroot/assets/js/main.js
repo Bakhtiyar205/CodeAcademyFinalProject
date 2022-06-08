@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
     //cookie
     cookie = $.cookie('basket');
     basketIcon = $("#icon-basket");
@@ -24,14 +23,16 @@ $(document).ready(function () {
         if (cookieJson.length == 0) {
             $(basketIcon).removeClass("d-none");
             $(tableBasket).addClass("d-none");
+        } else {
+            for (var i = 0; i < cookieJson.length; i++) {
+                var newTr = document.createElement('tr')
+                $(basketParent).append(newTr)
+                $(newTr).html('<td><img  src="/assets/img/products/' + cookieJson[i].Image + '" style="width:50px;height:50px"/></td>'
+                    + '<td>' + cookieJson[i].Name + '</td>')
+            }
         }
 
-        for (var i = 0; i < cookieJson.length; i++) {
-            var newTr = document.createElement('tr')
-            $(basketParent).append(newTr)
-            $(newTr).html('<td><img  src="/assets/img/products/' + cookieJson[i].Image + '" style="width:50px;height:50px"/></td>'
-                + '<td>' + cookieJson[i].Name + '</td>')
-        }
+        
     }
 
 
@@ -206,6 +207,7 @@ $(document).ready(function () {
 
         window.location = $(this).find('option:selected').val();
     });
+
     //Products Order By ascending and descending
     $('body').on('change', '#desc-asc', function (e) {
         e.preventDefault();
@@ -264,6 +266,10 @@ $(document).ready(function () {
         let emailSubscription = $('#email-subscription').val()
         let nameSubscriptionValid = document.querySelector("#name-subscription");
         let emailSubscriptionValid = document.querySelector("#email-subscription");
+        let againSubscriptionValid = document.querySelector("#again-subscription-hidden");
+        let againSubscription = $('#again-subscription-hidden').val();
+        let validationError = $('#validation-error');
+        console.log(typeof(againSubscription));
         if (nameSubsctiption != nameSubscriptionHidden) {
             nameSubscriptionValid.setCustomValidity("Please enter your Username");
         } else {
@@ -272,15 +278,46 @@ $(document).ready(function () {
                 emailSubscriptionValid.setCustomValidity("Please enter your Email");
             } else {
                 emailSubscriptionValid.setCustomValidity("");
-                swal("You Subscribed, Please Check Your Email!", "", "success");
+                if (againSubscription = 'true') {
+                    e.preventDefault();
+                    validationError.removeClass('d-none');
+                    validationError.addClass('d-block');
+                    setTimeout(function() {
+                        validationError.removeClass('d-block');
+                        validationError.addClass('d-none');
+                    }, 1000)
 
+                } else {
+                    swal("You Subscribed, Please Check Your Email!", "", "success");
+                }
             }
         }
         
         
     })
 
+    Comment
+    $(document).on('click', '#add-comment-button', function (e) {
+        e.preventDefault();
+        debugger
+        let productId = $('#product-comment-id').val();
+        let userName = $('#user-comment-name').val();
+        let comment = $('#comment-text').val();
+        console.log(productId, userName, comment);
+        $.ajax({
+            url: "/productdetail/AddComment",
+            type: "Post",
+            data: {
+                productId: productId,
+                name: userName,
+                comment:comment
+            },
+            success: function () {
+                    swal("You comment added, please wait admin Response!", "", "success");
+            }
+        })
 
+    })
 
     $(document).ready(function () {
         $(".owl-carousel").owlCarousel();

@@ -12,17 +12,21 @@ namespace BackFinalProject.Controllers
     public class ProductDetailController : Controller
     {
         private readonly IProductService productService;
+        private readonly ICommentService commentService;
 
-        public ProductDetailController(IProductService productService)
+        public ProductDetailController(IProductService productService,
+                                        ICommentService commentService)
         {
             this.productService = productService;
+            this.commentService = commentService;
         }
         public async Task<IActionResult> Index(int productId)
         {
             ProductVM productVM = new(await productService.GetProductWithIdAsync(productId))
             {
                 Product = await productService.GetProductWithIdAsync(productId),
-                Products = await productService.GetProductsAsync()
+                Products = await productService.GetProductsAsync(),
+                Comments = await commentService.GetSpecialProductCommentsAsync(productId)
             };
             return View(productVM);
         }
@@ -132,5 +136,10 @@ namespace BackFinalProject.Controllers
 
         }
 
-    };
-}
+        [HttpPost]
+        public async Task AddComment(int productId, string name, string comment)
+        {
+            await commentService.PostCommentAsync(productId, name, comment);
+        }
+
+    }}

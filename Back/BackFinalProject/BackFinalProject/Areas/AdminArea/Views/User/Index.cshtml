@@ -1,4 +1,4 @@
-﻿@model List<AppUser>
+﻿@model List<UsersVM>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
@@ -32,38 +32,50 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var user in Model)
+                    @foreach (var item in Model)
                     {
                         <tr>
                             <td>
                                 @count
                             </td>
                             <td>
-                                @user.FullName
+                                @item.User.FullName
                             </td>
                             <td>
-                                @user.Email
+                                @item.User.Email
                             </td>
                             <td>
-                                <form asp-controller="user" asp-action="IsModerator" asp-route-id="@user.Id" style="display:inline-block">
-                                    <button type="submit" class="btn btn-primary btn-sm">Moderator</button>
-                                </form>
-                                <form asp-controller="user" asp-action="IsMember" asp-route-id="@user.Id" style="display:inline-block">
-                                    <button type="submit" class="btn btn-warning btn-sm">Member</button>
-                                </form>
-                                @if (user.IsActivated)
+                                @if (item.IsModerator)
                                 {
-                                    <form asp-controller="user" asp-action="active" asp-route-id="@user.Id" style="display:inline-block">
+                                    <form asp-controller="user" asp-action="IsModerator" asp-route-id="@item.User.Id" style="display:inline-block">
+                                        <button type="submit" class="btn btn-primary btn-sm">Moderator</button>
+                                    </form>
+                                    <form asp-controller="user" asp-action="IsMember" asp-route-id="@item.User.Id" style="display:inline-block">
+                                        <button type="submit" class="btn btn-warning btn-sm">Member</button>
+                                    </form>
+                                }
+                                else
+                                {
+                                    <form asp-controller="user" asp-action="IsModerator" asp-route-id="@item.User.Id" style="display:inline-block">
+                                        <button type="submit" class="btn btn-warning btn-sm">Moderator</button>
+                                    </form>
+                                    <form asp-controller="user" asp-action="IsMember" asp-route-id="@item.User.Id" style="display:inline-block">
+                                        <button type="submit" class="btn btn-primary btn-sm">Member</button>
+                                    </form>
+                                }
+                                @if (item.User.IsActivated)
+                                {
+                                    <form asp-controller="user" asp-action="active" asp-route-id="@item.User.Id" style="display:inline-block">
                                         <button type="submit" class="btn btn-success btn-sm">Active/Deactive</button>
                                     </form>
                                 }
                                 else
                                 {
-                                    <form asp-controller="user" asp-action="active" asp-route-id="@user.Id" style="display:inline-block">
+                                    <form asp-controller="user" asp-action="active" asp-route-id="@item.User.Id" style="display:inline-block">
                                         <button type="submit" class="btn btn-danger btn-sm">Active/Deactive</button>
                                     </form>
                                 }
-                                @if (user.IsSubscribed)
+                                @if (item.User.IsSubscribed)
                                 {
                                     <a href="#" class="btn btn-secondary btn-sm" style="display:inline-block;">Subscribed</a>
                                 }

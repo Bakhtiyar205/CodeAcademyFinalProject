@@ -146,9 +146,7 @@ $(document).ready(function () {
     })
 
 
-    //RemoveProduct
-    //productdetail/removeproduct?productId=2
-
+    //RemoveProductBasket
     $('body').on('click', ".basket-remove", function (e) {
         e.preventDefault;
         swal("Product is Removed from Basket!", "", "warning");
@@ -238,7 +236,8 @@ $(document).ready(function () {
                             + data[i].realPrice * (100 - data[i].discount) / 100 +
                             ' AZN</span>/ededi</div><div class="real-price">' + data[i].realPrice + ' AZN</div><div class="discount-percentage my-2">'
                             + data[i].discount + '% ENDIRIM</div><div class="extra-information"><a class="btn btn-light form-control" href="/ProductDetail?productId='
-                            + data[i].id + '">Daha Etrafli</a></div><div class="wish-list text-center mt-2"><a href="#"><svg id="icon-heart" viewBox="0 0 512 512"><path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z"></path></svg>Istek Listi</a></div></div>')
+                            + data[i].id + '">Daha Etrafli</a></div><div class="wish-list text-center mt-2"><form><input type="hidden" name="Id" value="'
+                            + data[i].id + '" id="product-wishlist-id" /><button type="submit" class="btn add-wishlist"><svg id="icon-heart" viewBox="0 0 512 512"><path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z"></path></svg>Istek Listi</button></form></div></div>')
 
                     } else {
                         $(newDiv).html('<div class="product-field p-3"><a href="/ProductDetail?productId='
@@ -248,9 +247,11 @@ $(document).ready(function () {
                             '" alt="image"><br>'
                             + data[i].name + '</a><div class="discounted-price my-2"><span>'
                             + data[i].realPrice * (100 - data[i].discount) / 100 +
-                            ' AZN</span>/ededi</div><div class="real-price" style="visibility:hidden">' + data[i].realPrice + ' AZN</div><div class="discount-percentage my-2" style="visibility:hidden">'
+                            ' AZN</span>/ededi</div><div class="real-price" style="visibility:hidden">'
+                            + data[i].realPrice + ' AZN</div><div class="discount-percentage my-2" style="visibility:hidden">'
                             + data[i].discount + '% ENDIRIM</div><div class="extra-information"><a class="btn btn-light form-control" href="/ProductDetail?productId='
-                            + data[i].id + '">Daha Etrafli</a></div><div class="wish-list text-center mt-2"><a href="#"><svg id="icon-heart" viewBox="0 0 512 512"><path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z"></path></svg>Istek Listi</a></div></div>')
+                            + data[i].id + '">Daha Etrafli</a></div><div class="wish-list text-center mt-2"><form><input type="hidden" name="Id" value="'
+                            + data[i].id + '" id="product-wishlist-id" /><button type="submit" class="btn add-wishlist"><svg id="icon-heart" viewBox="0 0 512 512"><path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z"></path></svg>Istek Listi</button></form></div></div>')
 
                     }
 
@@ -296,7 +297,7 @@ $(document).ready(function () {
         
     })
 
-    Comment
+    //Comment
     $(document).on('click', '#add-comment-button', function (e) {
         e.preventDefault();
         debugger
@@ -314,6 +315,63 @@ $(document).ready(function () {
             },
             success: function () {
                     swal("You comment added, please wait admin Response!", "", "success");
+            }
+        })
+
+    })
+
+    //Wishlist Add
+    $(document).on('click', '.add-wishlist', function (e) {
+        e.preventDefault();
+        let productId = $(this).prev().val();
+        console.log(productId);
+        debugger
+        $.ajax({
+            url: "/wishlist/AddWishList",
+            type: "Post",
+            data: {
+                productId: productId
+            },
+            success: function () {
+                swal("Product added Wishlist!", "", "success");
+            }
+        })
+
+    })
+    //Wishlist Remove
+    $(document).on('click', '.wishlis-remove', function (e) {
+        e.preventDefault();
+        let tableId = $('#table-wishlist')
+        let productId = $(this).prev().val();
+        let mainTable = $('#table-responsive-wishlist');
+        let nullProduct = $('#null-product');
+        console.log(productId);
+        debugger
+        $.ajax({
+            url: "/wishlist/RemoveProduct",
+            type: "Post",
+            data: {
+                productId: productId
+            },
+            success: function (data) {
+                swal("Product removed from Wishlist!", "", "warning");
+                if (data.length > 0) {
+                    tableId.empty();
+                    for (var i = 0; i < data.length; i++) {
+                        var newTr = document.createElement('tr')
+                        $(tableId).append(newTr)
+                        $(newTr).html('<td><a href="/ProductDetail?productId=' + data[i].id + '"><img  src="/assets/img/products/'
+                            + data[i].image + '" style="width:50px;height:50px"/></a></td>'
+                            + '<td><a href="/ProductDetail?productId=' + data[i].id + '" style="color:#333;">' + data[i].name + '</a></td>'
+                            + ' <td><a href="/ProductDetail?productId=' + data[i].id + '" style="color:#333;">' + data[i].price + '</a></td >'
+                            + '<td><form><input type="hidden" name="product-wishlist-id" value="'
+                            + data[i].id + '"/><button class="wishlis-remove" id="'
+                            + data[i].id + '" >X</button></form></td >')
+                    }
+                } else {
+                    mainTable.addClass('d-none');
+                    nullProduct.removeClass('d-none');
+                }
             }
         })
 

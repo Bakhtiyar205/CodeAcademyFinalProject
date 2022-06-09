@@ -76,13 +76,17 @@
                         <a class="btn btn-primary btn-custom" id="addBasket">Sebete at</a>
                     </div>
                     <div class="wish-list text-center mt-2">
-                        <a href="#">
-                            <svg id="icon-heart" viewBox="0 0 512 512">
-                                <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
-                                </path>
-                            </svg>
-                            Istek Listi
-                        </a>
+                        <form>
+                            <input type="hidden" name="Id" value="@Model.Product.Id" id="product-wishlist-id"/>
+                            <button type="submit" class="btn add-wishlist">
+                                <svg id="icon-heart" viewBox="0 0 512 512">
+                                    <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
+                                    </path>
+                                </svg>
+                                Istek Listi
+                            </button>
+                            
+                        </form>
                     </div>
                 </div>
             </div>

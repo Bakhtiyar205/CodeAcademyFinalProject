@@ -1,0 +1,87 @@
+﻿@model List<WishListDetailVM>
+@{
+    ViewData["Title"] = "Index";
+    int count = 1;
+    decimal price = 0;
+}
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="header d-flex justify-content-between mt-3">
+            <h1>WishList</h1>
+
+        </div>
+        <p id="null-product" class="d-none">There is not product in wishlist</p>
+        @if (Model == null)
+        {
+            <p>There is not product in wishlist</p>
+        }
+        else if (Model.Count() < 1)
+        {
+            <p>There is not product in wishlist</p>
+        }
+        else
+        {
+            <div class="table-responsive" id="table-responsive-wishlist">
+                <table class="table table-striped" id="table-main-id">
+                    <thead>
+                        <tr>
+                            <th>
+                                Image
+                            </th>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Price
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-wishlist">
+                        @foreach (var item in Model)
+                        {
+
+                            <tr>
+                                <td>
+                                    <a asp-controller="productdetail" asp-action="index" asp-route-productId="@item.Product.Id"></a>
+                                    <img src="~/assets/img/products/@item.Product.ProductImages.FirstOrDefault().Image" height="50" width="50" />
+                                </td>
+                                <td>
+                                    @item.Product.Name
+                                </td>
+                                @if (item.Product.Discount == 0)
+                                {
+                                    <td>
+                                        @Math.Truncate(item.Product.RealPrice) AZN
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td>
+                                        @Math.Truncate(item.Product.RealPrice * (100 - item.Product.Discount) / 100) AZN
+                                    </td>
+                                }
+
+                                <td>
+                                    <form method="post">
+                                        <input type="hidden" name="product-wishlist-id" value="@item.Product.Id"/>
+                                        <button class="wishlis-remove" id="@item.Product.Id">X</button>
+                                    </form>
+                                </td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        }
+
+    </div>
+</div>
+
+
+

@@ -9,5 +9,6 @@ namespace BackFinalProject.ViewModels
     public class BestOfferVM
     {
         public BestOffer BestOffer { get; set; }
+        public int WishListCount { get; set; }
     }
 }

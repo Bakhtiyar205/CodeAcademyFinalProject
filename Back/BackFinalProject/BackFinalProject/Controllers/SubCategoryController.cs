@@ -2,7 +2,9 @@
 using BackFinalProject.Services.Interfaces;
 using BackFinalProject.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace BackFinalProject.Controllers
@@ -20,11 +22,16 @@ namespace BackFinalProject.Controllers
         }
         public async Task<IActionResult> Index(int subCategoryId)
         {
-            
+            int wishListCount = 0;
+            if (Request.Cookies["wishList"] != null)
+            {
+                wishListCount = JsonConvert.DeserializeObject<List<WishListVM>>(Request.Cookies["wishList"]).Count();
+            }
             SubCategoryVM subCategoryVM = new()
             {
                 SubCategory = await subCategoryService.GetSubCategoriesWithIdAsync(subCategoryId),
-                Products = await productService.GetProductWithSubCategoryIdAsync(subCategoryId,1)
+                Products = await productService.GetProductWithSubCategoryIdAsync(subCategoryId,1),
+                WishListCount = wishListCount
             };
             return View(subCategoryVM);
         }

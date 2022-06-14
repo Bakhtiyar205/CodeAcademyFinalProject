@@ -17,9 +17,7 @@ $(document).ready(function () {
     else {
         $(basketIcon).addClass("d-none");
         $(tableBasket).removeClass("d-none");
-
         cookieJson = JSON.parse(cookie);
-
         if (cookieJson.length == 0) {
             $(basketIcon).removeClass("d-none");
             $(tableBasket).addClass("d-none");
@@ -31,8 +29,6 @@ $(document).ready(function () {
                     + '<td>' + cookieJson[i].Name + '</td>')
             }
         }
-
-        
     }
 
 
@@ -47,27 +43,20 @@ $(document).ready(function () {
 
     $(searchClick).click(function (e) {
         e.preventDefault();
-
-        $(searhcField).toggleClass("d-none")
-
+        $(searhcField).toggleClass("d-none");
     });
 
     $(searchClick).on('keyup',function (e) {
         e.preventDefault();
-
         $(searchNoProduct).addClass("d-none");
         $(searchProducts).removeClass("d-none");
         $(searchProductHeader).removeClass("d-none");
-
         $.ajax({
             url: "/search/products?search=" + searchClick.val(),
             type: "Get",
             success: function (data) {
                 $(searchTable).empty()
-                console.log(data);
-
                 for (var i = 0; i < data.length; i++) {
-
                     var newTr = document.createElement('tr')
                     $(newTr).addClass("search-products")
                     $(searchTable).append(newTr)
@@ -75,17 +64,10 @@ $(document).ready(function () {
                         + data[i].productImages[0].image + '" style="width:50px;height:50px"/></a></td>'
                         + '<td class="search-product-field"><a href="/ProductDetail?productId=' + data[i].id + '" style="color:#333;">' + data[i].name + '</a></td>'
                         + ' <td class="search-price-field text-end"><a href="/ProductDetail?productId=' + data[i].id + '" style="color:#333;">' + data[i].realPrice + 'Azn/ededi</a></td >')
-
                 }
-
             }
         })
     })
-
-
-
-
-
 
     let tableChild = ("#table-child");
     let tableChildImg = ("#basket-child-img")
@@ -93,30 +75,19 @@ $(document).ready(function () {
     //Basket
     $("#basket").click(function () {
         $("#basket-toggle").toggleClass("basket-clicked");
-
     });
 
     $(document).on("click", "#addBasket", function (e) {
         e.preventDefault();
-
         swal("Product is added to Basket!", "More Information Visit Basket!", "success");
         let id = $("#product-id").val();
         let productCount = $("#product-count").val();
-        console.log(productCount);
-
         $.ajax({
             url: "/productdetail/addbasket?productId=" + id + "&productCount=" + productCount,
             type: "Post",
             success: function (data) {
-
-                console.log(data)
-
                 $(basketIcon).addClass("d-none");
                 $(tableBasket).removeClass("d-none");
-
-
-                debugger
-
                 if (cookie != null) {
                     for (var i = 0; i < cookieJson.length; i++) {
 
@@ -125,26 +96,19 @@ $(document).ready(function () {
                         } 
                     }
                 }
-
                 if ($('.data-id').text() == data.id) {
                     return
                 }
-
-
                 var newTr = document.createElement('tr')
                 $(basketParent).append(newTr)
                 $(basketParent).append(newTr)
                 $(newTr).html('<td class="data-id" style="display:none;">'+data.id +'</td><td><img  src="/assets/img/products/' + data.image
                                  + '" style="width:50px;height:50px"/></td>'
                                  + '<td>' + data.name + '</td>')
-                
-                
-                
             }
         })
 
     })
-
 
     //RemoveProductBasket
     $('body').on('click', ".basket-remove", function (e) {
@@ -155,7 +119,6 @@ $(document).ready(function () {
         let tableMainId = $('#table-main-id');
         let tableResponsive = $('#table-responsive');
         //let totalPrice = parseInt($('#total-price').text());
-
         let priceAjax = 0;
         //totalPrice = 0;
         $.ajax({
@@ -163,14 +126,12 @@ $(document).ready(function () {
             type: "Post",
             success: function (data) {
                 debugger
-                
                 $(tableId).empty()
-                
-
                 console.log(typeof ($('#total-price').text()));
+                $(basketParent).empty();
 
+                if (data.length)
                 for (var i = 0; i < data.length; i++) {
-
                     priceAjax += data[i].price
                     var newTr = document.createElement('tr')
                     $(tableId).append(newTr)
@@ -178,13 +139,20 @@ $(document).ready(function () {
                         + data[i].image + '" style="width:50px;height:50px"/></a></td>'
                         + '<td><a href="/ProductDetail?productId=' + data[i].id + '" style="color:#333;">' + data[i].name + '</a></td>'
                         + '<td><a href="/ProductDetail?productId=' + data[i].id + '" style="color:#333;">' + data[i].count + '</a></td>'
-                        + ' <td><a href="/ProductDetail?productId=' + data[i].id + '" style="color:#333;">' + data[i].price + '</a></td >'
+                        + ' <td><a href="/ProductDetail?productId=' + data[i].id + '" style="color:#333;">' + data[i].price + ' AZN</a></td >'
                         + '<td><a class="basket-remove" id="' + data[i].id + '" >X</a></td >')
+                    var newTrBasket = document.createElement('tr');
+                    $(basketParent).append(newTrBasket)
+                    $(newTrBasket).html('<td><img  src="/assets/img/products/' + data[i].image + '" style="width:50px;height:50px"/></td>'
+                        + '<td>' + data[i].name + '</td>')
                     //totalPrice += priceAjax;
                 }
                 if (priceAjax > 0) {
                     $('#total-price').text(priceAjax.toString())
                 } else {
+                    basketParent.addClass('d-none');
+                    basketIcon.removeClass('d-none');
+                    tableBasket.addClass('d-none');
                     tableMainId.addClass('d-none')
                     var newP = document.createElement('p')
                     tableResponsive.append(newP)
@@ -192,30 +160,22 @@ $(document).ready(function () {
                     $('#total-price').addClass('d-none')
                     $('#letter-total-price').addClass('d-none')
                 }
-                
-
             }
         })
-        
     })
 
 
     $(document).on('change', '.selectpicker', function (e) {
         e.preventDefault();
-
         window.location = $(this).find('option:selected').val();
     });
 
     //Products Order By ascending and descending
     $('body').on('change', '#desc-asc', function (e) {
         e.preventDefault();
-
         let productPrice= parseInt($(this).find('option:selected').val());
-
         let subcategoryId = $('#subcategory-id').val();
-
         let productField = $('.product-fields')
-
         $.ajax({
             url: "/subcategory/getproducts?productPrice=" + productPrice+"&subCategoryId="+subcategoryId,
             type: "Get",
@@ -252,9 +212,7 @@ $(document).ready(function () {
                             + data[i].discount + '% ENDIRIM</div><div class="extra-information"><a class="btn btn-light form-control" href="/ProductDetail?productId='
                             + data[i].id + '">Daha Etrafli</a></div><div class="wish-list text-center mt-2"><form><input type="hidden" name="Id" value="'
                             + data[i].id + '" id="product-wishlist-id" /><button type="submit" class="btn add-wishlist"><svg id="icon-heart" viewBox="0 0 512 512"><path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z"></path></svg>Istek Listi</button></form></div></div>')
-
                     }
-
                 }
             }
         })
@@ -293,8 +251,6 @@ $(document).ready(function () {
                 }
             }
         }
-        
-        
     })
 
     //Comment
@@ -324,19 +280,19 @@ $(document).ready(function () {
     $(document).on('click', '.add-wishlist', function (e) {
         e.preventDefault();
         let productId = $(this).prev().val();
-        console.log(productId);
-        debugger
+        let wishListCount = $('.wishlist-count');
         $.ajax({
             url: "/wishlist/AddWishList",
             type: "Post",
             data: {
                 productId: productId
             },
-            success: function () {
+            success: function (data) {
                 swal("Product added Wishlist!", "", "success");
+                wishListCount.empty();
+                $(wishListCount).html((data));
             }
         })
-
     })
     //Wishlist Remove
     $(document).on('click', '.wishlis-remove', function (e) {
@@ -345,8 +301,6 @@ $(document).ready(function () {
         let productId = $(this).prev().val();
         let mainTable = $('#table-responsive-wishlist');
         let nullProduct = $('#null-product');
-        console.log(productId);
-        debugger
         $.ajax({
             url: "/wishlist/RemoveProduct",
             type: "Post",
@@ -363,9 +317,9 @@ $(document).ready(function () {
                         $(newTr).html('<td><a href="/ProductDetail?productId=' + data[i].id + '"><img  src="/assets/img/products/'
                             + data[i].image + '" style="width:50px;height:50px"/></a></td>'
                             + '<td><a href="/ProductDetail?productId=' + data[i].id + '" style="color:#333;">' + data[i].name + '</a></td>'
-                            + ' <td><a href="/ProductDetail?productId=' + data[i].id + '" style="color:#333;">' + data[i].price + '</a></td >'
+                            + ' <td><a href="/ProductDetail?productId=' + data[i].id + '" style="color:#333;">' + data[i].price + ' Azn</a></td >'
                             + '<td><form><input type="hidden" name="product-wishlist-id" value="'
-                            + data[i].id + '"/><button class="wishlis-remove" id="'
+                            + data[i].id + '"/><button class="wishlis-remove btn" id="'
                             + data[i].id + '" >X</button></form></td >')
                     }
                 } else {

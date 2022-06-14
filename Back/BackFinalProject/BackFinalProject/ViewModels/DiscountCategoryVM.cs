@@ -9,5 +9,6 @@ namespace BackFinalProject.ViewModels
     public class DiscountCategoryVM
     {
         public DiscountCategroy DiscountCategroy { get; set; }
+        public int WishListCount { get; set; }
     }
 }

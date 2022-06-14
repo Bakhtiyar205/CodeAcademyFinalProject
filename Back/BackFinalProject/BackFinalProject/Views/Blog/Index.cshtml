@@ -5,8 +5,26 @@
 
 <div class="home-navigation my-3">
     <div class="container">
-        <a asp-controller="home" asp-action="index">Ana səhifə</a>/ <a>Blog</a>
+        <div class="d-flex justify-content-between">
+            <div>
+                <a asp-controller="home" asp-action="index">Ana səhifə</a>/ <a>Blog</a>
+            </div>
+            <div>
+                <div style="width:100px !important; height:20px !important; font-size:10px;">
+                    <a asp-controller="wishlist" asp-action="index">
+                        <svg id="icon-heart" viewBox="0 0 512 512" style="width:20%;">
+                            <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
+                            </path>
+                        </svg>
+                        <span>Istək Listi</span>
+                        (<span class="wishlist-count">@Model.WishListCount</span>)
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </div>
+
 </div>
 
 <div class="secondary-home">

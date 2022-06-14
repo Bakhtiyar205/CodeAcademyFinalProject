@@ -41,17 +41,17 @@ namespace BackFinalProject.Controllers
         }
 
         [HttpPost]
-        public async Task<WishListVM> AddWishList(int? productId)
+        public async Task<int> AddWishList(int? productId)
         {
             if (productId is null) BadRequest();
             Product product = await productService.GetProductWithIdAsync((int)productId);
             List<WishListVM> wishList = GetWishList();
             UpdateWishList(wishList, product);
             Response.Cookies.Append("wishList", JsonConvert.SerializeObject(wishList));
-            return UpdateWishList(wishList, product);
+            return wishList.Count();
         }
 
-        private List<WishListVM> GetWishList()
+        public List<WishListVM> GetWishList()
         {
             List<WishListVM> wishList;
             if(Request.Cookies["wishList"] != null)

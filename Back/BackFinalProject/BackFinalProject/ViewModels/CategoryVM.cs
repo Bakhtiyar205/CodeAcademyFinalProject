@@ -11,5 +11,6 @@ namespace BackFinalProject.ViewModels
     {
         public Category Category { get; set; }
         public Paginate<Product> Products { get; set; }
+        public int WishListCount { get; set; }
     }
 }

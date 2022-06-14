@@ -10,5 +10,6 @@ namespace BackFinalProject.ViewModels
     {
         public Dictionary<string,string> Setting { get; set; }
         public List<Product> Products { get; set; }
+        public int WishListCount { get; set; }
     }
 }

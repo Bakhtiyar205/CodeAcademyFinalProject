@@ -10,5 +10,6 @@ namespace BackFinalProject.ViewModels
     {
         public List<Blog> Blogs { get; set; }
         public List<Category> Categories { get; set; }
+        public int WishListCount { get; set; }
     }
 }

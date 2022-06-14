@@ -82,6 +82,11 @@ namespace BackFinalProject.Services
             await context.SaveChangesAsync();
         }
 
+        public async Task<List<AppUser>> SubscribedUserAsync()
+        {
+            return await context.Users.Where(m => m.IsSubscribed).ToListAsync();
+        }
+
         public async Task ChangeModeratorAsync(string id)
         {
             AppUser moderator = await AppUserIdAsync(id);

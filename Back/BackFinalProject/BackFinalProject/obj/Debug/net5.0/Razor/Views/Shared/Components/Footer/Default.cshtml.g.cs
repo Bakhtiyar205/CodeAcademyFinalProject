@@ -42,7 +42,9 @@ using Microsoft.AspNetCore.Identity;
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"301e9cba13a7c952ae27c55d120add99c715db1d", @"/Views/Shared/Components/Footer/Default.cshtml")]
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"15490e073c7c2c777c5f124e21b763f88e8c6385", @"/Views/_ViewImports.cshtml")]
+    #nullable restore
     public class Views_Shared_Components_Footer_Default : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<FooterVM>
+    #nullable disable
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "Policy", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_1 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Index", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -129,7 +131,7 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
             WriteLiteral("                                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d10972", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d11018", async() => {
                 WriteLiteral(@"
                                         <div>
                                             <input required type=""checkbox"" name=""policy"" id=""policy"" value=""true"" oninvalid=""this.setCustomValidity('You should agree with Policy of JYSK for Subscription')"" onchange=""this.setCustomValidity('')"" />
@@ -142,7 +144,7 @@ using Microsoft.AspNetCore.Identity;
                                             ilhamvericilik üçün məqalələr, mövcud təkliflər, xəbərlər və JYSK.az çeşidli
                                             elektron təqdimat qəzetləri haqqında məlumatları ehtiva edir. Eyni zamanda,
                                             ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d12203", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d12249", async() => {
                     WriteLiteral("qaydaları və şərtləri");
                 }
                 );
@@ -160,7 +162,7 @@ using Microsoft.AspNetCore.Identity;
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral(" elektron poçtla qəbul edirəm. İstənilən vaxt\r\n                                            abunəçilikdən çıxa bilərsiniz. Yuxarıdakı şəxsi məlumatları sizə email göndərmək\r\n                                            üçün istifadə edirik. Daha ətraflı ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d13904", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d13950", async() => {
                     WriteLiteral("məxfilik siyasəti");
                 }
                 );
@@ -270,7 +272,7 @@ WriteAttributeValue("", 3142, isSubscibed.ToString(), 3142, 23, false);
 #line hidden
 #nullable disable
             WriteLiteral("                                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d20761", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d20807", async() => {
                 WriteLiteral(@"
                                         <div>
                                             <input required type=""checkbox"" name=""policy"" id=""policy"" value=""true"" oninvalid=""this.setCustomValidity('You should agree with Policy of JYSK for Subscription')"" onchange=""this.setCustomValidity('')"" />
@@ -283,7 +285,7 @@ WriteAttributeValue("", 3142, isSubscibed.ToString(), 3142, 23, false);
                                             ilhamvericilik üçün məqalələr, mövcud təkliflər, xəbərlər və JYSK.az çeşidli
                                             elektron təqdimat qəzetləri haqqında məlumatları ehtiva edir. Eyni zamanda,
                                             ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d21992", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d22038", async() => {
                     WriteLiteral("qaydaları və şərtləri");
                 }
                 );
@@ -301,7 +303,7 @@ WriteAttributeValue("", 3142, isSubscibed.ToString(), 3142, 23, false);
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral(" elektron poçtla qəbul edirəm. İstənilən vaxt\r\n                                            abunəçilikdən çıxa bilərsiniz. Yuxarıdakı şəxsi məlumatları sizə email göndərmək\r\n                                            üçün istifadə edirik. Daha ətraflı ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d23693", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d23739", async() => {
                     WriteLiteral("məxfilik siyasəti");
                 }
                 );
@@ -428,7 +430,7 @@ WriteAttributeValue("", 6110, isSubscibed.ToString(), 6110, 23, false);
                                     ilhamvericilik üçün məqalələr, mövcud təkliflər, xəbərlər və JYSK.az çeşidli
                                     elektron təqdimat qəzetləri haqqında məlumatları ehtiva edir. Eyni zamanda,
                                     ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d31448", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d31494", async() => {
                 WriteLiteral("qaydaları və şərtləri");
             }
             );
@@ -446,7 +448,7 @@ WriteAttributeValue("", 6110, isSubscibed.ToString(), 6110, 23, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral(" elektron poçtla qəbul edirəm. İstənilən vaxt\r\n                                    abunəçilikdən çıxa bilərsiniz. Yuxarıdakı şəxsi məlumatları sizə email göndərmək\r\n                                    üçün istifadə edirik. Daha ətraflı ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d33061", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d33107", async() => {
                 WriteLiteral("məxfilik siyasəti");
             }
             );
@@ -473,7 +475,7 @@ WriteAttributeValue("", 6110, isSubscibed.ToString(), 6110, 23, false);
                                     <input type=""text"" class=""my-1"" placeholder=""Email"">
                                     <br>
                                     ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d34928", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d34974", async() => {
                 WriteLiteral("Abunə Ol");
             }
             );
@@ -528,7 +530,7 @@ WriteAttributeValue("", 6110, isSubscibed.ToString(), 6110, 23, false);
 #line hidden
 #nullable disable
             WriteLiteral("                            <li>\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d37608", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d37654", async() => {
                 WriteLiteral("\r\n                                    ");
 #nullable restore
 #line 140 "C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\Views\Shared\Components\Footer\Default.cshtml"
@@ -586,7 +588,7 @@ WriteAttributeValue("", 6110, isSubscibed.ToString(), 6110, 23, false);
                     <ul>
                         <li>
                             ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d41126", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d41172", async() => {
                 WriteLiteral("\r\n                                Əlaqə\r\n                            ");
             }
             );
@@ -604,7 +606,7 @@ WriteAttributeValue("", 6110, isSubscibed.ToString(), 6110, 23, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                        </li>\r\n                        <li>\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d42650", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d42696", async() => {
                 WriteLiteral("\r\n                                Mağaza\r\n                            ");
             }
             );
@@ -622,7 +624,7 @@ WriteAttributeValue("", 6110, isSubscibed.ToString(), 6110, 23, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                        </li>\r\n                        <li>\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d44175", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d44221", async() => {
                 WriteLiteral("\r\n                                Kataloq\r\n                            ");
             }
             );
@@ -640,7 +642,7 @@ WriteAttributeValue("", 6110, isSubscibed.ToString(), 6110, 23, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                        </li>\r\n                        <li>\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d45701", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d45747", async() => {
                 WriteLiteral("\r\n                                İstifadəçi razılaşması\r\n                            ");
             }
             );
@@ -658,7 +660,7 @@ WriteAttributeValue("", 6110, isSubscibed.ToString(), 6110, 23, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                        </li>\r\n                        <li>\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d47242", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d47288", async() => {
                 WriteLiteral("\r\n                                Daşınma\r\n                            ");
             }
             );
@@ -676,7 +678,7 @@ WriteAttributeValue("", 6110, isSubscibed.ToString(), 6110, 23, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                        </li>\r\n                        <li>\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d48768", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d48814", async() => {
                 WriteLiteral("\r\n                                İadə Şərtləri\r\n                            ");
             }
             );
@@ -694,7 +696,7 @@ WriteAttributeValue("", 6110, isSubscibed.ToString(), 6110, 23, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                        </li>\r\n                        <li>\r\n                            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d50300", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "301e9cba13a7c952ae27c55d120add99c715db1d50346", async() => {
                 WriteLiteral("\r\n                                Gizlilik\r\n                            ");
             }
             );
@@ -830,7 +832,7 @@ WriteAttributeValue("", 6110, isSubscibed.ToString(), 6110, 23, false);
     <div class=""cards-footer py-4"">
         <div class=""container"">
             ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "301e9cba13a7c952ae27c55d120add99c715db1d58692", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "301e9cba13a7c952ae27c55d120add99c715db1d58738", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -847,20 +849,34 @@ WriteAttributeValue("", 6110, isSubscibed.ToString(), 6110, 23, false);
             WriteLiteral("\r\n        </div>\r\n    </div>\r\n\r\n</footer>");
         }
         #pragma warning restore 1998
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public UserManager<AppUser> UserManager { get; private set; }
+        public UserManager<AppUser> UserManager { get; private set; } = default!;
+        #nullable disable
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public SignInManager<AppUser> SignInManager { get; private set; }
+        public SignInManager<AppUser> SignInManager { get; private set; } = default!;
+        #nullable disable
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider ModelExpressionProvider { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.ViewFeatures.IModelExpressionProvider ModelExpressionProvider { get; private set; } = default!;
+        #nullable disable
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.IUrlHelper Url { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.IUrlHelper Url { get; private set; } = default!;
+        #nullable disable
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.IViewComponentHelper Component { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.IViewComponentHelper Component { get; private set; } = default!;
+        #nullable disable
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper Json { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.Rendering.IJsonHelper Json { get; private set; } = default!;
+        #nullable disable
+        #nullable restore
         [global::Microsoft.AspNetCore.Mvc.Razor.Internal.RazorInjectAttribute]
-        public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<FooterVM> Html { get; private set; }
+        public global::Microsoft.AspNetCore.Mvc.Rendering.IHtmlHelper<FooterVM> Html { get; private set; } = default!;
+        #nullable disable
     }
 }
 #pragma warning restore 1591

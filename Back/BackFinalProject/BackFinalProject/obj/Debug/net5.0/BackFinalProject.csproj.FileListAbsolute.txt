@@ -5,7 +5,6 @@ C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFi
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\bin\Debug\net5.0\BackFinalProject.runtimeconfig.json
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\bin\Debug\net5.0\BackFinalProject.runtimeconfig.dev.json
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\bin\Debug\net5.0\BackFinalProject.dll
-C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\bin\Debug\net5.0\ref\BackFinalProject.dll
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\bin\Debug\net5.0\BackFinalProject.pdb
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\bin\Debug\net5.0\BackFinalProject.Views.dll
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\bin\Debug\net5.0\BackFinalProject.Views.pdb
@@ -137,9 +136,8 @@ C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFi
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\BackFinalProject.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\BackFinalProject.RazorAssemblyInfo.cache
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\BackFinalProject.RazorAssemblyInfo.cs
-C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\staticwebassets\BackFinalProject.StaticWebAssets.Manifest.cache
-C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\staticwebassets\BackFinalProject.StaticWebAssets.xml
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\scopedcss\bundle\BackFinalProject.styles.css
+C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\staticwebassets\BackFinalProject.StaticWebAssets.Manifest.cache
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\BackFinalProject.TagHelpers.input.cache
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\BackFinalProject.TagHelpers.output.cache
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\BackFinalProject.RazorCoreGenerate.cache
@@ -160,6 +158,7 @@ C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFi
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\Category\Detail.cshtml.g.cs
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\Category\Edit.cshtml.g.cs
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\Category\Index.cshtml.g.cs
+C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\Comment\Index.cshtml.g.cs
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\Dashboard\Index.cshtml.g.cs
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\DiscountCategory\Edit.cshtml.g.cs
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\DiscountCategory\Index.cshtml.g.cs
@@ -183,6 +182,7 @@ C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFi
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\SubCategory\Detail.cshtml.g.cs
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\SubCategory\Edit.cshtml.g.cs
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\SubCategory\Index.cshtml.g.cs
+C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\User\Index.cshtml.g.cs
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\_ViewImports.cshtml.g.cs
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\_ViewStart.cshtml.g.cs
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Views\Account\EmailVerification.cshtml.g.cs
@@ -215,6 +215,7 @@ C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFi
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Views\Store\Index.cshtml.g.cs
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Views\SubCategory\Index.cshtml.g.cs
+C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Views\WishList\Index.cshtml.g.cs
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\BackFinalProject.RazorTargetAssemblyInfo.cache
@@ -222,9 +223,8 @@ C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFi
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\BackFinalProject.Views.pdb
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\BackFinalProject.csproj.CopyComplete
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\BackFinalProject.dll
-C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\ref\BackFinalProject.dll
+C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\refint\BackFinalProject.dll
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\BackFinalProject.pdb
 C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\BackFinalProject.genruntimeconfig.cache
-C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\User\Index.cshtml.g.cs
-C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\Comment\Index.cshtml.g.cs
-C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Views\WishList\Index.cshtml.g.cs
+C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\ref\BackFinalProject.dll
+C:\Users\Baxtiyar\Documents\CodeAcademyFinalProject\Back\BackFinalProject\BackFinalProject\obj\Debug\net5.0\Razor\Areas\AdminArea\Views\User\SendMessage.cshtml.g.cs

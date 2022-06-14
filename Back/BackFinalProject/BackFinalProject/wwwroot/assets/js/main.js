@@ -237,7 +237,7 @@ $(document).ready(function () {
                 emailSubscriptionValid.setCustomValidity("Please enter your Email");
             } else {
                 emailSubscriptionValid.setCustomValidity("");
-                if (againSubscription = 'true') {
+                if ($(againSubscriptionValid).val() == 'True') {
                     e.preventDefault();
                     validationError.removeClass('d-none');
                     validationError.addClass('d-block');

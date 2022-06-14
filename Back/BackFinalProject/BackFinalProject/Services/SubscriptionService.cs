@@ -34,7 +34,19 @@ namespace BackFinalProject.Services
             };
             await _mailService.SendEmailAsync(mailRequest);
             return subscription;
+        }
 
+        public async Task SendMessageAsync(string email, string name, string content)
+        {
+            var subscription = await _context.Users.FirstOrDefaultAsync(m => m.Email.ToLower().Trim() == email.ToLower().Trim()
+                                                                        && m.UserName.ToLower().Trim() == name.ToLower().Trim());
+            if (subscription is null) return;
+            var mailRequest = new MailRequest
+            {
+                Subject = content,
+                ToEmail = email
+            };
+            await _mailService.SendEmailAsync(mailRequest);
         }
     }
 }

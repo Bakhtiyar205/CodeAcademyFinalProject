@@ -1,0 +1,17 @@
+﻿@model SendMessageVM
+@{
+    ViewData["Title"] = "SendMessage";
+    Layout = "~/Areas/AdminArea/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <form class="forms-sample" method="post" asp-action="SendMessage">
+        <div class="mb-2">
+            <label asp-for="Message">Message: </label>
+            <textarea class="form-control" asp-for="Message" style="width:450px; height:150px;"></textarea>
+            <span class="text-danger" asp-validation-for="Message"></span>
+        </div>
+        <button type="submit" class="btn btn-primary me-2">Submit</button>
+        <a asp-action="Index" class="btn btn-light">Cancel</a>
+    </form>
+</div>

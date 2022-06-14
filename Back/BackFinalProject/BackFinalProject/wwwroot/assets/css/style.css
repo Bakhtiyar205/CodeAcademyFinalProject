@@ -122,9 +122,15 @@ main .product-qualities .product-quality a .product-quality-img img {
 }
 
 @media only screen and (min-width: 1700px) {
+    .without-container {
+        padding:0;
+        margin:0;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
   .without-container {
-    margin: 0;
-    padding: 0;
+    height:40px;
   }
 }
 
@@ -1652,5 +1658,25 @@ main .gift-card-detail .gift-card-form .gift-card-fomr-head {
 
 .login-register .create-account .create-account-button {
   margin-left: 7.2%;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1000px){
+    .main-navbar ul li{
+        font-size:16px;
+    }
+    .header-mid .main-navbar ul li .subMenu {
+        top: 50px;
+        padding-left: 0;
+    }
+}
+@media only screen and (min-width: 1001px) and (max-width: 1200px) {
+    .main-navbar ul li {
+        font-size: 18px;
+    }
+
+    .header-mid .main-navbar ul li .subMenu {
+        top: 50px;
+        padding-left: 0;
+    }
 }
 /*# sourceMappingURL=style.css.map */

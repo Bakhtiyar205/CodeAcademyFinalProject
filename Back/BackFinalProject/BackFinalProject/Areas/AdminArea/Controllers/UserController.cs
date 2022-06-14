@@ -13,16 +13,39 @@ namespace BackFinalProject.Areas.AdminArea.Controllers
     {
         private readonly UserManager<AppUser> _user;
         private readonly IUserService _userService;
-       
+        private readonly ISubscriptionService subscriptionService;
+
         public UserController(UserManager<AppUser> user,
-                              IUserService userService)
+                              IUserService userService,
+                              ISubscriptionService subscriptionService)
         {
             _user = user;
             _userService = userService;
+            this.subscriptionService = subscriptionService;
         }
         public async Task<IActionResult> Index()
         {
             return View(await _userService.AppUsersAsync());
+        }
+
+        public IActionResult SendMessage()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SendMessage(string Message)
+        {
+            if(Message == null)
+            {
+                ModelState.AddModelError("", "Please write your message");
+            }
+            foreach (var user in await _userService.SubscribedUserAsync())
+            {
+               await subscriptionService.SendMessageAsync(user.Email, user.UserName, Message);
+            }    
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

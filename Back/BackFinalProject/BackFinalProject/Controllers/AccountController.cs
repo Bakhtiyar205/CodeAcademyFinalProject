@@ -92,7 +92,6 @@ namespace BackFinalProject.Controllers
             AppUser user = await _userManager.FindByIdAsync(userId);
             if (user is null) return BadRequest();
             await _userManager.ConfirmEmailAsync(user, token);
-            await _signInManager.SignInAsync(user, false);
             return RedirectToAction(nameof(Login), "Account");
         }
 

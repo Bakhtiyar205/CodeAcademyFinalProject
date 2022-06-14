@@ -13,7 +13,7 @@
                 /<a>@Model.Product.Name</a>
             </div>
             <div>
-                <div style="width:100px !important; height:20px !important; font-size:10px;">
+                <div style="width:110px !important; height:20px !important; font-size:15px;">
                     <a asp-controller="wishlist" asp-action="index">
                         <svg id="icon-heart" viewBox="0 0 512 512" style="width:20%;">
                             <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
@@ -76,14 +76,14 @@
                     </ul>
                     <p>Magazada sergi numunesini gore bilersiniz</p>
                     <hr class="my-3">
-                    <h6>Aksiya bu tarixe geder kecerlidir: 11.05.2022</h6>
+                    <h6>Aksiya bu tarixe geder kecerlidir: 11.07.2022</h6>
                     @if (Model.Product.Discount == 0)
                     {
                         <div class="discounted-price"><span>@Math.Truncate(Model.Product.RealPrice) Azn</span>/ededi</div>
                     }
                     else
                     {
-                        <div class="discount-percentage p-1">@Math.Truncate(Model.Product.Discount)</div>
+                        <div class="discount-percentage p-1">@Math.Truncate(Model.Product.Discount)% Endirim</div>
                         <div class="discounted-price"><span>@Math.Truncate(Model.DiscountedPrice) Azn</span>/ededi</div>
                         <div class="real-price">@Math.Truncate(Model.Product.RealPrice) AZN</div>
                     }

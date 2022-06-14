@@ -134,7 +134,7 @@
 
                 <div class="col-md-6 d-md-block d-none search-main">
                     <div class="search-button p-lg-1 mt-1">
-                        <form class="d-flex justify-content-center" method="get" asp-controller="search" asp-action="index">
+                        <form class="d-flex justify-content-center" method="get" asp-controller="search" asp-action="index" autocomplete="off">
                             <input class="form-control input-color" name="search" type="search" placeholder="Search"
                                    aria-label="Search" id="search-click">
                             <button class="btn px-4" type="submit">Axtar</button>
@@ -262,11 +262,11 @@
                             <ul class="d-flex ">
                                 @foreach (var category in Model.Categories)
                                 {
-                                    <li class="">
-                                        <a asp-controller="Category" asp-action="index" asp-route-categoryId="@category.Id" class="px-1 pe-1">@category.Name</a>
+                                    <li>
+                                        <a asp-controller="Category" asp-action="index" asp-route-categoryId="@category.Id" class="px-1 pe-1 pb-1">@category.Name</a>
                                         <div class="subMenu">
                                             <div class="container">
-                                                <div class="row">
+                                                <div class="row pb-1">
                                                     @if (category.SubCategory != null)
                                                     {
                                                         for (int i = 0; i < (Math.Ceiling((decimal)category.SubCategory.Count() / 7)); i++)
@@ -279,7 +279,7 @@
                                                                         if (category.Id == subCategory.CategoryID)
                                                                         {
 
-                                                                            <li><a asp-controller="subcategory" asp-action="Index" asp-route-subCategoryId="@subCategory.Id">@subCategory.Name</a></li>
+                                                                            <li><a class="pb-1" asp-controller="subcategory" asp-action="Index" asp-route-subCategoryId="@subCategory.Id">@subCategory.Name</a></li>
                                                                         }
                                                                     }
                                                                 </ul>

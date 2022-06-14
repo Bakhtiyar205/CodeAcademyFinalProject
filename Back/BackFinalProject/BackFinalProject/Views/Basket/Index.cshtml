@@ -1,7 +1,6 @@
 ﻿@model List<BasketDetailVM>
 @{
     ViewData["Title"] = "Index";
-    int count = 1;
     decimal price = 0;
 }
 
@@ -16,11 +15,11 @@
         </div>
         @if (Model == null)
         {
-            <p>There is not product in basket</p>
+            <p class="text-center btn btn-danger" style="font-size:20px;">There is not product in basket</p>
         }
         else if (Model.Count() < 1)
         {
-            <p>There is not product in basket</p>
+            <p class="text-center btn btn-danger" style="font-size:20px;">There is not product in basket</p>
         }
         else
         {
@@ -71,7 +70,7 @@
                                 }
 
                                 <td>
-                                    <a class="basket-remove" id="@item.Product.Id" href="#">X</a>
+                                    <a class="basket-remove" id="@item.Product.Id" href="#"><i class="fa-solid fa-circle-xmark" style="color:red;"></i></a>
                                 </td>
 
                             </tr>

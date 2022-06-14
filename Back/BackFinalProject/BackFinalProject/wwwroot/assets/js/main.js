@@ -140,7 +140,7 @@ $(document).ready(function () {
                         + '<td><a href="/ProductDetail?productId=' + data[i].id + '" style="color:#333;">' + data[i].name + '</a></td>'
                         + '<td><a href="/ProductDetail?productId=' + data[i].id + '" style="color:#333;">' + data[i].count + '</a></td>'
                         + ' <td><a href="/ProductDetail?productId=' + data[i].id + '" style="color:#333;">' + data[i].price + ' AZN</a></td >'
-                        + '<td><a class="basket-remove" id="' + data[i].id + '" >X</a></td >')
+                        + '<td><a style="cursor:pointer" class="basket-remove" id="' + data[i].id + '" ><i class="fa-solid fa-circle-xmark" style="color:red;"></i></a></td >')
                     var newTrBasket = document.createElement('tr');
                     $(basketParent).append(newTrBasket)
                     $(newTrBasket).html('<td><img  src="/assets/img/products/' + data[i].image + '" style="width:50px;height:50px"/></td>'
@@ -156,7 +156,7 @@ $(document).ready(function () {
                     tableMainId.addClass('d-none')
                     var newP = document.createElement('p')
                     tableResponsive.append(newP)
-                    $(newP).html('<p>There is not product in Basket</p>')
+                    $(newP).html('<p class="text-center btn btn-danger" style="font-size:20px;">There is not product in Basket</p>')
                     $('#total-price').addClass('d-none')
                     $('#letter-total-price').addClass('d-none')
                 }
@@ -320,7 +320,7 @@ $(document).ready(function () {
                             + ' <td><a href="/ProductDetail?productId=' + data[i].id + '" style="color:#333;">' + data[i].price + ' Azn</a></td >'
                             + '<td><form><input type="hidden" name="product-wishlist-id" value="'
                             + data[i].id + '"/><button class="wishlis-remove btn" id="'
-                            + data[i].id + '" >X</button></form></td >')
+                            + data[i].id + '" ><i class="fa-solid fa-circle-xmark" style="color:red;"></i></button></form></td >')
                     }
                 } else {
                     mainTable.addClass('d-none');

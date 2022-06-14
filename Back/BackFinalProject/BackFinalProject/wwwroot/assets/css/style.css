@@ -411,8 +411,8 @@ header .navbar-secondary li {
   max-height: 550px;
   -webkit-transform: translateY(-20px);
           transform: translateY(-20px);
-  -webkit-transition: all 0.1s;
-  transition: all 0.1s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
 }
 
 .header-mid .main-navbar ul li:hover .subMenu {

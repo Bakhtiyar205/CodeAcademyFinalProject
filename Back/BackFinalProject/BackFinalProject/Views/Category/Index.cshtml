@@ -77,7 +77,7 @@
                     {
                         @foreach (var subCategory in Model.Category.SubCategory)
                         {
-                            <li>
+                            <li class="pb-1">
                                 <a asp-controller="subcategory" asp-action="index" asp-route-subCategoryId="@subCategory.Id">
                                     @subCategory.Name
                                 </a>

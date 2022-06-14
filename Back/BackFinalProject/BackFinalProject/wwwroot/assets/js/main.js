@@ -279,8 +279,10 @@ $(document).ready(function () {
     //Wishlist Add
     $(document).on('click', '.add-wishlist', function (e) {
         e.preventDefault();
+        let addWishlist = $(this); 
         let productId = $(this).prev().val();
         let wishListCount = $('.wishlist-count');
+        let wishListText = $(this).children('.wishlist-text');
         $.ajax({
             url: "/wishlist/AddWishList",
             type: "Post",
@@ -290,9 +292,19 @@ $(document).ready(function () {
             success: function (data) {
                 swal("Product added Wishlist!", "", "success");
                 wishListCount.empty();
+                wishListText.empty();
+                $(wishListText).css('color', 'red');
+                $(wishListText).html('Istek Listine Elave olundu');
                 $(wishListCount).html((data));
+                $(addWishlist).addClass('added-wishlist')
+                $(addWishlist).removeClass('add-wishlist');
             }
         })
+    })
+    $(document).on('click', '.added-wishlist', function (e) {
+        e.preventDefault();
+        swal("Please check your wishlist!", "","warning");
+
     })
     //Wishlist Remove
     $(document).on('click', '.wishlis-remove', function (e) {

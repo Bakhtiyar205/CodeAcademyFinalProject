@@ -23,16 +23,19 @@ namespace BackFinalProject.Controllers
         public async Task<IActionResult> Index(int productId)
         {
             int wishListCount = 0;
-            if(Request.Cookies["wishList"] != null)
+            List<WishListVM> wishListVM = new();
+            if (Request.Cookies["wishList"] != null)
             {
                 wishListCount = JsonConvert.DeserializeObject<List<WishListVM>>(Request.Cookies["wishList"]).Count();
+                wishListVM = JsonConvert.DeserializeObject<List<WishListVM>>(Request.Cookies["wishList"]);
             }
             ProductVM productVM = new(await productService.GetProductWithIdAsync(productId))
             {
                 Product = await productService.GetProductWithIdAsync(productId),
                 Products = await productService.GetProductsAsync(),
                 Comments = await commentService.GetSpecialProductCommentsAsync(productId),
-                WishListCount = wishListCount
+                WishListCount = wishListCount,
+                WishListVM = wishListVM
             };
             return View(productVM);
         }

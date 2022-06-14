@@ -22,15 +22,18 @@ namespace BackFinalProject.Controllers
         public async Task<IActionResult> Index()
         {
             int wishListCount = 0;
+            List<WishListVM> wishListVM = new();
             if (Request.Cookies["wishList"] != null)
             {
                 wishListCount = JsonConvert.DeserializeObject<List<WishListVM>>(Request.Cookies["wishList"]).Count();
+                wishListVM = JsonConvert.DeserializeObject<List<WishListVM>>(Request.Cookies["wishList"]);
             }
             StoreVM storeVM = new()
             {
                 Setting = settingService.GetSetting(),
                 Products = await productService.GetProductsAsync(),
-                WishListCount = wishListCount
+                WishListCount = wishListCount,
+                WishListVM = wishListVM
             };
             return View(storeVM);
         }

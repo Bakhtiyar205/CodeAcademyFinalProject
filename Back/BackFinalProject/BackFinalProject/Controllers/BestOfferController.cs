@@ -26,7 +26,7 @@ namespace BackFinalProject.Controllers
             BestOfferVM bestOfferVM = new()
             {
                 BestOffer = await bestOfferService.GetBestOfferAsync(),
-                WishListCount = wishListCount
+                WishListCount = wishListCount,
             };
             return View(bestOfferVM);
         }

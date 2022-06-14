@@ -33,5 +33,6 @@ namespace BackFinalProject.ViewModels
         public List<Product> Products { get; set; }
         public List<Comment> Comments { get; set; }
         public int WishListCount { get; set; }
+        public List<WishListVM> WishListVM { get; set; }
     }
 }

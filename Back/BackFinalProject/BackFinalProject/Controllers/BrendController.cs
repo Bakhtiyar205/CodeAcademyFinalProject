@@ -22,15 +22,18 @@ namespace BackFinalProject.Controllers
         public async Task<IActionResult> BrendDetail(int brendId)
         {
             int wishListCount = 0;
+            List<WishListVM> wishListVM = new();
             if (Request.Cookies["wishList"] != null)
             {
                 wishListCount = JsonConvert.DeserializeObject<List<WishListVM>>(Request.Cookies["wishList"]).Count();
+                wishListVM = JsonConvert.DeserializeObject<List<WishListVM>>(Request.Cookies["wishList"]);
             }
             BrendVM brendVM = new()
             {
                 Brend = await brendService.GetBrendWithIdAsync(brendId),
                 Products = await productService.GetProductsAsync(),
-                WishListCount = wishListCount
+                WishListCount = wishListCount,
+                WishListVM = wishListVM
             };
             return View(brendVM);
         }
@@ -38,15 +41,18 @@ namespace BackFinalProject.Controllers
         public async Task<IActionResult> Index()
         {
             int wishListCount = 0;
+            List<WishListVM> wishListVM = new();
             if (Request.Cookies["wishList"] != null)
             {
                 wishListCount = JsonConvert.DeserializeObject<List<WishListVM>>(Request.Cookies["wishList"]).Count();
+                wishListVM = JsonConvert.DeserializeObject<List<WishListVM>>(Request.Cookies["wishList"]);
             }
             BrendsVM brendsVM = new()
             {
                 Brends = await brendService.GetBrendsAsync(),
                 Products = await productService.GetProductsAsync(),
-                WishListCount = wishListCount
+                WishListCount = wishListCount,
+                WishListVM = wishListVM
             };
             return View(brendsVM);
         }

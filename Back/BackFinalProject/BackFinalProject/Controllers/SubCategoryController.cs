@@ -23,15 +23,18 @@ namespace BackFinalProject.Controllers
         public async Task<IActionResult> Index(int subCategoryId)
         {
             int wishListCount = 0;
+            List<WishListVM> wishListVM = new();
             if (Request.Cookies["wishList"] != null)
             {
                 wishListCount = JsonConvert.DeserializeObject<List<WishListVM>>(Request.Cookies["wishList"]).Count();
+                wishListVM = JsonConvert.DeserializeObject<List<WishListVM>>(Request.Cookies["wishList"]);
             }
             SubCategoryVM subCategoryVM = new()
             {
                 SubCategory = await subCategoryService.GetSubCategoriesWithIdAsync(subCategoryId),
                 Products = await productService.GetProductWithSubCategoryIdAsync(subCategoryId,1),
-                WishListCount = wishListCount
+                WishListCount = wishListCount,
+                wishListVM=wishListVM
             };
             return View(subCategoryVM);
         }

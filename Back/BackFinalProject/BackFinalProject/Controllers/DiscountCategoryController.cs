@@ -11,22 +11,29 @@ namespace BackFinalProject.Controllers
     public class DiscountCategoryController : Controller
     {
         private readonly IDiscountCategoryService discountCategoryService;
+        private readonly IProductService productService;
 
-        public DiscountCategoryController(IDiscountCategoryService discountCategoryService)
+        public DiscountCategoryController(IDiscountCategoryService discountCategoryService,
+                                          IProductService productService)
         {
             this.discountCategoryService = discountCategoryService;
+            this.productService = productService;
         }
         public async Task<IActionResult> Index()
         {
             int wishListCount = 0;
+            List<WishListVM> wishListVM = new();
             if (Request.Cookies["wishList"] != null)
             {
                 wishListCount = JsonConvert.DeserializeObject<List<WishListVM>>(Request.Cookies["wishList"]).Count();
+                wishListVM = JsonConvert.DeserializeObject<List<WishListVM>>(Request.Cookies["wishList"]);
             }
             DiscountCategoryVM discountCategoryVM = new()
             {
                 DiscountCategroy = await discountCategoryService.GetDiscountCategroyAsync(),
-                WishListCount = wishListCount
+                Products = await productService.GetProductsAsync(),
+                WishListCount = wishListCount,
+                WishListVM = wishListVM
             };
             return View(discountCategoryVM);
         }

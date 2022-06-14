@@ -11,5 +11,6 @@ namespace BackFinalProject.ViewModels
         public Brend Brend { get; set; }
         public List<Product> Products { get; set; }
         public int WishListCount { get; set; }
+        public List<WishListVM> WishListVM { get; set; }
     }
 }

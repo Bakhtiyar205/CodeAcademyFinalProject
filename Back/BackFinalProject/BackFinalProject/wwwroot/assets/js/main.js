@@ -82,12 +82,14 @@ $(document).ready(function () {
         swal("Product is added to Basket!", "More Information Visit Basket!", "success");
         let id = $("#product-id").val();
         let productCount = $("#product-count").val();
+        let svgColor = $('#icon-cart');
         $.ajax({
             url: "/productdetail/addbasket?productId=" + id + "&productCount=" + productCount,
             type: "Post",
             success: function (data) {
                 $(basketIcon).addClass("d-none");
                 $(tableBasket).removeClass("d-none");
+                $(svgColor).css('fill','green')
                 if (cookie != null) {
                     for (var i = 0; i < cookieJson.length; i++) {
 
@@ -159,6 +161,7 @@ $(document).ready(function () {
                     $(newP).html('<p class="text-center btn btn-danger" style="font-size:20px;">There is not product in Basket</p>')
                     $('#total-price').addClass('d-none')
                     $('#letter-total-price').addClass('d-none')
+                    $('#icon-cart').css('fill', '#333');
                 }
             }
         })
@@ -218,6 +221,7 @@ $(document).ready(function () {
         })
     });
 
+    //Subscription
     $(document).on('click', '#subscription-button', function (e) {
         let nameSubscriptionHidden = $('#name-subscription-hidden').val();
         let nameSubsctiption = $('#name-subscription').val();
@@ -301,6 +305,7 @@ $(document).ready(function () {
             }
         })
     })
+    //Added Wislist Icon
     $(document).on('click', '.added-wishlist', function (e) {
         e.preventDefault();
         swal("Please check your wishlist!", "","warning");

@@ -21,15 +21,18 @@ namespace BackFinalProject.Controllers
         public async Task<IActionResult> Index(int categoryId, int? page)
         {
             int wishListCount = 0;
+            List<WishListVM> wishListVM = new();
             if (Request.Cookies["wishList"] != null)
             {
                 wishListCount = JsonConvert.DeserializeObject<List<WishListVM>>(Request.Cookies["wishList"]).Count();
+                wishListVM = JsonConvert.DeserializeObject<List<WishListVM>>(Request.Cookies["wishList"]);
             }
             CategoryVM categoryVM = new()
             {
                 Category = await categoryService.GetCategoriesWithIdAsync(categoryId),
-                Products = await productService.GetPaginateOutletProductsAsync(9,page),
-                WishListCount = wishListCount
+                Products = await productService.GetPaginateOutletProductsAsync(8,page),
+                WishListCount = wishListCount,
+                WishListVM = wishListVM
             };
 
             

@@ -7,7 +7,6 @@
 
 <!-- home-naviagtion -->
 <div class="home-navigation my-3">
-
     <div class="container">
         <div class="d-flex justify-content-between">
             <div>
@@ -31,12 +30,12 @@
 
 </div>
 <!-- Category Wallpaper -->
-<div class="category-wallpaper py-5 d-none d-md-block">
-    <div class="container">
-        <div class="category-wallpaper-inner">
-            <div class="row">
-                @if (Model.Category.SubCategory.Count > 0)
-                {
+@if (Model.Category.SubCategory.Count > 0)
+{
+    <div class="category-wallpaper py-5 d-none d-md-block">
+        <div class="container">
+            <div class="category-wallpaper-inner">
+                <div class="row">
                     @foreach (var subCategoryImage in Model.Category.SubCategory.OrderByDescending(m => m.Id).Take(3))
                     {
                         <div class="col-md-4 d-none d-md-block">
@@ -45,11 +44,19 @@
                             </a>
                         </div>
                     }
-                }
-                else
-                {
 
-
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <!--Outlet Wallpaper-->
+    <div class="category-wallpaper py-5 d-none d-md-block">
+        <div class="container">
+            <div class="category-wallpaper-inner">
+                <div class="row">
                     @foreach (var product in Model.Products.Datas.OrderByDescending(m => m.Id).Take(3))
                     {
                         <div class="col-md-4 d-none d-md-block">
@@ -58,23 +65,20 @@
                             </a>
                         </div>
                     }
-
-                }
-
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<!-- Main Category -->
-<div class="main-category">
-    <div class="container">
-        <div class="row">
-            <!-- Aside -->
-            <div class="d-none d-md-block col-md-3 mt-4">
-                <ul class="ul-main-category">
-                    @if (Model.Category.SubCategory.Count() != 0)
-                    {
+}
+@if (Model.Category.SubCategory.Count() != 0)
+{
+    <!-- Main Category -->
+    <div class="main-category">
+        <div class="container">
+            <div class="row">
+                <!-- Aside -->
+                <div class="d-none d-md-block col-md-3 mt-4">
+                    <ul class="ul-main-category">
                         @foreach (var subCategory in Model.Category.SubCategory)
                         {
                             <li class="pb-1">
@@ -84,22 +88,15 @@
                             </li>
                             <hr>
                         }
-                    }
 
 
 
-                </ul>
-            </div>
-            <!-- Main Side -->
-            <div class="col-12 col-md-9 mt-4">
-                @if (Model.Category.CategoryText != null)
-                {
+                    </ul>
+                </div>
+                <!-- Main Side -->
+                <div class="col-12 col-md-9 mt-4">
                     <p>@Html.Raw(Model.Category.CategoryText)</p>
-                }
-
-                <div class="row subcategory-fields">
-                    @if (Model.Category.SubCategory.Count() != 0)
-                    {
+                    <div class="row subcategory-fields">
                         @foreach (var subC in Model.Category.SubCategory)
                         {
                             <div class="col-md-4 col-12 my-2 subcategory-field">
@@ -108,18 +105,29 @@
                                         <p>@subC.Name</p>
                                         <div>
                                             <img src="~/assets/img/subCategory/@subC.Image"
-                                                 alt="subcategory-photos">
+                                         alt="subcategory-photos">
                                         </div>
                                     </div>
                                 </a>
                             </div>
                         }
-                    }
-                    else
-                    {
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="main-category">
+        <div class="container">
+            <div class="row">
+                <!-- Main Side -->
+                <div class="col-12 mt-4">
+                    <div class="row subcategory-fields">
                         @foreach (var product in Model.Products.Datas)
                         {
-                            <div class="col-12 col-md-4 my-3">
+                            <div class="col-12 col-md-3 my-3">
                                 <div class="product-field p-3">
                                     <a asp-controller="ProductDetail" asp-action="index" asp-route-productId="@product.Id">
                                         <img src="~/assets/img/products/@product.ProductImages.FirstOrDefault().Image" alt="">
@@ -144,71 +152,105 @@
                                         <a class="btn btn-light form-control" asp-controller="ProductDetail" asp-action="index" asp-route-productId="@product.Id">Daha Etrafli</a>
                                     </div>
                                     <div class="wish-list text-center mt-2">
-                                        <a href="#">
-                                            <svg id="icon-heart" viewBox="0 0 512 512">
-                                                <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
-                                                </path>
-                                            </svg>
-                                            Istek Listi
-                                        </a>
+                                        @if (User.Identity.IsAuthenticated)
+                                        {
+                                            <form>
+                                                <input type="hidden" name="Id" value="@product.Id" id="product-wishlist-id" />
+                                                @if (Model.WishListVM.Count() > 0)
+                                                {
+                                                    if (Model.WishListVM.FirstOrDefault(m => m.Id == product.Id) != null)
+                                                    {
+                                                        <button type="submit" class="btn added-wishlist">
+                                                            <svg id="icon-heart" viewBox="0 0 512 512">
+                                                                <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
+                                                                </path>
+                                                            </svg>
+                                                            <span class="wishlist-text" style="color:red">Istek Listine Elave olundu</span>
+                                                        </button>
+                                                    }
+                                                    else
+                                                    {
+                                                        <button type="submit" class="btn add-wishlist">
+                                                            <svg id="icon-heart" viewBox="0 0 512 512">
+                                                                <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
+                                                                </path>
+                                                            </svg>
+                                                            <span class="wishlist-text">Istek Listi</span>
+                                                        </button>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <button type="submit" class="btn add-wishlist">
+                                                        <svg id="icon-heart" viewBox="0 0 512 512">
+                                                            <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
+                                                            </path>
+                                                        </svg>
+                                                        <span class="wishlist-text">Istek Listi</span>
+                                                    </button>
+                                                }
+                                            </form>
+                                        }
+                                        else
+                                        {
+                                            <a asp-controller="account" asp-action="login">
+                                                <svg id="icon-heart" viewBox="0 0 512 512">
+                                                    <path d="m512 147c0-81-62-147-141-147-48 0-89 26-115 62-26-36-67-62-115-62-79 0-141 66-141 147 0 34 11 66 30 91l207 274 40 0-21-27-194-256-8-10c-14-21-22-46-22-72 0-62 48-113 109-113 35 0 69 17 89 49l26 39 26-39c20-30 54-49 89-49 61 0 109 51 109 113 0 26-8 50-22 71l-7 8-153 201-199-259-25 19 203 267 21 28 14-18 171-226c18-24 29-56 29-91z">
+                                                    </path>
+                                                </svg>
+                                                <span class="wishlist-text">Istek Listi</span>
+                                            </a>
+                                        }
                                     </div>
                                 </div>
-
-
                             </div>
                         }
-
                         <div class="row my-3">
                             <nav aria-label="...">
-                                @if (Model.Products.TotalPage > 0)
-                                {
-                                    <ul class="pagination">
-                                        <li class="page-item @(Model.Products.HasPrevious ? "" : "disabled") ">
+                                <ul class="pagination">
+                                    <li class="page-item @(Model.Products.HasPrevious ? "" : "disabled") ">
+                                        <a class="page-link" asp-controller="category"
+                                       asp-action="Index"
+                                       asp-route-page="1"
+                                       asp-route-categoryId="@Model.Category.Id">First</a>
+                                    </li>
+                                    <li class="page-item @(Model.Products.HasPrevious ? "" : "disabled")">
+                                        <a class="page-link" asp-controller="category"
+                                       asp-action="Index"
+                                       asp-route-page="@(Model.Products.CurrentPage-1)"
+                                       asp-route-categoryId="@Model.Category.Id">Previous</a>
+                                    </li>
+                                    @for (int i = Model.Products.StartPage; i <= Model.Products.EndPage; i++)
+                                    {
+                                        <li class="page-item @(i==Model.Products.CurrentPage ? "active" : "")">
                                             <a class="page-link" asp-controller="category"
-                                               asp-action="Index"
-                                               asp-route-page="1"
-                                               asp-route-categoryId="@Model.Category.Id">First</a>
+                                       asp-action="Index" asp-route-page="@i"
+                                       asp-route-categoryId="@Model.Category.Id">@i</a>
                                         </li>
-                                        <li class="page-item @(Model.Products.HasPrevious ? "" : "disabled")">
-                                            <a class="page-link" asp-controller="category"
-                                               asp-action="Index"
-                                               asp-route-page="@(Model.Products.CurrentPage-1)"
-                                               asp-route-categoryId="@Model.Category.Id">Previous</a>
-                                        </li>
-                                        @for (int i = Model.Products.StartPage; i <= Model.Products.EndPage; i++)
-                                        {
-                                            <li class="page-item @(i==Model.Products.CurrentPage ? "active" : "")">
-                                                <a class="page-link" asp-controller="category"
-                                                   asp-action="Index" asp-route-page="@i"
-                                                   asp-route-categoryId="@Model.Category.Id">@i</a>
-                                            </li>
-                                        }
-                                        <li class="page-item @(Model.Products.HasNext ? "" : "disabled")">
-                                            <a class="page-link" asp-controller="category"
-                                               asp-action="Index"
-                                               asp-route-page="@(Model.Products.CurrentPage+1)"
-                                               asp-route-categoryId="@Model.Category.Id">Next</a>
-                                        </li>
-                                        <li class="page-item @(Model.Products.HasNext ? "" : "disabled")">
-                                            <a class="page-link" asp-controller="category"
-                                               asp-action="Index"
-                                               asp-route-page="@(Model.Products.TotalPage)"
-                                               asp-route-categoryId="@Model.Category.Id">Last</a>
-                                        </li>
-                                    </ul>
-                                }
-
+                                    }
+                                    <li class="page-item @(Model.Products.HasNext ? "" : "disabled")">
+                                        <a class="page-link" asp-controller="category"
+                                       asp-action="Index"
+                                       asp-route-page="@(Model.Products.CurrentPage+1)"
+                                       asp-route-categoryId="@Model.Category.Id">Next</a>
+                                    </li>
+                                    <li class="page-item @(Model.Products.HasNext ? "" : "disabled")">
+                                        <a class="page-link" asp-controller="category"
+                                       asp-action="Index"
+                                       asp-route-page="@(Model.Products.TotalPage)"
+                                       asp-route-categoryId="@Model.Category.Id">Last</a>
+                                    </li>
+                                </ul>
                             </nav>
                         </div>
-
-                    }
-
-
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+}
+
+
 
 
 

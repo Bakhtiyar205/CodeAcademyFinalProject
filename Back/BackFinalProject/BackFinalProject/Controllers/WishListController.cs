@@ -1,6 +1,7 @@
 ﻿using BackFinalProject.Models;
 using BackFinalProject.Services.Interfaces;
 using BackFinalProject.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace BackFinalProject.Controllers
 {
+    [Authorize]
     public class WishListController : Controller
     {
         private readonly IProductService productService;

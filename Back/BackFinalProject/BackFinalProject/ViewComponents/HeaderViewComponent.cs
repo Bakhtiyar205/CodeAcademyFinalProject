@@ -32,12 +32,18 @@ namespace BackFinalProject.ViewComponents
             List<Category> categories = await categoryService.GetCategoriesAsync();
             List<SubCategory> subCategories = await subCategoryService.GetSubCategoriesAsync();
             Dictionary<string, string> settings = settingService.GetSetting();
+            int basketProductsCount = 0;
+            if(Request.Cookies["basket"] != null)
+            {
+                basketProductsCount = JsonConvert.DeserializeObject<List<BasketCookieVM>>(Request.Cookies["basket"]).Count();
+            }
 
             HeaderVM headerVM = new HeaderVM()
             {
                 Categories = categories,
                 SubCategories = subCategories,
-                Settings = settings
+                Settings = settings,
+                BasketProductCount = basketProductsCount
             };
 
             return await Task.FromResult(View(headerVM));

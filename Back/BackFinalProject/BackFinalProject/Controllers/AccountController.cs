@@ -98,6 +98,10 @@ namespace BackFinalProject.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
+            foreach (var cookie in Request.Cookies.Keys)
+            {
+                Response.Cookies.Delete(cookie);
+            }
             return RedirectToAction("Index", "Home");
         }
         public IActionResult Login()

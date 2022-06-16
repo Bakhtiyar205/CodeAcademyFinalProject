@@ -2,9 +2,13 @@
 using BackFinalProject.Services.Interfaces;
 using BackFinalProject.Utilities.Helpers;
 using BackFinalProject.ViewModels;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using MimeKit;
+using MimeKit.Text;
 using System;
+using System.IO;
 using System.Threading.Tasks;
 using static BackFinalProject.Utilities.Helpers.Helper;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
@@ -18,18 +22,21 @@ namespace BackFinalProject.Controllers
         private readonly SignInManager<AppUser> _signInManager;
         private readonly IMailService _mailService;
         private readonly IUserService userService;
+        private readonly IWebHostEnvironment environment;
 
         public AccountController(RoleManager<IdentityRole> roleManager,
                                  UserManager<AppUser> userManager,
                                  SignInManager<AppUser> signInManager,
                                  IMailService mailService,
-                                 IUserService userService)
+                                 IUserService userService,
+                                 IWebHostEnvironment environment)
         {
             _roleManager = roleManager;
             _userManager = userManager;
             _signInManager = signInManager;
             _mailService = mailService;
             this.userService = userService;
+            this.environment = environment;
         }
         public IActionResult Register()
         {
@@ -63,16 +70,23 @@ namespace BackFinalProject.Controllers
 
             var code = await _userManager.GenerateEmailConfirmationTokenAsync(appUser);
 
+            string emailBody = string.Empty;
+
+            using (StreamReader streamReader = new StreamReader(Path.Combine(environment.WebRootPath, "Templates", "htmlpage.html")))
+            {
+                emailBody = streamReader.ReadToEnd();   
+            }
+
             var link = Url.Action(nameof(VerifyEmail), "Account", new { userId = appUser.Id, token = code }, Request.Scheme, Request.Host.ToString());
 
             string html = $"<a href={link}>Click Here</a>";
-
+            emailBody = emailBody.Replace("{{fullName}}", $"{appUser.FullName}").Replace("{{link}}", $"{link}");
             string content = "Email for Register Confirmation";
 
             var mailRequest = new MailRequest
             {
                 Subject = content,
-                Body =  html,
+                Body = emailBody,
                 ToEmail = registerVM.Email
             };
             await _mailService.SendEmailAsync(mailRequest);

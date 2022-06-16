@@ -173,7 +173,7 @@ namespace BackFinalProject.Services
         private async Task<int> GetPageCount(int take)
         {
             return (int)Math.Ceiling((decimal)(await context.Products
-                            .Where(m => m.IsDeleted == false && m.IsOutlet == true)
+                            .Where(m => m.IsDeleted == false)
                             .CountAsync()) / take);
         }
 

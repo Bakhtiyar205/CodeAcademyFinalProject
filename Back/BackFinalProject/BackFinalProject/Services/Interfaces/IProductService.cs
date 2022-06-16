@@ -12,7 +12,7 @@ namespace BackFinalProject.Services.Interfaces
         Task<List<Product>> GetProductsAsync();
         Task<Product> GetProductWithIdAsync(int productId);
         Task<List<Product>> GetProductWithSubCategoryIdAsync(int subcategoryId, int productPrice = 1);
-        Task<Paginate<Product>> GetPaginateOutletProductsAsync(int take = 1, int? page = 1);
+        Task<Paginate<Product>> GetPaginateOutletProductsAsync(int take = 8, int? page = 1);
         Task<Product> GetOutletProductWithIdAsync(int productId);
         Task<List<Product>> GetOutletProductWithSubCategoryIdAsync(int subcategoryId);
         Task<List<Product>> GetNewOutletProductsAsync();

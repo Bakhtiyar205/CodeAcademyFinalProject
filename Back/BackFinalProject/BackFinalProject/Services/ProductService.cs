@@ -142,7 +142,7 @@ namespace BackFinalProject.Services
                                             .Take(take)
                                             .ToListAsync();
 
-            int countPages = await GetPageCount(take);
+            int countPages = await GetOutletPageCount(take);
 
             Paginate<Product> result = new(products, newPage, countPages);
 
@@ -174,6 +174,14 @@ namespace BackFinalProject.Services
         {
             return (int)Math.Ceiling((decimal)(await context.Products
                             .Where(m => m.IsDeleted == false)
+                            .CountAsync()) / take);
+        }
+
+        private async Task<int> GetOutletPageCount(int take)
+        {
+            return (int)Math.Ceiling((decimal)(await context.Products
+                            .Where(m => m.IsDeleted == false &&
+                                        m.IsOutlet == true)
                             .CountAsync()) / take);
         }
 
